@@ -144,24 +144,53 @@ body.custom-background { background-color: #ffffff; }
 <header class="entry-header alignwide">
 <h1 class="entry-title">Input Redirection in Linux/Unix Examples</h1> </header>
 <div class="entry-content">
-<div class="at-above-post addthis_tool" data-url="https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/"></div><span class="rt-reading-time" style="display: block;"><span class="rt-label rt-prefix">Reading Time: </span> <span class="rt-time">2</span> <span class="rt-label rt-postfix">minutes</span></span>
-<p>Just as the output of a command can be redirected to a file, so can the input of a command be redirected from a file. As the <strong>greater-than character &gt;</strong> is used for output redirection, the <strong>less-than character &lt;</strong> is used to redirect the input of a command.</p>
-<p>We may want a file to be the input for a command that normally wouldn’t accept a file as an option. This redirecting of input is done using the “&lt;” (less-than symbol) operator.</p>
-<p>Below is an example of sending a file to somebody, using input redirection.</p>
-<pre class="wp-block-code"><code>&gt; mail <a href="https://11c9e6b4.iexpertify.pages.dev/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89e3e6e1e7a7edebe8c9e6fbeee8e7e0f3e8fde0e6e7a7eae6e4">[email&#160;protected]</a> &lt; sample_ddl</code></pre>
-<p>This reads a bit more difficult than the beginner’s <strong>cat file | mail <em>someone</em></strong>, but it is of course a much more elegant way of using the available tools.</p>
-<h2 id="3"><span id="File_Descriptors_FD">File Descriptors (FD)</span></h2>
-<p>In Linux/Unix, everything is a file. Regular file, Directories, and even Devices are files. Every File has an associated number called File Descriptor (FD).</p>
-<p>Your screen also has a File Descriptor. When a program is executed the output is sent to File Descriptor of the screen, and you see program output on your monitor. If the output is sent to File Descriptor of the printer, the program output would have been printed.</p>
-<p>Whenever you execute a program/command at the terminal, 3 files are always open, viz., standard input, standard output, standard error<strong>.</strong></p>
-<figure class="wp-block-table is-style-stripes"><table><tbody><tr><td>File</td><td>File Descriptor</td></tr><tr><td>Standard Input STDIN</td><td>0</td></tr><tr><td>Standard Output STDOUT</td><td>1</td></tr><tr><td>Standard Error STDERR</td><td>2</td></tr></tbody></table></figure>
-<p>Following is a complete list of commands which you can use for redirection −</p>
-<figure class="wp-block-table"><table><tbody><tr><th>Sr.No.</th><th>Command &amp; Description</th></tr><tr><td>1</td><td><strong>cmd &gt; file</strong> Output of cmd is redirected to file</td></tr><tr><td>2</td><td><strong>cmd &lt; file</strong> Program cmd reads its input from file</td></tr><tr><td>3</td><td><strong>cmd &gt;&gt; file</strong> Output of cmd is appended to file</td></tr><tr><td>4</td><td><strong>n &gt; file</strong> Output from stream with descriptor <strong>n</strong> redirected to file</td></tr><tr><td>5</td><td><strong>n &gt;&gt; file</strong> Output from stream with descriptor <strong>n</strong> appended to file</td></tr><tr><td>6</td><td><strong>n &gt;&amp; m</strong> Merges output from stream <strong>n</strong> with stream <strong>m</strong></td></tr><tr><td>7</td><td><strong>n &lt;&amp; m</strong> Merges input from stream <strong>n</strong> with stream <strong>m</strong></td></tr><tr><td>8</td><td><strong>&lt;&lt; tag</strong> Standard input comes from here through next tag at the start of line</td></tr><tr><td>9</td><td><strong>|</strong> Takes output from one program, or process, and sends it to another</td></tr></tbody></table></figure>
-<div class="at-below-post addthis_tool" data-url="https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/"></div><div class="yarpp yarpp-related yarpp-related-website yarpp-related-none yarpp-template-thumbnails">
-
-<h3><span id="What_to_read_next">What to read next?</span></h3>
-<p>Nothing to see here. Consider joining one of our full courses..</p>
-</div>
+  <p>Input redirection is a powerful feature in Linux/Unix systems that allows users to manipulate the flow of data between commands, files, and processes. By leveraging input redirection operators, users can redirect input from various sources, providing flexibility and efficiency in command-line operations. In this article, we'll explore the basics of input redirection and provide practical examples to showcase its utility.</p>
+  <p><strong>Understanding Input Redirection:</strong> In Linux/Unix, input redirection is accomplished using the <code>&lt;</code> operator. This operator allows users to take input from a specified file or command and pass it as input to another command. This feature proves invaluable in automating tasks, handling large datasets, and streamlining command-line workflows.</p>
+  <p><strong>Basic Syntax:</strong></p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">command1 &lt; input_file
+  </code></div>
+  </div>
+  <p><strong>Examples:</strong></p>
+  <ol>
+  <li>
+  <p><strong>Reading Input from a File:</strong> Suppose you have a file named <code>data.txt</code> containing a list of names. You can use input redirection to pass the content of this file as input to a command like <code>cat</code>:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">cat</span> &lt; data.txt
+  </code></div>
+  </div>
+  <p>In this example, the <code>cat</code> command reads the contents of <code>data.txt</code> without explicitly specifying the file as an argument.</p>
+  </li>
+  <li>
+  <p><strong>Combining Commands:</strong> Input redirection is handy when combining the output of one command with the input of another. For instance, consider the following example where the output of the <code>ls</code> command is redirected as input to the <code>grep</code> command:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">ls</span> -l | grep <span class="hljs-string">'example'</span> &lt; input_file
+  </code></div>
+  </div>
+  <p>Here, the <code>ls -l</code> command lists files in long format, and the output is piped to <code>grep</code>, which then filters lines containing the term 'example'. Meanwhile, input redirection is used to provide additional input from <code>input_file</code>.</p>
+  </li>
+  <li>
+  <p><strong>Interactive Input:</strong> Input redirection is not limited to files; it can also be employed in scenarios requiring interactive input. For instance, consider a script that prompts the user for input. Instead of manually entering data, you can redirect input from a file:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">./interactive_script.sh &lt; input_data.txt
+  </code></div>
+  </div>
+  <p>Here, the script <code>interactive_script.sh</code> reads input from <code>input_data.txt</code> as if it were entered interactively.</p>
+  </li>
+  <li>
+  <p><strong>Here Document:</strong> A Here Document is a convenient way to redirect multiple lines of input to a command. This is particularly useful when dealing with commands that expect input from the standard input stream. For example:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">cat</span> &lt;&lt; <span class="hljs-string">EOF
+  Line 1
+  Line 2
+  Line 3
+  EOF</span>
+  </code></div>
+  </div>
+  <p>In this case, the <code>cat</code> command will output the lines enclosed between <code>&lt;&lt; EOF</code> and <code>EOF</code>.</p>
+  </li>
+  </ol>
+  <p><strong>Conclusion:</strong> Input redirection in Linux/Unix is a versatile tool that enhances the efficiency and flexibility of command-line operations. Whether dealing with files, combining commands, or facilitating interactive input, understanding and mastering input redirection can significantly improve your ability to work with these systems. By incorporating these examples into your daily workflow, you can harness the power of input redirection to streamline your tasks and operations.</p>
 </div>
 <footer class="entry-footer default-max-width">
 <div class="posted-by"><span class="posted-on">Published <time class="entry-date published updated" datetime="2021-10-10T23:10:36-04:00">October 10, 2021</time></span><span class="byline">By <a href="https://www.iexpertify.com/author/kwhite/" rel="author">kwhite</a></span></div><div class="post-taxonomies"><span class="cat-links">Categorized as <a href="https://www.iexpertify.com/category/linux/" rel="category tag">Linux</a> </span><span class="tags-links">Tagged <a href="https://www.iexpertify.com/tag/linux/" rel="tag">Linux</a></span></div> </footer>

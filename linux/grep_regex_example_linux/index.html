@@ -144,153 +144,74 @@ body.custom-background { background-color: #ffffff; }
 <header class="entry-header alignwide">
 <h1 class="entry-title">Grep Regex Example Linux</h1> </header>
 <div class="entry-content">
-<div class="at-above-post addthis_tool" data-url="https://www.iexpertify.com/linux/grep_regex_example_linux/"></div><span class="rt-reading-time" style="display: block;"><span class="rt-label rt-prefix">Reading Time: </span> <span class="rt-time">4</span> <span class="rt-label rt-postfix">minutes</span></span>
-<div class="lwptoc lwptoc-autoWidth lwptoc-baseItems lwptoc-dark lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i"> <div class="lwptoc_header">
-<b class="lwptoc_title">we will cover these topics:</b> <span class="lwptoc_toggle">
-<a href="index.html#" class="lwptoc_toggle_label" data-label="show">hide</a>
-</span>
-</div>
-<div class="lwptoc_items lwptoc_items-visible">
-<div class="lwptoc_itemWrap"><div class="lwptoc_item"> <a href="index.html#What_are_Regular_Expressions">
-<span class="lwptoc_item_number">1)</span>
-<span class="lwptoc_item_label">What are Regular Expressions?</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Types_of_Regular_expressions">
-<span class="lwptoc_item_number">2)</span>
-<span class="lwptoc_item_label">Types of Regular expressions</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Basic_Regular_expressions">
-<span class="lwptoc_item_number">3)</span>
-<span class="lwptoc_item_label">Basic Regular expressions</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Interval_Regular_expressions">
-<span class="lwptoc_item_number">4)</span>
-<span class="lwptoc_item_label">Interval Regular expressions</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Extended_regular_expressions">
-<span class="lwptoc_item_number">5)</span>
-<span class="lwptoc_item_label">Extended regular expressions</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Brace_expansion">
-<span class="lwptoc_item_number">6)</span>
-<span class="lwptoc_item_label">Brace expansion</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Square_bracket_expansion">
-<span class="lwptoc_item_number">7)</span>
-<span class="lwptoc_item_label">Square bracket expansion</span>
-</a>
-<div class="lwptoc_itemWrap"><div class="lwptoc_item"> <a href="index.html#What_to_read_next">
-<span class="lwptoc_item_number">7.1)</span>
-<span class="lwptoc_item_label">What to read next?</span>
-</a>
-</div></div></div></div></div>
-</div></div><h2><span id="What_are_Regular_Expressions">What are Regular Expressions?</span></h2>
-<p>Grep Regex is one of the most popular command-line utilities to find and search strings in a text file.</p>
-<p>Using the grep command with regular expressions makes it even more powerful.</p>
-<p>Regular expressions come in the picture when you want to search for a text containing a particular pattern.</p>
-<p>It simplifies your search operation by searching the patterns on each line of the file.</p>
-<h2><span id="Types_of_Regular_expressions">Types of Regular expressions</span></h2>
-<p>For ease of understanding let us learn the different types of Regex one by one.</p>
-<h2 id="1"><span id="Basic_Regular_expressions">Basic Regular expressions</span></h2>
-<p>Some of the commonly used commands with Regular expressions are tr, sed, vi and grep. Listed below are some of the basic Regex.</p>
-<figure class="wp-block-table"><table><tbody><tr><th>Symbol</th><th>Descriptions</th></tr><tr><td>.</td><td>replaces any character (single character)</td></tr><tr><td>^</td><td>matches start of string</td></tr><tr><td>$</td><td>matches end of string</td></tr><tr><td>*</td><td>matches up zero or more times the preceding character</td></tr><tr><td>\</td><td>Represent special characters</td></tr><tr><td>()</td><td>Groups regular expressions</td></tr><tr><td>?</td><td>Matches up exactly one character</td></tr></tbody></table></figure>
-<p>Let’s create a sample test.txt file with the following content:</p>
-<pre class="wp-block-code"><code>cat test.txt</code></pre>
-<p>Output:</p>
-<pre class="wp-block-code"><code>This record ends in 2021
-2021 is the start of the record
-
-2021
-2020
-
-This record ends in 2020
-2020 is the start of the record</code></pre>
-<p>For example, find all the lines which end with the word <em>2021</em>:</p>
-<pre class="wp-block-code"><code>grep "2021$" test.txt</code></pre>
-<p>You should see the following output:</p>
-<p>This record ends in 2021</p>
-<pre class="wp-block-code"><code>2021</code></pre>
-<p>Next, find all the lines which start and end with the word&nbsp;<em>2021</em>:</p>
-<pre class="wp-block-code"><code>grep "^2021$" test.txt</code></pre>
-<p>You should see the following output:</p>
-<pre class="wp-block-code"><code>2021</code></pre>
-<p>For example, find all the lines which end with the word&nbsp;<em>2020 or 2021(The dot allows any single character in the place)</em>:</p>
-<pre class="wp-block-code"><code>grep "202.$" test.txt</code></pre>
-<p>You should see the following output:</p>
-<p>This record ends in 2021</p>
-<pre class="wp-block-code"><code>2021</code></pre>
-<p>This record ends in 2020</p>
-<pre class="wp-block-code"><code>2020</code></pre>
-<p>Now, lets display all the lines that start with the string&nbsp;<em>balaram</em>:</p>
-<pre class="wp-block-code"><code>grep "^2021" test.txt</code></pre>
-<p>You should see the following output:</p>
-<pre class="wp-block-code"><code>2021 is the start of the record<br>2021</code></pre>
-<p>Next, find the number of blank lines in the file test.txt:</p>
-<pre class="wp-block-code"><code>grep "^$" test.txt</code></pre>
-<p>You should see the following output:</p>
-<pre class="wp-block-preformatted">&lt;3 empty lines&gt;</pre>
-<h2 id="2"><span id="Interval_Regular_expressions">Interval Regular expressions</span></h2>
-<p>These expressions tell us about the number of occurrences of a character in a string. They are</p>
-<figure class="wp-block-table"><table><tbody><tr><th>Expression</th><th>Description</th></tr><tr><td>{n}</td><td>Matches the preceding character appearing ‘n’ times exactly</td></tr><tr><td>{n,m}</td><td>Matches the preceding character appearing ‘n’ times but not more than m</td></tr><tr><td>{n, }</td><td>Matches the preceding character only when it appears ‘n’ times or more</td></tr></tbody></table></figure>
-<p>Example:</p>
-<p>Filter out all lines that contain character ‘p’</p>
-<p>We want to check that the character ‘p’ appears exactly 2 times in a string one after the other. For this the syntax would be:</p>
-<pre class="wp-block-code"><code>cat sample | grep -E p\{2}</code></pre>
-<p>Note: You need to add -E with these regular expressions.</p>
-<h2 id="3"><span id="Extended_regular_expressions">Extended regular expressions</span></h2>
-<p>These regular expressions contain combinations of more than one expression. Some of them are:</p>
-<figure class="wp-block-table"><table><tbody><tr><th>Expression</th><th>Description</th></tr><tr><td>\+</td><td>Matches one or more occurrence of the previous character</td></tr><tr><td>\?</td><td>Matches zero or one occurrence of the previous character</td></tr></tbody></table></figure>
-<p>Example:</p>
-<p>Searching for all characters ‘t’</p>
-<p>Suppose we want to filter out lines where character ‘a’ precedes character ‘t’</p>
-<p>We can use command like</p>
-<pre class="wp-block-code"><code>cat sample|grep "a\+t"</code></pre>
-<p>The regular expression (<strong>\</strong>) used to search for special characters.</p>
-<p>Let’s create a sample test.txt file with the following contents:</p>
-<pre class="wp-block-code"><code><code>cat test.txt</code></code></pre>
-<p>Output:</p>
-<pre class="wp-block-code"><code><code>1.1.1.1<br>1a1a1a1<br>1b1c1d1</code></code></pre>
-<p>Now, search for all the lines which matches the pattern “<strong>1.1.1.1</strong>“:</p>
-<pre class="wp-block-code"><code><code>grep "1.1.1.1" test.txt</code></code></pre>
-<p>This command does not show the proper result as “<strong>.</strong>” matches any single character:</p>
-<pre class="wp-block-code"><code><code>1.1.1.1<br>1a1a1a1<br>1b1c1d1</code></code></pre>
-<p>You can use the regular expression “\” to resolve this issue:</p>
-<pre class="wp-block-code"><code><code>grep "1\.1\.1\.1" test.txt</code></code></pre>
-<p>Output:</p>
-<pre class="wp-block-code"><code><code>1.1.1.1</code></code></pre>
-<h2 id="3"><span id="Brace_expansion">Brace expansion</span></h2>
-<p>The syntax for brace expansion is either a sequence or a comma separated list of items inside curly braces “{}”. The starting and ending items in a sequence are separated by two periods “..”.</p>
-<p>Some examples:</p>
-<p>In the above examples, the echo command creates strings using the brace expansion.</p>
-<p>Let’s create a sample test.txt file with the following contents:</p>
-<pre class="wp-block-code"><code><code>cat test.txt</code></code></pre>
-<p>Output:</p>
-<pre class="wp-block-code"><code><code>apple<br>appple<br>appppple</code></code></pre>
-<p>Now, search for all the lines which match a character “<strong>p</strong>” two times:</p>
-<pre class="wp-block-code"><code><code>grep -E "ap{2}l" test.txt</code></code></pre>
-<p>You should see the following output:</p>
-<pre class="wp-block-code"><code><code>apple</code></code></pre>
-<p>Next, search for all the lines which match a character “<strong>p</strong>” two or more times:</p>
-<pre class="wp-block-code"><code><code>grep -E "ap{2,}l" test.txt</code></code></pre>
-<p>You should see the following output:</p>
-<pre class="wp-block-code"><code><code>apple<br>appple<br>appppple</code></code></pre>
-<p>Next, search for all the lines which match a character “<strong>p</strong>” two or three times:</p>
-<pre class="wp-block-code"><code><code>grep -E "ap{2,3}l" test.txt</code></code></pre>
-<p>You should see the following output:</p>
-<pre class="wp-block-code"><code><code>apple<br>appple</code></code></pre>
-<h2><span id="Square_bracket_expansion">Square bracket expansion</span></h2>
-<p>The regular expression <strong>[]</strong> can be used to match any one character found within the bracket group.</p>
-<p>search for all the lines which match any range character found within the “<strong>test</strong>” group.</p>
-<pre class="wp-block-code"><code><code>grep "test[x-z]" test.txt</code></code></pre>
-<p>You should see the following output:</p>
-<pre class="wp-block-code"><code><code>testx
-testy
-testz</code></code></pre>
-<div class="at-below-post addthis_tool" data-url="https://www.iexpertify.com/linux/grep_regex_example_linux/"></div><div class="yarpp yarpp-related yarpp-related-website yarpp-related-none yarpp-template-thumbnails">
-
-<h3><span id="What_to_read_next">What to read next?</span></h3>
-<p>Nothing to see here. Consider joining one of our full courses..</p>
-</div>
+  <p>Grep, a powerful command-line utility in Linux, is widely used for searching patterns within files. When combined with regular expressions, or regex, grep becomes an even more formidable tool, enabling users to perform complex and precise searches. In this article, we'll delve into practical examples of using grep with regular expressions to showcase its versatility and utility.</p>
+  <p><strong>Understanding grep and Regular Expressions:</strong> Grep is a command-line tool that searches for patterns in files and outputs the lines containing those patterns. Regular expressions, often abbreviated as regex, are sequences of characters that define a search pattern. By combining grep with regex, users can perform sophisticated pattern-matching tasks.</p>
+  <p><strong>Basic Syntax:</strong></p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep <span class="hljs-string">'pattern'</span> filename
+  </code></div>
+  </div>
+  <p><strong>Examples:</strong></p>
+  <ol>
+  <li>
+  <p><strong>Simple String Search:</strong> The basic use of grep involves searching for a specific string within a file. For example, to find all occurrences of the word 'error' in a log file:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep <span class="hljs-string">'error'</span> logfile.txt
+  </code></div>
+  </div>
+  </li>
+  <li>
+  <p><strong>Case-Insensitive Search:</strong> Grep allows users to perform case-insensitive searches by using the <code>-i</code> option. This is particularly useful when you want to match a pattern regardless of case:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep -i <span class="hljs-string">'warning'</span> logfile.txt
+  </code></div>
+  </div>
+  </li>
+  <li>
+  <p><strong>Search for Whole Words:</strong> To search for whole words, use the <code>-w</code> option. This prevents matching substrings and ensures that only complete words are returned:</p>
+  <div class="bg-black rounded-md">
+  <div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md">&nbsp;</div>
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep -w <span class="hljs-string">'success'</span> data.txt
+  </code></div>
+  </div>
+  </li>
+  <li>
+  <p><strong>Counting Matches:</strong> Grep can be used to count the number of occurrences of a pattern within a file using the <code>-c</code> option:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep -c <span class="hljs-string">'pattern'</span> data.txt
+  </code></div>
+  </div>
+  </li>
+  <li>
+  <p><strong>Matching Multiple Patterns:</strong> Grep supports the logical OR operator (<code>|</code>) for matching multiple patterns. For example, to find lines containing either 'error' or 'warning':</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep <span class="hljs-string">'error\|warning'</span> logfile.txt
+  </code></div>
+  </div>
+  </li>
+  <li>
+  <p><strong>Using Regular Expressions:</strong> Regular expressions provide a powerful way to express complex search patterns. For instance, to match lines starting with 'error' or 'warning':</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep <span class="hljs-string">'^(error|warning)'</span> logfile.txt
+  </code></div>
+  </div>
+  </li>
+  <li>
+  <p><strong>Matching Numbers:</strong> Regular expressions can be used to match numerical patterns. To find lines containing numbers in a specific range (e.g., 100-199):</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep <span class="hljs-string">'^[1-9][0-9]\{2\}$'</span> numbers.txt
+  </code></div>
+  </div>
+  </li>
+  <li>
+  <p><strong>Extracting Email Addresses:</strong> Regular expressions are particularly useful for extracting specific types of data. For example, to extract email addresses from a file:</p>
+  <div class="bg-black rounded-md">
+  <div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">grep -o <span class="hljs-string">'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]\{2,}\b'</span> emails.txt
+  </code></div>
+  </div>
+  </li>
+  </ol>
+  <p><strong>Conclusion:</strong> Grep, combined with regular expressions, is a formidable tool for pattern matching and data extraction in Linux. These practical examples demonstrate the flexibility and power that grep provides. By incorporating these techniques into your command-line repertoire, you can efficiently search and manipulate text files, making grep an invaluable asset in your Linux toolkit.</p>
 </div>
 <footer class="entry-footer default-max-width">
 <div class="posted-by"><span class="posted-on">Published <time class="entry-date published updated" datetime="2021-12-21T21:12:35-05:00">December 21, 2021</time></span><span class="byline">By <a href="https://www.iexpertify.com/author/kwhite/" rel="author">kwhite</a></span></div><div class="post-taxonomies"><span class="cat-links">Categorized as <a href="https://www.iexpertify.com/category/linux/" rel="category tag">Linux</a> </span><span class="tags-links">Tagged <a href="https://www.iexpertify.com/tag/linux/" rel="tag">Linux</a></span></div> </footer>
