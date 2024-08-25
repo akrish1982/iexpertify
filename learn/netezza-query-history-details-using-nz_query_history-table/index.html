@@ -1,4 +1,7 @@
-<html><head><link href="../../simplecss/styles.css" rel="stylesheet"/></head></html><!DOCTYPE html>
+<html><head><link href="../../simplecss/styles.css" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
+     crossorigin="anonymous"></script>
+</head></html><!DOCTYPE html>
 
 
 
@@ -153,18 +156,18 @@ Load session of table 'NZ_QUERY_HISTORY' completed successfully
 How to install Netezza Queryhistory version 3?
 <p>Just follow the below steps to install Queryhistory version 3. NOTE: Here we will create Query history database names QHIST3.</p>
 <p>1) Create user’s specific for Queryhistory version 3.</p>
-nzsql -c “create user histuser with password ‘<a class="__cf_email__" data-cfemail="3060704343475f4254" href="https://11c9e6b4.iexpertify.pages.dev/cdn-cgi/l/email-protection">[email protected]</a>’ auth local;”
-nzsql -c “create user histdbowner with password ‘<a class="__cf_email__" data-cfemail="3c6c7c4f4f4b0c4e58" href="https://11c9e6b4.iexpertify.pages.dev/cdn-cgi/l/email-protection">[email protected]</a>’ auth local;”
+nzsql -c “create user histuser with password ‘<a class="__cf_email__" data-cfemail="3060704343475f4254" href="https://www.iexpertify.com/cdn-cgi/l/email-protection">[email protected]</a>’ auth local;”
+nzsql -c “create user histdbowner with password ‘<a class="__cf_email__" data-cfemail="3c6c7c4f4f4b0c4e58" href="https://www.iexpertify.com/cdn-cgi/l/email-protection">[email protected]</a>’ auth local;”
 
 
 <p id="block-c21cb7d5-36fe-4e09-87a6-26dd24f5cdda">2) Grant privileges to newly created users.</p>
 nzsql -c “grant create database to histdbowner;”nzsql -c “grant list on user to histdbowner;”
 <p>3) Create the history database ( online help is available “nzhistcreatedb -h” )</p>
-nzhistcreatedb -d QHIST3 -t query -o histdbowner -pw <a class="__cf_email__" data-cfemail="5c0c1c2f2f2b6c2e38" href="https://11c9e6b4.iexpertify.pages.dev/cdn-cgi/l/email-protection">[email protected]</a> -u histuser -v 3
+nzhistcreatedb -d QHIST3 -t query -o histdbowner -pw <a class="__cf_email__" data-cfemail="5c0c1c2f2f2b6c2e38" href="https://www.iexpertify.com/cdn-cgi/l/email-protection">[email protected]</a> -u histuser -v 3
 <p>4) Create the history configuration:</p>
 <p>For each history database, create at least one history configuration that specifies the parameter HISTTYPE NONE. Setting this configuration to be the active configuration disables the collection of history data.</p>
 nzsql -c “CREATE HISTORY CONFIGURATION hist_disabled HISTTYPE NONE;”
-nzsql -d SYSTEMCREATE HISTORY CONFIGURATION HISTORY_ENABLE — Name of the history configurationHISTTYPE QUERY — Type of the history configurationNPS LOCALHOSTDATABASE QHIST3 — Database that will be used by the history configurationUSER histuser — User that will load history dataPASSWORD ‘<a class="__cf_email__" data-cfemail="0c5c4c7f7f7b637e68" href="https://11c9e6b4.iexpertify.pages.dev/cdn-cgi/l/email-protection">[email protected]</a>’ — Password of the user, if this password change the history configuration must be updated in order to have the latest password to be able to load the data on the History Database.COLLECT QUERY , PLAN , TABLE , COLUMN , SERVICE , STATE — Information that will be collectedLOADINTERVAL 5 — How long it will wait to load the data on the databaseLOADMINTHRESHOLD 4 — The minimun amount in MB to collect before transfer staged batch files to the loading area.LOADMAXTHRESHOLD 20 — In MB sizeSTORAGELIMIT 100 — The maximum size of the history data staging area in MB.LOADRETRY 1 — The number of times that the load operation is retried.ENABLEHIST TRUEENABLESYSTEM TRUEVERSION 3 — Available on Release 7.1 and on-wards;
+nzsql -d SYSTEMCREATE HISTORY CONFIGURATION HISTORY_ENABLE — Name of the history configurationHISTTYPE QUERY — Type of the history configurationNPS LOCALHOSTDATABASE QHIST3 — Database that will be used by the history configurationUSER histuser — User that will load history dataPASSWORD ‘<a class="__cf_email__" data-cfemail="0c5c4c7f7f7b637e68" href="https://www.iexpertify.com/cdn-cgi/l/email-protection">[email protected]</a>’ — Password of the user, if this password change the history configuration must be updated in order to have the latest password to be able to load the data on the History Database.COLLECT QUERY , PLAN , TABLE , COLUMN , SERVICE , STATE — Information that will be collectedLOADINTERVAL 5 — How long it will wait to load the data on the databaseLOADMINTHRESHOLD 4 — The minimun amount in MB to collect before transfer staged batch files to the loading area.LOADMAXTHRESHOLD 20 — In MB sizeSTORAGELIMIT 100 — The maximum size of the history data staging area in MB.LOADRETRY 1 — The number of times that the load operation is retried.ENABLEHIST TRUEENABLESYSTEM TRUEVERSION 3 — Available on Release 7.1 and on-wards;
 <p>5) To start the collection of history data</p>
 nzsql -c “set history configuration HISTORY_ENABLE;”
 <p>6) To activate the new history configuration you need to stop and restart the system, that is, by issuing the nzstop and nzstart.</p>

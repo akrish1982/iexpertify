@@ -1,4 +1,7 @@
-<html><head><link href="../../simplecss/styles.css" rel="stylesheet"/></head></html><!DOCTYPE html>
+<html><head><link href="../../simplecss/styles.css" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
+     crossorigin="anonymous"></script>
+</head></html><!DOCTYPE html>
 
 
 
@@ -71,7 +74,7 @@ Reading Time:  3 minutes
 <p>Netezza host uses Linux operating system customized for performance and functionality required for the appliance. User access restrictions are setup using user ids, user groups and passwords. When installed, the appliance is configured with a “root” user id which is the Linux super user and the user id “nz” which is the Netezza system administrator id which is used to run Netezza on the host. The “root” user id can be used to create other user ids for users who need to access the appliance natively through the host command shell. Since the host access is required to perform very restricted tasks primarily administration tasks, the number of user ids created to access the appliance should be fairly small. Restrictions on what users can perform can be set by creating Linux user groups with different access restrictions and attaching the relevant users to the groups. Setting password selection rules like mix of alphabets, numbers, special characters, minimum password length etc. along with password expiry for users is a good practice. </p>
 <h2>Database Level Security </h2>
 <p>Access to databases is controlled using user ids and passwords which are separate from the OS level user id and password. If an user need to be able to access to a Netezza database natively through a “nzsql” session on the host, the user need to use a OS level user id and password to log in to the host and then need to invoke the “nzsql” command using the database level user id and password which has access to the particular database of interest. Access to databases, objects with in a database and the type of activities which can be performed on them are all controlled by the privileges granted to the user id to perform the task. Netezza also supports user groups as with the Linux operating system where privileges can be assigned to groups and similar users can be attached to the group so that it is easier to manage access to databases. When a user id is attached to more than one group the user id gets combination of all the privileges assigned to the groups to which the user id is attached to. The following is a sample “create user” statement </p>
-create user user122 with password ‘#<a class="__cf_email__" data-cfemail="f2808581c0c1d68190a597aabdb2c3c3c0" href="https://11c9e6b4.iexpertify.pages.dev/cdn-cgi/l/email-protection">[email protected]</a>’; 
+create user user122 with password ‘#<a class="__cf_email__" data-cfemail="f2808581c0c1d68190a597aabdb2c3c3c0" href="https://www.iexpertify.com/cdn-cgi/l/email-protection">[email protected]</a>’; 
 <p>The following is a sample “create group” statement </p>
 create group bdmodeller with user user1, user2, user3;
 <p></p>
