@@ -1,128 +1,80 @@
-<!DOCTYPE html>
+<html><head><link href="/simplecss/styles.css" rel="stylesheet"/></head></html><!DOCTYPE html>
 
-<html lang="en-US" xmlns:addthis="https://www.addthis.com/help/api-spec" xmlns:fb="https://www.facebook.com/2008/fbml">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
-<title>Netezza Sequence - Creation and retrieval - learn</title>
-<meta content="en_US" property="og:locale"/>
-<meta content="article" property="og:type"/>
-<meta content="Netezza Sequence - Creation and retrieval - learn" property="og:title"/>
-<meta content="Reading Time: 5 minutes A Netezza sequence can provide unique values when the getnext value method. You can use the sequence to generate unique numbers that can be used as surrogate key values for primary key columns.   Property Description Additional Information Physical Datatype Specifies the data type Default data type is bigint. Owner Specifies the owner of the… Continue reading Netezza Sequence – Creation and retrieval" property="og:description"/>
-<meta content="https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/" property="og:url"/>
-<meta content="iexpertify" property="og:site_name"/>
-<meta content="https://www.facebook.com/iExpertify-102371968557959" property="article:publisher"/>
-<meta content="2020-04-01T17:56:45+00:00" property="article:published_time"/>
-<meta content="2020-12-19T11:08:38+00:00" property="article:modified_time"/>
-<meta content="https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-1024x333.png" property="og:image"/>
-<meta content="akrish1982" name="author"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="@iexpertify" name="twitter:creator"/>
-<meta content="@iexpertify" name="twitter:site"/>
-<meta content="Written by" name="twitter:label1"/>
-<meta content="akrish1982" name="twitter:data1"/>
-<meta content="Est. reading time" name="twitter:label2"/>
-<meta content="4 minutes" name="twitter:data2"/>
-<script class="yoast-schema-graph" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#article","isPartOf":{"@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/"},"author":{"name":"akrish1982","@id":"https://www.iexpertify.com/#/schema/person/6d22cba514d0b526fda5f3ff1cebd395"},"headline":"Netezza Sequence &#8211; Creation and retrieval","datePublished":"2020-04-01T17:56:45+00:00","dateModified":"2020-12-19T11:08:38+00:00","mainEntityOfPage":{"@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/"},"wordCount":769,"commentCount":0,"publisher":{"@id":"https://www.iexpertify.com/#organization"},"image":{"@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#primaryimage"},"thumbnailUrl":"https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-1024x333.png","keywords":["Netezza"],"articleSection":["learn"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#respond"]}]},{"@type":"WebPage","@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/","url":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/","name":"Netezza Sequence - Creation and retrieval - learn","isPartOf":{"@id":"https://www.iexpertify.com/#website"},"primaryImageOfPage":{"@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#primaryimage"},"image":{"@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#primaryimage"},"thumbnailUrl":"https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-1024x333.png","datePublished":"2020-04-01T17:56:45+00:00","dateModified":"2020-12-19T11:08:38+00:00","breadcrumb":{"@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#primaryimage","url":"https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-1024x333.png","contentUrl":"https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-1024x333.png"},{"@type":"BreadcrumbList","@id":"https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.iexpertify.com/"},{"@type":"ListItem","position":2,"name":"Netezza Sequence &#8211; Creation and retrieval"}]},{"@type":"WebSite","@id":"https://www.iexpertify.com/#website","url":"https://www.iexpertify.com/","name":"Learn any Technology","description":"Upskill in 30 days, just 1 hour a day","publisher":{"@id":"https://www.iexpertify.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.iexpertify.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.iexpertify.com/#organization","name":"iExpertify Inc.","url":"https://www.iexpertify.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/logo/image/","url":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","contentUrl":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","width":148,"height":62,"caption":"iExpertify Inc."},"image":{"@id":"https://www.iexpertify.com/#/schema/logo/image/"},"sameAs":["https://www.youtube.com/channel/UCFrG1RTSQZYHoSx5-nJxcnQ/featured","https://www.facebook.com/iExpertify-102371968557959","https://twitter.com/iexpertify"]},{"@type":"Person","@id":"https://www.iexpertify.com/#/schema/person/6d22cba514d0b526fda5f3ff1cebd395","name":"akrish1982","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/8858be87c957147d97ba3498a97f2e24?s=96&d=wavatar&r=g","contentUrl":"https://secure.gravatar.com/avatar/8858be87c957147d97ba3498a97f2e24?s=96&d=wavatar&r=g","caption":"akrish1982"},"sameAs":["https://www.iexpertify.com","https://www.linkedin.com/in/ananthtirumanur/?lipi=urnlipaged_flagship3_feedRjIo9iaYS1KDsFau2D8wA"],"url":"https://www.iexpertify.com/author/akrish1982/"}]}</script>
-<link href="https://www.googletagmanager.com/" rel="dns-prefetch"/>
-<link href="https://pagead2.googlesyndication.com/" rel="dns-prefetch"/>
-<link href="https://www.iexpertify.com/feed/" rel="alternate" title="iexpertify » Feed" type="application/rss+xml"/>
-<link href="https://www.iexpertify.com/comments/feed/" rel="alternate" title="iexpertify » Comments Feed" type="application/rss+xml"/>
-<script>
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.iexpertify.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
-/*! This file is auto-generated */
-!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
 
-<link href="https://www.iexpertify.com/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1" id="wp-block-library-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-includes/css/classic-themes.min.css?ver=1" id="classic-theme-styles-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-content/themes/twentytwentyone/style.css?ver=1.2" id="twenty-twenty-one-style-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/css/print.css?ver=1.2" id="twenty-twenty-one-print-style-css" media="print" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/styles_thumbnails.css?ver=5.30.1" id="yarpp-thumbnails-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-content/plugins/addthis/frontend/build/addthis_wordpress_public.min.css?ver=6.1.1" id="addthis_all_pages-css" media="all" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.30.1" id="yarppRelatedCss-css" media="all" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" id="lwptoc-main-css" media="all" rel="stylesheet"/>
- <script>
-            /* <![CDATA[ */
-            var rcewpp = {
-                "ajax_url":"https://www.iexpertify.com/wp-admin/admin-ajax.php",
-                "nonce": "83ffdb6c7b",
-                "home_url": "https://www.iexpertify.com/",
-                "settings_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings.png',
-                "settings_hover_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings_hover.png'
-            };
-            /* ]]\> */
-        </script>
-<script async="" id="google_gtagjs-js" src="https://www.googletagmanager.com/gtag/js?id=UA-50079915-2"></script>
-<script id="google_gtagjs-js-after">
-window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
-gtag('set', 'linker', {"domains":["www.iexpertify.com"]} );
-gtag("js", new Date());
-gtag("set", "developer_id.dZTNiMT", true);
-gtag("config", "UA-50079915-2", {"anonymize_ip":true});
-</script>
-<script id="lwptoc-main-js" src="https://www.iexpertify.com/wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.js?ver=2.1.4"></script>
-<link href="https://www.iexpertify.com/wp-json/" rel="https://api.w.org/"/><link href="https://www.iexpertify.com/wp-json/wp/v2/posts/790" rel="alternate" type="application/json"/><link href="https://www.iexpertify.com/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
-<link href="https://www.iexpertify.com/wp-includes/wlwmanifest.xml" rel="wlwmanifest" type="application/wlwmanifest+xml"/>
-<meta content="WordPress 6.1.1" name="generator"/>
-<link href="https://www.iexpertify.com/?p=790" rel="shortlink"/>
-<link href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Flearn%2Fnetezza-sequence-and-create-use-it%2F" rel="alternate" type="application/json+oembed"/>
-<link href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Flearn%2Fnetezza-sequence-and-create-use-it%2F&amp;format=xml" rel="alternate" type="text/xml+oembed"/>
-<meta content="Site Kit by Google 1.90.1" name="generator"/>
-<meta content="ca-host-pub-2644536267352236" name="google-adsense-platform-account"/>
-<meta content="sitekit.withgoogle.com" name="google-adsense-platform-domain"/>
+Netezza Sequence - Creation and retrieval - learn
 
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797&amp;host=ca-host-pub-2644536267352236"></script>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-32x32.png" rel="icon" sizes="32x32"/>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-192x192.png" rel="icon" sizes="192x192"/>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-180x180.png" rel="apple-touch-icon"/>
-<meta content="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-270x270.png" name="msapplication-TileImage">
-</meta><link href="/simplecss/styles.css" rel="stylesheet"/></head>
-<body class="post-template-default single single-post postid-790 single-format-standard custom-background wp-custom-logo wp-embed-responsive is-light-theme has-background-white no-js singular has-main-navigation">
-<svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-dark-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 0.49803921568627" type="table"></fefuncr><fefuncg tablevalues="0 0.49803921568627" type="table"></fefuncg><fefuncb tablevalues="0 0.49803921568627" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 1" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0 1" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-purple-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.54901960784314 0.98823529411765" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0.71764705882353 0.25490196078431" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-blue-red"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 1" type="table"></fefuncr><fefuncg tablevalues="0 0.27843137254902" type="table"></fefuncg><fefuncb tablevalues="0.5921568627451 0.27843137254902" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-midnight"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 0" type="table"></fefuncr><fefuncg tablevalues="0 0.64705882352941" type="table"></fefuncg><fefuncb tablevalues="0 1" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-magenta-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.78039215686275 1" type="table"></fefuncr><fefuncg tablevalues="0 0.94901960784314" type="table"></fefuncg><fefuncb tablevalues="0.35294117647059 0.47058823529412" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-purple-green"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.65098039215686 0.40392156862745" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0.44705882352941 0.4" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-blue-orange"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.098039215686275 1" type="table"></fefuncr><fefuncg tablevalues="0 0.66274509803922" type="table"></fefuncg><fefuncb tablevalues="0.84705882352941 0.41960784313725" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><div class="site" id="page">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-<header class="site-header has-logo has-menu" id="masthead" role="banner">
-<div class="site-branding">
-<div class="site-logo"><a class="custom-logo-link" href="https://www.iexpertify.com/" rel="home"><img alt="iexpertify" class="custom-logo" decoding="async" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" width="148"/></a></div>
-<p class="screen-reader-text"><a href="https://www.iexpertify.com/">iexpertify</a></p>
-</div>
-<nav aria-label="Primary menu" class="primary-navigation" id="site-navigation" role="navigation">
-<div class="menu-button-container">
-<button aria-controls="primary-menu-list" aria-expanded="false" class="button" id="primary-mobile-menu">
-<span class="dropdown-icon open">Menu <svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M4.5 6H19.5V7.5H4.5V6ZM4.5 12H19.5V13.5H4.5V12ZM19.5 18H4.5V19.5H19.5V18Z" fill="currentColor" fill-rule="evenodd"></path></svg> </span>
-<span class="dropdown-icon close">Close <svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 10.9394L5.53033 4.46973L4.46967 5.53039L10.9393 12.0001L4.46967 18.4697L5.53033 19.5304L12 13.0607L18.4697 19.5304L19.5303 18.4697L13.0607 12.0001L19.5303 5.53039L18.4697 4.46973L12 10.9394Z" fill="currentColor" fill-rule="evenodd"></path></svg> </span>
-</button>
-</div>
-<div class="primary-menu-container"><ul class="menu-wrapper" id="primary-menu-list"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1025" id="menu-item-1025"><a href="https://www.iexpertify.com/">iExpertify</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1027" id="menu-item-1027"><a href="https://www.iexpertify.com/learn/full-course/netezza/">Netezza</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1504" id="menu-item-1504"><a href="https://saphr.iexpertify.com">SAP HR</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505" id="menu-item-1505"><a href="https://sapfico.iexpertify.com">SAP FICO</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12338" id="menu-item-12338"><a href="https://www.iexpertify.com/free-courses/">Free Courses</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1634" id="menu-item-1634"><a href="https://www.iexpertify.com/courses/">Courses</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1636" id="menu-item-1636"><a href="https://www.iexpertify.com/lp-checkout/">Checkout</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1642" id="menu-item-1642"><a href="https://www.iexpertify.com/lp-profile/">My Profile</a></li>
-</ul></div> </nav>
-</header>
-<div class="site-content" id="content">
-<div class="content-area" id="primary">
-<main class="site-main" id="main" role="main">
-<article class="post-790 post type-post status-publish format-standard hentry category-learn tag-netezza entry" id="post-790">
-<header class="entry-header alignwide">
-<h1 class="entry-title">Netezza Sequence – Creation and retrieval</h1> </header>
-<div class="entry-content">
-<div class="at-above-post addthis_tool" data-url="https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/"></div><span class="rt-reading-time" style="display: block;"><span class="rt-label rt-prefix">Reading Time: </span> <span class="rt-time">5</span> <span class="rt-label rt-postfix">minutes</span></span>
-<figure class="wp-block-image size-large"><img alt="" class="wp-image-1519" decoding="async" height="333" sizes="(max-width: 1024px) 100vw, 1024px" src="https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-1024x333.png" srcset="https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-1024x333.png 1024w, https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-300x97.png 300w, https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences-768x249.png 768w, https://www.iexpertify.com/wp-content/uploads/2020/12/Netezza-Sequences.png 1478w" width="1024"/><figcaption>Netezza Sequnces</figcaption></figure>
-<p>A <strong>Netezza sequence</strong> can provide unique values when the get<strong><em>next value</em></strong> method. You can use the sequence to generate unique numbers that can be used as surrogate key values for primary key columns.</p>
-<span id="more-790"></span>
-<div class="is-layout-flow wp-block-group"><div class="wp-block-group__inner-container"></div></div>
-<div class="entry-content">
+
+
+
+
+
+
+
+Reading Time:  5 minutes
+Netezza Sequnces
+<p>A Netezza sequence can provide unique values when the getnext value method. You can use the sequence to generate unique numbers that can be used as surrogate key values for primary key columns.</p>
+
+
+
 <p> </p>
-<div class="tg-wrap">
+
 <table>
 <thead>
 <tr>
@@ -182,81 +134,81 @@ gtag("config", "UA-50079915-2", {"anonymize_ip":true});
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lwptoc lwptoc-autoWidth lwptoc-baseItems lwptoc-dark lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i"> <div class="lwptoc_header">
-<b class="lwptoc_title">we will cover these topics:</b> <span class="lwptoc_toggle">
+
+ 
+we will cover these topics: 
 <a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-</span>
-</div>
-<div class="lwptoc_items lwptoc_items-visible">
-<div class="lwptoc_itemWrap"><div class="lwptoc_item"> <a href="index.html#Netezza_Sequence_Overview">
-<span class="lwptoc_item_number">1)</span>
-<span class="lwptoc_item_label">Netezza Sequence Overview</span>
+
+
+
+ <a href="index.html#Netezza_Sequence_Overview">
+1)
+Netezza Sequence Overview
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Netezza_Sequence_and_Privileges">
-<span class="lwptoc_item_number">2)</span>
-<span class="lwptoc_item_label">Netezza Sequence and Privileges</span>
+ <a href="index.html#Netezza_Sequence_and_Privileges">
+2)
+Netezza Sequence and Privileges
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Known_problem_with_Netezza_sequences">
-<span class="lwptoc_item_number">3)</span>
-<span class="lwptoc_item_label">Known problem with Netezza sequences</span>
+ <a href="index.html#Known_problem_with_Netezza_sequences">
+3)
+Known problem with Netezza sequences
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Syntax">
-<span class="lwptoc_item_number">4)</span>
-<span class="lwptoc_item_label">Syntax:</span>
+ <a href="index.html#Syntax">
+4)
+Syntax:
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Sample_Sequence">
-<span class="lwptoc_item_number">5)</span>
-<span class="lwptoc_item_label">Sample Sequence</span>
+ <a href="index.html#Sample_Sequence">
+5)
+Sample Sequence
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Sample_to_get_next_value_in_Sequence">
-<span class="lwptoc_item_number">6)</span>
-<span class="lwptoc_item_label">Sample to get next value in Sequence</span>
+ <a href="index.html#Sample_to_get_next_value_in_Sequence">
+6)
+Sample to get next value in Sequence
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Alter_Sequence">
-<span class="lwptoc_item_number">7)</span>
-<span class="lwptoc_item_label">Alter Sequence</span>
+ <a href="index.html#Alter_Sequence">
+7)
+Alter Sequence
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Where_options_can_be">
-<span class="lwptoc_item_number">8)</span>
-<span class="lwptoc_item_label">Where options can be:</span>
+ <a href="index.html#Where_options_can_be">
+8)
+Where options can be:
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Restriction_on_use_of_sequence">
-<span class="lwptoc_item_number">9)</span>
-<span class="lwptoc_item_label">Restriction on use of sequence</span>
+ <a href="index.html#Restriction_on_use_of_sequence">
+9)
+Restriction on use of sequence
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Dropping_a_Sequence">
-<span class="lwptoc_item_number">10)</span>
-<span class="lwptoc_item_label">Dropping a Sequence</span>
+ <a href="index.html#Dropping_a_Sequence">
+10)
+Dropping a Sequence
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#What_to_read_next">
-<span class="lwptoc_item_number">11)</span>
-<span class="lwptoc_item_label">What to read next?</span>
+ <a href="index.html#What_to_read_next">
+11)
+What to read next?
 </a>
-</div></div></div>
-</div></div><h4><span id="Netezza_Sequence_Overview">Netezza Sequence Overview</span></h4>
-<p>A sequence value is an integer that you can use wherever you would use numeric values. Netezza supports user sequences for the four integer types: <em>byteint, smallint, integer</em>, and <em>bigint</em>. You can even create a sequence with an initial value, an increment, a minimum and a maximum value. You can even specify what sequence should do when end point is reached.</p>
-<p>When you generate the sequence number, the system increments the sequence independently of the transaction commit or rollback. Therefore, <strong>rollback doesn’t return the value back to sequence</strong></p>
-<h4><span id="Netezza_Sequence_and_Privileges"><strong>Netezza Sequence and Privileges</strong></span></h4>
+
+Netezza Sequence Overview
+<p>A sequence value is an integer that you can use wherever you would use numeric values. Netezza supports user sequences for the four integer types: byteint, smallint, integer, and bigint. You can even create a sequence with an initial value, an increment, a minimum and a maximum value. You can even specify what sequence should do when end point is reached.</p>
+<p>When you generate the sequence number, the system increments the sequence independently of the transaction commit or rollback. Therefore, rollback doesn’t return the value back to sequence</p>
+Netezza Sequence and Privileges
 <p>The privileges to create, alter, drop, select, and update sequences are as follows:</p>
 <ul>
 <li>The admin user has all privileges on all user sequences. There is no need to grant any privileges to the admin user.</li>
 <li>The owner of the database has all privileges on all user sequences in that database.</li>
 </ul>
 <p>There is no need to grant any privileges to the owner.</p>
-<h4><span id="Known_problem_with_Netezza_sequences"><strong>Known problem with Netezza sequences</strong></span></h4>
-<p>Sequence always provide a unique value; be advised that, you are not guaranteed that sequence numbers will be predictable, monotonically increasing values. <strong>Unexpected sequence numbers occur</strong> as a result of the Netezza topology.</p>
+Known problem with Netezza sequences
+<p>Sequence always provide a unique value; be advised that, you are not guaranteed that sequence numbers will be predictable, monotonically increasing values. Unexpected sequence numbers occur as a result of the Netezza topology.</p>
 <p>You cannot access the sequence from other databases. i.e. Sequence doesn’t provide cross-database access.</p>
-<h4><span id="Syntax"><strong>Syntax:</strong></span></h4>
+Syntax:
 <p>To create sequences use CREATE SEQUENCE statement along with options in any order.</p>
-<p><code><em>CREATE SEQUENCE &lt;sequence name&gt; [options]</em></code></p>
+<p>CREATE SEQUENCE &lt;sequence name&gt; [options]</p>
 <p>You can use following options while creating sequences:</p>
-<p><code>START WITH &lt;start value&gt;<br/>
-INCREMENT BY &lt;increment&gt;<br/>
-no minvalue | minvalue &lt;minimum value&gt;<br/>
-no maxvalue | maxvalue &lt;maximum value&gt;<br/>
-cycle | no cycle</code></p>
-<p><em> </em>Meanings and values of options:</p>
+<p>START WITH &lt;start value&gt;
+INCREMENT BY &lt;increment&gt;
+no minvalue | minvalue &lt;minimum value&gt;
+no maxvalue | maxvalue &lt;maximum value&gt;
+cycle | no cycle</p>
+<p> Meanings and values of options:</p>
 <ul>
 <li>The default minvalue is no minvalue, which is 1.</li>
 <li>The default maxvalue is no maxvalue and is the largest value by particular data type that the sequence can hold.</li>
@@ -266,53 +218,53 @@ cycle | no cycle</code></p>
 <li>By default, sequences do not cycle</li>
 </ul>
 <p> </p>
-<h4><span id="Sample_Sequence"><strong>Sample Sequence</strong></span></h4>
-<div class="s-prose js-post-body">
+Sample Sequence
+
 <p><a href="https://www.ibm.com/support/knowledgecenter/SSULQD_7.2.1/com.ibm.nz.dbu.doc/c_dbuser_create_sequence.html" rel="nofollow">Create a Sequence</a></p>
-<pre class="lang-cs s-code-block hljs csharp"><code>CREATE SEQUENCE IDNOseq <span class="hljs-keyword">as</span> integer
-START WITH <span class="hljs-number">1</span> increment <span class="hljs-keyword">by</span> <span class="hljs-number">1</span>
-minvalue <span class="hljs-number">1</span> maxvalue <span class="hljs-number">100000000</span> no cycle
-</code></pre>
-<p>Retrieve the next value from the <code>sequence</code></p>
-<pre class="lang-cs s-code-block hljs csharp"><code><span class="hljs-keyword">select</span> NEXT VALUE FOR IDNOseq
-</code></pre>
-</div>
-<div class="mt24">
-<div class="grid fw-wrap ai-start jc-end gs8 gsy"><time datetime="2016-07-26T19:03:07"></time>
+CREATE SEQUENCE IDNOseq as integer
+START WITH 1 increment by 1
+minvalue 1 maxvalue 100000000 no cycle
+
+<p>Retrieve the next value from the sequence</p>
+select NEXT VALUE FOR IDNOseq
+
+
+
+
 <p> </p>
-<div class="grid--cell mr16"> </div>
-</div>
-</div>
-<p><strong>Getting Values from Sequences</strong></p>
+ 
+
+
+<p>Getting Values from Sequences</p>
 <p>After you have established a Netezza sequence, you can use the NEXT VALUE FOR and the NEXT &lt;integer expression&gt; VALUES FOR statement to retrieve sequence values.</p>
 <ul>
 <li>The NEXT VALUE FOR statement returns the next available value.</li>
 <li>The NEXT &lt;integer expression&gt; VALUES FOR statement returns the first of a set of contiguous values for the sequence.</li>
 </ul>
-<p>You can include <em>next value for sequence_name</em> in the SELECT clause to get the value out of sequence created.</p>
-<p>For instance, “<em>SELECT next value for sequence1” </em>will return the sequence value from sequence. 301<sup>st</sup> <em>“next value for”</em> will be an error.</p>
-<h4><span id="Sample_to_get_next_value_in_Sequence">Sample to get next value in Sequence</span></h4>
-<pre><code>select case 
+<p>You can include next value for sequence_name in the SELECT clause to get the value out of sequence created.</p>
+<p>For instance, “SELECT next value for sequence1” will return the sequence value from sequence. 301st “next value for” will be an error.</p>
+Sample to get next value in Sequence
+select case 
           when id is NULL then cast((next value for id_seq) as character varying(10)) 
           else id 
        end id
-from table1;</code></pre>
-<h4><span id="Alter_Sequence"><strong>Alter Sequence</strong></span></h4>
+from table1;
+Alter Sequence
 <p>You can alter a user sequence by resetting any sequence options, including the name and owner of the sequence.</p>
 <p>To alter a sequence, use the ALTER SEQUENCE statement and specify the options in any order.</p>
-<p><code><em>ALTER SEQUENCE &lt;sequence name&gt; [options]</em></code></p>
-<h4><span id="Where_options_can_be"><strong>Where options can be:</strong></span></h4>
-<p><code>OWNER to &lt;new owner&gt;<br/>
-RENAME TO &lt;new sequence name&gt;<br/>
-RESTART WITH &lt;start value&gt;<br/>
-INCREMENT BY &lt;increment&gt;<br/>
-no minvalue | minvalue &lt;minimum value&gt;<br/>
-nomaxvalue | maxvalue &lt;maximum value&gt;<br/>
-cycle| no cycle</code></p>
+<p>ALTER SEQUENCE &lt;sequence name&gt; [options]</p>
+Where options can be:
+<p>OWNER to &lt;new owner&gt;
+RENAME TO &lt;new sequence name&gt;
+RESTART WITH &lt;start value&gt;
+INCREMENT BY &lt;increment&gt;
+no minvalue | minvalue &lt;minimum value&gt;
+nomaxvalue | maxvalue &lt;maximum value&gt;
+cycle| no cycle</p>
 <p>For instance, resets increment value, use alter statement as below;</p>
-<p><code><em> </em><em>ALTER SEQUENCE sequence1 INCREMENT BY 2;</em></code></p>
+<p> ALTER SEQUENCE sequence1 INCREMENT BY 2;</p>
 <p>If you alter a sequence while a sequence is in use by a running query, the system waits for the running query’s transaction to complete before altering the sequence.</p>
-<h4><span id="Restriction_on_use_of_sequence"><strong>Restriction on use of sequence</strong></span></h4>
+Restriction on use of sequence
 <p>You cannot use NEXT VALUE in the following statements:</p>
 <ul>
 <li>CASE expressions</li>
@@ -323,118 +275,55 @@ cycle| no cycle</code></p>
 <li>grouped queries</li>
 <li>SELECT distinct</li>
 </ul>
-<h4><span id="Dropping_a_Sequence"><strong>Dropping a Sequence</strong></span></h4>
-<p>To drop a sequence, use the <em>DROP SEQUENCE</em> statement and specify the sequence name.</p>
-<p><code><em>DROP SEQUENCE &lt;sequence name&gt;;</em></code></p>
+Dropping a Sequence
+<p>To drop a sequence, use the DROP SEQUENCE statement and specify the sequence name.</p>
+<p>DROP SEQUENCE &lt;sequence name&gt;;</p>
 <p>Although you can drop a sequence, remember that system locking occurs if you attempt to drop a sequence that is in use by a running query.</p>
-</div>
-<p></p>
-<div class="at-below-post addthis_tool" data-url="https://www.iexpertify.com/learn/netezza-sequence-and-create-use-it/"></div><div class="yarpp yarpp-related yarpp-related-website yarpp-related-none yarpp-template-thumbnails">
-<h3><span id="What_to_read_next">What to read next?</span></h3>
-<p>Nothing to see here. Consider joining one of our full courses..</p>
-</div>
-</div>
-<footer class="entry-footer default-max-width">
-<div class="posted-by"><span class="posted-on">Published <time class="entry-date published updated" datetime="2020-04-01T17:56:45-04:00">April 1, 2020</time></span><span class="byline">By <a href="https://www.iexpertify.com/author/akrish1982/" rel="author">akrish1982</a></span></div><div class="post-taxonomies"><span class="cat-links">Categorized as <a href="https://www.iexpertify.com/category/learn/" rel="category tag">learn</a> </span><span class="tags-links">Tagged <a href="https://www.iexpertify.com/tag/netezza/" rel="tag">Netezza</a></span></div> </footer>
-</article>
-<nav aria-label="Posts" class="navigation post-navigation">
-<h2 class="screen-reader-text">Post navigation</h2>
-<div class="nav-links"><div class="nav-previous"><a href="https://www.iexpertify.com/learn/materialized-views-in-netezza/" rel="prev"><p class="meta-nav"><svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M20 13v-2H8l4-4-1-2-7 7 7 7 1-2-4-4z" fill="currentColor" fill-rule="evenodd"></path></svg>Previous post</p><p class="post-title">Materialized Views in Netezza</p></a></div><div class="nav-next"><a href="https://www.iexpertify.com/learn/how-to-connect-netezza-using-jdbc-driver-and-working-examples/" rel="next"><p class="meta-nav">Next post<svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="m4 13v-2h12l-4-4 1-2 7 7-7 7-1-2 4-4z" fill="currentColor" fill-rule="evenodd"></path></svg></p><p class="post-title">Connect Netezza to Python using JDBC Driver</p></a></div></div>
-</nav> </main>
-</div>
-</div>
-<aside class="widget-area">
-<section class="widget widget_search" id="search-2"><form action="https://www.iexpertify.com/" class="search-form" method="get" role="search">
-<label for="search-form-3">Search…</label>
-<input class="search-field" id="search-form-3" name="s" type="search" value=""/>
-<input class="search-submit" type="submit" value="Search"/>
-</form>
-</section>
-<section class="widget widget_recent_entries" id="recent-posts-2">
-<h2 class="widget-title">Recent Posts</h2><nav aria-label="Recent Posts">
-<ul>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-commands-for-beginners/">Linux Commands for Beginners</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-file-permissions/">Linux File Permissions -chmod</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/grep_regex_example_linux/">Grep Regex Example Linux</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/data-warehousing/what-is-data-modeling-2/">What is Data Modeling?</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/">Input Redirection in Linux/Unix Examples</a>
-</li>
-</ul>
-</nav></section><section class="widget widget_categories" id="categories-2"><h2 class="widget-title">Technologies</h2><nav aria-label="Technologies">
-<ul>
-<li class="cat-item cat-item-43"><a href="https://www.iexpertify.com/category/aws/">AWS</a>
-</li>
-<li class="cat-item cat-item-45"><a href="https://www.iexpertify.com/category/cloud/">Cloud</a>
-</li>
-<li class="cat-item cat-item-14"><a href="https://www.iexpertify.com/category/data-warehousing/">Data Warehousing</a>
-</li>
-<li class="cat-item cat-item-3"><a href="https://www.iexpertify.com/category/learn/full-course/">Full Course</a>
-</li>
-<li class="cat-item cat-item-6"><a href="https://www.iexpertify.com/category/interview/">interview</a>
-</li>
-<li class="cat-item cat-item-2"><a href="https://www.iexpertify.com/category/learn/">learn</a>
-</li>
-<li class="cat-item cat-item-33"><a href="https://www.iexpertify.com/category/linux/">Linux</a>
-</li>
-<li class="cat-item cat-item-31"><a href="https://www.iexpertify.com/category/mobile/">Mobile</a>
-</li>
-<li class="cat-item cat-item-36"><a href="https://www.iexpertify.com/category/programming/">Programming</a>
-</li>
-<li class="cat-item cat-item-46"><a href="https://www.iexpertify.com/category/temp/temp-datastage/">Temp-Datastage</a>
-</li>
-<li class="cat-item cat-item-19"><a href="https://www.iexpertify.com/category/temp/temp-testing/">Temp-Testing</a>
-</li>
-</ul>
-</nav></section> </aside>
-<footer class="site-footer" id="colophon" role="contentinfo">
-<div class="site-info">
-<div class="site-name">
-<div class="site-logo"><a class="custom-logo-link" href="https://www.iexpertify.com/" rel="home"><img alt="iexpertify" class="custom-logo" decoding="async" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" width="148"/></a></div>
-</div>
-<div class="powered-by">
-Proudly powered by <a href="https://wordpress.org/">WordPress</a>. </div>
-</div>
-</footer>
-</div>
-<script>document.body.classList.remove("no-js");</script> <script>
-	if ( -1 !== navigator.userAgent.indexOf( 'MSIE' ) || -1 !== navigator.appVersion.indexOf( 'Trident/' ) ) {
-		document.body.classList.add( 'is-IE' );
-	}
-	</script>
-<script data-cfasync="false" type="text/javascript">if (window.addthis_product === undefined) { window.addthis_product = "wpp"; } if (window.wp_product_version === undefined) { window.wp_product_version = "wpp-6.2.7"; } if (window.addthis_share === undefined) { window.addthis_share = {"passthrough":{"twitter":{"via":"iexpertify"}},"url_transforms":{"shorten":{"twitter":"bitly"}},"shorteners":{"bitly":{}}}; } if (window.addthis_config === undefined) { window.addthis_config = {"data_track_clickback":true,"ui_atversion":"300","data_track_addressbar":true}; } if (window.addthis_plugin_info === undefined) { window.addthis_plugin_info = {"info_status":"enabled","cms_name":"WordPress","plugin_name":"Share Buttons by AddThis","plugin_version":"6.2.7","plugin_mode":"AddThis","anonymous_profile_id":"wp-f047919074be910c52a1e941c9b61241","page_info":{"template":"posts","post_type":""},"sharing_enabled_on_post_via_metabox":false}; } 
-                    (function() {
-                      var first_load_interval_id = setInterval(function () {
-                        if (typeof window.addthis !== 'undefined') {
-                          window.clearInterval(first_load_interval_id);
-                          if (typeof window.addthis_layers !== 'undefined' && Object.getOwnPropertyNames(window.addthis_layers).length > 0) {
-                            window.addthis.layers(window.addthis_layers);
-                          }
-                          if (Array.isArray(window.addthis_layers_tools)) {
-                            for (i = 0; i < window.addthis_layers_tools.length; i++) {
-                              window.addthis.layers(window.addthis_layers_tools[i]);
-                            }
-                          }
-                        }
-                     },1000)
-                    }());
-                </script> <script data-cfasync="false" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6039ba14c0ef5a39" type="text/javascript"></script><script id="twenty-twenty-one-ie11-polyfills-js-after">
-( Element.prototype.matches && Element.prototype.closest && window.NodeList && NodeList.prototype.forEach ) || document.write( '<script src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/polyfills.js?ver=1.2"></scr' + 'ipt>' );
-</script>
-<script id="twenty-twenty-one-primary-navigation-script-js" src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/primary-navigation.js?ver=1.2"></script>
-<script id="twenty-twenty-one-responsive-embeds-script-js" src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/responsive-embeds.js?ver=1.2"></script>
-<script>
-	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",(function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}),!1);
-	</script>
 
-<script crossorigin="anonymous" data-cf-beacon='{"rayId":"780f22db7dac5b46","version":"2022.11.3","r":1,"token":"f16aadd6ea834e8688697712549b4e6f","si":100}' defer="" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"></script>
-</body>
-</html>
+<p></p>
+
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+
+    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+
+    <ul>
+        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+    </ul>
+
+    <h3>Connect with me:</h3>
+    <ul>
+        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+    </ul>
+
+<h3>My Resources:</h3>
+    <ul>
+        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+    </ul>
+
+    <h3>Languages and Tools:</h3>
+    <p>AWS, Bash, Cassandra, Django, Docker, Elasticsearch, Flask, Git, Go, Grafana, Hadoop, Hive, Hugo, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, Scikit-learn, SQLite</p>
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+

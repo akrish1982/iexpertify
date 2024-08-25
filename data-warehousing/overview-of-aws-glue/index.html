@@ -1,321 +1,182 @@
-<!DOCTYPE html>
-
-<html lang="en-US" xmlns:addthis="https://www.addthis.com/help/api-spec" xmlns:fb="https://www.facebook.com/2008/fbml">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
-<title>Overview of AWS Glue - Data Warehousing AWS, Cloud, Data Warehousing</title>
-<meta content="en_US" property="og:locale"/>
-<meta content="article" property="og:type"/>
-<meta content="Overview of AWS Glue - Data Warehousing AWS, Cloud, Data Warehousing" property="og:title"/>
-<meta content="Reading Time: 4 minutes we will cover these topics: hide 1) Migrating from on Premise solution to AWS Glue 2) Steps to Build your ETL jobs 3) Set up connections to source and target 4) Create crawlers to gather schemas of source and target data 5) Build ETL jobs using AWS Glue Studio 6) Scheduling and monitoring jobs 7)… Continue reading Overview of AWS Glue" property="og:description"/>
-<meta content="https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/" property="og:url"/>
-<meta content="iexpertify" property="og:site_name"/>
-<meta content="https://www.facebook.com/iExpertify-102371968557959" property="article:publisher"/>
-<meta content="2021-03-14T20:52:52+00:00" property="article:published_time"/>
-<meta content="2021-03-14T20:52:55+00:00" property="article:modified_time"/>
-<meta content="https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow.png" property="og:image"/>
-<meta content="akrish1982" name="author"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="@iexpertify" name="twitter:creator"/>
-<meta content="@iexpertify" name="twitter:site"/>
-<meta content="Written by" name="twitter:label1"/>
-<meta content="akrish1982" name="twitter:data1"/>
-<meta content="Est. reading time" name="twitter:label2"/>
-<meta content="4 minutes" name="twitter:data2"/>
-<script class="yoast-schema-graph" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#article","isPartOf":{"@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/"},"author":{"name":"akrish1982","@id":"https://www.iexpertify.com/#/schema/person/6d22cba514d0b526fda5f3ff1cebd395"},"headline":"Overview of AWS Glue","datePublished":"2021-03-14T20:52:52+00:00","dateModified":"2021-03-14T20:52:55+00:00","mainEntityOfPage":{"@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/"},"wordCount":623,"commentCount":0,"publisher":{"@id":"https://www.iexpertify.com/#organization"},"image":{"@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#primaryimage"},"thumbnailUrl":"https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow.png","keywords":["AWS","cloud-native","Data Warehousing"],"articleSection":["AWS","Cloud","Data Warehousing"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#respond"]}]},{"@type":"WebPage","@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/","url":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/","name":"Overview of AWS Glue - Data Warehousing AWS, Cloud, Data Warehousing","isPartOf":{"@id":"https://www.iexpertify.com/#website"},"primaryImageOfPage":{"@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#primaryimage"},"image":{"@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#primaryimage"},"thumbnailUrl":"https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow.png","datePublished":"2021-03-14T20:52:52+00:00","dateModified":"2021-03-14T20:52:55+00:00","breadcrumb":{"@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#primaryimage","url":"https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow.png","contentUrl":"https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow.png"},{"@type":"BreadcrumbList","@id":"https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.iexpertify.com/"},{"@type":"ListItem","position":2,"name":"Overview of AWS Glue"}]},{"@type":"WebSite","@id":"https://www.iexpertify.com/#website","url":"https://www.iexpertify.com/","name":"Learn any Technology","description":"Upskill in 30 days, just 1 hour a day","publisher":{"@id":"https://www.iexpertify.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.iexpertify.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.iexpertify.com/#organization","name":"iExpertify Inc.","url":"https://www.iexpertify.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/logo/image/","url":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","contentUrl":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","width":148,"height":62,"caption":"iExpertify Inc."},"image":{"@id":"https://www.iexpertify.com/#/schema/logo/image/"},"sameAs":["https://www.youtube.com/channel/UCFrG1RTSQZYHoSx5-nJxcnQ/featured","https://www.facebook.com/iExpertify-102371968557959","https://twitter.com/iexpertify"]},{"@type":"Person","@id":"https://www.iexpertify.com/#/schema/person/6d22cba514d0b526fda5f3ff1cebd395","name":"akrish1982","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/8858be87c957147d97ba3498a97f2e24?s=96&d=wavatar&r=g","contentUrl":"https://secure.gravatar.com/avatar/8858be87c957147d97ba3498a97f2e24?s=96&d=wavatar&r=g","caption":"akrish1982"},"sameAs":["https://www.iexpertify.com","https://www.linkedin.com/in/ananthtirumanur/?lipi=urnlipaged_flagship3_feedRjIo9iaYS1KDsFau2D8wA"],"url":"https://www.iexpertify.com/author/akrish1982/"}]}</script>
-<link href="https://www.googletagmanager.com/" rel="dns-prefetch"/>
-<link href="https://pagead2.googlesyndication.com/" rel="dns-prefetch"/>
-<link href="https://www.iexpertify.com/feed/" rel="alternate" title="iexpertify » Feed" type="application/rss+xml"/>
-<link href="https://www.iexpertify.com/comments/feed/" rel="alternate" title="iexpertify » Comments Feed" type="application/rss+xml"/>
-<script>
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.iexpertify.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
-/*! This file is auto-generated */
-!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
-
-<link href="https://www.iexpertify.com/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1" id="wp-block-library-css" media="all" rel="stylesheet"/>
-
-<link href="https://www.iexpertify.com/wp-includes/css/classic-themes.min.css?ver=1" id="classic-theme-styles-css" media="all" rel="stylesheet"/>
-
-<link href="https://www.iexpertify.com/wp-content/themes/twentytwentyone/style.css?ver=1.2" id="twenty-twenty-one-style-css" media="all" rel="stylesheet"/>
-
-<link href="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/css/print.css?ver=1.2" id="twenty-twenty-one-print-style-css" media="print" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/styles_thumbnails.css?ver=5.30.1" id="yarpp-thumbnails-css" media="all" rel="stylesheet"/>
-
-<link href="https://www.iexpertify.com/wp-content/plugins/addthis/frontend/build/addthis_wordpress_public.min.css?ver=6.1.1" id="addthis_all_pages-css" media="all" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/kadence-blocks/dist/blocks/row.style.build.css?ver=2.4.22" id="kadence-blocks-rowlayout-css" media="all" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/kadence-blocks/dist/blocks/column.style.build.css?ver=2.4.22" id="kadence-blocks-column-css" media="all" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/kadence-blocks/dist/blocks/infobox.style.build.css?ver=2.4.22" id="kadence-blocks-infobox-css" media="all" rel="stylesheet"/>
+<html><head><link href="/simplecss/styles.css" rel="stylesheet"/></head></html><!DOCTYPE html>
 
 
 
-<link href="https://www.iexpertify.com/wp-content/plugins/kadence-blocks/dist/blocks/iconlist.style.build.css?ver=2.4.22" id="kadence-blocks-iconlist-css" media="all" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.30.1" id="yarppRelatedCss-css" media="all" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" id="lwptoc-main-css" media="all" rel="stylesheet"/>
- <script>
-            /* <![CDATA[ */
-            var rcewpp = {
-                "ajax_url":"https://www.iexpertify.com/wp-admin/admin-ajax.php",
-                "nonce": "83ffdb6c7b",
-                "home_url": "https://www.iexpertify.com/",
-                "settings_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings.png',
-                "settings_hover_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings_hover.png'
-            };
-            /* ]]\> */
-        </script>
-<script async="" id="google_gtagjs-js" src="https://www.googletagmanager.com/gtag/js?id=UA-50079915-2"></script>
-<script id="google_gtagjs-js-after">
-window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
-gtag('set', 'linker', {"domains":["www.iexpertify.com"]} );
-gtag("js", new Date());
-gtag("set", "developer_id.dZTNiMT", true);
-gtag("config", "UA-50079915-2", {"anonymize_ip":true});
-</script>
-<script id="lwptoc-main-js" src="https://www.iexpertify.com/wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.js?ver=2.1.4"></script>
-<link href="https://www.iexpertify.com/wp-json/" rel="https://api.w.org/"/><link href="https://www.iexpertify.com/wp-json/wp/v2/posts/12367" rel="alternate" type="application/json"/><link href="https://www.iexpertify.com/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
-<link href="https://www.iexpertify.com/wp-includes/wlwmanifest.xml" rel="wlwmanifest" type="application/wlwmanifest+xml"/>
-<meta content="WordPress 6.1.1" name="generator"/>
-<link href="https://www.iexpertify.com/?p=12367" rel="shortlink"/>
-<link href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Fdata-warehousing%2Foverview-of-aws-glue%2F" rel="alternate" type="application/json+oembed"/>
-<link href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Fdata-warehousing%2Foverview-of-aws-glue%2F&amp;format=xml" rel="alternate" type="text/xml+oembed"/>
-<meta content="Site Kit by Google 1.90.1" name="generator"/>
-<meta content="ca-host-pub-2644536267352236" name="google-adsense-platform-account"/>
-<meta content="sitekit.withgoogle.com" name="google-adsense-platform-domain"/>
 
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797&amp;host=ca-host-pub-2644536267352236"></script>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-32x32.png" rel="icon" sizes="32x32"/>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-192x192.png" rel="icon" sizes="192x192"/>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-180x180.png" rel="apple-touch-icon"/>
-<meta content="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-270x270.png" name="msapplication-TileImage">
-</meta><link href="/simplecss/styles.css" rel="stylesheet"/></head>
-<body class="post-template-default single single-post postid-12367 single-format-standard custom-background wp-custom-logo wp-embed-responsive is-light-theme has-background-white no-js singular has-main-navigation">
-<svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-dark-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 0.49803921568627" type="table"></fefuncr><fefuncg tablevalues="0 0.49803921568627" type="table"></fefuncg><fefuncb tablevalues="0 0.49803921568627" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 1" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0 1" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-purple-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.54901960784314 0.98823529411765" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0.71764705882353 0.25490196078431" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-blue-red"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 1" type="table"></fefuncr><fefuncg tablevalues="0 0.27843137254902" type="table"></fefuncg><fefuncb tablevalues="0.5921568627451 0.27843137254902" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-midnight"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 0" type="table"></fefuncr><fefuncg tablevalues="0 0.64705882352941" type="table"></fefuncg><fefuncb tablevalues="0 1" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-magenta-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.78039215686275 1" type="table"></fefuncr><fefuncg tablevalues="0 0.94901960784314" type="table"></fefuncg><fefuncb tablevalues="0.35294117647059 0.47058823529412" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-purple-green"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.65098039215686 0.40392156862745" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0.44705882352941 0.4" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-blue-orange"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.098039215686275 1" type="table"></fefuncr><fefuncg tablevalues="0 0.66274509803922" type="table"></fefuncg><fefuncb tablevalues="0.84705882352941 0.41960784313725" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><div class="site" id="page">
+
+
+Overview of AWS Glue - Data Warehousing AWS, Cloud, Data Warehousing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-<header class="site-header has-logo has-menu" id="masthead" role="banner">
-<div class="site-branding">
-<div class="site-logo"><a class="custom-logo-link" href="https://www.iexpertify.com/" rel="home"><img alt="iexpertify" class="custom-logo" decoding="async" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" width="148"/></a></div>
-<p class="screen-reader-text"><a href="https://www.iexpertify.com/">iexpertify</a></p>
-</div>
-<nav aria-label="Primary menu" class="primary-navigation" id="site-navigation" role="navigation">
-<div class="menu-button-container">
-<button aria-controls="primary-menu-list" aria-expanded="false" class="button" id="primary-mobile-menu">
-<span class="dropdown-icon open">Menu <svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M4.5 6H19.5V7.5H4.5V6ZM4.5 12H19.5V13.5H4.5V12ZM19.5 18H4.5V19.5H19.5V18Z" fill="currentColor" fill-rule="evenodd"></path></svg> </span>
-<span class="dropdown-icon close">Close <svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 10.9394L5.53033 4.46973L4.46967 5.53039L10.9393 12.0001L4.46967 18.4697L5.53033 19.5304L12 13.0607L18.4697 19.5304L19.5303 18.4697L13.0607 12.0001L19.5303 5.53039L18.4697 4.46973L12 10.9394Z" fill="currentColor" fill-rule="evenodd"></path></svg> </span>
-</button>
-</div>
-<div class="primary-menu-container"><ul class="menu-wrapper" id="primary-menu-list"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1025" id="menu-item-1025"><a href="https://www.iexpertify.com/">iExpertify</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1027" id="menu-item-1027"><a href="https://www.iexpertify.com/learn/full-course/netezza/">Netezza</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1504" id="menu-item-1504"><a href="https://saphr.iexpertify.com">SAP HR</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505" id="menu-item-1505"><a href="https://sapfico.iexpertify.com">SAP FICO</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12338" id="menu-item-12338"><a href="https://www.iexpertify.com/free-courses/">Free Courses</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1634" id="menu-item-1634"><a href="https://www.iexpertify.com/courses/">Courses</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1636" id="menu-item-1636"><a href="https://www.iexpertify.com/lp-checkout/">Checkout</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1642" id="menu-item-1642"><a href="https://www.iexpertify.com/lp-profile/">My Profile</a></li>
-</ul></div> </nav>
-</header>
-<div class="site-content" id="content">
-<div class="content-area" id="primary">
-<main class="site-main" id="main" role="main">
-<article class="post-12367 post type-post status-publish format-standard hentry category-aws category-cloud category-data-warehousing tag-aws tag-cloud-native tag-data-warehousing entry" id="post-12367">
-<header class="entry-header alignwide">
-<h1 class="entry-title">Overview of AWS Glue</h1> </header>
-<div class="entry-content">
-<div class="at-above-post addthis_tool" data-url="https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/"></div><span class="rt-reading-time" style="display: block;"><span class="rt-label rt-prefix">Reading Time: </span> <span class="rt-time">4</span> <span class="rt-label rt-postfix">minutes</span></span>
-<div class="wp-block-kadence-rowlayout alignnone"><div class="kt-row-layout-inner kt-layout-id_b6dba7-c8" id="kt-layout-id_b6dba7-c8"><div class="kt-row-column-wrap kt-has-3-columns kt-gutter-default kt-v-gutter-default kt-row-valign-top kt-row-layout-equal kt-tab-layout-inherit kt-m-colapse-left-to-right kt-mobile-layout-row">
-<div class="wp-block-kadence-column inner-column-1 kadence-column_d5e61b-7c"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-infobox" id="kt-info-box_a11f02-7b"><a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"><div class="kt-blocks-info-box-media-container"><div class="kt-blocks-info-box-media kt-info-media-animate-none"><div class="kadence-info-box-icon-container kt-info-icon-animate-none"><div class="kadence-info-box-icon-inner-container"><span class="kt-info-svg-icon kt-info-svg-icon-fe_database" style="display:block;justify-content:center;align-items:center"><svg fill="none" height="50" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="display:inline-block;vertical-align:middle" viewbox="0 0 24 24" width="50" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></span></div></div></div></div><div class="kt-infobox-textcontent"><div class="lwptoc lwptoc-autoWidth lwptoc-baseItems lwptoc-dark lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i"> <div class="lwptoc_header">
-<b class="lwptoc_title">we will cover these topics:</b> <span class="lwptoc_toggle">
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-</span>
-</div>
-<div class="lwptoc_items lwptoc_items-visible">
-<div class="lwptoc_itemWrap"><div class="lwptoc_item"> <a href="index.html#Data_stores">
-<span class="lwptoc_item_number">1)</span>
-<span class="lwptoc_item_label">Data stores</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Crawlers">
-<span class="lwptoc_item_number">2)</span>
-<span class="lwptoc_item_label">Crawlers</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Data_Catalog">
-<span class="lwptoc_item_number">3)</span>
-<span class="lwptoc_item_label">Data Catalog</span>
-</a>
-<div class="lwptoc_itemWrap"><div class="lwptoc_item"> <a href="index.html#Migrating_from_on_Premise_solution_to_AWS_Glue">
-<span class="lwptoc_item_number">3.1)</span>
-<span class="lwptoc_item_label">Migrating from on Premise solution to AWS Glue</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Steps_to_Build_your_ETL_jobs">
-<span class="lwptoc_item_number">3.2)</span>
-<span class="lwptoc_item_label">Steps to Build your ETL jobs</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Set_up_connections_to_source_and_target">
-<span class="lwptoc_item_number">3.3)</span>
-<span class="lwptoc_item_label">Set up connections to source and target</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Create_crawlers_to_gather_schemas_of_source_and_target_data">
-<span class="lwptoc_item_number">3.4)</span>
-<span class="lwptoc_item_label">Create crawlers to gather schemas of source and target data</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Build_ETL_jobs_using_AWS_Glue_Studio">
-<span class="lwptoc_item_number">3.5)</span>
-<span class="lwptoc_item_label">Build ETL jobs using AWS Glue Studio</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#Scheduling_and_monitoring_jobs">
-<span class="lwptoc_item_number">3.6)</span>
-<span class="lwptoc_item_label">Scheduling and monitoring jobs</span>
-</a>
-</div><div class="lwptoc_item"> <a href="index.html#What_to_read_next">
-<span class="lwptoc_item_number">3.7)</span>
-<span class="lwptoc_item_label">What to read next?</span>
-</a>
-</div></div></div></div></div>
-</div></div><h2 class="kt-blocks-info-box-title"><span id="Data_stores">Data stores</span></h2><p class="kt-blocks-info-box-text">access and combine data from multiple source data stores, and keep that combined data</p></div></a></div>
-</div></div>
-<div class="wp-block-kadence-column inner-column-2 kadence-column_0df88b-ad"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-infobox" id="kt-info-box_a976ff-c3"><a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"><div class="kt-blocks-info-box-media-container"><div class="kt-blocks-info-box-media kt-info-media-animate-none"><div class="kadence-info-box-icon-container kt-info-icon-animate-none"><div class="kadence-info-box-icon-inner-container"><span class="kt-info-svg-icon kt-info-svg-icon-fas_drafting-compass" style="display:block;justify-content:center;align-items:center"><svg fill="currentColor" height="50" style="display:inline-block;vertical-align:middle" viewbox="0 0 512 512" width="50" xmlns="http://www.w3.org/2000/svg"><path d="M457.01 344.42c-25.05 20.33-52.63 37.18-82.54 49.05l54.38 94.19 53.95 23.04c9.81 4.19 20.89-2.21 22.17-12.8l7.02-58.25-54.98-95.23zm42.49-94.56c4.86-7.67 1.89-17.99-6.05-22.39l-28.07-15.57c-7.48-4.15-16.61-1.46-21.26 5.72C403.01 281.15 332.25 320 256 320c-23.93 0-47.23-4.25-69.41-11.53l67.36-116.68c.7.02 1.34.21 2.04.21s1.35-.19 2.04-.21l51.09 88.5c31.23-8.96 59.56-25.75 82.61-48.92l-51.79-89.71C347.39 128.03 352 112.63 352 96c0-53.02-42.98-96-96-96s-96 42.98-96 96c0 16.63 4.61 32.03 12.05 45.66l-68.3 118.31c-12.55-11.61-23.96-24.59-33.68-39-4.79-7.1-13.97-9.62-21.38-5.33l-27.75 16.07c-7.85 4.54-10.63 14.9-5.64 22.47 15.57 23.64 34.69 44.21 55.98 62.02L0 439.66l7.02 58.25c1.28 10.59 12.36 16.99 22.17 12.8l53.95-23.04 70.8-122.63C186.13 377.28 220.62 384 256 384c99.05 0 190.88-51.01 243.5-134.14zM256 64c17.67 0 32 14.33 32 32s-14.33 32-32 32-32-14.33-32-32 14.33-32 32-32z"></path></svg></span></div></div></div></div><div class="kt-infobox-textcontent"><h2 class="kt-blocks-info-box-title"><span id="Crawlers">Crawlers</span></h2><p class="kt-blocks-info-box-text">AWS Glue crawls your data sources, identifies data formats, and suggests schemas to store your data</p></div></a></div>
-</div></div>
-<div class="wp-block-kadence-column inner-column-3 kadence-column_09c3f5-e3"><div class="kt-inside-inner-col">
-<div class="wp-block-kadence-infobox" id="kt-info-box_5eb111-57"><a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"><div class="kt-blocks-info-box-media-container"><div class="kt-blocks-info-box-media kt-info-media-animate-none"><div class="kadence-info-box-icon-container kt-info-icon-animate-none"><div class="kadence-info-box-icon-inner-container"><span class="kt-info-svg-icon kt-info-svg-icon-ic_alignBottom" style="display:block;justify-content:center;align-items:center"><svg fill="currentColor" height="50" style="display:inline-block;vertical-align:middle" viewbox="0 0 8 8" width="50" xmlns="http://www.w3.org/2000/svg"><path d="M.09 0c-.06 0-.09.04-.09.09v4.81c0 .05.04.09.09.09h1.81c.05 0 .09-.04.09-.09v-4.81c0-.06-.04-.09-.09-.09h-1.81zm6 0c-.05 0-.09.04-.09.09v4.81c0 .05.04.09.09.09h1.81c.05 0 .09-.04.09-.09v-4.81c0-.06-.04-.09-.09-.09h-1.81zm-3 2c-.06 0-.09.04-.09.09v2.81c0 .05.04.09.09.09h1.81c.05 0 .09-.04.09-.09v-2.81c0-.06-.04-.09-.09-.09h-1.81zm-3.09 4v1h8v-1h-8z"></path></svg></span></div></div></div></div><div class="kt-infobox-textcontent"><h2 class="kt-blocks-info-box-title"><span id="Data_Catalog">Data Catalog</span></h2><p class="kt-blocks-info-box-text">You can use the AWS Glue Data Catalog to quickly discover and search across multiple AWS data sets without moving the data</p></div></a></div>
-</div></div>
-</div></div></div>
-<figure class="wp-block-image size-large is-style-default"><img alt="AWS Glue event based workflow" class="wp-image-12368" decoding="async" height="375" sizes="(max-width: 776px) 100vw, 776px" src="https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow.png" srcset="https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow.png 776w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow-300x145.png 300w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-event-based-workflow-768x371.png 768w" width="776"/></figure>
-<h4><span id="Migrating_from_on_Premise_solution_to_AWS_Glue">Migrating from on Premise solution to AWS Glue</span></h4>
-<p>When you run AWS Glue, there are no servers or other infrastructure to manage. Pay only for the resources used while running the jobs and the metadata that is stored. If your organization is already invested in Informatica or Datastage, Talend, etc., it may be easy for the developers to pick up Amazon Glue easily by using the AWS Glue studio. AWS Glue Studio makes it easy to visually create, run, and monitor AWS Glue ETL jobs. You can compose ETL jobs that move and transform data using a drag-and-drop editor, and AWS Glue automatically generates the code. You can then use the AWS Glue Studio job run dashboard to monitor ETL execution and ensure that your jobs are operating as intended. </p>
-<blockquote class="wp-block-quote"><p><em>Though it is important to remember that the 3rd party connectors that are commonly available in other ETL tools may not be available (yet!)</em>. No Salesforce connector 🙂</p></blockquote>
-<figure class="wp-block-pullquote"><blockquote><p>If your company has already significantly invested in on-prem for ETL pipelines, migration may be expensive.</p></blockquote></figure>
-<div class="is-layout-flow wp-block-group"><div class="wp-block-group__inner-container">
-<hr class="wp-block-separator is-style-dots"/>
-</div></div>
-<h4><span id="Steps_to_Build_your_ETL_jobs">Steps to Build your ETL jobs</span></h4>
-<div class="wp-block-kadence-iconlist kt-svg-icon-list-items kt-svg-icon-list-items_62b442-c2 kt-svg-icon-list-columns-1 alignnone"><ul class="kt-svg-icon-list"><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0"><div class="kt-svg-icon-list-single kt-svg-icon-list-single-fas_cloud-upload-alt" style="display:inline-flex;justify-content:center;align-items:center"><svg fill="currentColor" height="20" style="display:inline-block;vertical-align:middle" viewbox="0 0 640 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zM393.4 288H328v112c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V288h-65.4c-14.3 0-21.4-17.2-11.3-27.3l105.4-105.4c6.2-6.2 16.4-6.2 22.6 0l105.4 105.4c10.1 10.1 2.9 27.3-11.3 27.3z"></path></svg></div><span class="kt-svg-icon-list-text">Set up connections to source and target</span></li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1"><div class="kt-svg-icon-list-single kt-svg-icon-list-single-fas_cloud-upload-alt" style="display:inline-flex;justify-content:center;align-items:center"><svg fill="currentColor" height="20" style="display:inline-block;vertical-align:middle" viewbox="0 0 640 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zM393.4 288H328v112c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V288h-65.4c-14.3 0-21.4-17.2-11.3-27.3l105.4-105.4c6.2-6.2 16.4-6.2 22.6 0l105.4 105.4c10.1 10.1 2.9 27.3-11.3 27.3z"></path></svg></div><span class="kt-svg-icon-list-text">Create crawlers to gather schemas of source and target data</span></li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-2"><div class="kt-svg-icon-list-single kt-svg-icon-list-single-fas_cloud-upload-alt" style="display:inline-flex;justify-content:center;align-items:center"><svg fill="currentColor" height="20" style="display:inline-block;vertical-align:middle" viewbox="0 0 640 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zM393.4 288H328v112c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V288h-65.4c-14.3 0-21.4-17.2-11.3-27.3l105.4-105.4c6.2-6.2 16.4-6.2 22.6 0l105.4 105.4c10.1 10.1 2.9 27.3-11.3 27.3z"></path></svg></div><span class="kt-svg-icon-list-text">Build ETL jobs using Amazon Glue Studio</span></li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-3"><div class="kt-svg-icon-list-single kt-svg-icon-list-single-fas_cloud-upload-alt" style="display:inline-flex;justify-content:center;align-items:center"><svg fill="currentColor" height="20" style="display:inline-block;vertical-align:middle" viewbox="0 0 640 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zM393.4 288H328v112c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V288h-65.4c-14.3 0-21.4-17.2-11.3-27.3l105.4-105.4c6.2-6.2 16.4-6.2 22.6 0l105.4 105.4c10.1 10.1 2.9 27.3-11.3 27.3z"></path></svg></div><span class="kt-svg-icon-list-text">Schedule the ETL jobs and monitor them</span></li></ul></div>
-<h4><span id="Set_up_connections_to_source_and_target">Set up connections to source and target</span></h4>
-<p>All connections are setup using IAM roles. Connections to RDBMS in Amazon ecosystem can be configured using IAM roles and connected using RDBMS connector.</p>
-<figure class="wp-block-image size-large is-style-default"><img alt="" class="wp-image-12370" decoding="async" height="754" loading="lazy" sizes="(max-width: 993px) 100vw, 993px" src="https://www.iexpertify.com/wp-content/uploads/2021/03/image-1.png" srcset="https://www.iexpertify.com/wp-content/uploads/2021/03/image-1.png 993w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-1-300x228.png 300w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-1-768x583.png 768w" width="993"/></figure>
-<p>For non RDBMS connections, example connection to S3 can be established based on IAM roles that have access to read/update respective S3 buckets.</p>
-<h4><span id="Create_crawlers_to_gather_schemas_of_source_and_target_data">Create crawlers to gather schemas of source and target data</span></h4>
-<figure class="wp-block-image size-large is-style-default"><img alt="AWS GLUE crawlers infer schemas from connected datastores and stores metadata in the data catalog" class="wp-image-12369" decoding="async" height="364" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="https://www.iexpertify.com/wp-content/uploads/2021/03/image-1024x364.png" srcset="https://www.iexpertify.com/wp-content/uploads/2021/03/image-1024x364.png 1024w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-300x107.png 300w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-768x273.png 768w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-1536x547.png 1536w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-1568x558.png 1568w, https://www.iexpertify.com/wp-content/uploads/2021/03/image.png 1877w" width="1024"/><figcaption>AWS GLUE crawlers infer schemas from connected datastores and stores metadata in the data catalog</figcaption></figure>
-<p>AWS Glue crawlers can connect to data stores using the IAM roles that you can configure. After connection, you can set up the crawlers to choose data store to include and crawl all JSON, text files, system logs, relational database tables, etc. You can include or exclude patterns that the crawler infers schemas from. For example, if you don’t want the *.csv files on the S3 bucket to be crawled, you can exclude them. The crawler can be one time or be setup to run on a given schedule. It can store the output in the data catalog. The output includes the format (eg. JSON) and the schema.</p>
-<h4><span id="Build_ETL_jobs_using_AWS_Glue_Studio">Build ETL jobs using AWS Glue Studio</span></h4>
-<figure class="wp-block-image size-large is-style-default"><img alt="" class="wp-image-12372" decoding="async" height="445" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-job-1024x445.png" srcset="https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-job-1024x445.png 1024w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-job-300x131.png 300w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-job-768x334.png 768w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-job-1536x668.png 1536w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-job-1568x682.png 1568w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-job.png 2000w" width="1024"/><figcaption>AWS Glue generates PySpark or Scala script</figcaption></figure>
-<p>While building the ETL job in AWS Glue studio, the job references source and target table schemas based on the data catalog. Job argument can be setup in the job and it can be scheduled based on events or time. After the job is complied it generates a PySpark or Scala script that is executed during run time. Serverless means we pay only for the processing and loading data and for discovering data (crawlers) and these are billed by the second. For AWS Glue catalog, a monthly fee is paid for storing and accessing the metadata. The first million objects stored and the first million accesses are free.</p>
-<h4><span id="Scheduling_and_monitoring_jobs">Scheduling and monitoring jobs</span></h4>
-<p>AWS provides logging within the Cloudwatch logs</p>
-<figure class="wp-block-image size-large is-style-default"><img alt="" class="wp-image-12371" decoding="async" height="555" loading="lazy" sizes="(max-width: 1024px) 100vw, 1024px" src="https://www.iexpertify.com/wp-content/uploads/2021/03/image-2-1024x555.png" srcset="https://www.iexpertify.com/wp-content/uploads/2021/03/image-2-1024x555.png 1024w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-2-300x163.png 300w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-2-768x416.png 768w, https://www.iexpertify.com/wp-content/uploads/2021/03/image-2.png 1079w" width="1024"/></figure>
-<p>Knowledge of Python PySpark or Scala may be useful in case of troubleshooting or large project with multiple changes. Consider your teams strength on these before you dive into AWS Glue.</p>
-<div class="at-below-post addthis_tool" data-url="https://www.iexpertify.com/data-warehousing/overview-of-aws-glue/"></div><div class="yarpp yarpp-related yarpp-related-website yarpp-template-thumbnails">
-<h3><span id="What_to_read_next">What to read next?</span></h3>
-<div class="yarpp-thumbnails-horizontal">
-<a class="yarpp-thumbnail" href="https://www.iexpertify.com/data-warehousing/traditional-etl-vs-aws-glue/" rel="norewrite" title="Traditional ETL vs AWS Glue">
-<span class="yarpp-thumbnail-default"><img alt="Default Thumbnail" data-pin-nopin="true" src="https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/images/default.png"/></span><span class="yarpp-thumbnail-title">Traditional ETL vs AWS Glue</span></a>
-<a class="yarpp-thumbnail" href="https://www.iexpertify.com/learn/full-course/aws-glue-serverless-etl/" rel="norewrite" title="AWS Glue (Serverless ETL)">
-<img alt="AWS Glue ETL process" class="attachment-yarpp-thumbnail size-yarpp-thumbnail wp-post-image" data-pin-nopin="true" decoding="async" height="120" loading="lazy" sizes="(max-width: 120px) 100vw, 120px" src="https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-120x120.png" srcset="https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-120x120.png 120w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-150x150.png 150w, https://www.iexpertify.com/wp-content/uploads/2021/03/AWS-Glue-400x400.png 400w" style="width:100%;height:54.64%;max-width:1292px;" width="120"/><span class="yarpp-thumbnail-title">AWS Glue (Serverless ETL)</span></a>
-</div>
-</div>
-</div>
-<footer class="entry-footer default-max-width">
-<div class="posted-by"><span class="posted-on">Published <time class="entry-date published updated" datetime="2021-03-14T16:52:52-04:00">March 14, 2021</time></span><span class="byline">By <a href="https://www.iexpertify.com/author/akrish1982/" rel="author">akrish1982</a></span></div><div class="post-taxonomies"><span class="cat-links">Categorized as <a href="https://www.iexpertify.com/category/aws/" rel="category tag">AWS</a>, <a href="https://www.iexpertify.com/category/cloud/" rel="category tag">Cloud</a>, <a href="https://www.iexpertify.com/category/data-warehousing/" rel="category tag">Data Warehousing</a> </span><span class="tags-links">Tagged <a href="https://www.iexpertify.com/tag/aws/" rel="tag">AWS</a>, <a href="https://www.iexpertify.com/tag/cloud-native/" rel="tag">cloud-native</a>, <a href="https://www.iexpertify.com/tag/data-warehousing/" rel="tag">Data Warehousing</a></span></div> </footer>
-</article>
-<nav aria-label="Posts" class="navigation post-navigation">
-<h2 class="screen-reader-text">Post navigation</h2>
-<div class="nav-links"><div class="nav-previous"><a href="https://www.iexpertify.com/data-warehousing/traditional-etl-vs-aws-glue/" rel="prev"><p class="meta-nav"><svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M20 13v-2H8l4-4-1-2-7 7 7 7 1-2-4-4z" fill="currentColor" fill-rule="evenodd"></path></svg>Previous post</p><p class="post-title">Traditional ETL vs AWS Glue</p></a></div><div class="nav-next"><a href="https://www.iexpertify.com/data-warehousing/demo-creating-a-etl-solution-using-aws-glue/" rel="next"><p class="meta-nav">Next post<svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="m4 13v-2h12l-4-4 1-2 7 7-7 7-1-2 4-4z" fill="currentColor" fill-rule="evenodd"></path></svg></p><p class="post-title">Demo: Creating a ETL solution using AWS Glue</p></a></div></div>
-</nav> </main>
-</div>
-</div>
-<aside class="widget-area">
-<section class="widget widget_search" id="search-2"><form action="https://www.iexpertify.com/" class="search-form" method="get" role="search">
-<label for="search-form-2">Search…</label>
-<input class="search-field" id="search-form-2" name="s" type="search" value=""/>
-<input class="search-submit" type="submit" value="Search"/>
-</form>
-</section>
-<section class="widget widget_recent_entries" id="recent-posts-2">
-<h2 class="widget-title">Recent Posts</h2><nav aria-label="Recent Posts">
-<ul>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-commands-for-beginners/">Linux Commands for Beginners</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-file-permissions/">Linux File Permissions -chmod</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/grep_regex_example_linux/">Grep Regex Example Linux</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/data-warehousing/what-is-data-modeling-2/">What is Data Modeling?</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/">Input Redirection in Linux/Unix Examples</a>
-</li>
-</ul>
-</nav></section><section class="widget widget_categories" id="categories-2"><h2 class="widget-title">Technologies</h2><nav aria-label="Technologies">
-<ul>
-<li class="cat-item cat-item-43"><a href="https://www.iexpertify.com/category/aws/">AWS</a>
-</li>
-<li class="cat-item cat-item-45"><a href="https://www.iexpertify.com/category/cloud/">Cloud</a>
-</li>
-<li class="cat-item cat-item-14"><a href="https://www.iexpertify.com/category/data-warehousing/">Data Warehousing</a>
-</li>
-<li class="cat-item cat-item-3"><a href="https://www.iexpertify.com/category/learn/full-course/">Full Course</a>
-</li>
-<li class="cat-item cat-item-6"><a href="https://www.iexpertify.com/category/interview/">interview</a>
-</li>
-<li class="cat-item cat-item-2"><a href="https://www.iexpertify.com/category/learn/">learn</a>
-</li>
-<li class="cat-item cat-item-33"><a href="https://www.iexpertify.com/category/linux/">Linux</a>
-</li>
-<li class="cat-item cat-item-31"><a href="https://www.iexpertify.com/category/mobile/">Mobile</a>
-</li>
-<li class="cat-item cat-item-36"><a href="https://www.iexpertify.com/category/programming/">Programming</a>
-</li>
-<li class="cat-item cat-item-46"><a href="https://www.iexpertify.com/category/temp/temp-datastage/">Temp-Datastage</a>
-</li>
-<li class="cat-item cat-item-19"><a href="https://www.iexpertify.com/category/temp/temp-testing/">Temp-Testing</a>
-</li>
-</ul>
-</nav></section> </aside>
-<footer class="site-footer" id="colophon" role="contentinfo">
-<div class="site-info">
-<div class="site-name">
-<div class="site-logo"><a class="custom-logo-link" href="https://www.iexpertify.com/" rel="home"><img alt="iexpertify" class="custom-logo" decoding="async" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" width="148"/></a></div>
-</div>
-<div class="powered-by">
-Proudly powered by <a href="https://wordpress.org/">WordPress</a>. </div>
-</div>
-</footer>
-</div>
-<script>document.body.classList.remove("no-js");</script> <script>
-	if ( -1 !== navigator.userAgent.indexOf( 'MSIE' ) || -1 !== navigator.appVersion.indexOf( 'Trident/' ) ) {
-		document.body.classList.add( 'is-IE' );
-	}
-	</script>
-<script data-cfasync="false" type="text/javascript">if (window.addthis_product === undefined) { window.addthis_product = "wpp"; } if (window.wp_product_version === undefined) { window.wp_product_version = "wpp-6.2.7"; } if (window.addthis_share === undefined) { window.addthis_share = {"passthrough":{"twitter":{"via":"iexpertify"}},"url_transforms":{"shorten":{"twitter":"bitly"}},"shorteners":{"bitly":{}}}; } if (window.addthis_config === undefined) { window.addthis_config = {"data_track_clickback":true,"ui_atversion":"300","data_track_addressbar":true}; } if (window.addthis_plugin_info === undefined) { window.addthis_plugin_info = {"info_status":"enabled","cms_name":"WordPress","plugin_name":"Share Buttons by AddThis","plugin_version":"6.2.7","plugin_mode":"AddThis","anonymous_profile_id":"wp-f047919074be910c52a1e941c9b61241","page_info":{"template":"posts","post_type":""},"sharing_enabled_on_post_via_metabox":false}; } 
-                    (function() {
-                      var first_load_interval_id = setInterval(function () {
-                        if (typeof window.addthis !== 'undefined') {
-                          window.clearInterval(first_load_interval_id);
-                          if (typeof window.addthis_layers !== 'undefined' && Object.getOwnPropertyNames(window.addthis_layers).length > 0) {
-                            window.addthis.layers(window.addthis_layers);
-                          }
-                          if (Array.isArray(window.addthis_layers_tools)) {
-                            for (i = 0; i < window.addthis_layers_tools.length; i++) {
-                              window.addthis.layers(window.addthis_layers_tools[i]);
-                            }
-                          }
-                        }
-                     },1000)
-                    }());
-                </script> <script data-cfasync="false" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6039ba14c0ef5a39" type="text/javascript"></script><script id="twenty-twenty-one-ie11-polyfills-js-after">
-( Element.prototype.matches && Element.prototype.closest && window.NodeList && NodeList.prototype.forEach ) || document.write( '<script src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/polyfills.js?ver=1.2"></scr' + 'ipt>' );
-</script>
-<script id="twenty-twenty-one-primary-navigation-script-js" src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/primary-navigation.js?ver=1.2"></script>
-<script id="twenty-twenty-one-responsive-embeds-script-js" src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/responsive-embeds.js?ver=1.2"></script>
-<script>
-	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",(function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}),!1);
-	</script>
 
-<script crossorigin="anonymous" data-cf-beacon='{"rayId":"780f2d171c207ffd","version":"2022.11.3","r":1,"token":"f16aadd6ea834e8688697712549b4e6f","si":100}' defer="" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"></script>
-</body>
-</html>
+
+
+
+
+
+
+Reading Time:  4 minutes
+
+
+<a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"> 
+we will cover these topics: 
+<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
+
+
+
+ <a href="index.html#Data_stores">
+1)
+Data stores
+</a>
+ <a href="index.html#Crawlers">
+2)
+Crawlers
+</a>
+ <a href="index.html#Data_Catalog">
+3)
+Data Catalog
+</a>
+ <a href="index.html#Migrating_from_on_Premise_solution_to_AWS_Glue">
+3.1)
+Migrating from on Premise solution to AWS Glue
+</a>
+ <a href="index.html#Steps_to_Build_your_ETL_jobs">
+3.2)
+Steps to Build your ETL jobs
+</a>
+ <a href="index.html#Set_up_connections_to_source_and_target">
+3.3)
+Set up connections to source and target
+</a>
+ <a href="index.html#Create_crawlers_to_gather_schemas_of_source_and_target_data">
+3.4)
+Create crawlers to gather schemas of source and target data
+</a>
+ <a href="index.html#Build_ETL_jobs_using_AWS_Glue_Studio">
+3.5)
+Build ETL jobs using AWS Glue Studio
+</a>
+ <a href="index.html#Scheduling_and_monitoring_jobs">
+3.6)
+Scheduling and monitoring jobs
+</a>
+ <a href="index.html#What_to_read_next">
+3.7)
+What to read next?
+</a>
+
+<h2 class="kt-blocks-info-box-title">Data stores</h2><p class="kt-blocks-info-box-text">access and combine data from multiple source data stores, and keep that combined data</p></a>
+
+
+<a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"><h2 class="kt-blocks-info-box-title">Crawlers</h2><p class="kt-blocks-info-box-text">AWS Glue crawls your data sources, identifies data formats, and suggests schemas to store your data</p></a>
+
+
+<a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"><h2 class="kt-blocks-info-box-title">Data Catalog</h2><p class="kt-blocks-info-box-text">You can use the AWS Glue Data Catalog to quickly discover and search across multiple AWS data sets without moving the data</p></a>
+
+
+
+Migrating from on Premise solution to AWS Glue
+<p>When you run AWS Glue, there are no servers or other infrastructure to manage. Pay only for the resources used while running the jobs and the metadata that is stored. If your organization is already invested in Informatica or Datastage, Talend, etc., it may be easy for the developers to pick up Amazon Glue easily by using the AWS Glue studio. AWS Glue Studio makes it easy to visually create, run, and monitor AWS Glue ETL jobs. You can compose ETL jobs that move and transform data using a drag-and-drop editor, and AWS Glue automatically generates the code. You can then use the AWS Glue Studio job run dashboard to monitor ETL execution and ensure that your jobs are operating as intended. </p>
+<p>Though it is important to remember that the 3rd party connectors that are commonly available in other ETL tools may not be available (yet!). No Salesforce connector 🙂</p>
+<p>If your company has already significantly invested in on-prem for ETL pipelines, migration may be expensive.</p>
+
+
+
+Steps to Build your ETL jobs
+<ul class="kt-svg-icon-list"><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0">Set up connections to source and target</li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1">Create crawlers to gather schemas of source and target data</li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-2">Build ETL jobs using Amazon Glue Studio</li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-3">Schedule the ETL jobs and monitor them</li></ul>
+Set up connections to source and target
+<p>All connections are setup using IAM roles. Connections to RDBMS in Amazon ecosystem can be configured using IAM roles and connected using RDBMS connector.</p>
+
+<p>For non RDBMS connections, example connection to S3 can be established based on IAM roles that have access to read/update respective S3 buckets.</p>
+Create crawlers to gather schemas of source and target data
+AWS GLUE crawlers infer schemas from connected datastores and stores metadata in the data catalog
+<p>AWS Glue crawlers can connect to data stores using the IAM roles that you can configure. After connection, you can set up the crawlers to choose data store to include and crawl all JSON, text files, system logs, relational database tables, etc. You can include or exclude patterns that the crawler infers schemas from. For example, if you don’t want the *.csv files on the S3 bucket to be crawled, you can exclude them. The crawler can be one time or be setup to run on a given schedule. It can store the output in the data catalog. The output includes the format (eg. JSON) and the schema.</p>
+Build ETL jobs using AWS Glue Studio
+AWS Glue generates PySpark or Scala script
+<p>While building the ETL job in AWS Glue studio, the job references source and target table schemas based on the data catalog. Job argument can be setup in the job and it can be scheduled based on events or time. After the job is complied it generates a PySpark or Scala script that is executed during run time. Serverless means we pay only for the processing and loading data and for discovering data (crawlers) and these are billed by the second. For AWS Glue catalog, a monthly fee is paid for storing and accessing the metadata. The first million objects stored and the first million accesses are free.</p>
+Scheduling and monitoring jobs
+<p>AWS provides logging within the Cloudwatch logs</p>
+
+<p>Knowledge of Python PySpark or Scala may be useful in case of troubleshooting or large project with multiple changes. Consider your teams strength on these before you dive into AWS Glue.</p>
+
+<h3>What to read next?</h3>
+
+<a class="yarpp-thumbnail" href="https://www.iexpertify.com/data-warehousing/traditional-etl-vs-aws-glue/" rel="norewrite" title="Traditional ETL vs AWS Glue">
+Traditional ETL vs AWS Glue</a>
+<a class="yarpp-thumbnail" href="https://www.iexpertify.com/learn/full-course/aws-glue-serverless-etl/" rel="norewrite" title="AWS Glue (Serverless ETL)">
+AWS Glue (Serverless ETL)</a>
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+

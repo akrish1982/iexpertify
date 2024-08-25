@@ -1,265 +1,130 @@
-<!DOCTYPE html>
+<html><head><link href="/simplecss/styles.css" rel="stylesheet"/></head></html><!DOCTYPE html>
 
-<html lang="en-US" xmlns:addthis="https://www.addthis.com/help/api-spec" xmlns:fb="https://www.facebook.com/2008/fbml">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
-<title>Input Redirection in Linux/Unix Examples - Linux Linux</title>
-<meta content="en_US" property="og:locale"/>
-<meta content="article" property="og:type"/>
-<meta content="Input Redirection in Linux/Unix Examples - Linux Linux" property="og:title"/>
-<meta content="Reading Time: 2 minutes  What is Redirection?Redirection is a feature in Linux such that when executing a command, you can change the standard input/output devices. The basic workflow of any Linux command is that it takes an input and give an output.  The standard input (stdin) device is the keyboard. The standard output (stdout) device is the screen. With redirection, the above standard input/output can be changed. In this tutorial, we will learn- Output Redirection Input redirection File Descriptors (FD) Error Redirection Why Error Redirection? Examples Click here if the video is not accessible  Output Redirection The '&gt;' symbol is used for output (STDOUT) redirection.  Example: ls -al &gt; listings Here the output of command ls -al is re-directed to file &quot;listings&quot; instead of your screen.  Note: Use the correct file name while redirecting command output to a file. If there is an existing file with the same name, the redirected command will delete the contents of that file and then it may be overwritten.&quot; If you do not want a file to be overwritten but want to add more content to an existing file, then you should use '&gt;&gt;' operator.  You can redirect standard output, to not just files, but also devices! $ cat music.mp3 &gt; /dev/audio The cat command reads the file music.mp3 and sends the output to /dev/audio which is the audio device. If the sound configurations in your PC are correct, this command will play the file music.mp3 Input redirectionThe 'errorsfile  Above we are executing a program names myprogram. The file descriptor for standard error is 2. Using &quot;2&gt;&quot; we re-direct the error output to a file named &quot;errorfile&quot; Thus, program output is not cluttered with errors. Example 2 Here is another example which uses find statement - find . -name 'my*' 2&gt;error.log Using the &quot;find&quot; command, we are searching the &quot;.&quot; current directory for a file with &quot;name&quot; starting with &quot;my&quot;  Example 3 Let's see a more complex example, Server Administrators frequently, list directories and store both error and standard output into a file, which can be processed later. Here is the command. ls Documents ABC&gt; dirlist 2&gt;&amp;1 Here,  which writes the output from one file to the input of another file. 2&gt;&amp;1 means that STDERR redirects to the target of STDOUT (which is the file dirlist)  We are redirecting error output to standard output which in turn is being re-directed to file dirlist. Hence, both the output is written to file dirlist  Summary Each file in Linux has a corresponding File Descriptor associated with it The keyboard is the standard input device while your screen is the standard output device &quot;&gt;&quot; is the output redirection operator. &quot;&gt;&gt;&quot; appends output to an existing file &quot;&amp;&quot;re-directs output of one file to another. You can re-direct error using its corresponding File Descriptor 2.   " property="og:description"/>
-<meta content="https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/" property="og:url"/>
-<meta content="iexpertify" property="og:site_name"/>
-<meta content="https://www.facebook.com/iExpertify-102371968557959" property="article:publisher"/>
-<meta content="2021-10-10T23:10:36+00:00" property="article:published_time"/>
-<meta content="2021-04-09T10:38:45+00:00" property="article:modified_time"/>
-<meta content="kwhite" name="author"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="@iexpertify" name="twitter:creator"/>
-<meta content="@iexpertify" name="twitter:site"/>
-<meta content="Written by" name="twitter:label1"/>
-<meta content="kwhite" name="twitter:data1"/>
-<meta content="Est. reading time" name="twitter:label2"/>
-<meta content="2 minutes" name="twitter:data2"/>
-<script class="yoast-schema-graph" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/#article","isPartOf":{"@id":"https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/"},"author":{"name":"kwhite","@id":"https://www.iexpertify.com/#/schema/person/d16973caacbbd1c3ca98ec47ca62e01e"},"headline":"Input Redirection in Linux/Unix Examples","datePublished":"2021-10-10T23:10:36+00:00","dateModified":"2021-04-09T10:38:45+00:00","mainEntityOfPage":{"@id":"https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/"},"wordCount":354,"commentCount":0,"publisher":{"@id":"https://www.iexpertify.com/#organization"},"keywords":["Linux"],"articleSection":["Linux"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/#respond"]}]},{"@type":"WebPage","@id":"https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/","url":"https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/","name":"Input Redirection in Linux/Unix Examples - Linux Linux","isPartOf":{"@id":"https://www.iexpertify.com/#website"},"datePublished":"2021-10-10T23:10:36+00:00","dateModified":"2021-04-09T10:38:45+00:00","breadcrumb":{"@id":"https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/"]}]},{"@type":"BreadcrumbList","@id":"https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.iexpertify.com/"},{"@type":"ListItem","position":2,"name":"Input Redirection in Linux/Unix Examples"}]},{"@type":"WebSite","@id":"https://www.iexpertify.com/#website","url":"https://www.iexpertify.com/","name":"Learn any Technology","description":"Upskill in 30 days, just 1 hour a day","publisher":{"@id":"https://www.iexpertify.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.iexpertify.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.iexpertify.com/#organization","name":"iExpertify Inc.","url":"https://www.iexpertify.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/logo/image/","url":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","contentUrl":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","width":148,"height":62,"caption":"iExpertify Inc."},"image":{"@id":"https://www.iexpertify.com/#/schema/logo/image/"},"sameAs":["https://www.youtube.com/channel/UCFrG1RTSQZYHoSx5-nJxcnQ/featured","https://www.facebook.com/iExpertify-102371968557959","https://twitter.com/iexpertify"]},{"@type":"Person","@id":"https://www.iexpertify.com/#/schema/person/d16973caacbbd1c3ca98ec47ca62e01e","name":"kwhite","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/74a83ba9e8ec820295548647252cc172?s=96&d=wavatar&r=g","contentUrl":"https://secure.gravatar.com/avatar/74a83ba9e8ec820295548647252cc172?s=96&d=wavatar&r=g","caption":"kwhite"},"url":"https://www.iexpertify.com/author/kwhite/"}]}</script>
-<link href="https://www.googletagmanager.com/" rel="dns-prefetch"/>
-<link href="https://pagead2.googlesyndication.com/" rel="dns-prefetch"/>
-<link href="https://www.iexpertify.com/feed/" rel="alternate" title="iexpertify » Feed" type="application/rss+xml"/>
-<link href="https://www.iexpertify.com/comments/feed/" rel="alternate" title="iexpertify » Comments Feed" type="application/rss+xml"/>
-<script>
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.iexpertify.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
-/*! This file is auto-generated */
-!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
 
-<link href="https://www.iexpertify.com/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1" id="wp-block-library-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-includes/css/classic-themes.min.css?ver=1" id="classic-theme-styles-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-content/themes/twentytwentyone/style.css?ver=1.2" id="twenty-twenty-one-style-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/css/print.css?ver=1.2" id="twenty-twenty-one-print-style-css" media="print" rel="stylesheet"/>
-<link href="https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/styles_thumbnails.css?ver=5.30.1" id="yarpp-thumbnails-css" media="all" rel="stylesheet"/>
 
-<link href="https://www.iexpertify.com/wp-content/plugins/addthis/frontend/build/addthis_wordpress_public.min.css?ver=6.1.1" id="addthis_all_pages-css" media="all" rel="stylesheet"/>
- <script>
-            /* <![CDATA[ */
-            var rcewpp = {
-                "ajax_url":"https://www.iexpertify.com/wp-admin/admin-ajax.php",
-                "nonce": "83ffdb6c7b",
-                "home_url": "https://www.iexpertify.com/",
-                "settings_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings.png',
-                "settings_hover_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings_hover.png'
-            };
-            /* ]]\> */
-        </script>
-<script async="" id="google_gtagjs-js" src="https://www.googletagmanager.com/gtag/js?id=UA-50079915-2"></script>
-<script id="google_gtagjs-js-after">
-window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
-gtag('set', 'linker', {"domains":["www.iexpertify.com"]} );
-gtag("js", new Date());
-gtag("set", "developer_id.dZTNiMT", true);
-gtag("config", "UA-50079915-2", {"anonymize_ip":true});
-</script>
-<link href="https://www.iexpertify.com/wp-json/" rel="https://api.w.org/"/><link href="https://www.iexpertify.com/wp-json/wp/v2/posts/3260" rel="alternate" type="application/json"/><link href="https://www.iexpertify.com/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
-<link href="https://www.iexpertify.com/wp-includes/wlwmanifest.xml" rel="wlwmanifest" type="application/wlwmanifest+xml"/>
-<meta content="WordPress 6.1.1" name="generator"/>
-<link href="https://www.iexpertify.com/?p=3260" rel="shortlink"/>
-<link href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Flinux%2Finput-output-redirection-in-linux-unix-examples%2F" rel="alternate" type="application/json+oembed"/>
-<link href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Flinux%2Finput-output-redirection-in-linux-unix-examples%2F&amp;format=xml" rel="alternate" type="text/xml+oembed"/>
-<meta content="Site Kit by Google 1.90.1" name="generator"/>
-<meta content="ca-host-pub-2644536267352236" name="google-adsense-platform-account"/>
-<meta content="sitekit.withgoogle.com" name="google-adsense-platform-domain"/>
+Input Redirection in Linux/Unix Examples - Linux Linux
 
-<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797&amp;host=ca-host-pub-2644536267352236"></script>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-32x32.png" rel="icon" sizes="32x32"/>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-192x192.png" rel="icon" sizes="192x192"/>
-<link href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-180x180.png" rel="apple-touch-icon"/>
-<meta content="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-270x270.png" name="msapplication-TileImage">
-</meta><link href="/simplecss/styles.css" rel="stylesheet"/></head>
-<body class="post-template-default single single-post postid-3260 single-format-standard custom-background wp-custom-logo wp-embed-responsive is-light-theme has-background-white no-js singular has-main-navigation">
-<svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-dark-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 0.49803921568627" type="table"></fefuncr><fefuncg tablevalues="0 0.49803921568627" type="table"></fefuncg><fefuncb tablevalues="0 0.49803921568627" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 1" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0 1" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-purple-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.54901960784314 0.98823529411765" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0.71764705882353 0.25490196078431" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-blue-red"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 1" type="table"></fefuncr><fefuncg tablevalues="0 0.27843137254902" type="table"></fefuncg><fefuncb tablevalues="0.5921568627451 0.27843137254902" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-midnight"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0 0" type="table"></fefuncr><fefuncg tablevalues="0 0.64705882352941" type="table"></fefuncg><fefuncb tablevalues="0 1" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-magenta-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.78039215686275 1" type="table"></fefuncr><fefuncg tablevalues="0 0.94901960784314" type="table"></fefuncg><fefuncb tablevalues="0.35294117647059 0.47058823529412" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-purple-green"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.65098039215686 0.40392156862745" type="table"></fefuncr><fefuncg tablevalues="0 1" type="table"></fefuncg><fefuncb tablevalues="0.44705882352941 0.4" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg focusable="false" height="0" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" viewbox="0 0 0 0" width="0" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wp-duotone-blue-orange"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr tablevalues="0.098039215686275 1" type="table"></fefuncr><fefuncg tablevalues="0 0.66274509803922" type="table"></fefuncg><fefuncb tablevalues="0.84705882352941 0.41960784313725" type="table"></fefuncb><fefunca tablevalues="1 1" type="table"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><div class="site" id="page">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-<header class="site-header has-logo has-menu" id="masthead" role="banner">
-<div class="site-branding">
-<div class="site-logo"><a class="custom-logo-link" href="https://www.iexpertify.com/" rel="home"><img alt="iexpertify" class="custom-logo" decoding="async" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" width="148"/></a></div>
-<p class="screen-reader-text"><a href="https://www.iexpertify.com/">iexpertify</a></p>
-</div>
-<nav aria-label="Primary menu" class="primary-navigation" id="site-navigation" role="navigation">
-<div class="menu-button-container">
-<button aria-controls="primary-menu-list" aria-expanded="false" class="button" id="primary-mobile-menu">
-<span class="dropdown-icon open">Menu <svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M4.5 6H19.5V7.5H4.5V6ZM4.5 12H19.5V13.5H4.5V12ZM19.5 18H4.5V19.5H19.5V18Z" fill="currentColor" fill-rule="evenodd"></path></svg> </span>
-<span class="dropdown-icon close">Close <svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M12 10.9394L5.53033 4.46973L4.46967 5.53039L10.9393 12.0001L4.46967 18.4697L5.53033 19.5304L12 13.0607L18.4697 19.5304L19.5303 18.4697L13.0607 12.0001L19.5303 5.53039L18.4697 4.46973L12 10.9394Z" fill="currentColor" fill-rule="evenodd"></path></svg> </span>
-</button>
-</div>
-<div class="primary-menu-container"><ul class="menu-wrapper" id="primary-menu-list"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1025" id="menu-item-1025"><a href="https://www.iexpertify.com/">iExpertify</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1027" id="menu-item-1027"><a href="https://www.iexpertify.com/learn/full-course/netezza/">Netezza</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1504" id="menu-item-1504"><a href="https://saphr.iexpertify.com">SAP HR</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505" id="menu-item-1505"><a href="https://sapfico.iexpertify.com">SAP FICO</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12338" id="menu-item-12338"><a href="https://www.iexpertify.com/free-courses/">Free Courses</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1634" id="menu-item-1634"><a href="https://www.iexpertify.com/courses/">Courses</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1636" id="menu-item-1636"><a href="https://www.iexpertify.com/lp-checkout/">Checkout</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1642" id="menu-item-1642"><a href="https://www.iexpertify.com/lp-profile/">My Profile</a></li>
-</ul></div> </nav>
-</header>
-<div class="site-content" id="content">
-<div class="content-area" id="primary">
-<main class="site-main" id="main" role="main">
-<article class="post-3260 post type-post status-publish format-standard hentry category-linux tag-linux entry" id="post-3260">
-<header class="entry-header alignwide">
-<h1 class="entry-title">Input Redirection in Linux/Unix Examples</h1> </header>
-<div class="entry-content">
+
+
+
+
+
+
+
 <p>Input redirection is a powerful feature in Linux/Unix systems that allows users to manipulate the flow of data between commands, files, and processes. By leveraging input redirection operators, users can redirect input from various sources, providing flexibility and efficiency in command-line operations. In this article, we'll explore the basics of input redirection and provide practical examples to showcase its utility.</p>
-<p><strong>Understanding Input Redirection:</strong> In Linux/Unix, input redirection is accomplished using the <code>&lt;</code> operator. This operator allows users to take input from a specified file or command and pass it as input to another command. This feature proves invaluable in automating tasks, handling large datasets, and streamlining command-line workflows.</p>
-<p><strong>Basic Syntax:</strong></p>
-<div class="bg-black rounded-md">
-<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">command1 &lt; input_file
-  </code></div>
-</div>
-<p><strong>Examples:</strong></p>
+<p>Understanding Input Redirection: In Linux/Unix, input redirection is accomplished using the &lt; operator. This operator allows users to take input from a specified file or command and pass it as input to another command. This feature proves invaluable in automating tasks, handling large datasets, and streamlining command-line workflows.</p>
+<p>Basic Syntax:</p>
+
+command1 &lt; input_file
+  
+
+<p>Examples:</p>
 <ol>
 <li>
-<p><strong>Reading Input from a File:</strong> Suppose you have a file named <code>data.txt</code> containing a list of names. You can use input redirection to pass the content of this file as input to a command like <code>cat</code>:</p>
-<div class="bg-black rounded-md">
-<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">cat</span> &lt; data.txt
-  </code></div>
-</div>
-<p>In this example, the <code>cat</code> command reads the contents of <code>data.txt</code> without explicitly specifying the file as an argument.</p>
+<p>Reading Input from a File: Suppose you have a file named data.txt containing a list of names. You can use input redirection to pass the content of this file as input to a command like cat:</p>
+
+cat &lt; data.txt
+  
+
+<p>In this example, the cat command reads the contents of data.txt without explicitly specifying the file as an argument.</p>
 </li>
 <li>
-<p><strong>Combining Commands:</strong> Input redirection is handy when combining the output of one command with the input of another. For instance, consider the following example where the output of the <code>ls</code> command is redirected as input to the <code>grep</code> command:</p>
-<div class="bg-black rounded-md">
-<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">ls</span> -l | grep <span class="hljs-string">'example'</span> &lt; input_file
-  </code></div>
-</div>
-<p>Here, the <code>ls -l</code> command lists files in long format, and the output is piped to <code>grep</code>, which then filters lines containing the term 'example'. Meanwhile, input redirection is used to provide additional input from <code>input_file</code>.</p>
+<p>Combining Commands: Input redirection is handy when combining the output of one command with the input of another. For instance, consider the following example where the output of the ls command is redirected as input to the grep command:</p>
+
+ls -l | grep 'example' &lt; input_file
+  
+
+<p>Here, the ls -l command lists files in long format, and the output is piped to grep, which then filters lines containing the term 'example'. Meanwhile, input redirection is used to provide additional input from input_file.</p>
 </li>
 <li>
-<p><strong>Interactive Input:</strong> Input redirection is not limited to files; it can also be employed in scenarios requiring interactive input. For instance, consider a script that prompts the user for input. Instead of manually entering data, you can redirect input from a file:</p>
-<div class="bg-black rounded-md">
-<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">./interactive_script.sh &lt; input_data.txt
-  </code></div>
-</div>
-<p>Here, the script <code>interactive_script.sh</code> reads input from <code>input_data.txt</code> as if it were entered interactively.</p>
+<p>Interactive Input: Input redirection is not limited to files; it can also be employed in scenarios requiring interactive input. For instance, consider a script that prompts the user for input. Instead of manually entering data, you can redirect input from a file:</p>
+
+./interactive_script.sh &lt; input_data.txt
+  
+
+<p>Here, the script interactive_script.sh reads input from input_data.txt as if it were entered interactively.</p>
 </li>
 <li>
-<p><strong>Here Document:</strong> A Here Document is a convenient way to redirect multiple lines of input to a command. This is particularly useful when dealing with commands that expect input from the standard input stream. For example:</p>
-<div class="bg-black rounded-md">
-<div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash"><span class="hljs-built_in">cat</span> &lt;&lt; <span class="hljs-string">EOF
+<p>Here Document: A Here Document is a convenient way to redirect multiple lines of input to a command. This is particularly useful when dealing with commands that expect input from the standard input stream. For example:</p>
+
+cat &lt;&lt; EOF
   Line 1
   Line 2
   Line 3
-  EOF</span>
-</code></div>
-</div>
-<p>In this case, the <code>cat</code> command will output the lines enclosed between <code>&lt;&lt; EOF</code> and <code>EOF</code>.</p>
+  EOF
+
+
+<p>In this case, the cat command will output the lines enclosed between &lt;&lt; EOF and EOF.</p>
 </li>
 </ol>
-<p><strong>Conclusion:</strong> Input redirection in Linux/Unix is a versatile tool that enhances the efficiency and flexibility of command-line operations. Whether dealing with files, combining commands, or facilitating interactive input, understanding and mastering input redirection can significantly improve your ability to work with these systems. By incorporating these examples into your daily workflow, you can harness the power of input redirection to streamline your tasks and operations.</p>
-</div>
-<footer class="entry-footer default-max-width">
-<div class="posted-by"><span class="posted-on">Published <time class="entry-date published updated" datetime="2021-10-10T23:10:36-04:00">October 10, 2021</time></span><span class="byline">By <a href="https://www.iexpertify.com/author/kwhite/" rel="author">kwhite</a></span></div><div class="post-taxonomies"><span class="cat-links">Categorized as <a href="https://www.iexpertify.com/category/linux/" rel="category tag">Linux</a> </span><span class="tags-links">Tagged <a href="https://www.iexpertify.com/tag/linux/" rel="tag">Linux</a></span></div> </footer>
-</article>
-<nav aria-label="Posts" class="navigation post-navigation">
-<h2 class="screen-reader-text">Post navigation</h2>
-<div class="nav-links"><div class="nav-previous"><a href="https://www.iexpertify.com/data-warehousing/snowflake-interview-questions/" rel="prev"><p class="meta-nav"><svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M20 13v-2H8l4-4-1-2-7 7 7 7 1-2-4-4z" fill="currentColor" fill-rule="evenodd"></path></svg>Previous post</p><p class="post-title">Snowflake Interview Questions</p></a></div><div class="nav-next"><a href="https://www.iexpertify.com/data-warehousing/what-is-data-modeling-2/" rel="next"><p class="meta-nav">Next post<svg aria-hidden="true" class="svg-icon" fill="none" focusable="false" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="m4 13v-2h12l-4-4 1-2 7 7-7 7-1-2 4-4z" fill="currentColor" fill-rule="evenodd"></path></svg></p><p class="post-title">What is Data Modeling?</p></a></div></div>
-</nav> </main>
-</div>
-</div>
-<aside class="widget-area">
-<section class="widget widget_search" id="search-2"><form action="https://www.iexpertify.com/" class="search-form" method="get" role="search">
-<label for="search-form-1">Search…</label>
-<input class="search-field" id="search-form-1" name="s" type="search" value=""/>
-<input class="search-submit" type="submit" value="Search"/>
-</form>
-</section>
-<section class="widget widget_recent_entries" id="recent-posts-2">
-<h2 class="widget-title">Recent Posts</h2><nav aria-label="Recent Posts">
-<ul>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-commands-for-beginners/">Linux Commands for Beginners</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-file-permissions/">Linux File Permissions -chmod</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/grep_regex_example_linux/">Grep Regex Example Linux</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/data-warehousing/what-is-data-modeling-2/">What is Data Modeling?</a>
-</li>
-<li>
-<a aria-current="page" href="https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/">Input Redirection in Linux/Unix Examples</a>
-</li>
-</ul>
-</nav></section><section class="widget widget_categories" id="categories-2"><h2 class="widget-title">Technologies</h2><nav aria-label="Technologies">
-<ul>
-<li class="cat-item cat-item-43"><a href="https://www.iexpertify.com/category/aws/">AWS</a>
-</li>
-<li class="cat-item cat-item-45"><a href="https://www.iexpertify.com/category/cloud/">Cloud</a>
-</li>
-<li class="cat-item cat-item-14"><a href="https://www.iexpertify.com/category/data-warehousing/">Data Warehousing</a>
-</li>
-<li class="cat-item cat-item-3"><a href="https://www.iexpertify.com/category/learn/full-course/">Full Course</a>
-</li>
-<li class="cat-item cat-item-6"><a href="https://www.iexpertify.com/category/interview/">interview</a>
-</li>
-<li class="cat-item cat-item-2"><a href="https://www.iexpertify.com/category/learn/">learn</a>
-</li>
-<li class="cat-item cat-item-33"><a href="https://www.iexpertify.com/category/linux/">Linux</a>
-</li>
-<li class="cat-item cat-item-31"><a href="https://www.iexpertify.com/category/mobile/">Mobile</a>
-</li>
-<li class="cat-item cat-item-36"><a href="https://www.iexpertify.com/category/programming/">Programming</a>
-</li>
-<li class="cat-item cat-item-46"><a href="https://www.iexpertify.com/category/temp/temp-datastage/">Temp-Datastage</a>
-</li>
-<li class="cat-item cat-item-19"><a href="https://www.iexpertify.com/category/temp/temp-testing/">Temp-Testing</a>
-</li>
-</ul>
-</nav></section> </aside>
-<footer class="site-footer" id="colophon" role="contentinfo">
-<div class="site-info">
-<div class="site-name">
-<div class="site-logo"><a class="custom-logo-link" href="https://www.iexpertify.com/" rel="home"><img alt="iexpertify" class="custom-logo" decoding="async" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" width="148"/></a></div>
-</div>
-<div class="powered-by">
-Proudly powered by <a href="https://wordpress.org/">WordPress</a>. </div>
-</div>
-</footer>
-</div>
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.body.classList.remove("no-js");</script> <script>
-	if ( -1 !== navigator.userAgent.indexOf( 'MSIE' ) || -1 !== navigator.appVersion.indexOf( 'Trident/' ) ) {
-		document.body.classList.add( 'is-IE' );
-	}
-	</script>
-<script data-cfasync="false" type="text/javascript">if (window.addthis_product === undefined) { window.addthis_product = "wpp"; } if (window.wp_product_version === undefined) { window.wp_product_version = "wpp-6.2.7"; } if (window.addthis_share === undefined) { window.addthis_share = {"passthrough":{"twitter":{"via":"iexpertify"}},"url_transforms":{"shorten":{"twitter":"bitly"}},"shorteners":{"bitly":{}}}; } if (window.addthis_config === undefined) { window.addthis_config = {"data_track_clickback":true,"ui_atversion":"300","data_track_addressbar":true}; } if (window.addthis_plugin_info === undefined) { window.addthis_plugin_info = {"info_status":"enabled","cms_name":"WordPress","plugin_name":"Share Buttons by AddThis","plugin_version":"6.2.7","plugin_mode":"AddThis","anonymous_profile_id":"wp-f047919074be910c52a1e941c9b61241","page_info":{"template":"posts","post_type":""},"sharing_enabled_on_post_via_metabox":false}; } 
-                    (function() {
-                      var first_load_interval_id = setInterval(function () {
-                        if (typeof window.addthis !== 'undefined') {
-                          window.clearInterval(first_load_interval_id);
-                          if (typeof window.addthis_layers !== 'undefined' && Object.getOwnPropertyNames(window.addthis_layers).length > 0) {
-                            window.addthis.layers(window.addthis_layers);
-                          }
-                          if (Array.isArray(window.addthis_layers_tools)) {
-                            for (i = 0; i < window.addthis_layers_tools.length; i++) {
-                              window.addthis.layers(window.addthis_layers_tools[i]);
-                            }
-                          }
-                        }
-                     },1000)
-                    }());
-                </script> <script data-cfasync="false" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6039ba14c0ef5a39" type="text/javascript"></script><link href="https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.30.1" id="yarppRelatedCss-css" media="all" rel="stylesheet"/>
-<script id="twenty-twenty-one-ie11-polyfills-js-after">
-( Element.prototype.matches && Element.prototype.closest && window.NodeList && NodeList.prototype.forEach ) || document.write( '<script src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/polyfills.js?ver=1.2"></scr' + 'ipt>' );
-</script>
-<script id="twenty-twenty-one-primary-navigation-script-js" src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/primary-navigation.js?ver=1.2"></script>
-<script id="twenty-twenty-one-responsive-embeds-script-js" src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/responsive-embeds.js?ver=1.2"></script>
-<script>
-	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",(function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}),!1);
-	</script>
-<script crossorigin="anonymous" data-cf-beacon='{"rayId":"780f2b936b8f57ae","version":"2022.11.3","r":1,"token":"f16aadd6ea834e8688697712549b4e6f","si":100}' defer="" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"></script>
-</body>
-</html>
+<p>Conclusion: Input redirection in Linux/Unix is a versatile tool that enhances the efficiency and flexibility of command-line operations. Whether dealing with files, combining commands, or facilitating interactive input, understanding and mastering input redirection can significantly improve your ability to work with these systems. By incorporating these examples into your daily workflow, you can harness the power of input redirection to streamline your tasks and operations.</p>
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
