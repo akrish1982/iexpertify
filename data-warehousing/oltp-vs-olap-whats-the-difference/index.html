@@ -1,332 +1,187 @@
-<!doctype html>
-<html lang="en-US" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:addthis="https://www.addthis.com/help/api-spec">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name='robots' content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<html><head><link href="../../simplecss/styles.css" rel="stylesheet"/></head></html><!DOCTYPE html>
 
-<title>OLTP vs OLAP: What&#039;s the Difference? - Data Warehousing Data Warehousing</title>
-<meta property="og:locale" content="en_US" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="OLTP vs OLAP: What&#039;s the Difference? - Data Warehousing Data Warehousing" />
-<meta property="og:description" content="Reading Time: 7 minutes  What is OLAP?Online Analytical Processing, a category of software tools which provide analysis of data for business decisions. OLAP systems allow users to analyze database information from multiple database systems at one time. The primary objective is data analysis and not data processing. What is OLTP?Online transaction processing shortly known as OLTP supports transaction-oriented applications in a 3-tier architecture. OLTP administers day to day transaction of an organization. The primary objective is data processing and not data analysis Example of OLAPAny Datawarehouse system is an OLAP system. Uses of OLAP are as follows A company might compare their mobile phone sales in September with sales in October, then compare those results with another location which may be stored in a sperate database.Amazon analyzes purchases by its customers to come up with a personalized homepage with products which likely interest to their customer.Example of OLTP systemAn example of OLTP system is ATM center. Assume that a couple has a joint account with a bank. One day both simultaneously reach different ATM centers at precisely the same time and want to withdraw total amount present in their bank account. However, the person that completes authentication process first will be able to get money. In this case, OLTP system makes sure that withdrawn amount will be never more than the amount present in the bank. The key to note here is that OLTP systems are optimized for transactional superiority instead data analysis.  Other examples of OLTP system are: Online bankingOnline airline ticket booking Sending a text messageOrder entryAdd a book to shopping cartBenefits of using OLAP servicesOLAP creates a single platform for all type of business analytical needs which includes planning, budgeting, forecasting, and analysis.The main benefit of OLAP is the consistency of information and calculations. Easily apply security restrictions on users and objects to comply with regulations and protect sensitive data. Benefits of OLTP methodIt administers daily transactions of an organization. OLTP widens the customer base of an organization by simplifying individual processes.Drawbacks of OLAP serviceImplementation and maintenance are dependent on IT professional because the traditional OLAP tools require a complicated modeling procedure. OLAP tools need cooperation between people of various departments to be effective which might always be not possible. Drawbacks of OLTP methodIf OLTP system faces hardware failures, then online transactions get severely affected. OLTP systems allow multiple users to access and change the same data at the same time which many times created unprecedented situation. Difference between OLTP and OLAPParameters OLTP OLAP Process It is an online transactional system. It manages database modification. OLAP is an online analysis and data retrieving process. Characteristic It is characterized by large numbers of short online transactions. It is characterized by a large volume of data. Functionality OLTP is an online database modifying system. OLAP is an online database query management system. Method OLTP uses traditional DBMS. OLAP uses the data warehouse. Query Insert, Update, and Delete information from the database. Mostly select operations Table Tables in OLTP database are normalized. Tables in OLAP database are not normalized. Source OLTP and its transactions are the sources of data. Different OLTP databases become the source of data for OLAP. Data Integrity OLTP database must maintain data integrity constraint. OLAP database does not get frequently modified. Hence, data integrity is not an issue. Response time It&#039;s response time is in millisecond. Response time in seconds to minutes. Data quality The data in the OLTP database is always detailed and organized. The data in OLAP process might not be organized. Usefulness It helps to control and run fundamental business tasks. It helps with planning, problem-solving, and decision support. Operation Allow read/write operations. Only read and rarely write. Audience It is a market orientated process. It is a customer orientated process. Query Type Queries in this process are standardized and simple. Complex queries involving aggregations. Back-up Complete backup of the data combined with incremental backups. OLAP only need a backup from time to time. Backup is not important compared to OLTP Design DB design is application oriented. Example: Database design changes with industry like Retail, Airline, Banking, etc. DB design is subject oriented. Example: Database design changes with subjects like sales, marketing, purchasing, etc. User type It is used by Data critical users like clerk, DBA &amp; Data Base professionals. Used by Data knowledge users like workers, managers, and CEO. Purpose Designed for real time business operations. Designed for analysis of business measures by category and attributes. Performance metric Transaction throughput is the performance metric Query throughput is the performance metric. Number of users This kind of Database users allows thousands of users. This kind of Database allows only hundreds of users. Productivity It helps to Increase user&#039;s self-service and productivity Help to Increase productivity of the business analysts. Challenge Data Warehouses historically have been a development project which may prove costly to build. An OLAP cube is not an open SQL server data warehouse. Therefore, technical knowledge and experience is essential to manage the OLAP server. Process It provides fast result for daily used data. It ensures that response to the query is quicker consistently. Characteristic It is easy to create and maintain. It lets the user create a view with the help of a spreadsheet. Style OLTP is designed to have fast response time, low data redundancy and is normalized. A data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database Summary:Online Analytical Processing is a category of software tools that analyze of data stored in a database.Online transaction processing shortly known as OLTP supports transaction-oriented applications in a 3-tier architecture OLAP creates a single platform for all type of business analysis needs which includes planning, budgeting, forecasting, and analysis.OLTP is useful to administer day to day transactions of an organization.OLAP is characterized by a large volume of data. OLTP is characterized by large numbers of short online transactions. A data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database. An OLAP Cube takes a spreadsheet and three-dimensionless the experiences of analysis.   " />
-<meta property="og:url" content="https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/" />
-<meta property="og:site_name" content="iexpertify" />
-<meta property="article:publisher" content="https://www.facebook.com/iExpertify-102371968557959" />
-<meta property="article:published_time" content="2021-02-06T04:24:38+00:00" />
-<meta property="article:modified_time" content="2021-02-06T10:11:56+00:00" />
-<meta property="og:image" content="https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-1024x810.png" />
-<meta name="author" content="akrish1982" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:creator" content="@iexpertify" />
-<meta name="twitter:site" content="@iexpertify" />
-<meta name="twitter:label1" content="Written by" />
-<meta name="twitter:data1" content="akrish1982" />
-<meta name="twitter:label2" content="Est. reading time" />
-<meta name="twitter:data2" content="6 minutes" />
-<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#article","isPartOf":{"@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/"},"author":{"name":"akrish1982","@id":"https://www.iexpertify.com/#/schema/person/6d22cba514d0b526fda5f3ff1cebd395"},"headline":"OLTP vs OLAP: What&#8217;s the Difference?","datePublished":"2021-02-06T04:24:38+00:00","dateModified":"2021-02-06T10:11:56+00:00","mainEntityOfPage":{"@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/"},"wordCount":1317,"commentCount":0,"publisher":{"@id":"https://www.iexpertify.com/#organization"},"image":{"@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#primaryimage"},"thumbnailUrl":"https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-1024x810.png","keywords":["Data Warehousing"],"articleSection":["Data Warehousing"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#respond"]}]},{"@type":"WebPage","@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/","url":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/","name":"OLTP vs OLAP: What's the Difference? - Data Warehousing Data Warehousing","isPartOf":{"@id":"https://www.iexpertify.com/#website"},"primaryImageOfPage":{"@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#primaryimage"},"image":{"@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#primaryimage"},"thumbnailUrl":"https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-1024x810.png","datePublished":"2021-02-06T04:24:38+00:00","dateModified":"2021-02-06T10:11:56+00:00","breadcrumb":{"@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#primaryimage","url":"https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-1024x810.png","contentUrl":"https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-1024x810.png"},{"@type":"BreadcrumbList","@id":"https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.iexpertify.com/"},{"@type":"ListItem","position":2,"name":"OLTP vs OLAP: What&#8217;s the Difference?"}]},{"@type":"WebSite","@id":"https://www.iexpertify.com/#website","url":"https://www.iexpertify.com/","name":"Learn any Technology","description":"Upskill in 30 days, just 1 hour a day","publisher":{"@id":"https://www.iexpertify.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.iexpertify.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.iexpertify.com/#organization","name":"iExpertify Inc.","url":"https://www.iexpertify.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/logo/image/","url":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","contentUrl":"https://www.iexpertify.com/wp-content/uploads/2020/12/iExpertify-Logo.png","width":148,"height":62,"caption":"iExpertify Inc."},"image":{"@id":"https://www.iexpertify.com/#/schema/logo/image/"},"sameAs":["https://www.youtube.com/channel/UCFrG1RTSQZYHoSx5-nJxcnQ/featured","https://www.facebook.com/iExpertify-102371968557959","https://twitter.com/iexpertify"]},{"@type":"Person","@id":"https://www.iexpertify.com/#/schema/person/6d22cba514d0b526fda5f3ff1cebd395","name":"akrish1982","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.iexpertify.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/8858be87c957147d97ba3498a97f2e24?s=96&d=wavatar&r=g","contentUrl":"https://secure.gravatar.com/avatar/8858be87c957147d97ba3498a97f2e24?s=96&d=wavatar&r=g","caption":"akrish1982"},"sameAs":["https://www.iexpertify.com","https://www.linkedin.com/in/ananthtirumanur/?lipi=urnlipaged_flagship3_feedRjIo9iaYS1KDsFau2D8wA"],"url":"https://www.iexpertify.com/author/akrish1982/"}]}</script>
 
-<link rel='dns-prefetch' href='https://www.googletagmanager.com/' />
-<link rel='dns-prefetch' href='https://pagead2.googlesyndication.com/' />
-<link rel="alternate" type="application/rss+xml" title="iexpertify &raquo; Feed" href="https://www.iexpertify.com/feed/" />
-<link rel="alternate" type="application/rss+xml" title="iexpertify &raquo; Comments Feed" href="https://www.iexpertify.com/comments/feed/" />
-<script>
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.iexpertify.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
-/*! This file is auto-generated */
-!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
-<style>
-img.wp-smiley,
-img.emoji {
-	display: inline !important;
-	border: none !important;
-	box-shadow: none !important;
-	height: 1em !important;
-	width: 1em !important;
-	margin: 0 0.07em !important;
-	vertical-align: -0.1em !important;
-	background: none !important;
-	padding: 0 !important;
-}
-</style>
-<link rel='stylesheet' id='wp-block-library-css' href='https://www.iexpertify.com/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1' media='all' />
-<style id='wp-block-library-theme-inline-css'>
-.wp-block-audio figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio figcaption{color:hsla(0,0%,100%,.65)}.wp-block-audio{margin:0 0 1em}.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}.wp-block-embed figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed figcaption{color:hsla(0,0%,100%,.65)}.wp-block-embed{margin:0 0 1em}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:hsla(0,0%,100%,.65)}.wp-block-image figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-image figcaption{color:hsla(0,0%,100%,.65)}.wp-block-image{margin:0 0 1em}.wp-block-pullquote{border-top:4px solid;border-bottom:4px solid;margin-bottom:1.75em;color:currentColor}.wp-block-pullquote__citation,.wp-block-pullquote cite,.wp-block-pullquote footer{color:currentColor;text-transform:uppercase;font-size:.8125em;font-style:normal}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;position:relative;font-style:normal}.wp-block-quote.has-text-align-right{border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote.has-text-align-center{border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote.is-style-plain{border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-search__button{border:1px solid #ccc;padding:.375em .625em}:where(.wp-block-group.has-background){padding:1.25em 2.375em}.wp-block-separator.has-css-opacity{opacity:.4}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto}.wp-block-separator.has-alpha-channel-opacity{opacity:1}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table{margin:"0 0 1em 0"}.wp-block-table thead{border-bottom:3px solid}.wp-block-table tfoot{border-top:3px solid}.wp-block-table td,.wp-block-table th{word-break:normal}.wp-block-table figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video figcaption{color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video figcaption{color:hsla(0,0%,100%,.65)}.wp-block-video{margin:0 0 1em}.wp-block-template-part.has-background{padding:1.25em 2.375em;margin-top:0;margin-bottom:0}
-</style>
-<link rel='stylesheet' id='classic-theme-styles-css' href='https://www.iexpertify.com/wp-includes/css/classic-themes.min.css?ver=1' media='all' />
-<style id='global-styles-inline-css'>
-body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #FFFFFF;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--dark-gray: #28303D;--wp--preset--color--gray: #39414D;--wp--preset--color--green: #D1E4DD;--wp--preset--color--blue: #D1DFE4;--wp--preset--color--purple: #D1D1E4;--wp--preset--color--red: #E4D1D1;--wp--preset--color--orange: #E4DAD1;--wp--preset--color--yellow: #EEEADD;--wp--preset--color--kb-palette-1: #888888;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--purple-to-yellow: linear-gradient(160deg, #D1D1E4 0%, #EEEADD 100%);--wp--preset--gradient--yellow-to-purple: linear-gradient(160deg, #EEEADD 0%, #D1D1E4 100%);--wp--preset--gradient--green-to-yellow: linear-gradient(160deg, #D1E4DD 0%, #EEEADD 100%);--wp--preset--gradient--yellow-to-green: linear-gradient(160deg, #EEEADD 0%, #D1E4DD 100%);--wp--preset--gradient--red-to-yellow: linear-gradient(160deg, #E4D1D1 0%, #EEEADD 100%);--wp--preset--gradient--yellow-to-red: linear-gradient(160deg, #EEEADD 0%, #E4D1D1 100%);--wp--preset--gradient--purple-to-red: linear-gradient(160deg, #D1D1E4 0%, #E4D1D1 100%);--wp--preset--gradient--red-to-purple: linear-gradient(160deg, #E4D1D1 0%, #D1D1E4 100%);--wp--preset--duotone--dark-grayscale: url('index.html');--wp--preset--duotone--grayscale: url('index.html');--wp--preset--duotone--purple-yellow: url('index.html');--wp--preset--duotone--blue-red: url('index.html');--wp--preset--duotone--midnight: url('index.html');--wp--preset--duotone--magenta-yellow: url('index.html');--wp--preset--duotone--purple-green: url('index.html');--wp--preset--duotone--blue-orange: url('index.html');--wp--preset--font-size--small: 18px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 24px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--extra-small: 16px;--wp--preset--font-size--normal: 20px;--wp--preset--font-size--extra-large: 40px;--wp--preset--font-size--huge: 96px;--wp--preset--font-size--gigantic: 144px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
-.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
-:where(.wp-block-columns.is-layout-flex){gap: 2em;}
-.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
-</style>
-<link rel='stylesheet' id='twenty-twenty-one-style-css' href='https://www.iexpertify.com/wp-content/themes/twentytwentyone/style.css?ver=1.2' media='all' />
-<style id='twenty-twenty-one-style-inline-css'>
-:root{--global--color-background: #ffffff;--global--color-primary: #000;--global--color-secondary: #000;--button--color-background: #000;--button--color-text-hover: #000;}
-</style>
-<link rel='stylesheet' id='twenty-twenty-one-print-style-css' href='https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/css/print.css?ver=1.2' media='print' />
-<link rel='stylesheet' id='yarpp-thumbnails-css' href='https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/styles_thumbnails.css?ver=5.30.1' media='all' />
-<style id='yarpp-thumbnails-inline-css'>
-.yarpp-thumbnails-horizontal .yarpp-thumbnail {width: 130px;height: 170px;margin: 5px;margin-left: 0px;}.yarpp-thumbnail > img, .yarpp-thumbnail-default {width: 120px;height: 120px;margin: 5px;}.yarpp-thumbnails-horizontal .yarpp-thumbnail-title {margin: 7px;margin-top: 0px;width: 120px;}.yarpp-thumbnail-default > img {min-height: 120px;min-width: 120px;}
-</style>
-<link rel='stylesheet' id='addthis_all_pages-css' href='https://www.iexpertify.com/wp-content/plugins/addthis/frontend/build/addthis_wordpress_public.min.css?ver=6.1.1' media='all' />
-<style id="kadence_blocks_palette_css">:root .has-kb-palette-1-color{color:#888888}:root .has-kb-palette-1-background-color{background-color:#888888}</style> <script>
-            /* <![CDATA[ */
-            var rcewpp = {
-                "ajax_url":"https://www.iexpertify.com/wp-admin/admin-ajax.php",
-                "nonce": "83ffdb6c7b",
-                "home_url": "https://www.iexpertify.com/",
-                "settings_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings.png',
-                "settings_hover_icon": 'https://www.iexpertify.com/wp-content/plugins/export-wp-page-to-static-html/admin/images/settings_hover.png'
-            };
-            /* ]]\> */
-        </script>
 
-<script src='https://www.googletagmanager.com/gtag/js?id=UA-50079915-2' id='google_gtagjs-js' async></script>
-<script id='google_gtagjs-js-after'>
-window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
-gtag('set', 'linker', {"domains":["www.iexpertify.com"]} );
-gtag("js", new Date());
-gtag("set", "developer_id.dZTNiMT", true);
-gtag("config", "UA-50079915-2", {"anonymize_ip":true});
-</script>
 
-<link rel="https://api.w.org/" href="https://www.iexpertify.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.iexpertify.com/wp-json/wp/v2/posts/2873" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.iexpertify.com/xmlrpc.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.iexpertify.com/wp-includes/wlwmanifest.xml" />
-<meta name="generator" content="WordPress 6.1.1" />
-<link rel='shortlink' href='https://www.iexpertify.com/?p=2873' />
-<link rel="alternate" type="application/json+oembed" href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Fdata-warehousing%2Foltp-vs-olap-whats-the-difference%2F" />
-<link rel="alternate" type="text/xml+oembed" href="https://www.iexpertify.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.iexpertify.com%2Fdata-warehousing%2Foltp-vs-olap-whats-the-difference%2F&#038;format=xml" />
-<meta name="generator" content="Site Kit by Google 1.90.1" />
 
-<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
-<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
 
-<style id="custom-background-css">
-body.custom-background { background-color: #ffffff; }
-</style>
+OLTP vs OLAP: What's the Difference? - Data Warehousing Data Warehousing
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797&amp;host=ca-host-pub-2644536267352236" crossorigin="anonymous"></script>
 
-<link rel="icon" href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-32x32.png" sizes="32x32" />
-<link rel="icon" href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-192x192.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-180x180.png" />
-<meta name="msapplication-TileImage" content="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-512x512-icon-270x270.png" />
-</head>
-<body class="post-template-default single single-post postid-2873 single-format-standard custom-background wp-custom-logo wp-embed-responsive is-light-theme has-background-white no-js singular has-main-navigation">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><div id="page" class="site">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-<header id="masthead" class="site-header has-logo has-menu" role="banner">
-<div class="site-branding">
-<div class="site-logo"><a href="https://www.iexpertify.com/" class="custom-logo-link" rel="home"><img width="148" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" class="custom-logo" alt="iexpertify" decoding="async" /></a></div>
-<p class="screen-reader-text"><a href="https://www.iexpertify.com/">iexpertify</a></p>
-</div>
-<nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="Primary menu">
-<div class="menu-button-container">
-<button id="primary-mobile-menu" class="button" aria-controls="primary-menu-list" aria-expanded="false">
-<span class="dropdown-icon open">Menu <svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 6H19.5V7.5H4.5V6ZM4.5 12H19.5V13.5H4.5V12ZM19.5 18H4.5V19.5H19.5V18Z" fill="currentColor" /></svg> </span>
-<span class="dropdown-icon close">Close <svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 10.9394L5.53033 4.46973L4.46967 5.53039L10.9393 12.0001L4.46967 18.4697L5.53033 19.5304L12 13.0607L18.4697 19.5304L19.5303 18.4697L13.0607 12.0001L19.5303 5.53039L18.4697 4.46973L12 10.9394Z" fill="currentColor" /></svg> </span>
-</button>
-</div>
-<div class="primary-menu-container"><ul id="primary-menu-list" class="menu-wrapper"><li id="menu-item-1025" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1025"><a href="https://www.iexpertify.com/">iExpertify</a></li>
-<li id="menu-item-1027" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1027"><a href="https://www.iexpertify.com/learn/full-course/netezza/">Netezza</a></li>
-<li id="menu-item-1504" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1504"><a href="https://saphr.iexpertify.com">SAP HR</a></li>
-<li id="menu-item-1505" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505"><a href="https://sapfico.iexpertify.com">SAP FICO</a></li>
-<li id="menu-item-12338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12338"><a href="https://www.iexpertify.com/free-courses/">Free Courses</a></li>
-<li id="menu-item-1634" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1634"><a href="https://www.iexpertify.com/courses/">Courses</a></li>
-<li id="menu-item-1636" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1636"><a href="https://www.iexpertify.com/lp-checkout/">Checkout</a></li>
-<li id="menu-item-1642" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1642"><a href="https://www.iexpertify.com/lp-profile/">My Profile</a></li>
-</ul></div> </nav>
-</header>
-<div id="content" class="site-content">
-<div id="primary" class="content-area">
-<main id="main" class="site-main" role="main">
-<article id="post-2873" class="post-2873 post type-post status-publish format-standard hentry category-data-warehousing tag-data-warehousing entry">
-<header class="entry-header alignwide">
-<h1 class="entry-title">OLTP vs OLAP: What&#8217;s the Difference?</h1> </header>
-<div class="entry-content">
-<div class="at-above-post addthis_tool" data-url="https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/"></div><span class="rt-reading-time" style="display: block;"><span class="rt-label rt-prefix">Reading Time: </span> <span class="rt-time">7</span> <span class="rt-label rt-postfix">minutes</span></span>
-<div class="lwptoc lwptoc-autoWidth lwptoc-baseItems lwptoc-dark lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i"> <div class="lwptoc_header">
-<b class="lwptoc_title">we will cover these topics:</b> <span class="lwptoc_toggle">
-<a href="index.html#" class="lwptoc_toggle_label" data-label="show">hide</a>
-</span>
-</div>
-<div class="lwptoc_items lwptoc_items-visible">
-<div class="lwptoc_itemWrap"><div class="lwptoc_item"> <a href="index.html#What_is_OLAP">
-<span class="lwptoc_item_number">1)</span>
-<span class="lwptoc_item_label">What is OLAP?</span>
+
+
+
+
+
+
+
+Reading Time:  7 minutes
+ 
+we will cover these topics: 
+<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
+
+
+
+ <a href="index.html#What_is_OLAP">
+1)
+What is OLAP?
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Advantages_of_OLAP">
-<span class="lwptoc_item_number">2)</span>
-<span class="lwptoc_item_label">Advantages of OLAP</span>
+ <a href="index.html#Advantages_of_OLAP">
+2)
+Advantages of OLAP
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Disadvantages_of_OLAP">
-<span class="lwptoc_item_number">3)</span>
-<span class="lwptoc_item_label">Disadvantages of OLAP</span>
+ <a href="index.html#Disadvantages_of_OLAP">
+3)
+Disadvantages of OLAP
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#What_is_OLTP">
-<span class="lwptoc_item_number">4)</span>
-<span class="lwptoc_item_label">What is OLTP?</span>
+ <a href="index.html#What_is_OLTP">
+4)
+What is OLTP?
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Advantages_of_OLTP">
-<span class="lwptoc_item_number">5)</span>
-<span class="lwptoc_item_label">Advantages of OLTP:</span>
+ <a href="index.html#Advantages_of_OLTP">
+5)
+Advantages of OLTP:
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Disadvantages_of_OLTP">
-<span class="lwptoc_item_number">6)</span>
-<span class="lwptoc_item_label">Disadvantages of OLTP</span>
+ <a href="index.html#Disadvantages_of_OLTP">
+6)
+Disadvantages of OLTP
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Example_of_OLAP">
-<span class="lwptoc_item_number">7)</span>
-<span class="lwptoc_item_label">Example of OLAP</span>
+ <a href="index.html#Example_of_OLAP">
+7)
+Example of OLAP
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Example_of_OLTP_system">
-<span class="lwptoc_item_number">8)</span>
-<span class="lwptoc_item_label">Example of OLTP system</span>
+ <a href="index.html#Example_of_OLTP_system">
+8)
+Example of OLTP system
 </a>
-</div><div class="lwptoc_item"> <a href="index.html#Difference_between_OLTP_and_OLAP">
-<span class="lwptoc_item_number">9)</span>
-<span class="lwptoc_item_label">Difference between OLTP and OLAP</span>
+ <a href="index.html#Difference_between_OLTP_and_OLAP">
+9)
+Difference between OLTP and OLAP
 </a>
-<div class="lwptoc_itemWrap"><div class="lwptoc_item"> <a href="index.html#What_to_read_next">
-<span class="lwptoc_item_number">9.1)</span>
-<span class="lwptoc_item_label">What to read next?</span>
+ <a href="index.html#What_to_read_next">
+9.1)
+What to read next?
 </a>
-</div></div></div></div></div>
-</div></div><h2><span id="What_is_OLAP">What is OLAP?</span></h2>
+
+<h2>What is OLAP?</h2>
 <p class="has-drop-cap">OLAP stands for On-Line Analytical Processing. Online Analytical Processing, a category of software tools which provide analysis of data for business decisions. OLAP systems allow users to analyze database information from multiple database systems at one time. The primary objective is data analysis and not data processing. The key feature of OLAP is “Multidimensional.” In other words, the ability to analyze metrics in different dimensions such as time, geography, gender, product, etc. For example, sales for the company are up. What region is most responsible for this increase? Which store in this region is most responsible for the increase? What particular product category or categories contributed the most to the increase? Answering these types of questions in order means that you are performing an OLAP analysis.</p>
-<h2><span id="Advantages_of_OLAP">Advantages of OLAP</span></h2>
+<h2>Advantages of OLAP</h2>
 <ul><li>OLAP is a platform for all type of business includes planning, budgeting, reporting, and analysis.</li><li>Information and calculations are consistent in an OLAP cube. This is a crucial benefit.</li><li>Quickly create and analyze “What if” scenarios</li><li>Easily search OLAP database for broad or specific terms.</li><li>OLAP provides the building blocks for business modeling tools, Data mining tools, performance reporting tools.</li><li>Allows users to do slice and dice cube data all by various dimensions, measures, and filters.</li><li>It is good for analyzing time series.</li><li>Finding some clusters and outliers is easy with OLAP.</li><li>It is a powerful visualization online analytical process system which provides faster response times</li></ul>
-<h2><span id="Disadvantages_of_OLAP">Disadvantages of OLAP</span></h2>
+<h2>Disadvantages of OLAP</h2>
 <ul><li>OLAP requires organizing data into a star or snowflake schema. These schemas are complicated to implement and administer</li><li>You cannot have large number of dimensions in a single OLAP cube</li><li>Transactional data cannot be accessed with OLAP system.</li><li>Any modification in an OLAP cube needs a full update of the cube. This is a time-consuming process</li></ul>
-<h2><span id="What_is_OLTP">What is OLTP?</span></h2>
+<h2>What is OLTP?</h2>
 <p class="has-drop-cap">OLTP is an operational system that supports transaction-oriented applications in a 3-tier architecture. It administers the day to day transaction of an organization. OLTP is basically focused on query processing, maintaining data integrity in multi-access environments as well as effectiveness that is measured by the total number of transactions per second. The full form of OLTP is Online Transaction Processing</p>
-<span id="more-2873"></span>
-<h2><span id="Advantages_of_OLTP">Advantages of OLTP:</span></h2>
+
+<h2>Advantages of OLTP:</h2>
 <ul><li>OLTP offers accurate forecast for revenue and expense.</li><li>It provides a solid foundation for a stable business /organization due to timely modification of all transactions.</li><li>OLTP makes transactions much easier on behalf of the customers.</li><li>It broadens the client base for an organization by speeding up and simplifying individual processes.</li><li>OLTP provides support for bigger databases.</li><li>Partition of data for data manipulation is easy.</li><li>We need OLTP to use the tasks which are frequently performed by the system.</li><li>When we need only a small number of records.</li><li>The tasks that include insertion, updation, or deletion of data.</li><li>It is used when you need consistency and concurrency in order to perform tasks that ensure its greater availability.</li></ul>
-<h2><span id="Disadvantages_of_OLTP"><br>Disadvantages of OLTP<br></span></h2>
+<h2>Disadvantages of OLTP</h2>
 <ul><li>If the OLTP system faces hardware failures, then online transactions get severely affected.</li><li>OLTP systems allow multiple users to access and change the same data at the same time, which many times created an unprecedented situation.</li><li>If the server hangs for seconds, it can affect to a large number of transactions.</li><li>OLTP required a lot of staff working in groups in order to maintain inventory.</li><li>Online Transaction Processing Systems do not have proper methods of transferring products to buyers by themselves.</li><li>OLTP makes the database much more susceptible to hackers and intruders.</li><li>In B2B transactions, there are chances that both buyers and suppliers miss out efficiency advantages that the system offers.</li><li>Server failure may lead to wiping out large amounts of data from the database.</li><li>You can perform a limited number of queries and updates.</li></ul>
-<figure class="wp-block-image size-large is-style-default"><img decoding="async" width="1024" height="810" src="https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-1024x810.png" alt="" class="wp-image-4614" srcset="https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-1024x810.png 1024w, https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-300x237.png 300w, https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP-768x608.png 768w, https://www.iexpertify.com/wp-content/uploads/2021/02/OLTP-vs-OLAP.png 1422w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>OLTP vs OLAP</figcaption></figure>
-<h2><span id="Example_of_OLAP">Example of OLAP</span></h2>
+OLTP vs OLAP
+<h2>Example of OLAP</h2>
 <p>Any Datawarehouse system is an OLAP system. Uses of OLAP are as follows</p>
 <ul><li>A company might compare their mobile phone sales in September with sales in October, then compare those results with another location which may be stored in a sperate database.</li><li>Amazon analyzes purchases by its customers to come up with a personalized homepage with products which likely interest to their customer.</li></ul>
-<h2><span id="Example_of_OLTP_system">Example of OLTP system</span></h2>
+<h2>Example of OLTP system</h2>
 <p>An example of OLTP system is ATM center. Assume that a couple has a joint account with a bank. One day both simultaneously reach different ATM centers at precisely the same time and want to withdraw total amount present in their bank account.</p>
-<p>However, the person that completes authentication process first will be able to get money. In this case, OLTP system makes sure that withdrawn amount will be never more than the amount present in the bank. The key to note here is that OLTP systems are optimized for<strong>&nbsp;transactional superiority instead data analysis.</strong></p>
+<p>However, the person that completes authentication process first will be able to get money. In this case, OLTP system makes sure that withdrawn amount will be never more than the amount present in the bank. The key to note here is that OLTP systems are optimized for transactional superiority instead data analysis.</p>
 <p>Other examples of OLTP system are:</p>
 <ul><li>Online banking</li><li>Online airline ticket booking</li><li>Sending a text message</li><li>Order entry</li><li>Add a book to shopping cart</li></ul>
-<h2><span id="Difference_between_OLTP_and_OLAP">Difference between OLTP and OLAP</span></h2>
-<figure class="wp-block-table is-style-stripes"><table><tbody><tr><td><strong>Parameters</strong></td><td><strong>OLTP</strong></td><td><strong>OLAP</strong></td></tr><tr><td><strong>Process</strong></td><td>It is an online transactional system. It manages database modification.</td><td>OLAP is an online analysis and data retrieving process.</td></tr><tr><td><strong>Characteristic</strong></td><td>It is characterized by large numbers of short online transactions.</td><td>It is characterized by a large volume of data.</td></tr><tr><td><strong>Functionality</strong></td><td>OLTP is an online database modifying system.</td><td>OLAP is an online database query management system.</td></tr><tr><td><strong>Method</strong></td><td>OLTP uses traditional DBMS.</td><td>OLAP uses the data warehouse.</td></tr><tr><td><strong>Query</strong></td><td>Insert, Update, and Delete information from the database.</td><td>Mostly select operations</td></tr><tr><td><strong>Table</strong></td><td>Tables in OLTP database are normalized.</td><td>Tables in OLAP database are&nbsp;<strong>de</strong>normalized.</td></tr><tr><td><strong>Source</strong></td><td>OLTP and its transactions are the sources of data.</td><td>Different OLTP databases become the source of data for OLAP.</td></tr><tr><td><strong>Data Integrity</strong></td><td>OLTP database must maintain data integrity constraint.</td><td>OLAP database does not get frequently modified. Hence, data integrity is not an issue.</td></tr><tr><td><strong>Response time</strong></td><td>It’s response time is in millisecond.</td><td>Response time in seconds to minutes.</td></tr><tr><td><strong>Data quality</strong></td><td>The data in the OLTP database is always detailed and organized.</td><td>The data in OLAP process might not be organized.</td></tr><tr><td><strong>Usefulness</strong></td><td>It helps to control and run fundamental business tasks.</td><td>It helps with planning, problem-solving, and decision support.</td></tr><tr><td><strong>Operation</strong></td><td>Allow read/write operations.</td><td>Only read and rarely write.</td></tr><tr><td><strong>Audience</strong></td><td>It is a market orientated process.</td><td>It is a customer orientated process.</td></tr><tr><td><strong>Query Type</strong></td><td>Queries in this process are standardized and simple.</td><td>Complex queries involving aggregations.</td></tr><tr><td><strong>Back-up</strong></td><td>Complete backup of the data combined with incremental backups.</td><td>OLAP only need a backup from time to time. Backup is not important compared to OLTP</td></tr><tr><td><strong>Design</strong></td><td>DB design is application oriented. Example: Database design changes with industry like Retail, Airline, Banking, etc.</td><td>DB design is subject oriented. Example: Database design changes with subjects like sales, marketing, purchasing, etc.</td></tr><tr><td><strong>User type</strong></td><td>It is used by Data critical users like clerk, DBA &amp; Data Base professionals.</td><td>Used by Data knowledge users like workers, managers, and CEO.</td></tr><tr><td><strong>Purpose</strong></td><td>Designed for real time business operations.</td><td>Designed for analysis of business measures by category and attributes.</td></tr><tr><td><strong>Performance metric</strong></td><td>Transaction throughput is the performance metric</td><td>Query throughput is the performance metric.</td></tr><tr><td><strong>Number of users</strong></td><td>This kind of Database users allows thousands of users.</td><td>This kind of Database allows only hundreds of users.</td></tr><tr><td><strong>Productivity</strong></td><td>It helps to Increase user’s self-service and productivity</td><td>Help to Increase productivity of the business analysts.</td></tr><tr><td><strong>Challenge</strong></td><td>Data Warehouses historically have been a development project which may prove costly to build.</td><td>An OLAP cube is not an open SQL server data warehouse. Therefore, technical knowledge and experience is essential to manage the OLAP server.</td></tr><tr><td><strong>Process</strong></td><td>It provides fast result for daily used data.</td><td>It ensures that response to the query is quicker consistently.</td></tr><tr><td><strong>Characteristic</strong></td><td>It is easy to create and maintain.</td><td>It lets the user create a view with the help of a spreadsheet.</td></tr><tr><td><strong>Style</strong></td><td>OLTP is designed to have fast response time, low data redundancy and is normalized.</td><td>A data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database</td></tr></tbody></table></figure>
-<div class="at-below-post addthis_tool" data-url="https://www.iexpertify.com/data-warehousing/oltp-vs-olap-whats-the-difference/"></div><div class="yarpp yarpp-related yarpp-related-website yarpp-related-none yarpp-template-thumbnails">
+<h2>Difference between OLTP and OLAP</h2>
+<table><tbody><tr><td>Parameters</td><td>OLTP</td><td>OLAP</td></tr><tr><td>Process</td><td>It is an online transactional system. It manages database modification.</td><td>OLAP is an online analysis and data retrieving process.</td></tr><tr><td>Characteristic</td><td>It is characterized by large numbers of short online transactions.</td><td>It is characterized by a large volume of data.</td></tr><tr><td>Functionality</td><td>OLTP is an online database modifying system.</td><td>OLAP is an online database query management system.</td></tr><tr><td>Method</td><td>OLTP uses traditional DBMS.</td><td>OLAP uses the data warehouse.</td></tr><tr><td>Query</td><td>Insert, Update, and Delete information from the database.</td><td>Mostly select operations</td></tr><tr><td>Table</td><td>Tables in OLTP database are normalized.</td><td>Tables in OLAP database are denormalized.</td></tr><tr><td>Source</td><td>OLTP and its transactions are the sources of data.</td><td>Different OLTP databases become the source of data for OLAP.</td></tr><tr><td>Data Integrity</td><td>OLTP database must maintain data integrity constraint.</td><td>OLAP database does not get frequently modified. Hence, data integrity is not an issue.</td></tr><tr><td>Response time</td><td>It’s response time is in millisecond.</td><td>Response time in seconds to minutes.</td></tr><tr><td>Data quality</td><td>The data in the OLTP database is always detailed and organized.</td><td>The data in OLAP process might not be organized.</td></tr><tr><td>Usefulness</td><td>It helps to control and run fundamental business tasks.</td><td>It helps with planning, problem-solving, and decision support.</td></tr><tr><td>Operation</td><td>Allow read/write operations.</td><td>Only read and rarely write.</td></tr><tr><td>Audience</td><td>It is a market orientated process.</td><td>It is a customer orientated process.</td></tr><tr><td>Query Type</td><td>Queries in this process are standardized and simple.</td><td>Complex queries involving aggregations.</td></tr><tr><td>Back-up</td><td>Complete backup of the data combined with incremental backups.</td><td>OLAP only need a backup from time to time. Backup is not important compared to OLTP</td></tr><tr><td>Design</td><td>DB design is application oriented. Example: Database design changes with industry like Retail, Airline, Banking, etc.</td><td>DB design is subject oriented. Example: Database design changes with subjects like sales, marketing, purchasing, etc.</td></tr><tr><td>User type</td><td>It is used by Data critical users like clerk, DBA &amp; Data Base professionals.</td><td>Used by Data knowledge users like workers, managers, and CEO.</td></tr><tr><td>Purpose</td><td>Designed for real time business operations.</td><td>Designed for analysis of business measures by category and attributes.</td></tr><tr><td>Performance metric</td><td>Transaction throughput is the performance metric</td><td>Query throughput is the performance metric.</td></tr><tr><td>Number of users</td><td>This kind of Database users allows thousands of users.</td><td>This kind of Database allows only hundreds of users.</td></tr><tr><td>Productivity</td><td>It helps to Increase user’s self-service and productivity</td><td>Help to Increase productivity of the business analysts.</td></tr><tr><td>Challenge</td><td>Data Warehouses historically have been a development project which may prove costly to build.</td><td>An OLAP cube is not an open SQL server data warehouse. Therefore, technical knowledge and experience is essential to manage the OLAP server.</td></tr><tr><td>Process</td><td>It provides fast result for daily used data.</td><td>It ensures that response to the query is quicker consistently.</td></tr><tr><td>Characteristic</td><td>It is easy to create and maintain.</td><td>It lets the user create a view with the help of a spreadsheet.</td></tr><tr><td>Style</td><td>OLTP is designed to have fast response time, low data redundancy and is normalized.</td><td>A data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database</td></tr></tbody></table>
 
-<h3><span id="What_to_read_next">What to read next?</span></h3>
-<p>Nothing to see here. Consider joining one of our full courses..</p>
-</div>
-</div>
-<footer class="entry-footer default-max-width">
-<div class="posted-by"><span class="posted-on">Published <time class="entry-date published updated" datetime="2021-02-06T04:24:38-05:00">February 6, 2021</time></span><span class="byline">By <a href="https://www.iexpertify.com/author/akrish1982/" rel="author">akrish1982</a></span></div><div class="post-taxonomies"><span class="cat-links">Categorized as <a href="https://www.iexpertify.com/category/data-warehousing/" rel="category tag">Data Warehousing</a> </span><span class="tags-links">Tagged <a href="https://www.iexpertify.com/tag/data-warehousing/" rel="tag">Data Warehousing</a></span></div> </footer>
-</article>
-<nav class="navigation post-navigation" aria-label="Posts">
-<h2 class="screen-reader-text">Post navigation</h2>
-<div class="nav-links"><div class="nav-previous"><a href="https://www.iexpertify.com/data-warehousing/the-tsort-operator/" rel="prev"><p class="meta-nav"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 13v-2H8l4-4-1-2-7 7 7 7 1-2-4-4z" fill="currentColor" /></svg>Previous post</p><p class="post-title">tsort operator</p></a></div><div class="nav-next"><a href="https://www.iexpertify.com/data-warehousing/what-is-a-olap-cube/" rel="next"><p class="meta-nav">Next post<svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m4 13v-2h12l-4-4 1-2 7 7-7 7-1-2 4-4z" fill="currentColor" /></svg></p><p class="post-title">What is a OLAP Cube ?</p></a></div></div>
-</nav> </main>
-</div>
-</div>
-<aside class="widget-area">
-<section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.iexpertify.com/">
-<label for="search-form-1">Search&hellip;</label>
-<input type="search" id="search-form-1" class="search-field" value="" name="s" />
-<input type="submit" class="search-submit" value="Search" />
-</form>
-</section>
-<section id="recent-posts-2" class="widget widget_recent_entries">
-<h2 class="widget-title">Recent Posts</h2><nav aria-label="Recent Posts">
-<ul>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-commands-for-beginners/">Linux Commands for Beginners</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/linux-file-permissions/">Linux File Permissions -chmod</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/grep_regex_example_linux/">Grep Regex Example Linux</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/data-warehousing/what-is-data-modeling-2/">What is Data Modeling?</a>
-</li>
-<li>
-<a href="https://www.iexpertify.com/linux/input-output-redirection-in-linux-unix-examples/">Input Redirection in Linux/Unix Examples</a>
-</li>
-</ul>
-</nav></section><section id="categories-2" class="widget widget_categories"><h2 class="widget-title">Technologies</h2><nav aria-label="Technologies">
-<ul>
-<li class="cat-item cat-item-43"><a href="https://www.iexpertify.com/category/aws/">AWS</a>
-</li>
-<li class="cat-item cat-item-45"><a href="https://www.iexpertify.com/category/cloud/">Cloud</a>
-</li>
-<li class="cat-item cat-item-14"><a href="https://www.iexpertify.com/category/data-warehousing/">Data Warehousing</a>
-</li>
-<li class="cat-item cat-item-3"><a href="https://www.iexpertify.com/category/learn/full-course/">Full Course</a>
-</li>
-<li class="cat-item cat-item-6"><a href="https://www.iexpertify.com/category/interview/">interview</a>
-</li>
-<li class="cat-item cat-item-2"><a href="https://www.iexpertify.com/category/learn/">learn</a>
-</li>
-<li class="cat-item cat-item-33"><a href="https://www.iexpertify.com/category/linux/">Linux</a>
-</li>
-<li class="cat-item cat-item-31"><a href="https://www.iexpertify.com/category/mobile/">Mobile</a>
-</li>
-<li class="cat-item cat-item-36"><a href="https://www.iexpertify.com/category/programming/">Programming</a>
-</li>
-<li class="cat-item cat-item-46"><a href="https://www.iexpertify.com/category/temp/temp-datastage/">Temp-Datastage</a>
-</li>
-<li class="cat-item cat-item-19"><a href="https://www.iexpertify.com/category/temp/temp-testing/">Temp-Testing</a>
-</li>
-</ul>
-</nav></section> </aside>
-<footer id="colophon" class="site-footer" role="contentinfo">
-<div class="site-info">
-<div class="site-name">
-<div class="site-logo"><a href="https://www.iexpertify.com/" class="custom-logo-link" rel="home"><img width="148" height="50" src="https://www.iexpertify.com/wp-content/uploads/2020/12/cropped-iExpertify-Logo.png" class="custom-logo" alt="iexpertify" decoding="async" /></a></div>
-</div>
-<div class="powered-by">
-Proudly powered by <a href="https://wordpress.org/">WordPress</a>. </div>
-</div>
-</footer>
-</div>
-<script>document.body.classList.remove("no-js");</script> <script>
-	if ( -1 !== navigator.userAgent.indexOf( 'MSIE' ) || -1 !== navigator.appVersion.indexOf( 'Trident/' ) ) {
-		document.body.classList.add( 'is-IE' );
-	}
-	</script>
-<script data-cfasync="false" type="text/javascript">if (window.addthis_product === undefined) { window.addthis_product = "wpp"; } if (window.wp_product_version === undefined) { window.wp_product_version = "wpp-6.2.7"; } if (window.addthis_share === undefined) { window.addthis_share = {"passthrough":{"twitter":{"via":"iexpertify"}},"url_transforms":{"shorten":{"twitter":"bitly"}},"shorteners":{"bitly":{}}}; } if (window.addthis_config === undefined) { window.addthis_config = {"data_track_clickback":true,"ui_atversion":"300","data_track_addressbar":true}; } if (window.addthis_plugin_info === undefined) { window.addthis_plugin_info = {"info_status":"enabled","cms_name":"WordPress","plugin_name":"Share Buttons by AddThis","plugin_version":"6.2.7","plugin_mode":"AddThis","anonymous_profile_id":"wp-f047919074be910c52a1e941c9b61241","page_info":{"template":"posts","post_type":""},"sharing_enabled_on_post_via_metabox":false}; } 
-                    (function() {
-                      var first_load_interval_id = setInterval(function () {
-                        if (typeof window.addthis !== 'undefined') {
-                          window.clearInterval(first_load_interval_id);
-                          if (typeof window.addthis_layers !== 'undefined' && Object.getOwnPropertyNames(window.addthis_layers).length > 0) {
-                            window.addthis.layers(window.addthis_layers);
-                          }
-                          if (Array.isArray(window.addthis_layers_tools)) {
-                            for (i = 0; i < window.addthis_layers_tools.length; i++) {
-                              window.addthis.layers(window.addthis_layers_tools[i]);
-                            }
-                          }
-                        }
-                     },1000)
-                    }());
-                </script> <script data-cfasync="false" type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6039ba14c0ef5a39"></script><link rel='stylesheet' id='yarppRelatedCss-css' href='https://www.iexpertify.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.30.1' media='all' />
-<link rel='stylesheet' id='lwptoc-main-css' href='https://www.iexpertify.com/wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4' media='all' />
-<script id='twenty-twenty-one-ie11-polyfills-js-after'>
-( Element.prototype.matches && Element.prototype.closest && window.NodeList && NodeList.prototype.forEach ) || document.write( '<script src="https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/polyfills.js?ver=1.2"></scr' + 'ipt>' );
-</script>
-<script src='https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/primary-navigation.js?ver=1.2' id='twenty-twenty-one-primary-navigation-script-js'></script>
-<script src='https://www.iexpertify.com/wp-content/themes/twentytwentyone/assets/js/responsive-embeds.js?ver=1.2' id='twenty-twenty-one-responsive-embeds-script-js'></script>
-<script src='https://www.iexpertify.com/wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.js?ver=2.1.4' id='lwptoc-main-js'></script>
-<script>
-	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",(function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}),!1);
-	</script>
-<style>.lwptoc .lwptoc_i{background-color:#eaeaea;}.lwptoc_header{color:#000000;}.lwptoc .lwptoc_i A{color:#8224e3;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#81d742;border-color:#81d742;}</style>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"780f2b698cda1366","version":"2022.11.3","r":1,"token":"f16aadd6ea834e8688697712549b4e6f","si":100}' crossorigin="anonymous"></script>
-</body>
-</html>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+
+    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+
+    <ul>
+        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+    </ul>
+
+    <h3>Connect with me:</h3>
+    <ul>
+        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+    </ul>
+
+<h3>My Resources:</h3>
+    <ul>
+        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+    </ul>
+
+    <h3>Languages and Tools:</h3>
+    <p>AWS, Bash, Cassandra, Django, Docker, Elasticsearch, Flask, Git, Go, Grafana, Hadoop, Hive, Hugo, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, Scikit-learn, SQLite</p>
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
