@@ -9,64 +9,6 @@
 
 
 Netezza Create View Syntax - learn
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  &lt; 1 minute
 <p>Utilize the create view statement to create a virtual table based on the result-set of a complex SQL statement that may have multiple table joins or a simple SELECT statement with selected columns that are needed to be viewed by the analyst group. Netezza Views are read-only. The system does not allow you an insert, update, or delete on a view.</p>
 Netezza Create View Syntax
@@ -78,6 +20,7 @@ CREATE &lt;OR REPLACE&gt; VIEW &lt;view_name&gt; AS SELECT &lt;query&gt;;
 <p>If you alter or change the underlying view table then that view will become obsolete and not usable until you re-compile that. IBM has provided the script that will allow you to check if view is obsolete. Generally, script is available at /nz/support/bin location. Ask your Netezza admin team for exact location. Below is the script and its usage:</p>
 nz_check_views [ database ] [-replace &lt;flag&gt;]
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

@@ -12,67 +12,10 @@ Surrogate Key Generator Stage in DataStage - Data Warehousing Data Warehousing
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  3 minutes
-
 <p>The Surrogate Key Generator stage is a processing stage that generates surrogate key columns and maintains the key source.A surrogate key is a unique primary key that is not derived from the data that it represents, therefore changes to the data will not change the primary key. In a star schema database, surrogate keys are used to join a fact table to a dimension table.The Surrogate Key Generator stage can have a single input link, a single output link, both an input link and an output link, or no links.Generated keys are unsigned 64-bit integers. The key source can be a flat file or a database sequence. If you are using a database sequence, the sequence must be created by the Surrogate Key stage. You cannot use a sequence previously created outside of DataStage.A surrogate key has the following characteristics:1) It is typically an integer.2) Surrogate keys are unique.3) Surrogate keys allow you to combine data from tables with incompatible keys.4) It has no meaning. You will not be able to know the meaning of that row of data based on the surrogate key value.5) It is not visible to end users. End users should not see a surrogate key in a report.You can use a Surrogate Key Generator stage to perform the following tasks: Create or delete the key source before other jobs run. Update a state file with a range of key values .    Generate surrogate key columns and pass them to the next stage in the job. View the contents of the state file.What is State File ?State File is a internal format file which is used for key management, it can keep track of previous values all by itself. It retrieve the last key used, generating new keys and writing the last key used back to the state file.Surrogate Key Stage Properties –Key Source Action = Create Source name = which must be a existing flat file ( Usually empty file but we can use a file which contain the old keys ) or a database sequence.source type = Flat fileView state file = No</p>
 <p>If the stat file exists we can update otherwise we can create and update it. If you want to delete existing state file then set Key Source Action = Delete. </p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

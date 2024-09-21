@@ -10,64 +10,6 @@
 
 Netezza storage - learn
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  3 minutes
 Netezza storage disks
 <p>The primary partition in each disk is used to store user data like database tables, the mirror stores a copy of the primary partition of another disk so that it can be used in the event of disk failures and the temp/swap partition is used to store the data temporarily like when the appliance does data redistribution while processing queries. The logical representation of the data saved in the primary partition of each disk is called the data slice. When users create database tables and loads data into it, they get distributed across the available data slices. Logical representation of data slices is called the data partition. </p>
 <p>For TwinFin systems each S-Blade or SPU is connected to 8 data partitions and some only to 6 disk partitions (since some disks are reserved for failovers). There are situations like SPU failures when a SPU can have more than 8 partitions attached to it since it got assigned some of the data partitions from the failed SPU. </p>
@@ -76,6 +18,7 @@ Netezza storage disks
 <p>What happens when a disk fails – Immediately after the disk stops responding, the disk with the mirror will be used by the system to satisfy queries for data from primary and mirror data. This will also create a bottleneck which in-turn impacts query performances. In the meantime, the contents in the failed disk  is regenerated on one of the spare disks in the disk array. Once the regen is complete the SPU data partition is updated to point to the data slice on the new disk. The regen process removes the bottleneck of disk to perform optimally. In the situation where a SPU fails, the appliance assigns all the data partitions to other SPUs in the system. Pairs of disks which contains the mirror copy of each other’s data slice will be assigned to other SPUs which will result in additional two data partitioned to be managed by the target SPU.</p>
 
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

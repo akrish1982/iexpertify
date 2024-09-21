@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Validator and Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        input, button {
+            font-size: 16px;
+            padding: 5px 10px;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .explanation {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .disclaimer {
+            border: 1px solid #ffcccc;
+            background-color: #fff5f5;
+            color: #cc0000;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Credit Card Validator and Generator</h1>
+    <div class="disclaimer">
+        <strong>Disclaimer:</strong> This utility runs completely within your browser. No information entered or generated here is sent to any server or transmitted over the internet. All processing occurs locally on your device.
+    </div>
+    <h2>Validate Credit Card Number</h2>
+    <input type="text" id="ccNumber" placeholder="Enter credit card number">
+    <button onclick="validateCreditCard()">Validate</button>
+    <div id="validationResult" class="result"></div>
+    <table id="cardInfo" style="display: none;">
+        <tr>
+            <th>Issuer</th>
+            <th>Major Industry Identifier</th>
+            <th>Issuer Identification Number</th>
+            <th>Personal Account Number & Checksum</th>
+        </tr>
+        <tr>
+            <td id="issuer"></td>
+            <td id="mii"></td>
+            <td id="iin"></td>
+            <td id="pan"></td>
+        </tr>
+    </table>
+
+    <h2>Generate Test Credit Card Number</h2>
+    <select id="issuerSelect">
+        <option value="visa">Visa</option>
+        <option value="mastercard">Mastercard</option>
+        <option value="amex">American Express</option>
+        <option value="discover">Discover</option>
+        <option value="dinersclub">Diners Club</option>
+        <option value="jcb">JCB</option>
+    </select>
+    <button onclick="generateCreditCard()">Generate</button>
+    <div id="generatedCC" class="result"></div>
+
+    <div class="explanation">
+        <h3>How Credit Card Validation is Processed</h3>
+        <p>This validator evaluates cards for Visa, MasterCard, Discover, American Express, Diners Club, and JCB cards. The validation process checks the following:</p>
+        <ul>
+            <li><strong>Luhn Algorithm:</strong> Ensures that the credit card number passes the Luhn algorithm to prove itself to be a valid credit card number.</li>
+            <li><strong>Major Industry Identifier (MII):</strong> The first digit of the credit card number.</li>
+            <li><strong>Issuer Identification Number (IIN):</strong> The next six digits after the MII.</li>
+            <li><strong>Personal Account Number & Checksum:</strong> The last digits include the personal account number and a checksum digit.</li>
+        </ul>
+        <p>The validator checks these components in the following order:</p>
+        <ol>
+            <li>First Digit – Major Industry Identifier</li>
+            <li>Six Digits – Issuer Identification Number</li>
+            <li>Remaining Digits – Personal Account Number and Checksum</li>
+        </ol>
+
+        <h3>How to Find Bank Identification Numbers</h3>
+        <p>The Bank Identification Number (BIN) is the first four to six digits of a cardholder number. It identifies both the major industry the card is primarily used with and the issuer of that card.</p>
+        <ul>
+            <li>The first number (MII) differentiates banking cards from other cards:</li>
+            <ul>
+                <li>3, 4, 5, 6: Banking and financial industries</li>
+                <li>1, 2: Airline industry</li>
+                <li>7: Petroleum industry</li>
+                <li>8: Healthcare or telecommunications industries</li>
+                <li>9, 0: Assignment by ISO or other national standards bodies</li>
+            </ul>
+            <li>Common issuer IIN ranges:</li>
+            <ul>
+                <li>Visa: All BINs starting with 4</li>
+                <li>American Express: BINs starting with 34 and 37</li>
+                <li>Mastercard: BINs starting with 2221-2720 and 51-55</li>
+                <li>Discover: BINs starting with 6011, 622126–622925, 624000–626999, 628200–628899, 64, or 65</li>
+            </ul>
+        </ul>
+        <p>Note: Due to the finite number of 4-6 digit BINs, issuers are starting to create 8-digit BINs. This doesn't change the length of the Primary Account Number (PAN) but affects the remaining digits used to identify specific accounts.</p>
+    </div>
+
+    <script>
+        function luhnCheck(num) {
+            let arr = (num + '').split('').reverse().map(x => parseInt(x));
+            let lastDigit = arr.splice(0, 1)[0];
+            let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
+            sum += lastDigit;
+            return sum % 10 === 0;
+        }
+
+        function identifyIssuer(num) {
+            const patterns = {
+                Visa: /^4/,
+                Mastercard: /^(5[1-5]|2[2-7])/,
+                'American Express': /^3[47]/,
+                Discover: /^(6011|65|64[4-9]|622)/,
+                'Diners Club': /^(30[0-5]|36|38)/,
+                JCB: /^35/
+            };
+            for (let [issuer, pattern] of Object.entries(patterns)) {
+                if (pattern.test(num)) return issuer;
+            }
+            return 'Unknown';
+        }
+
+        function validateCreditCard() {
+            let ccNum = document.getElementById('ccNumber').value.replace(/\D/g, '');
+            let isValid = luhnCheck(ccNum);
+            document.getElementById('validationResult').innerText = isValid ? 'Valid credit card number' : 'Invalid credit card number';
+            
+            if (isValid) {
+                let issuer = identifyIssuer(ccNum);
+                document.getElementById('issuer').innerText = issuer;
+                document.getElementById('mii').innerText = ccNum[0];
+                document.getElementById('iin').innerText = ccNum.slice(0, 6);
+                document.getElementById('pan').innerText = ccNum.slice(6);
+                document.getElementById('cardInfo').style.display = 'table';
+            } else {
+                document.getElementById('cardInfo').style.display = 'none';
+            }
+        }
+
+        function generateCreditCard() {
+            const issuer = document.getElementById('issuerSelect').value;
+            let prefix;
+            let length;
+
+            switch(issuer) {
+                case 'visa':
+                    prefix = '4';
+                    length = 16;
+                    break;
+                case 'mastercard':
+                    prefix = String(Math.floor(Math.random() * 5) + 51);
+                    length = 16;
+                    break;
+                case 'amex':
+                    prefix = Math.random() < 0.5 ? '34' : '37';
+                    length = 15;
+                    break;
+                case 'discover':
+                    prefix = '6011';
+                    length = 16;
+                    break;
+                case 'dinersclub':
+                    prefix = '36';
+                    length = 14;
+                    break;
+                case 'jcb':
+                    prefix = '35';
+                    length = 16;
+                    break;
+            }
+
+            while (prefix.length < length - 1) {
+                prefix += Math.floor(Math.random() * 10);
+            }
+
+            let checkDigit = 0;
+            while(!luhnCheck(prefix + checkDigit)) {
+                checkDigit = (checkDigit + 1) % 10;
+            }
+
+            let ccNum = prefix + checkDigit;
+            document.getElementById('generatedCC').innerText = 'Generated CC: ' + ccNum;
+        }
+    </script>
+</body>
+</html>

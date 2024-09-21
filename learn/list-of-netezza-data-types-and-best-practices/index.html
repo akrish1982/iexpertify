@@ -13,64 +13,6 @@ Netezza Data Types - learn
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  3 minutes
 <table><tbody><tr><td>Type</td><td>SIZE</td><td>DESCRIPTION</td></tr><tr><td>BOOL</td><td>1</td><td>boolean, ‘true’/’false’</td></tr><tr><td>CHAR</td><td>1</td><td>single character</td></tr><tr><td>INT8</td><td>8</td><td>~18 digit integer, 8-byte storage</td></tr><tr><td>INT2</td><td>2</td><td>-32 thousand to 32 thousand,   2-byte storage</td></tr><tr><td>INT4</td><td>4</td><td>-2 billion to 2 billion integer,   4-byte storage</td></tr><tr><td>FLOAT4</td><td>4</td><td>single-precision floating point   number, 4-byte storage</td></tr><tr><td>FLOAT8</td><td>8</td><td>double-precision floating point   number, 8-byte storage</td></tr><tr><td>DOUBLE</td><td>15</td><td>same as a FLOAT15, 15-bytes of   storge, 32-bit</td></tr><tr><td>BPCHAR</td><td>VAR</td><td>char(length), blank-padded string,   fixed storage length</td></tr><tr><td>VARCHAR</td><td>VAR</td><td>varchar(length), non-blank-padded   string, variable storage length</td></tr><tr><td>DATE</td><td>4</td><td>ANSI SQL date</td></tr><tr><td>TIME</td><td>8</td><td>hh:mm:ss, ANSI SQL time</td></tr><tr><td>TIMESTAMP</td><td>8</td><td>date and time</td></tr><tr><td>INTERVAL</td><td>12</td><td>@ , time interval</td></tr><tr><td>TIMETZ</td><td>12</td><td>hh:mm:ss, ANSI SQL time</td></tr><tr><td>NUMERIC</td><td>19</td><td>numeric(precision, decimal),   arbitrary precision number</td></tr><tr><td>INT1</td><td>1</td><td>-128 to 127, 1-byte storage</td></tr><tr><td>NCHAR</td><td>VAR</td><td>nchar</td></tr><tr><td>NVARCHAR</td><td>VAR</td><td>nvarchar</td></tr><tr><td>ST_GEOMETRY</td><td>VAR</td><td>st_geometry</td></tr><tr><td>VARBINARY</td><td>VAR</td><td>varbinary</td></tr></tbody></table>
 
 <p>Data type is an attribute that specifies type of data of any object. Each column, variable and expression has related data type in SQL. However, different database offers the different data types for columns. Netezza data types are almost similar to what the traditional RDBMS supports.</p>
@@ -133,6 +75,7 @@ Netezza Data Types Best Practices
 Restrictions: Netezza Database Maximum Lengths
 <ol><li>Columns: Maximum per table or view – 1600 (maximum 4 distributions per table)</li><li>Connections: Maximum connections to the server – 2000. Default connection value 500</li><li>Character: Maximum number of characters in a char/varchar field – 64,000. You will not be able to load file to table which exceeds 64,000 characters</li><li>Names: maximum length of database and column names – 128 bytes</li><li>Row size: Maximum row size – 65,535 bytes. Limit also applies to the result set of a query. Within each row, there is a small amount of overhead for special columns and other factors such as padding.</li></ol>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

@@ -11,64 +11,6 @@
 Netezza Zone Maps Best Practices - learn
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  5 minutes
  
 we will cover these topics: 
@@ -134,14 +76,15 @@ Other data types
 </ul>
 
 
-<a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/upskill/netezza-distribute-on/" rel="" style="border-radius:25px;background-color:#ba0c49;color:#fffffa">Clustered Based Tables</a>
-<a class="wp-block-button__link has-text-color" href="https://www.iexpertify.com/upskill/full-course/netezza/" rel="https://www.iexpertify.com/upskill/full-course/netezza/ noopener" style="border-radius:25px;color:#ba0c49" target="_blank">Full Netezza course</a>
+<a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/learn/netezza-distribute-on/" rel="" style="border-radius:25px;background-color:#ba0c49;color:#fffffa">Clustered Based Tables</a>
+<a class="wp-block-button__link has-text-color" href="https://www.iexpertify.com/learn/full-course/netezza/" rel="https://www.iexpertify.com/learn/full-course/netezza/ noopener" style="border-radius:25px;color:#ba0c49" target="_blank">Full Netezza course</a>
 
 <h2>Clustered Based Table for performance</h2>
 <p>In order to organize the existing records in the table, “GROOM TABLE” needs to be executed to take advantage of the data reorganization by queries. It is a good practice to have fact tables defined as clustered base tables with data organized on often joined columns to improve multi-dimensional lookup. At the same time care needs to be taken on the data organization columns by understanding the often executed queries and also minimizing the number of columns on which the data needs to be organized on. Compared to traditional indexes or using materialized views to improve performance, CBTs have a major advantage in terms of not using additional space but organizing the table data in place. One point to note is that by changing the data organization, it will impact the compression which may result in the increase or decrease in the size of the table storage after converting a table to a CBT.</p>
 Zone maps and joins
 <p>When two tables are joined together often like a customer table and order table, the distribution key selection of the two tables can play an important role in the performance of the queries. If the distribution key is on the join column, for e.g. customer id column in both the customer and order table, the data distribution will result in the records with the same customer id values ending up in the same data slice for both the tables. When a query joining the table is being processed, since the matching data from both the tables are in the same data slice the snippet processor will be able to perform the join locally and the send the result without performing additional work which in turn improves the performance of the query. If the tables are not distributed on the columns often used for join, matching data from both the tables will end up in different data slices which means, the snippet processor needs to perform additional work to satisfy the join. The appliance will choose to temporarily redistribute one of the tables on the join column if the other is already distributed on the join column and then the snippet processors can perform the join locally. If both the tables are not distributed on the join column, then the appliance may redistribute both the tables before the snippet processors can perform the join. If a table stored relatively small number of records then Netezza can decide to broadcast the whole table to all the SPUs so that each one has its own copy for processing. What this means is the host needs to consolidate the table data from all the data slices and send it across to all the SPUs the complete table data.</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

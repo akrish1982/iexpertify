@@ -10,64 +10,6 @@
 
 Netezza backup - learn
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  3 minutes
 Query to find database backup time – Netezza
 <p>You can use below query to find database backup time in Netezza environment. This query will provide the database backup time (Full / Differential / User backup) for each database along with the backup start and finish time. Query will not display any data for failed database backup attempts.
 Here we will query system view _v_backup_history in system database.</p>
@@ -105,6 +47,7 @@ Select DBNAME, STATUS,USERNAME,STARTTIME, LASTUPDATE from _V_Backup_History
 where DBNAME != 'NULL' and status = 'ACTIVE'
 <p>Here we have put DBNAME not equal to NULL because if a database is dropped from Netezza then it updates the backup tale and replace the database name with NULL.</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

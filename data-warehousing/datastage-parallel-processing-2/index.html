@@ -10,64 +10,6 @@
 
 DataStage Parallel Processing - Data Warehousing Data Warehousing
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  4 minutes
 <p>Following figure represents one of the simplest jobs you could have — a data source, a Transformer (conversion) stage, and the data target. The links between the stages represent the flow of data into or out of a stage. In a parallel job, each stage would normally (but not always) correspond to a process. You can have multiple instances of each process to run on the available processors in your system.</p>
 <p></p>
@@ -87,6 +29,7 @@ The Information Server engine combines pipeline and partition parallel processin
 <p>In some circumstances you might want to actually re-partition your data between stages. This could happen, for example, where you want to group data differently. Suppose that you have initially processed data based on customer last name, but now you want to process on data grouped by zip code. You will have to re-partition to ensure that all customers sharing the same zip code are in the same group. DataStage allows you to re-partition between stages as and when necessary. With the Information Server engine, re-partitioning happens in memory between stages, instead of writing to disk.</p>
 
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

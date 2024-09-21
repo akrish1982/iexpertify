@@ -15,64 +15,6 @@ Materialized Views in Netezza - learn
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  5 minutes
 <p>Materialized View is a sorted projection of one and only one table MVs reduce the width of the data being scanned by creating a thin version of the table–based on frequently queried columns. This selection of frequently queried columns is called projection.</p>
 <p>MVs are typically sorted like the base tables, but can be ordered on columns different from base table. This reduces table scans due to enhanced zone maps. and it improves query performance if the sorted columns are included in the “where” clause of the query.  Essentially, MVs improve performance by reducing the amount of data transferred from the disk to the CPU-RAM.</p>
@@ -150,6 +92,7 @@ To create materialized view
 <p class="has-vivid-cyan-blue-color has-text-color">CREATE MATERIALIZED VIEW CUSTOMER_DIM_MVASSELECTcustomer_key,persona_key,customer_birthdate,customer_zip,update_datetimeFROMCUSTOMER_DIMORDER BY customer_key;</p>
 <p class="has-vivid-cyan-blue-color has-text-color">selectcustomer_key, customer_birthdate, customer_emailfrom (select base.customer_key,cd.customer_birthdate,cd.customer_email,row_number() over (partition by base.customer_key order by cd.update_datetime desc) trans_datefrom extract_base basejoin CUSTOMER_DIM cd on base.customer_key = cd.customer_key) awhere a.trans_date = 1;</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

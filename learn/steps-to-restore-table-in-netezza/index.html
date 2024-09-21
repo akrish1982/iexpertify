@@ -10,64 +10,6 @@
 
 Steps to restore Netezza table - learn
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  2 minutes
 <p>Steps to restore table in Netezza:</p>
 <p>1) Find the backup history of database you want to restore by running below query.</p>
  select DBName, DBNAMEORIG, OPTYPE as Backup_Type, StartTime, BackupSet, Logfile
@@ -99,6 +41,7 @@ TEST_DB TEST_DB FULL 2013-08-05 07:09:39 20130805110939 backupsvr.9521.2013-08-0
 <p>Or use below command if you have to restore this table in different database</p>
 <p>nzrestore -db TEST_DB1 -sourcedb TEST_DB -backupset 20130812103915 -tables Table_Name -dir /netezza/backup_Path/testserver.domain.com</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

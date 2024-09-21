@@ -9,64 +9,6 @@
 
 
 Distribution key in Netezza - learn
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  7 minutes
 <p>At the point when you create a table in Netezza database, selecting column/s being a member of distribution key is one of the critical decision for good execution of the queries that will run against the table.</p>
 <p>The following are some of the key points to remember when we select distribution key:</p>
@@ -135,11 +77,12 @@ GENERATE EXPRESS STATISTICS ON USER1.RENAME_DEMO;</p>
 <p>A key thing to realize is netezza doesn’t need to distribute purely on all of the distinct, group by , or partition over columns.  It just needs to make sure that all of that set of data is there local on the spu.  For example if you had zipcode and customer id.  Lets say we know that customer is a pure child of zipcode, in that a customer only has one zipcode and a zipcode has many customers.   It doesn’t need to redistribute on customer_id if it’s already distributed at the zipcode level.  But it has to know this relationship.  So that means in distinct or group by to make sure that zipcode is included.  Or in a partition over statement partition over zipcode, customer_id.   What I’ve seen if the optimizer sees that it is already distributed at that higher, courser grain  AND it sees that that grain’s cardinality has things pretty evenly spread out, it will usually just leave things at that distribution.  It can do this because if customers don’t cross zipcodes, and zipcodes don’t cross spus, then customers don’t cross spus.    What I do see though is if it’s going to need to do redistributions, it would redistribute on all of the column values.  I see this especially on group bys.  Sometimes joins and partition overs are a little smarter if there is a common higher grain to handle both.</p>
 <p>So  to summarize, in addition to joins , colocation of data through table distribution or redistribution is also needed for count distincts (or any agg distinct), partition overs in analytic functions,  and column grouping in group by or select distincts.  A really good table distribution strategy will find a column, perhaps like a user_id or customer_id  that can commonly be used for joins and these other calculations.  If you can find a good common distribution like that things will run very very fast.</p>
 
-<a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/upskill/full-course/netezza/" style="border-radius:2px;background-color:#ba0c49;color:#fffffa">Full Course</a>
+<a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/learn/full-course/netezza/" style="border-radius:2px;background-color:#ba0c49;color:#fffffa">Full Course</a>
 <a class="wp-block-button__link has-text-color" style="border-radius:2px;color:#ba0c49">Next: Loading and Unloading Tables</a>
 
 <p></p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
