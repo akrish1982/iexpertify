@@ -9,67 +9,10 @@
 
 
 NULL handling functions in Datastage - Data Warehousing Data Warehousing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  &lt; 1 minute
 <table><tbody><tr><td>If IsNotNull(mylink.mycolumn) Then mylink.mycolumn Else “NULL”</td><td> If the Derivation field for an output column contained the following code, then the Transformer stage checks if the input column named mylink.mycolumn contains a null value. If the input column does not contain a null, the output column contains the value of the input column. If the input column does contain a null, then the output column contains the string NULL</td></tr><tr><td>If IsNull(mylink.mycolumn) Then “NULL” Else mylink.mycolumn</td><td> If the Derivation field for an output column contained the following code, then the Transformer stage checks if the input column named mylink.mycolumn contains a null value. If the input column contains a null, the output column contains the string NULL. If the input column does not contain a null, then the output column contains the value of the input column</td></tr><tr><td>NullToEmpty(mylink.mycolumn)</td><td>Returns an empty string if the input column is null, otherwise returns the input column value</td></tr><tr><td>NullToZero(mylink.mycolumn)</td><td>Returns zero if the input column is null, otherwise returns the input column value</td></tr><tr><td>NullToValue(mylink.mycolumn,42)</td><td>Returns the specified value if the input column is null, otherwise returns the input column value</td></tr><tr><td>setnull()</td><td>Assigns a null value to the target column</td></tr></tbody></table>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

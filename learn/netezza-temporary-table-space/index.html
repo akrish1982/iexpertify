@@ -11,69 +11,12 @@
 Netezza Temporary Table Space -
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  2 minutes
 <p>In IBM PureData System for Analytics, each disk is roughly equally divided into 3 partitions:1. The first partition holds the primary copy of one dataslice2. The second partition holds a mirror copy of a dataslice from a different disk.3. The temp partition is used to store data that is generated during query execution. Temporary tables, intermediary results, etc.</p>
 <p>• When we use temporary tables, it is this third partition, the temp space, that we risk filling up.• It is important to only create the minimum number of temporary tables needed at a time. It is also important to only make the temporary tables as large as needed.• Temporary tables are local to a session rather than a specific query. This means that the table may be used repeatedly within a user session. That is the major difference between Temporary tables (multiple use) and derived tables (single use). A Temporary table is materialized in swap space. However, it is not discarded until the session ends or when the user manually drops it.</p>
 Storage layers
 <p>When explicitly creating large temporary tables used in JOINs it is recommended to GENERATE STATISTICS on the temporary table.</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

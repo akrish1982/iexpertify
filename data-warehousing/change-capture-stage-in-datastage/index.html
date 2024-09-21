@@ -10,66 +10,9 @@
 
 Change Capture Stage in DataStage - Data Warehousing Data Warehousing
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  2 minutes
 <p>Change Capture StageIt captures the change between two input data by comparing them based on key column.The two input links are linked with Change Capture stage by the two default link names  i.e. ‘Before’ and ’After’.The stage produces a change data set, whose table definition is transferred from the after data set’s table definition with the addition of one column: a change code with values encoding the four actions: insert, delete, copy, and edit.0 = If the data is copied as it is from ‘Before’ Link to ‘After’ Link1 = If the data is newly Inserted in ‘After’ link2 = If the data is Deleted from ‘Before’ link3 = If the data is Edited in ‘After’ link from ‘Before’ linkDifferent OptionsChange Keys/Key -&gt; Name of column to be used as a key.Change Values/Value -&gt; Type: Input ColumnName of a value column. When a before and after row are determined to be copies based on the difference keys, the value columns can then be used to determine if the after row is an edited version of the before row.Change Mode -&gt; 1. Explicit Keys &amp; Values  2. All keys, Explicit values  3. Explicit Keys, All ValuesChange Mode’ is the ‘Option’ which helps you to define keys &amp; Values explicitly or implicitly.Choose All keys, Explicit values to specify that value columns must be defined, but all other columns are key columns unless excluded. Choose Explicit Keys, All Values to specify that key columns must be defined but all other columns are value columns unless they are excluded.Example:Before DatasetCOL_1   A   BAfter DatasetCOL_1   C   B take above two datasets -&gt; change capture stage -&gt; sequential file and add COL_1 and CHANGE_CODE column to outputoutput will be:COL_1      CHANGE_CODE    A 2    B 0    C 1    Change Apply stageThe Change Apply stage is a processing stage. It takes the change data set, that contains the changes in the before and after data sets, from the Change Capture stage and applies the encoded change operations to a before data set to compute an after data set.</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

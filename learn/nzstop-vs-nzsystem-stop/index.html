@@ -10,68 +10,11 @@
 
 Difference between Nzstop vs Nzsystem stop -
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  &lt; 1 minute
 
 <table><thead><tr><th>  Nzstop    </th><th>   nzsystem stop   </th><th>   nzsystem stop -now   </th></tr></thead><tbody><tr><td>   Stops Netezza immediately by killing the queries that are running currently. This is the recommended   command to stop Netezza.   NOTE: You can run   nzstart/nzstop directly on server only. You cannot issue these commands from   a client machine.   </td><td>   Waits for the   current active queries to complete before stopping. All the queued and new   requests are killed.   </td><td>   Similar to nzstop,   this command also stops Netezza immediately by killing the currently running   queries.   NOTE: when you use   “-now” with any state like pause, offline, restart, and stop system will   abort all the running transactions and will immediately change to that state.   </td></tr></tbody></table>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

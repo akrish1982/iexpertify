@@ -10,64 +10,6 @@
 
 Netezza Distribute on - learn
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
 Reading Time:  6 minutes
 <p class="has-drop-cap">When users create tables in databases and store data into it, data gets stored in disk extents which is the minimum storage allocated on disks for data storage. Netezza distributes the data in data extents across all the available data slices based on the distribution key specified during the table creation. If you don’t want to distribute randomly, a maximum of four columns can be mentioned as distribution key during table creation process. If a user provides no distribution specification, Netezza uses one of the columns to distribute the data and the selection of which cannot be influenced.</p>
 <p class="has-drop-cap">When the user specifies particular column for distribution then Netezza uses the column data to distribute the records being inserted across the dataslices. Netezza uses hashing to determine the dataslice into which the record needs to be stored. When the user selects random as the option for data distribution, then the appliance uses round robin algorithm to distribute the data uniformly across all the available dataslices.</p>
@@ -86,6 +28,7 @@ Netezza Distribution Key
 <ul><li>The datatype matters between a varchar and a bigint in more than just width of the field.</li><li>The bigint can be compared to another bigint in the CPU with a hardware subtract, usually on a CPU register (very close to the hardware)</li><li>A varchar however, has to be interpreted, that is, compared against each other in loop, requiring an algorithm in the CPU.</li><li>Integer/binary keys will operate 100x faster than their varchar counterparts. This is why dates are ultimately stored as binary and numeric(18,x) as scaled bigint.</li><li>Why does a binary key operate faster? If we perform a comparison on a varchar, it will have to loop through the characters, comparing one-or-several at a time until it gets a match/mismatch. With a binary value, it’s a register-based subtraction on the CPU, about as close to the metal as we can get. In short, binary comparison is on the deep-metal. Varchar comparison requires a firmware algorithm.</li></ul>
 <p>Some helpful Documentation: • <a href="https://www.ibm.com/developerworks/community/blogs/Netezza/entry/distribution_what_s_up_with_that13?lang=en">https://www.ibm.com/developerworks/community/blogs/Netezza/entry/distribution_what_s_up_with_that13?lang=en</a></p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

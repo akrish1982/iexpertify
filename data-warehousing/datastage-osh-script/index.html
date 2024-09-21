@@ -11,64 +11,6 @@
 DataStage OSH Script - Data Warehousing Data Warehousing
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  3 minutes
 <p>The IBM InfoSphere DataStage and QualityStage Designer client creates IBM InfoSphere DataStage jobs that are compiled into parallel job flows, and reusable components that execute on the parallel Information Server engine. It allows you to use familiar graphical point-and-click techniques to develop job flows for extracting, cleansing, transforming, integrating, and loading data into target files, target systems, or packaged applications.</p>
 <p>The Designer generates all the code. It generates the OSH (Orchestrate SHell Script) and C++ code for any Transformer stages used.Briefly, the Designer performs the following tasks:* Validates link requirements, mandatory stage options, transformer logic, etc.* Generates OSH representation of data flows and stages (representations offramework “operators”).* Generates transform code for each Transformer stage which is then compiledinto C++ and then to corresponding native operators.* Reusable BuildOp stages can be compiled using the Designer GUI or fromthe command line.</p>
 
@@ -81,6 +23,7 @@ Reading Time:  3 minutes
 <p>Framework (Information Server Engine) terms and DataStage terms have equivalency. The GUI frequently uses terms from both paradigms. Runtime messages use framework terminology because the framework engine is where execution occurs. The following list shows the equivalency between framework and DataStage terms:* Schema corresponds to table definition* Property corresponds to format* Type corresponds to SQL type and length* Virtual data set corresponds to link* Record/field corresponds to row/column* Operator corresponds to stage</p>
 <p>Note: The actual execution order of operators is dictated by input/output designators, and not by their placement on the diagram. The data sets connect the OSH operators. These are “virtual data sets”, that is, in memory data flows. Link names are used in data set names — it is therefore good practice to give the links meaningful names.</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

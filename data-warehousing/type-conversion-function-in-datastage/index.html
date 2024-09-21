@@ -10,66 +10,9 @@
 
 Type conversion function in Datastage - Data Warehousing Data Warehousing
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  3 minutes
 <table><tbody><tr><td>Char(65)</td><td>Generates an ASCII character from its numeric code value. You can optionally specify the allow8bits argument to convert 8-bit ASCII valuesThe following example outputs the ASCII code 65 as the character A.</td></tr><tr><td>Seq(“A”)</td><td>Generates a numeric code value from an ASCII character. You can optionally specify the allow8bits argument to convert 8-bit ASCII values.The following example outputs the character A as the ASCII code 65. </td></tr><tr><td>DateToString(mylink.mydate, “%dd:%mm:%yyyy”)</td><td>The following example outputs the date contained in the column mylink.mydate to a string with the format dd:mm:yyyy. If mylink.mydate contained the date 18th August, 2009, then the output string would be “18:08:2009”:</td></tr><tr><td>StringToDate(mylink.mystring,”%dd:%mm:%yyyy”)</td><td>If the column mylink.mystring contains the string ″18:08:1958″, then the following function returns the date 1958–08–18. </td></tr><tr><td>DateToDecimal (mylink.basedate, “%dd%mm%yyyy”)</td><td>If the column mylink.basedate contains the date 2012-08-18, then the following function stores the date as the decimal number 18082012:</td></tr><tr><td>DecimalToDate (mylink.basedate, “%dd%mm%yyyy”)</td><td>If the column mylink.mydecdata contains the value 18082012, then the following function returns the date 2012-08-18:</td></tr><tr><td>DecimalToDecimal(mylink.mydec,”ceil”)</td><td> If the column mylink.mydec contains the decimal number 2.5345, the following function returns the decimal number 00000002.54</td></tr><tr><td>DecimalToString(mylink.mydec,”suppress_zero”)</td><td>If the column mylink.mydec contains the decimal number 00000004.00, the following function returns the string “0000000000000000000000000004.0000000000”.</td></tr><tr><td>DecimalToString(mylink.mydec,”fix_zero”)</td><td>If the column mylink.mydec contains the decimal number 00012344.00, the following function returns the string “12344”.</td></tr><tr><td>StringToDecimal(mylink.mystring,”ceil”)</td><td>If the column mylink.mystring contains the string “19982.2276”, and the target is defined as having a precision of 7 and a scale of 2, then the following function returns the decimal 19983.23.</td></tr><tr><td>DecimalToTimestamp(mylink.mytimestampdec, “%hh%nn%ss%yy%mm%dd”)</td><td>If the column mylink.mytimestampdec contains the decimal value 200658580818, then the following function returns the timestamp 1958–08–18 20:06:58:</td></tr><tr><td>IsValid(“int8”,mylink.mystring)</td><td>If the column mylink.mystring contains the string “1”, then the following function returns the value 1If the column mylink.mystring contains the string “380096.06”, then the following function returns the value 0.</td></tr><tr><td>IsValidDate(mylink.mydate)</td><td> If the column mylink.mydate contains the date 2011-09-13, then the following function returns the value 1.If the column mylink.mydate contains the string “380096.06”, then the following function returns the value 0, because the converted string is not a valid date.</td></tr><tr><td>IsValidDecimal(mylink.mynum)</td><td> If the column mylink.mynum contains the value 310007.65, then the following function returns the value 1.If the column mylink.mynum contains the string “wake-robin”, then the following function returns the value 0, because the converted string is not a valid decimal.</td></tr><tr><td>IsValidTime(mylink.mytime)</td><td>If the column mylink.mytime contains the time 23:09:22, then the following function returns the value 1:If the column mylink.mydate contains the string “IbnKayeed”, then the following function returns the value 0, because the converted string is not a valid time.</td></tr><tr><td>IsValidTimestamp(mylink.mytimestamp)</td><td>If the column mylink.mytimestamp contains the time 2011-09-13 23:09:22, then the following function returns the value 1:If the column mylink.mytimestamp contains the string “one of two”, then the following function returns the value 0, because the converted string is not a valid timestamp.</td></tr><tr><td>StringToTime(mylink.mystring,”%(h,s):$(n,s):$(s,s)”)</td></tr></tbody></table>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

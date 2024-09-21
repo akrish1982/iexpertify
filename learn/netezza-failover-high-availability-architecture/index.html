@@ -14,64 +14,6 @@ Netezza Failover Architecture - learn
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
-
-
-
-
-
-
-
-Reading Time:  2 minutes
 <p>As an appliance Netezza includes necessary failover components to function seamlessly in the event of any hardware issues so that its availability is more than 99.99%. There are two hosts in a cluster in all the Netezza appliances so that if one fails the other one can takes over.</p>
 <p>Netezza uses Linux-HA (High Availability) and Distributed Replicated Block Device for the host cluster management and mirroring of data between the hosts. </p>
 <p>As far as data storage is concerned, one third of every disk in the disk array stores primary copy of user data, a third stores mirror of the primary copy of data from another disk and another third of the disk is used for temporary storage.</p>
@@ -80,6 +22,7 @@ Reading Time:  2 minutes
 Netezza Failover
 <p class="has-drop-cap">In the event of disk failure the mirror copy will be used and the SPU to which the disk in error was attached will be updated with the disk holding the mirror copy. In the event of error in a disk track, the track will be marked as invalid and valid data will be copied from the mirror copy on to a new track. If there are any issues with one of the S-Blades, other S-Blades will be assigned the work load. All failures will be notified based on event monitors defined and enabled. Similar to the dual host for high availability, the appliance also has dual power systems and all the connection between the components like host to SPA and SPA to disk array also has a secondary. Any issues with the hardware components can be viewed through the NZAdmin GUI tool.</p>
 
+<br><br>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
