@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Beautifier Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .settings {
+            margin: 20px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 400px;
+            padding: 10px;
+            font-family: monospace;
+        }
+        .instructions {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML Beautifier/Formatter Tool</h1>
+    
+    <div class="instructions">
+        <h3>How to Use:</h3>
+        <ol>
+            <li>Paste your HTML code in the input textarea on the left</li>
+            <li>Configure your formatting preferences:
+                <ul>
+                    <li>Choose indentation type (spaces or tabs)</li>
+                    <li>Set the number of spaces for indentation (if using spaces)</li>
+                    <li>Select line wrapping length</li>
+                </ul>
+            </li>
+            <li>Click "Format HTML" to see the beautified result</li>
+        </ol>
+    </div>
+
+    <div class="settings">
+        <label>Indentation: </label>
+        <select id="indentType">
+            <option value="space">Spaces</option>
+            <option value="tab">Tabs</option>
+        </select>
+
+        <label>Spaces: </label>
+        <select id="spaceCount">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+        </select>
+
+        <label>Wrap Lines: </label>
+        <select id="wrapLength">
+            <option value="0">Don't wrap</option>
+            <option value="40">40 characters</option>
+            <option value="70">70 characters</option>
+            <option value="80">80 characters</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div>
+            <h3>Input HTML:</h3>
+            <textarea id="input" placeholder="Paste your HTML code here..."></textarea>
+        </div>
+        <div>
+            <h3>Formatted Output:</h3>
+            <textarea id="output" readonly></textarea>
+        </div>
+    </div>
+
+    <button onclick="formatHTML()">Format HTML</button>
+
+    <script>
+        function formatHTML() {
+            const input = document.getElementById('input').value;
+            const indentType = document.getElementById('indentType').value;
+            const spaceCount = parseInt(document.getElementById('spaceCount').value);
+            const wrapLength = parseInt(document.getElementById('wrapLength').value);
+
+            // Create indentation string
+            const indent = indentType === 'space' ? ' '.repeat(spaceCount) : '\t';
+
+            // Basic HTML formatting
+            let formatted = '';
+            let depth = 0;
+            let lines = input
+                .replace(/>\s+</g, '><')
+                .replace(/</g, '\n<')
+                .split('\n')
+                .filter(line => line.trim());
+
+            lines.forEach(line => {
+                // Decrease depth for closing tags
+                if (line.match(/^<\//)) {
+                    depth--;
+                }
+
+                // Add indentation
+                let currentLine = indent.repeat(Math.max(0, depth)) + line;
+
+                // Handle line wrapping
+                if (wrapLength > 0 && currentLine.length > wrapLength) {
+                    // Basic wrapping implementation
+                    currentLine = currentLine.replace(
+                        new RegExp(`(.{${wrapLength}})`, 'g'),
+                        '$1\n' + indent.repeat(Math.max(0, depth))
+                    );
+                }
+
+                formatted += currentLine + '\n';
+
+                // Increase depth for opening tags that aren't self-closing
+                if (line.match(/^<[^/]/) && !line.match(/\/>$/)) {
+                    depth++;
+                }
+            });
+
+            document.getElementById('output').value = formatted.trim();
+        }
+    </script>
+</body>
+</html> 
