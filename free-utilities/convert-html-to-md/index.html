@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML to Markdown Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 400px;
+            padding: 10px;
+            font-family: monospace;
+        }
+        .instructions {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #copyButton {
+            background-color: #008CBA;
+        }
+        #copyButton:hover {
+            background-color: #007399;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML to Markdown Converter</h1>
+    
+    <div class="instructions">
+        <h3>How to Use:</h3>
+        <ol>
+            <li>Paste your HTML code in the input textarea on the left</li>
+            <li>Click "Convert to Markdown" to see the converted result</li>
+            <li>Use the "Copy to Clipboard" button to copy the result</li>
+        </ol>
+        <p><strong>Note:</strong> This converter handles common HTML elements including:</p>
+        <ul>
+            <li>Headings (h1-h6)</li>
+            <li>Paragraphs</li>
+            <li>Links</li>
+            <li>Lists (ordered and unordered)</li>
+            <li>Bold and italic text</li>
+            <li>Code blocks</li>
+            <li>Blockquotes</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div>
+            <h3>Input HTML:</h3>
+            <textarea id="input" placeholder="Paste your HTML code here..."></textarea>
+        </div>
+        <div>
+            <h3>Markdown Output:</h3>
+            <textarea id="output" readonly></textarea>
+        </div>
+    </div>
+
+    <button onclick="convertToMarkdown()">Convert to Markdown</button>
+    <button id="copyButton" onclick="copyToClipboard()">Copy to Clipboard</button>
+
+    <script>
+        function convertToMarkdown() {
+            const html = document.getElementById('input').value;
+            let markdown = html;
+
+            // Convert headings
+            markdown = markdown.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n');
+            markdown = markdown.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n');
+            markdown = markdown.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1\n');
+            markdown = markdown.replace(/<h4[^>]*>(.*?)<\/h4>/gi, '#### $1\n');
+            markdown = markdown.replace(/<h5[^>]*>(.*?)<\/h5>/gi, '##### $1\n');
+            markdown = markdown.replace(/<h6[^>]*>(.*?)<\/h6>/gi, '###### $1\n');
+
+            // Convert paragraphs
+            markdown = markdown.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
+
+            // Convert links
+            markdown = markdown.replace(/<a[^>]*href="(.*?)"[^>]*>(.*?)<\/a>/gi, '[$2]($1)');
+
+            // Convert bold text
+            markdown = markdown.replace(/<strong[^>]*>(.*?)<\/strong>/gi, '**$1**');
+            markdown = markdown.replace(/<b[^>]*>(.*?)<\/b>/gi, '**$1**');
+
+            // Convert italic text
+            markdown = markdown.replace(/<em[^>]*>(.*?)<\/em>/gi, '*$1*');
+            markdown = markdown.replace(/<i[^>]*>(.*?)<\/i>/gi, '*$1*');
+
+            // Convert unordered lists
+            markdown = markdown.replace(/<ul[^>]*>([\s\S]*?)<\/ul>/gi, function(match, content) {
+                return content.replace(/<li[^>]*>(.*?)<\/li>/gi, '* $1\n');
+            });
+
+            // Convert ordered lists
+            markdown = markdown.replace(/<ol[^>]*>([\s\S]*?)<\/ol>/gi, function(match, content) {
+                let index = 1;
+                return content.replace(/<li[^>]*>(.*?)<\/li>/gi, function(match, item) {
+                    return `${index++}. ${item}\n`;
+                });
+            });
+
+            // Convert code blocks
+            markdown = markdown.replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, '```\n$1\n```');
+            markdown = markdown.replace(/<code[^>]*>(.*?)<\/code>/gi, '`$1`');
+
+            // Convert blockquotes
+            markdown = markdown.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, '> $1\n');
+
+            // Clean up
+            markdown = markdown
+                .replace(/&nbsp;/g, ' ')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/\n\s*\n/g, '\n\n')
+                .trim();
+
+            document.getElementById('output').value = markdown;
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('output');
+            output.select();
+            document.execCommand('copy');
+            
+            const copyButton = document.getElementById('copyButton');
+            const originalText = copyButton.textContent;
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => {
+                copyButton.textContent = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
