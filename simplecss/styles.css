@@ -19,11 +19,54 @@ a:hover {
     text-decoration: underline;
 }
 header, footer {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
     text-align: center;
-    padding: 10px 0;
     border-bottom: 1px solid #ccc;
 }
 footer {
     border-top: 1px solid #ccc;
     margin-top: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+nav ul li {
+    margin-right: 20px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+h1 {
+    font-size: 36px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+ul {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+li {
+    margin-bottom: 10px;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+p {
+    margin-top: 10px;
 }
