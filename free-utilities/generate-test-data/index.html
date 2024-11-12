@@ -53,6 +53,11 @@
             border-radius: 5px;
             overflow-x: auto;
         }
+        #preview {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
@@ -179,6 +184,8 @@
             return str.charAt(0).toUpperCase() + str.slice(1);
         }
 
+        let currentData = null;  // Store the current data for preview updates
+
         // Data types mapping
         const dataTypes = {
             name: () => faker.name(),
@@ -228,6 +235,19 @@
             document.getElementById(`field-${id}`).remove();
         }
 
+        function updatePreview() {
+            if (currentData) {
+                const format = document.getElementById('format').value;
+                const previewData = currentData.slice(0, 3);  // Always show first 3 rows
+                
+                const content = format === 'json'
+                    ? JSON.stringify(previewData, null, 2)
+                    : convertToCSV(previewData);
+                
+                document.getElementById('preview').textContent = content;
+            }
+        }
+
         function generateData() {
             const fields = document.querySelectorAll('.field-container');
             const rowCount = parseInt(document.getElementById('rowCount').value);
@@ -258,9 +278,9 @@
                 data.push(row);
             }
 
-            // Preview first 3 rows
-            document.getElementById('preview').textContent = 
-                JSON.stringify(data.slice(0, 3), null, 2);
+            // Store the current data and update preview
+            currentData = data;
+            updatePreview();
 
             // Download file
             const content = format === 'json' 
