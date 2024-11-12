@@ -106,3 +106,13 @@ button:hover {
 #copyButton:hover {
     background-color: #007399;
 }   
+
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-left: 3px solid #007acc;
+    overflow-x: auto;
+}
+code {
+    color: #d14;
+}
