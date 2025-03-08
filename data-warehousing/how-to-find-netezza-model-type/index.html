@@ -1,112 +1,94 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head></html><!DOCTYPE html>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<body>
+  <article>
     <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
+      <h1>How to Find Netezza Model Type in Data Warehousing</h1>
+      <p>Understanding the model type of your Netezza system is crucial for performance tuning, system upgrades, and capacity planning. This article explains how to identify the model type of a Netezza appliance using SQL queries and system tables.</p>
     </header>
+    
+    <section>
+      <h2>Introduction to Netezza</h2>
+      <p>Netezza, now part of IBM PureData System for Analytics, is a data warehousing appliance that challenges traditional databases by providing high-performance data processing capabilities. Knowing the model type of your Netezza appliance helps in managing and optimizing the system.</p>
+    </section>
 
+    <section>
+      <h2>Finding the Netezza Model Type</h2>
+      <p>To find the Netezza model type, you need to access specific system tables and run a query against them. Here's how you can achieve that:</p>
+      
+      <h3>Using the SYSTABLES System Table</h3>
+      <p>The <code>SYSTABLES</code> table contains various metadata about the database, including system-specific information. The model type can be extracted by a simple SELECT query:</p>
+      <pre><code>SELECT * FROM _v_system_info;</code></pre>
 
+      <p>Alternatively, the following query can be used to extract just the model type information:</p>
+      <pre><code>SELECT system_sn, model, version FROM _v_system_info;</code></pre>
+    </section>
 
+    <section>
+      <h2>Interpreting the Results</h2>
+      <p>The results from the above queries will provide detailed information about your Netezza appliance. Below is an interpretation table of common model types:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10000-0000-DEFAULT</td>
+            <td>The standard Netezza appliance model type.</td>
+          </tr>
+          <tr>
+            <td>10050-0011-TWINFIN</td>
+            <td>Netezza TwinFin, known for enhanced scalability and performance.</td>
+          </tr>
+          <tr>
+            <td>10080-0021-STRIPER</td>
+            <td>The Striper model adds additional capacity and performance benchmarks.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
+    <section>
+      <h2>Understanding Model Types with an Illustration</h2>
+      <p>To further explain the architecture, let's look at a diagram of a typical Netezza appliance:</p>
+      <img src="netezza-architecture-diagram.png" alt="Netezza Appliance Architecture" />
 
+      <p>The architecture diagram above provides a high-level view of the internal components related to different model types, including disk storage and processing nodes.</p>
+    </section>
 
-How to find Netezza model? - Data Warehousing Data Warehousing
-
-
-<p>Find Netezza Model</p>
-<p>To find if Netezza system is a Mustang box, TwinFin or Striper use the nz_get_model command by connecting to the server using putty or query the system table:</p>
-<p>1) Run Netezza provided support script nz_get_model</p>
-<p>eg. Below was run on Mustang 10100 model</p>
-/export/home/nz-&gt;nz_get_model10100SL
-<p>eg. Below was run on TwinFin 12 (newer model)</p>
-/nz/support/bin-&gt;nz_get_modelIBM PureData System for Analytics N1001-010eg. Below was run on TwinFin 48 (old model)/export/home/nz-&gt;nz_get_modelIBM Netezza 1000-48
-<p>eg. Below was run on Striper (1 rack)</p>
-/export/home/nz-&gt;nz_get_modelIBM PureData System for Analytics N2001-010
-<p>2) If you are on version 5 or above then you can find the system family and details by running below sql query</p>
-<p>eg. Below query was run on TwinFin 48. NPS_MODEL = P400X_A means 4 rack i.e. TF-48</p>
-select * from _t_environ where name like ‘NPS%’;NAME | VAL————–+———NPS_PLATFORM | xsNPS_MODEL | P400X_ANPS_FAMILY | PSeries
-<p> </p>
-<p>eg. Below query was run on TwinFin 12</p>
-select * from _t_environ where name like ‘NPS%’;NAME | VAL————–+———NPS_PLATFORM | xsNPS_MODEL | P100_ANPS_FAMILY | PSeries
-<p>eg. Below query was run on TwinFin 120</p>
-<p>select * from _t_environ where name like ‘NPS%’;NAME | VAL————–+————NPS_PLATFORM | xsNPS_MODEL | P1000X_A_ENPS_FAMILY | PSeriesNOTE: NPS_MODEL = P* means TwinFin machine and NPZ_MODEL = Q* means Striper series. For 10 rack Striper NPS_Model will be Q1000*</p>
-<p>Also, under NPS_FAMILY, PSeries means TwinFin and QSeries means Striper.</p>
-
-
-
-<br><br>
+    <section>
+      <h2>Conclusion</h2>
+      <p>Identifying the Netezza model type is a straightforward process but a critical step in ensuring efficient management and proper system upgrades. Regularly checking your system's type and specifications can help in aligning your operations with the best practices for data performance management.</p>
+    </section>
+  </article>
+</body>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
     <ul>
         <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
         <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
         <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
         <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
     </ul>
-
     <h3>Connect with me:</h3>
     <ul>
         <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
         <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
     </ul>
-
-<h3>My Resources:</h3>
+    <h3>My Resources:</h3>
     <ul>
         <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
         <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
         <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
     </ul>
-
     <h3>Languages and Tools:</h3>
     <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+    </body></html>
