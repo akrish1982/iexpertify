@@ -1,105 +1,77 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header><body>
+    <h1>Netezza Architecture</h1>
+    <p>The Netezza architecture provides a robust and scalable platform for large-scale data warehousing and business intelligence applications.</p>
+    
+    <h2>Data Processing Pipeline</h2>
+    <img src="data-processing-pipeline.png" alt="Data Processing Pipeline">
+    <p>The data processing pipeline in Netezza consists of several stages:</p>
+    <ol>
+        <li><strong>Load Stage**: Data is loaded from various sources such as flat files, relational databases, and other data warehouses.</li>
+        <li><strong>Transform Stage**: The data is transformed to meet the requirements of the target database. This may include formatting data types, handling missing values, and applying business rules.</li>
+        <li><strong>Store Stage**: The transformed data is stored in the Netezza database. Netezza uses a column-store architecture which allows for efficient storage and querying of large datasets.</li>
+    </ol>
+    
+    <h2>Column-Store Architecture</h2>
+    <p>Nettezza's column-store architecture provides several benefits:</p>
+    <ul>
+        <li><strong>Improved query performance**: By storing data in columns rather than rows, Netezza can quickly retrieve specific data elements without having to scan entire tables.</li>
+        <li><strong>Reduced storage requirements**: Since only the required columns are stored, Netezza requires less storage space compared to traditional row-store architectures.</li>
+    </ul>
+    
+    <h2>Distributed Architecture</h2>
+    <p>Nettezza's distributed architecture allows for efficient processing of large datasets:</p>
+    <table>
+        <tr>
+            <th>Component</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Appliance</td>
+            <td>A physical or virtual machine that runs the Netezza software and manages data processing.</td>
+        </tr>
+        <tr>
+            <td>Node</td>
+            <td>A logical partition of the appliance that stores and processes data.</td>
+        </tr>
+        <tr>
+            <td>Cube</td>
+            <td>A set of nodes that work together to process queries.</td>
+        </tr>
+    </table>
+    <h3>Netezza Architecture:</h3>
+    <p>Here are the highlights of Netezza’s architecture.</p>
+    <ol><li>Netezza has an AMPP architecture where it has an SMP (symmetric multiprocessor) and a shared MPP (massively parallel processing) backend for query processing.</li><li>Netezza architecture resembles Hadoop cluster design in many ways. e.g. Distribution, active-passive node, data storing methods, replications, etc</li><li>Netezza is based on PostgreSQL and supports standard SQL, ODBC, JDBC and OLE DB interfaces</li><li>Netezza has a two-tiered system. It has a simple Linux based frontend which is called as the SMP. This mainly receives the queries from the client application (often a which can be a BI/Analytics application). It then processes them and divides them into subqueries or subtasks which are in turn sent to the second tier of multiple backend units of MPP for parallel processing.</li></ol>
+    <p>Key terms and terminologies used in the context of Netezza appliance.</p>
+    <p>Host: A Linux server which is used by the client to interact with the appliance either natively or through remote clients through OBDC, JDBC, OLE-DB etc. Hosts also store the catalog of all the databases stored in the appliance along with the meta-data of all the objects in the databases. It also passes and verifies the queries from the clients, generates executable snippets, communicates the snippets to the S- Blades, coordinates and consolidates the snippet execution results and communicates back to the client.</p>
+    <p>Snippet Processing Array: SPA is an array of S-Blades with 8 processor cores and 16 GB of memory running Linux operating system. Each S-Blade is paired with Database Accelerator Card which has 8 FPGA cores and connected to disk storage.</p>
+    <p>Snippet Processor: The CPU and FPGA pair in a Snippet Processing Array called a snippet processor which can run a snippet which is the smallest code component generated by the host for query execution.</p>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head></html><!DOCTYPE html>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza Architecture - learn
-
-<h3>Netezza Architecture:</h3>
-<p>Here are the highlights of Netezza’s architecture.</p>
-<ol><li>Netezza has an AMPP architecture where it has an SMP (symmetric multiprocessor) and a shared MPP (massively parallel processing) backend for query processing.</li><li>Netezza architecture resembles Hadoop cluster design in many ways. e.g. Distribution, active-passive node, data storing methods, replications, etc</li><li>Netezza is based on PostgreSQL and supports standard SQL, ODBC, JDBC and OLE DB interfaces</li><li>Netezza has a two-tiered system. It has a simple Linux based frontend which is called as the SMP. This mainly receives the queries from the client application (often a which can be a BI/Analytics application). It then processes them and divides them into subqueries or subtasks which are in turn sent to the second tier of multiple backend units of MPP for parallel processing.</li></ol>
-<p>Key terms and terminologies used in the context of Netezza appliance.</p>
-<p>Host: A Linux server which is used by the client to interact with the appliance either natively or through remote clients through OBDC, JDBC, OLE-DB etc. Hosts also store the catalog of all the databases stored in the appliance along with the meta-data of all the objects in the databases. It also passes and verifies the queries from the clients, generates executable snippets, communicates the snippets to the S- Blades, coordinates and consolidates the snippet execution results and communicates back to the client.</p>
-<p>Snippet Processing Array: SPA is an array of S-Blades with 8 processor cores and 16 GB of memory running Linux operating system. Each S-Blade is paired with Database Accelerator Card which has 8 FPGA cores and connected to disk storage.</p>
-<p>Snippet Processor: The CPU and FPGA pair in a Snippet Processing Array called a snippet processor which can run a snippet which is the smallest code component generated by the host for query execution.</p>
-
-<a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/learn/full-course/netezza/" style="border-radius:2px;background-color:#ba0c49;color:#fffffa">Full Netezza Course</a>
-<a class="wp-block-button__link has-text-color" href="https://www.iexpertify.com/learn/netezza-twinfin-architecture/" style="border-radius:2px;color:#ba0c49">Netezza Twinfin Architecture</a>
-
-<p></p>
-
-<br><br>
-<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
+    <h2>Conclusion</h2>
+    <p>In conclusion, the Netezza architecture provides a scalable and efficient platform for large-scale data warehousing and business intelligence applications. Its column-store and distributed architectures enable fast query performance, reduced storage requirements, and improved scalability.</p>
+</body><h3>Meet Ananth Tirumanur. Hi there 👋</h3>
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
     <ul>
         <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
         <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
         <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
         <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
     </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
     <h3>Connect with me:</h3>
     <ul>
         <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
         <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
     </ul>
-
-<h3>My Resources:</h3>
+    <h3>My Resources:</h3>
     <ul>
         <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
         <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
         <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
     </ul>
-
     <h3>Languages and Tools:</h3>
     <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+    </body></html>

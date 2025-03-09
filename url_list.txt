@@ -1,5 +1,3 @@
-https://www.iexpertify.com/data-warehousing/how-to-find-netezza-model-type/
-https://www.iexpertify.com/index_files/zrt_lookup_003
 https://www.iexpertify.com/learn/script-to-find-netezza-database-size/
 https://www.iexpertify.com/learn/netezza-architecture/
 https://www.iexpertify.com/learn/netezza-temporary-table-space/

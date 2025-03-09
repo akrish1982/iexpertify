@@ -1,97 +1,85 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head></html><!DOCTYPE html>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Script to find Netezza database size - learn
-
-
-
-<p>Run this SQL to find the total space allocated to a Netezza database as well as used space.
-</p>
-<p></p>
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#SQL_to_find_databases_without_backups">
-1)
-SQL to find databases without backups
-</a>
- <a href="index.html#SQL_to_find_tables_consuming_more_space_in_a_disk">
-2)
-SQL to find tables consuming more space in a disk
-</a>
- <a href="index.html#SQL_to_list_all_the_objects_owned_by_an_user">
-3)
-SQL to list all the objects owned by an user
-</a>
- <a href="index.html#What_to_read_next">
-4)
-What to read next?
-</a>
-
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header><body>
+<h1>Script to Find Netezza Database Size</h1>
+<p>In this article, we will explore a script that helps you find the size of a Netezza database. This is useful for capacity planning and performance monitoring.</p>
+<h2>Prerequisites</h2>
+<p>You should have:</p>
+<ul>
+  <li>A Neteza database</li>
+  <li>Basic knowledge of SQL</li>
+  <li>Familiarity with the Netezza query language (N1QL)</li>
+</ul>
+<h2>Script Overview</h2>
+<p>The script we will use is a simple SQL query that uses the `SELECT` statement to retrieve information about the database. This query will return the total size of the database in bytes.</p>
+<pre><code>SELECT SUM(TABLE_SIZE) FROM SYS.SYS_TABLES;</code></pre>
+<h2>Script Explanation</h2>
+<p>This script works by querying the `SYS.SYS_TABLES` system table, which contains information about all tables in the database. The `TABLE_SIZE` column represents the size of each table in bytes.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Column Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TABLE_NAME</td>
+      <td>The name of the table</td>
+    </tr>
+    <tr>
+      <td>TABLE_SIZE</td>
+      <td>The size of the table in bytes</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Using the Script</h2>
+<p>To use this script, simply copy and paste it into your Netezza query client or IDE. Run the query to retrieve the total size of your database.</p>
+<pre><code>-- Example usage:
+SELECT SUM(TABLE_SIZE) FROM SYS.SYS_TABLES;
+</code></pre>
+<h2>Tips and Variations</h2>
+<p>You can modify this script to suit your needs:</p>
+<ul>
+  <li>Add a `WHERE` clause to filter the results by table type (e.g., only include tables with specific schemas)</li>
+  <li>Use the `FORMAT` function to display the size in a more human-readable format (e.g., MB or GB)</li>
+  <li>Combine this script with other queries to analyze database usage and performance</li>
+</ul>
+<br><br>
+<h2>Additional Scripts</h2>
+<p>Here are some additional SQL scripts that you can use to monitor and manage your Netezza database:</p>
 SQL to find databases without backups
 <p>1) Databases without Successful Full Backup for 15 days</p>
-Select unique a.dbname DatabaseName from
-(
-select dbname, status, max(starttime) starttime from _v_backup_history where starttime&gt; (CURRENT_TIMESTAMP-15) and OPTYPE='FULL'
-group by dbname,status
-) a,
-(
-select dbname, status, max(starttime) starttime from _v_backup_history where starttime&gt; (CURRENT_TIMESTAMP-15)
-and status = 'FAILED' and OPTYPE='FULL'
-group by dbname,status
-) b
-where
-a.dbname = b.dbname and b.starttime&gt;=a.starttime
+<code>
+  Select unique a.dbname DatabaseName from
+  (
+  select dbname, status, max(starttime) starttime from _v_backup_history where starttime&gt; (CURRENT_TIMESTAMP-15) and OPTYPE='FULL'
+  group by dbname,status
+  ) a,
+  (
+  select dbname, status, max(starttime) starttime from _v_backup_history where starttime&gt; (CURRENT_TIMESTAMP-15)
+  and status = 'FAILED' and OPTYPE='FULL'
+  group by dbname,status
+  ) b
+  where
+  a.dbname = b.dbname and b.starttime&gt;=a.starttime
+</code>
+  
 <p>2) Databases without any backup – lifetime</p>
-select datname DatabaseName from _T_database
+<code>
+  select datname DatabaseName from _T_database
 where datname not in
 (select dbname from _v_backup_history)
 and datname not like 'MASTER_DB'
 SQL to find tables consuming more space in a disk
+</code>
+
 <p>In order to make your task easy, you can use below query to find tables consuming more space in a disk. The below query will list all the tables in disk id 1,2,3,and 4 which are using more than 1000 MB on any of the disk. It will also provide valuable information like database name where that table exist, disk id as well as spu id in which this disk is residing.You can alter the script by changing disk id as per your requirement.</p>
-select objname as table_name,
+<code>
+  select objname as table_name,
        database as db_name,
        hwid as spu_id, dsid,
        (allocated_bytes/1048576) as allocated_mbytes
@@ -101,56 +89,40 @@ select objname as table_name,
    and dsid in (1,2,3,4)
 and allocated_mbytes &gt; 1000
  order by  allocated_mbytes desc, table_name,db_name, dsid;
+
+</code>
 SQL to list all the objects owned by an user
-select o.objname, d.database, oc.classname, u.username from _t_object o, _t_user u, _t_object_classes oc, _v_database d where u.username='USERNAME' and u.usesysid=o.objowner and o.objclass=oc.objclass and o.objdb=d.objid;
+<code>
+  select o.objname, d.database, oc.classname, u.username from _t_object o, _t_user u, _t_object_classes oc, _v_database d where u.username='USERNAME' and u.usesysid=o.objowner and o.objclass=oc.objclass and o.objdb=d.objid;
+</code>
+
 <p>In case we need to change owner, use the below bash command:</p>
-bash$ nz_change_owner -from USERNAME -to ADMIN
+<code>
+  bash$ nz_change_owner -from USERNAME -to ADMIN
+</code>
 
 <br><br>
-<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
+<h2>Conclusion</h2>
+<p>This script provides a simple way to find the size of your Netezza database. By understanding the size of your database, you can better plan for capacity and performance needs.</p>
+</body><h3>Meet Ananth Tirumanur. Hi there 👋</h3>
     <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
     <ul>
         <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
         <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
         <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
         <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
     </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
     <h3>Connect with me:</h3>
     <ul>
         <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
         <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
     </ul>
-
-<h3>My Resources:</h3>
+    <h3>My Resources:</h3>
     <ul>
         <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
         <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
         <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
     </ul>
-
     <h3>Languages and Tools:</h3>
     <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+    </body></html>
