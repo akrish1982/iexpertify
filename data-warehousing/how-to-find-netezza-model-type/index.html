@@ -33,10 +33,99 @@
                 <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
             </ul>
         </nav>
+      <h1>How to Find Netezza Model Type in Data Warehousing</h1>
+      <p>Understanding the model type of your Netezza system is crucial for performance tuning, system upgrades, and capacity planning. This article explains how to identify the model type of a Netezza appliance using SQL queries and system tables.</p>
+      <p>Data warehousing using Netezza is a powerful tool for businesses that need to analyze large amounts of data. However, understanding the model type used in your Netezza system can be crucial for optimal performance and scalability. In this article, we will explore how to find the Netezza model type.</p>
+
     </header>
 
 
 
+      <p>Alternatively, the following query can be used to extract just the model type information:</p>
+      <pre><code>SELECT system_sn, model, version FROM _v_system_info;</code></pre>
+    </section>
+    <h2>What are Netezza Model Types?</h2>
+
+<p>Netezza is a columnar storage-based relational database management system (RDBMS) that allows users to store large amounts of data in a column-store format. The model types used in Netezza determine how the data is stored and retrieved, which can significantly impact performance.</p>
+
+<h3>Identifying Model Types</h3>
+
+<p>To find the Netezza model type, you can use various methods:</p>
+
+<table>
+  <tr>
+    <th>Method</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>System Administration Tool (SAT)</td>
+    <td>The SAT provides a graphical interface to manage and monitor your Netezza system. You can use the SAT to view the model type by following these steps:</td>
+  </tr>
+  <tr>
+    <td><code>SELECT * FROM sys.tables;</code></td>
+    <td>This SQL query returns information about all tables in your database, including the model type.</td>
+  </tr>
+  <tr>
+    <td>Navigate to the "System Configuration" page</td>
+    <td>In the SAT, navigate to the "System Configuration" page and click on the "Model Type" tab. The current model type will be displayed.</td>
+  </tr>
+</table>
+
+<h3>Understanding Model Types</h3>
+
+<p>Netezza supports two main model types:</p>
+
+<table>
+  <tr>
+    <th>Model Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Column-store (CS)</td>
+    <td>This is the default model type for Netezza. It stores data in a column-store format, which allows for efficient querying and retrieval of large amounts of data.</td>
+  </tr>
+  <tr>
+    <td>Row-store (RS)</td>
+    <td>This model type stores data in a row-store format, similar to traditional relational databases. It is suitable for applications that require frequent updates or transactions.</td>
+  </tr>
+</table>
+
+<h3>Conclusion</h3>
+
+<p>Finding the Netezza model type can be crucial for optimal performance and scalability of your data warehousing application. By using the methods described in this article, you should be able to identify and understand the model type used in your Netezza system.</p>
+
+<p><strong>Additional Resources:</strong></p>
+<ul>
+  <li><a href="https://www.ibm.com/support/knowledgecenter/en/SSUL9Y_10.0.0/com.ibm.netezza.doc/ugr/t_model_types.html">Netezza Model Types</a></li>
+  <li><a href="https://www.ibm.com/support/knowledgecenter/en/SSUL9Y_10.0.0/com.ibm.netezza.doc/ugr/t_sat_guide.html">System Administration Tool (SAT) Guide</a></li>
+</ul>
+    <section>
+      <h2>Interpreting the Results</h2>
+      <p>The results from the above queries will provide detailed information about your Netezza appliance. Below is an interpretation table of common model types:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10000-0000-DEFAULT</td>
+            <td>The standard Netezza appliance model type.</td>
+          </tr>
+          <tr>
+            <td>10050-0011-TWINFIN</td>
+            <td>Netezza TwinFin, known for enhanced scalability and performance.</td>
+          </tr>
+          <tr>
+            <td>10080-0021-STRIPER</td>
+            <td>The Striper model adds additional capacity and performance benchmarks.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
 
 
