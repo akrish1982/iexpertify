@@ -3,8 +3,9 @@ from openai import OpenAI
 from urllib.parse import urlparse
 
 # Set OpenAI API key
+api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(
-    api_key = "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"
+    api_key = api_key,
 ) 
 
 def read_urls(file_path):
@@ -13,19 +14,47 @@ def read_urls(file_path):
         urls = [line.strip() for line in file if line.strip().startswith("https://www.")]
     return urls[:2]
 
+# def generate_content(url_path):
+#     """Calls OpenAI API to generate HTML content only."""
+#     prompt = f"Generate an HTML article for the topic: {url_path}. Include structured content with headings, code samples, tables, and illustrations where applicable. Ensure the content is human-like and informative. Return only <body> element of valid HTML content."
+#     completion = client.chat.completions.create(
+#         messages=[
+#             {
+#                 "role": "user",
+#                 "content": prompt,
+#             }
+#         ],
+#         model="gpt-4o-mini",
+#     )
+#     return completion.choices[0].message.content
+
+import json
+import requests
+
 def generate_content(url_path):
-    """Calls OpenAI API to generate HTML content only."""
+    """Calls local Ollama API to generate HTML content only."""
+    
+    # Ollama API endpoint
+    api_url = "http://localhost:11434/api/generate"
+    
+    # Prompt construction
     prompt = f"Generate an HTML article for the topic: {url_path}. Include structured content with headings, code samples, tables, and illustrations where applicable. Ensure the content is human-like and informative. Return only <body> element of valid HTML content."
-    completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": prompt,
-            }
-        ],
-        model="gpt-4o",
-    )
-    return completion.choices[0].message.content
+    
+    # Request payload
+    payload = {
+        "model": "llama3", # You can change this to any model you have pulled in Ollama
+        "prompt": prompt,
+        "stream": False
+    }
+    
+    # Make the API call
+    response = requests.post(api_url, json=payload)
+    
+    if response.status_code == 200:
+        result = response.json()
+        return result["response"]
+    else:
+        raise Exception(f"Ollama API request failed with status code {response.status_code}: {response.text}")
 
 def save_content(url, content):
     """Saves the generated content to a corresponding HTML file with a predefined header and footer."""
@@ -69,10 +98,10 @@ def save_content(url, content):
     print(f"Content saved: {file_path}")
 
 def main():
-    url_file = "url_list.txt"
+    url_file = "/Users/ananth/code/iexpertify/url_list.txt"
     urls = read_urls(url_file)
     
-    for url in urls:
+    for url in urls[:10]:
         url_path = urlparse(url).path.strip('/')
         print(f"Generating content for: {url_path}")
         content = generate_content(url_path)
