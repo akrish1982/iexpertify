@@ -35,15 +35,16 @@ footer = '''<footer>
 </footer>
 </body></html>'''
 
-def extract_body_from_url_path(url_path):
+def extract_body_content(url_path):
     """
-    Given a URL path, find the corresponding local HTML file and extract its body content.
+    Given a URL path, find the corresponding local HTML file and extract its body content,
+    removing header and footer elements.
     
     Args:
         url_path (str): The URL path (e.g., 'https://www.iexpertify.com/learn/netezza-query-plan-analysis/')
         
     Returns:
-        str: The body content if file exists, None otherwise
+        str: The cleaned body content without header and footer if file exists, None otherwise
     """
     # Parse the URL to get the path
     parsed_url = urlparse(url_path)
@@ -66,6 +67,16 @@ def extract_body_from_url_path(url_path):
         body_tag = soup.body
         
         if body_tag:
+            # Remove header elements - common classes/IDs for headers
+            headers = body_tag.select('header, .header, #header, .site-header, #site-header, nav, .navbar, .navigation, .main-navigation')
+            for header in headers:
+                header.decompose()
+                
+            # Remove footer elements - common classes/IDs for footers
+            footers = body_tag.select('footer, .footer, #footer, .site-footer, #site-footer, .bottom-bar, .copyright')
+            for footer in footers:
+                footer.decompose()
+                
             return str(body_tag)
         else:
             return None

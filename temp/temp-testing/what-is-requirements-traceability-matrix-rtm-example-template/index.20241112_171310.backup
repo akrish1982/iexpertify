@@ -20,7 +20,8 @@
     async=""
     defer=""
   ></script>  
-</head></html><!DOCTYPE html>
+</head>
+<body>
     <header>
         <nav>
             <ul>
