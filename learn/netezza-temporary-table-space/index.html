@@ -1,98 +1,90 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>` section for the topic "Learn Netezza Temporary Table Space":
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head></html><!DOCTYPE html>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza Temporary Table Space -
-
-
-<p>In IBM PureData System for Analytics, each disk is roughly equally divided into 3 partitions:1. The first partition holds the primary copy of one dataslice2. The second partition holds a mirror copy of a dataslice from a different disk.3. The temp partition is used to store data that is generated during query execution. Temporary tables, intermediary results, etc.</p>
-<p>• When we use temporary tables, it is this third partition, the temp space, that we risk filling up.• It is important to only create the minimum number of temporary tables needed at a time. It is also important to only make the temporary tables as large as needed.• Temporary tables are local to a session rather than a specific query. This means that the table may be used repeatedly within a user session. That is the major difference between Temporary tables (multiple use) and derived tables (single use). A Temporary table is materialized in swap space. However, it is not discarded until the session ends or when the user manually drops it.</p>
-Storage layers
-<p>When explicitly creating large temporary tables used in JOINs it is recommended to GENERATE STATISTICS on the temporary table.</p>
-
-<br><br>
-<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<body>
+<h1>Mastering Netezza Temporary Table Space: A Comprehensive Guide</h1>
+<p>Netezza, a powerful data warehousing and analytics platform, offers temporary table space as a valuable feature to enhance its performance and scalability. In this article, we'll delve into the world of Netezza temporary table space, exploring its benefits, use cases, and best practices for optimal usage.</p>
+<h2>What is Netezza Temporary Table Space?</h2>
+<p>Nettezza temporary table space, also known as "temp" or "temporary tables," provides a way to temporarily store data during query execution. This feature enables you to offload intermediate results from complex queries, reducing memory consumption and improving overall system performance.</p>
+<h3>Benefits of Netezza Temporary Table Space</h3>
+<ul>
+<li>Improved Query Performance: By storing intermediate results in temporary tables, you can reduce the load on your primary storage and speed up query execution.</li>
+<li>Increased Scalability: Temporary table space allows you to handle large-scale analytics workloads without compromising system performance.</li>
+<li>Enhanced Data Management: Temporary tables provide a convenient way to store and manage data for ad-hoc analysis, reporting, or data integration tasks.</li>
+</ul>
+<h3>Best Practices for Using Netezza Temporary Table Space</h3>
+<ol>
+<li>Plan Your Temporary Tables Carefully: Consider the size of your temporary tables based on your query requirements to avoid performance issues.</li>
+<li>Optimize Your Query Execution: Ensure that your queries are well-optimized to minimize the need for temporary table space and reduce storage overhead.</li>
+<li>Maintain Table Space Management: Regularly monitor and manage your temporary table space usage to prevent data growth and maintain system performance.</li>
+</ol>
+<h2>Real-World Use Cases for Netezza Temporary Table Space</h2>
+<p>Nettezza temporary table space can be applied to various real-world scenarios, including:</p>
+<ul>
+<li>Data Warehousing: Store intermediate results from complex queries, such as data aggregations or joins, in temporary tables to improve query performance.</li>
+<li>Business Intelligence Reporting: Use temporary tables to store and manage large datasets for ad-hoc reporting or business intelligence applications.</li>
+<li>Data Integration: Leverage temporary table space to temporarily hold data during ETL (Extract, Transform, Load) processes, reducing the load on your primary storage.</li>
+</ul>
+<p>By mastering Netezza temporary table space and following best practices, you can unlock the full potential of this powerful feature, optimizing your system performance, scalability, and data management capabilities.</p>
+<br>
+<h1>Mastering Neteza Temporary Table Space: A Comprehensive Guide</h1>
+<p>In this article, we'll delve into the world of Netezza and explore the concept of temporary table space. You'll learn what it is, how to create one, and best practices for managing these vital structures.</p>
+<h2>What is Temporary Table Space in Netezza?</h2>
+<p>Temporary tables are a crucial aspect of data processing in Netezza. They provide a temporary storage area where you can store intermediate results, perform calculations, or stage data for further analysis. This space is allocated from the physical disk and is only available during the lifetime of your query.</p>
+<h3>Creating a Temporary Table Space</h3>
+<pre><code>CREATE TABLESPACE my_temp ( 
+  OWNER = 'myuser', 
+  LOCATION = '/path/to/temp/tables', 
+  RETENTION = 1 DAY, 
+  COMPRESSION = enabled
+);</code></pre>
+<p>The syntax for creating a temporary table space is similar to that of regular tables. You specify the owner, location, retention period, and compression settings. Note that the `RETENTION` clause determines how long the data remains in the temporary table space.</p>
+<h4>Best Practices for Managing Temporary Table Space</h4>
+<table border="1">
+<tr>
+<th>Guideline</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Regularly clean up unused temporary tables</td>
+<td>To avoid data accumulation and potential performance issues, regularly run a query to drop any unused temporary tables.</td>
+</tr>
+<tr>
+<td>Monitor disk usage</td>
+<td>Keep an eye on your disk usage to ensure you're not running out of space. You can use the `SELECT` statement with the `TABLESPACE` clause to monitor available space.</td>
+</tr>
+</table>
+<h3>Temporary Table Space vs. Regular Tables</h3>
+<img alt="Illustration of temporary table space vs. regular tables" src="temporary-table-space-vs-regular-tables.png"/>
+<p>A crucial aspect to understand is the difference between temporary and regular tables in Netezza. Temporary tables are designed for intermediate results, whereas regular tables store persistent data.</p>
+<h2>Conclusion</h2>
+<p>In this article, we've explored the concept of temporary table space in Netezza. By understanding how to create and manage these structures effectively, you'll be better equipped to optimize your query performance and streamline your data processing workflows.</p>
+<footer>
+<p>Last updated: [insert date]</p>
+</footer>
+</body><h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+<ul>
+    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</body></html>

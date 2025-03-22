@@ -1,154 +1,120 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head></html><!DOCTYPE html>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<body>
+<h1>Generate Statistics with Netezza: A Guide and Best Practices</h1>
+<p>In this article, we'll delve into the world of statistics generation in Netezza, a powerful data warehousing platform. As a data analyst or developer, you know how crucial it is to have accurate and up-to-date statistical insights about your data. In this guide, we'll walk you through the process of generating statistics with Netezza, along with best practices to ensure optimal performance.</p>
+<h2>Why Generate Statistics in Netezza?</h2>
+<p>Statistics generation is an essential step in ensuring the quality and integrity of your data. By analyzing statistical trends and patterns, you can gain valuable insights into your business operations, identify areas for improvement, and make data-driven decisions. In Neteza, generating statistics helps to:</p>
+<ul>
+<li>Improve query performance by optimizing join orders and selecting the most efficient access paths</li>
+<li>Enhance data integrity by identifying and resolving data inconsistencies</li>
+<li>Simplify data analysis and visualization through more accurate statistical summaries</li>
+</ul>
+<h2>How to Generate Statistics with Netezza</h2>
+<p>To generate statistics in Neteza, follow these steps:</p>
+<ol>
+<li>Connect to your Neteza database using a tool like SQL Assistant or Neteza CLI</li>
+<li>Use the `ANALYZE` command to specify the table and columns you want to analyze</li>
+<li>Choose the analysis method: `ALL`, `DISTINCT`, or `RANGE` (more on this below)</li>
+<li>Run the command and let Neteza do its magic!</li>
+</ol>
+<h2>Best Practices for Generating Statistics with Netezza</h2>
+<p>To get the most out of your statistics generation efforts, keep these best practices in mind:</p>
+<ul>
+<li>Schedule regular statistics updates to ensure data freshness and accuracy</li>
+<li>Monitor query performance and adjust your analysis methods accordingly</li>
+<li>Use `ANALYZE` with caution: excessive analysis can impact system performance</li>
+<li>Consider using Neteza's built-in statistical functions, such as `AVG`, `SUM`, and `COUNT`, to simplify data analysis</li>
+</ul>
+<p>In this article, we've covered the basics of generating statistics with Neteza and provided best practices for optimizing your approach. Whether you're a seasoned Neteza expert or just starting out, these tips will help you unlock the full potential of your data warehousing platform.</p>
+</body>` portion of the HTML article:
 
-
-
-
-
-
-Netezza Generate Statistics - learn learn
-
-
-
-Reading Time:  4 minutes
-<p>Netezza uses the cost based optimizer to determine best methods determine redistribution, scan, join, join orders. Netezza query optimizer relies on the statistics from catalog to come up with an optimal query execution plan. So it is imperative that the statics need to be kept current without which the execution plan generated by the optimizer may be sub-optimal resulting in poor query performance. System uses the Netezza GENERATE STATISTICS command to generate information about each column proportion of the duplicate values, unique values, NULL values and the maximum and minimum values. The optimizer uses statistics information to determine the most efficient way to run a query. </p>
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#How_Statistics_are_collected">
-1)
-How Statistics are collected?
-</a>
- <a href="index.html#How_Statistics_are_used">
-2)
-How Statistics are used?
-</a>
- <a href="index.html#Automatic_Netezza_Database_Statistics">
-3)
-Automatic Netezza Database Statistics
-</a>
- <a href="index.html#Netezza_GENERATE_STATISTICS_Syntax">
-4)
-Netezza GENERATE STATISTICS Syntax
-</a>
- <a href="index.html#Netezza_GENERATE_STATISTICS_Best_Practices">
-5)
-Netezza GENERATE STATISTICS Best Practices
-</a>
- <a href="index.html#JUST_IN_TIME_JIT_Statistics_and_Usage">
-6)
-JUST IN TIME (JIT) Statistics and Usage
-</a>
- <a href="index.html#What_to_read_next">
-7)
-What to read next?
-</a>
-
-How Statistics are collected?
-<p>Netezza system collects statistics in various ways:</p>
-<ul><li>Statistics are automatically generated for certain database operations</li><li>Collect full statistics by running Netezza GENERATE STATISTICS command on database or on individual tables. This operation is required when table changes significantly, say at least 10%.It usually collects all level of statistics, including dispersion values.</li><li>You can generate statistics You should maintain the table by running Netezza GENERATE STATISTICS SQL command on regular basis. </li><li>Just In Time Statistics (JIT): Runs at every execution time using sampling and zone maps</li></ul>
-How Statistics are used?
-<p>Some examples of how the statistics can be used by the optimizer</p>
-<ul><li>If a column is null able additional code may be generated to check whether the value is null or not</li><li>Knowing the number of records in the table, min and max values along with the number of distinct values can help estimate the number of relevant records which can be returned for the query assuming there is uniform distribution</li><li>Based on the min and max values the optimizer can determine the type of math required to be performed like 64 or 128 bit computation.</li></ul>
-<p>These statistics in the catalog are generated using the “GENERATE STATISTICS” command which collects them and updates the catalog. Admin users, table owners and users who have the GENSTATS privilege can execute the generate statistics command on tables in databases. The following are some examples:</p>
-Automatic Netezza Database Statistics
-<p>The Netezza system automatically generates two ‘Base Statistics’ (table row count and min/max values for non-character columns) when performing certain database operations:</p>
-<ul><li>nzload operations</li><li>INSERT operations</li><li>UPDATE operations</li><li>GROOM TABLE operations</li><li>TRUNCATE TABLE operations</li></ul>
-Netezza Automatic Database Statistics
-Netezza GENERATE STATISTICS Syntax
-<p>Syntax of the command:</p>
- GENERATE STATISTICS ON &lt;tablename&gt; [ (&lt;col&gt;[,&lt;col&gt;… ]) ];
-<p>Usage: The following provides sample usage. Generate statistics for all column of the table TEST:  TRAINING.ADMIN(ADMIN)=&gt;GENERATE STATISTICS ON TEST; Generate statistics for all the tables in database TRAINING:  TRAINING.ADMIN(ADMIN)=&gt;GENERATE STATISTICS;</p>
-Netezza GENERATE STATISTICS Best Practices
-<p>Following are some of best practices when you are working on generate statistics:</p>
-<ul><li>It is very important to collect full statistics by running Netezza GENERATE STATISTICS command when table changes significantly, say at least 10%</li><li>You should always collect statistics when perform nzload, insert, update, delete or truncate operations</li><li>Generate statistics for columns which are often used. For examples, columns used in JOIN conditions, WHERE clause, GROUP BY clause and ORDER BY clause</li><li>You should GENERATE STATISTICS on all TEMP tables those are explicitly used in JOIN</li><li>You should not abort the GENERATE STATISTICS command as this will disable the zone maps and rebuilt it. Any interruption leaves the zone maps disabled and this of course impact the performance.</li></ul>
-JUST IN TIME (JIT) Statistics and Usage
-<p>Netezza automatically gathers statistics on the table with actual restrictions using sampler scan functionality, Just-In-Time (JIT) for planning. JIT Stats is automatically run on all qualified tables, such as:</p>
-<ul><li>The table contains more than 5 Million rows</li><li>Query contains at least one column restriction</li><li>Restrictions do not contain sub-query or sub-plan expressions</li><li>Must participate in a JOIN or must have a MATERIALIZED VIEW associated with them</li><li>Must be a database table on disk No system tables, EXTERNAL TABLES or virtual tables</li><li>JIT Dispersion values calculated on queried columns of tables &gt; 500 Million rows</li><li>JIT stats does not eliminate the need to run GENERATE STATISTICS</li></ul>
-<p></p>
-
-<br><br>
-<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<body>
+<h1 id="article-title">Generate Statistics in Netezza: A Guide and Best Practices</h1>
+<p>In this article, we'll delve into the world of generating statistics in Neteza, a powerful analytics platform. We'll cover the basics, best practices, and provide code samples to help you optimize your data analysis.</p>
+<section id="what-are-statistics">
+<h2>What are Statistics?</h2>
+<p>Statistics are crucial for optimizing query performance in Netezza. They provide valuable insights into your data distribution, enabling the database to create an optimal execution plan for queries. Think of statistics as a roadmap that helps the database navigate your data efficiently.</p>
+<img alt="Statistics Roadmap" src="statistics-roadmap.png"/>
+</section>
+<section id="why-generate-statistics">
+<h2>Why Generate Statistics?</h2>
+<table class="reasons-table">
+<thead>
+<tr>
+<th>Reason</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Improved Query Performance</td>
+<td>Statistics help the database create an optimal execution plan, reducing query latency and improving overall performance.</td>
+</tr>
+<tr>
+<td>Data Distribution Insights</td>
+<td>Statistics provide valuable insights into your data distribution, enabling you to identify trends, patterns, and anomalies.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-to-generate-statistics">
+<h2>How to Generate Statistics</h2>
+<p>To generate statistics in Netezza, you can use the following command:</p>
+<pre><code>
+      USE WAREHOUSE &lt;warehouse_name&gt;;
+      ANALYZE TABLE &lt;table_name&gt; COMPUTE STATISTICS;
+    </code></pre>
+<p>Replace &lt;warehouse_name&gt; with the name of your warehouse, and &lt;table_name&gt; with the name of the table you want to generate statistics for.</p>
+<h3>Best Practices</h3>
+<ol>
+<li>Generate statistics regularly to maintain data freshness and accuracy.</li>
+<li>Focus on tables that are frequently accessed or modified, as they require more frequent updates.</li>
+<li>Avoid generating statistics during peak hours or when the database is under heavy load, as it can impact performance.</li>
+</ol>
+</section>
+<section id="common-issues-and-solutions">
+<h2>Common Issues and Solutions</h2>
+<p>When generating statistics, you may encounter common issues like:</p>
+<ul>
+<li><strong>Data skewness**: When a single value dominates the data distribution.</strong></li>
+<li><strong>Inconsistent data types**: When different data types are used in the same column.</strong></li>
+</ul>
+<p>Solutions include:</p>
+<ol>
+<li>Splitting large tables into smaller, more manageable partitions.</li>
+<li>Converting data types to a consistent format.</li>
+</ol>
+</section>
+<h1 id="conclusion">Conclusion</h1>
+<p>In this article, we've covered the importance of generating statistics in Netezza, best practices, and common issues. By following these guidelines and optimizing your data analysis, you'll be able to improve query performance, gain valuable insights into your data distribution, and make informed decisions.</p>
+<footer id="article-footer">
+<p>Article written by [Your Name]. Published on [Date].</p>
+</footer>
+</body><h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+<ul>
+    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</body></html>
