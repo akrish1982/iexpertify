@@ -1,5 +1,3 @@
-https://www.iexpertify.com/learn/full-course/oracle-forms-and-reports/
-https://www.iexpertify.com/data-warehousing/aggregator-stage-in-datastage/
 https://www.iexpertify.com/data-warehousing/number-functions-in-datastage/
 https://www.iexpertify.com/learn/netezza-cross-database-access-and-its-restrictions/
 https://www.iexpertify.com/learn/distribution-key-in-netezza/
