@@ -38,13 +38,13 @@ footer = '''<footer>
 def extract_body_content(url_path):
     """
     Given a URL path, find the corresponding local HTML file and extract its body content,
-    removing header and footer elements.
+    removing header, footer elements, and the body tags themselves.
     
     Args:
         url_path (str): The URL path (e.g., 'https://www.iexpertify.com/learn/netezza-query-plan-analysis/')
         
     Returns:
-        str: The cleaned body content without header and footer if file exists, None otherwise
+        str: The cleaned body content without header, footer, and body tags if file exists, None otherwise
     """
     # Parse the URL to get the path
     parsed_url = urlparse(url_path)
@@ -76,13 +76,14 @@ def extract_body_content(url_path):
             footers = body_tag.select('footer, .footer, #footer, .site-footer, #site-footer, .bottom-bar, .copyright')
             for footer in footers:
                 footer.decompose()
-                
-            return str(body_tag)
+            
+            # Return only the inner HTML content of the body tag
+            return ''.join(str(content) for content in body_tag.contents)
         else:
             return None
     except Exception as e:
         return None
-
+    
 def read_urls(file_path):
     """Reads URLs from a file and filters those starting with 'https://www.'"""
     with open(file_path, 'r') as file:
@@ -121,8 +122,8 @@ def generate_content(url_path):
 def rewrite_content(url_path):
     """Calls local Ollama API to rewrite the content."""
     #Read the content from the URL
-    old_content = extract_body_from_url_path(url_path)
-    prompt = f"Rewrite an <body> portion HTML article for the topic: {url_path}.Ensure the content is human-like and informative. Return only <body> element of valid HTML content. Please rewrite: {old_content} "
+    old_content = extract_body_content(url_path)
+    prompt = f"Rewrite an <body> portion HTML article for the topic: {url_path}.Ensure the content is human-like and informative. NOTE ONLY Return only <body> element of valid HTML content without <body> and </body> tags. Please rewrite: {old_content} "
     result = call_ollama_api(prompt)
     return result
 
