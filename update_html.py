@@ -3,14 +3,15 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
-header = '''<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
+head = '''<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
 <script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>'''
 
-footer = '''<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+footer = '''<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>
     <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
@@ -31,6 +32,7 @@ footer = '''<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 </ul>
 <h3>Languages and Tools:</h3>
 <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
 </body></html>'''
 
 def extract_body_from_url_path(url_path):
@@ -121,7 +123,7 @@ def old_save_content(url, rewritten, content):
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     
     with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(header + rewritten + content + footer)
+        file.write(head + rewritten + content + footer)
     print(f"Content saved: {file_path}")
 
 def save_content(url, rewritten, content):
@@ -136,7 +138,7 @@ def save_content(url, rewritten, content):
     
     # Handle case when rewritten is None
     if rewritten is None:
-        final_content = header + content + footer
+        final_content = head + content + footer
     else:
         # Extract content from body tags using BeautifulSoup
         rewritten_soup = BeautifulSoup(rewritten, 'html.parser')
@@ -147,7 +149,7 @@ def save_content(url, rewritten, content):
         content_inner = ''.join(str(item) for item in content_soup.body.contents) if content_soup.body else ''
         
         # Combine with header and footer
-        final_content = header + rewritten_inner + content_inner + footer
+        final_content = head + rewritten_inner + content_inner + footer
     
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(final_content)

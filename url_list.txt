@@ -1,5 +1,3 @@
-https://www.iexpertify.com/learn/netezza-temporary-table-space/
-https://www.iexpertify.com/learn/netezza-generate-statistics-a-guide-and-best-practices/
 https://www.iexpertify.com/learn/netezza-query-plan-analysis/
 https://www.iexpertify.com/tag/netezza/
 https://www.iexpertify.com/learn/full-course/oracle-forms-and-reports/
