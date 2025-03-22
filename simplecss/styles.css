@@ -5,6 +5,7 @@ body {
     padding: 20px;
 }
 footer {
+    background-color: #ffcccc;
     font-family: Arial, sans-serif;
     max-width: 800px;
     margin: 0 auto;
