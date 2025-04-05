@@ -1,100 +1,80 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Data Warehousing and DataStage Triggers: A Comprehensive Guide</h1>
+<p>Data warehousing has become a crucial aspect of modern businesses, allowing organizations to store, integrate, and analyze large amounts of data from various sources. In this article, we will delve into the world of data warehousing and explore the concept of triggers in DataStage, a popular ETL (Extract, Transform, Load) tool.</p>
+<h2>What is Data Warehousing?</h2>
+<p>Data warehousing refers to the process of collecting, storing, and analyzing data from various sources to gain insights and make informed business decisions. A data warehouse is a centralized repository that stores data in a format suitable for querying and analysis.</p>
+<figure>
+<img alt="Data Warehousing Diagram" src="data-warehousing-diagram.png"/>
+<figcaption>Data Warehousing Architecture</figcaption>
+</figure>
+<h2>What are Triggers in DataStage?</h2>
+<p>In DataStage, a trigger is a set of instructions that defines the conditions under which an action should be taken. Triggers can be used to automate various tasks, such as updating records or sending notifications.</p>
+<table>
+<thead>
+<tr>
+<th>Trigger Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row Trigger</td>
+<td>A trigger that fires on a specific row or set of rows in the data source.</td>
+</tr>
+<tr>
+<td>Table Trigger</td>
+<td>A trigger that fires when a table is updated, inserted, or deleted.</td>
+</tr>
+</tbody>
+</table>
+<h3>Examples of DataStage Triggers</h3>
+<p>Here are some examples of triggers in DataStage:</p>
+<pre>
+  // Example 1: Update a record when a new order is placed
+  if (new_order_amount &gt; 100) {
+    update_order_status("Shipped");
+  }
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Datastage Triggers - Data Warehousing
-Reading Time:  &lt; 1 minute
-<table><tbody><tr><td>There are three types of trigger:</td></tr><tr><td> </td></tr><tr><td>Conditional. A conditional trigger fires the target activity if the source activity fulfills the specified condition. The condition is defined by an expression, and can be one of the following types:</td></tr><tr><td> OK. Activity succeeds.</td></tr><tr><td> Failed. Activity fails.</td></tr><tr><td> Warnings. Activity produced warnings.</td></tr><tr><td> ReturnValue. A routine or command has returned a value.</td></tr><tr><td> Custom. Allows you to define a custom expression.</td></tr><tr><td> User status. Allows you to define a custom status message to write to the log.</td></tr><tr><td>Unconditional. An unconditional trigger fires the target activity once the source activity completes, regardless of what other triggers are fired from the same activity.</td></tr><tr><td>Otherwise. An otherwise trigger is used as a default where a source activity has multiple output triggers, but none of the conditional ones have fired.</td></tr></tbody></table>
-<p></p>
-
-<br><br>
+  // Example 2: Send an email notification when a product is out of stock
+  if (product_quantity &lt; 5) {
+    send_email("Product Out of Stock", "The product is no longer available.");
+  }
+  </pre>
+<h3>Best Practices for Using Triggers in DataStage</h3>
+<p>To get the most out of triggers in DataStage, follow these best practices:</p>
+<ul>
+<li>Use triggers sparingly to avoid performance issues.</li>
+<li>Test your triggers thoroughly to ensure they are working as expected.</li>
+<li>Document your triggers and their purpose for easier maintenance.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>In conclusion, data warehousing and DataStage triggers are powerful tools that can help organizations make better decisions by analyzing and transforming large amounts of data. By understanding the concept of triggers in DataStage and following best practices, you can automate various tasks and improve the efficiency of your ETL processes.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>
