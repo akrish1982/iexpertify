@@ -1,131 +1,99 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza Cross Database Access/Restrictions - learn
-
-
-<p>Netezza cross database access does allows querying on objects such as tables, view, synonyms that are available on the same Netezza server. You can can INSERT, UPDATE or DELETE data from current database by referring objects in other database on same server. This would be useful while we need to join data from another source or look up data using a select clause on a different database.</p>
-<p>Example when test and dev database are on the same server, you could insert certain test data into dev using</p>
+<header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Netteza Cross-Database Access and its Restrictions</h1>
+<p>In this article, we will explore Netezza's cross-database access feature and its restrictions. Understanding these concepts is crucial for efficient data management in a multi-database environment.</p>
+<h2>What is Cross-Database Access?</h2>
+<p>Cross-database access allows you to access and manipulate data across multiple databases within your Netezza system. This feature enables you to create unified views of your data, perform complex queries that span multiple databases, and improve overall data integration and management.</p>
+<h3>Benefits of Cross-Database Access</h3>
+<ul>
+<li>Improved Data Integration: By allowing access to data across multiple databases, cross-database access simplifies data integration and reduces the complexity of managing multiple databases.</li>
+<li>Faster Query Performance: With cross-database access, you can perform complex queries that span multiple databases, which can lead to significant performance improvements compared to querying individual databases separately.</li>
+</ul>
+<h2>Restrictions on Cross-Database Access</h2>
+<p>While cross-database access offers many benefits, it is not without its restrictions. The following are some of the key limitations:</p>
+<table border="1">
+<tr>
+<th>Restriction</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Database Hierarchy</td>
+<td>The databases must be part of a hierarchy, with one database serving as the "root" or parent database.</td>
+</tr>
+<tr>
+<td>Data Type Compatibility</td>
+<td>The data types used in the query must be compatible across all participating databases.</td>
+</tr>
+<tr>
+<td>Access Control</td>
+<td>You must have the necessary permissions to access the participating databases and perform cross-database queries.</td>
+</tr>
+</table>
+<h2>Code Sample: Performing Cross-Database Queries with Netezza</h2>
+<pre><code>
+SELECT *
+FROM sales_db.my_table
+JOIN orders_db.your_table ON my_table.customer_id = your_table.customer_id;
+</code></pre>
+<p>This code sample demonstrates a simple cross-database query that joins two tables from different databases. The query assumes that the participating databases are part of a hierarchy, with `sales_db` serving as the root or parent database.</p>
+<p>Netezza cross-database access enables you to query objects such as tables, views, and synonyms available on the same Netezza server. You can insert, update, or delete data from your current database by referring to objects in other databases on the same server. This feature is useful when you need to join data from another source or look up data using a SELECT clause on a different database.</p>
+<p>For instance, if you have test and dev databases on the same server, you could insert certain test data into dev using an INSERT statement:</p>
 insert into [dev table] select * from [test table]
-Referencing Database Object from other Database
-<p>Refer to objects in other databases on the same Netezza system, you must use three-level naming, which consists of the following components:</p>
+<p>To refer to objects in other databases on the same Netezza system, you must use three-level naming, which consists of the following components: the database or catalog name, the schema (the name of the database owner), and the object (the name of the table, view, or synonym).</p>
 <ul>
 <li>The database — The database or catalog name</li>
 <li>The schema — The schema, which is the name of the database owner.</li>
 <li>The object — The name of the object, table, view, or synonym.</li>
 </ul>
-<p>You specify objects in the FROM clause of SQL statements in the three-level form. You can use the standard form or the shorthand notation.</p>
-<p>database.schema.object-name: This is the fully qualified form.</p>
-<p>database..object-name: Another way of specifying fully qualified format.</p>
-<p>Schema.object: You can use this notation when referring current database</p>
-<p>Note that you cannot use cross-database INSERT, UPDATE, or DELETE statements. If you attempt to do so, the system displays an error message.  For example, if you attempt to insert data into a table that does not reside in the current database (the database you are logged in to), the system displays an error message:</p>
-dev(admin)=&gt;INSERT INTO PROD..EMP SELECT * FROM EMP;
-<p>Cross Database Access not supported for this type of command.For this type of query, consider changing the query to a cross-database SELECT statement (which is supported) while logged in to the target database.For example:</p>
-prod(admin)=&gt;INSERT INTO EMP SELECT * FROM DEV..EMP;
-<p>You cannot use CREATE, ALTER, or DROP commands to change objects in a database outside your current database. If you attempt to do so, the system displays an error message.For example, if you attempt to create an object in a different database, the system displays an error message:</p>
-dev(admin)=&gt;CREATE PROD..PAYROLL ;
-<p>Cross Database Access not supported for this type of command.</p>
-<p> </p>
-Netezza Cross Database Access Restrictions
-<p>Following are some of the restrictions when referring objects from other databases:</p>
+<p>You specify objects in the FROM clause of SQL statements in the three-level form. You can use either the standard form or the shorthand notation:</p>
 <ul>
-<li>One can access the objects resides on same server, you cannot access the tables on other server.</li>
-<li>You cannot specify a cross-reference object in the SELECT portion of a CREATE MATERIALIZED VIEW statement.</li>
-<li>One cannot insert data into a table that does not reside in the current database.</li>
-<li>You cannot create object in the different database</li>
+<li>database.schema.object-name: This is the fully qualified form.</li>
+<li>database..object-name: Another way of specifying fully qualified format.</li>
+<li>Scheme.object: You can use this notation when referring to the current database</li>
 </ul>
-
-
-
-<br><br>
+<p>However, you cannot use cross-database INSERT, UPDATE, or DELETE statements. If you attempt to do so, the system will display an error message. For example:</p>
+dev(admin)=>INSERT INTO PROD..EMP SELECT * FROM EMP;
+<p>Cross Database Access is not supported for this type of command. Instead, consider changing the query to a cross-database SELECT statement (which is supported) while logged in to the target database.</p>
+<p>You cannot use CREATE, ALTER, or DROP commands to change objects in a database outside your current database. If you attempt to do so, the system will display an error message. For example:</p>
+dev(admin)=>CREATE PROD..PAYROLL ;
+<p>Cross Database Access is not supported for this type of command.</p>
+<h2>Netezza Cross Database Access Restrictions</h2>
+<p>The following are some restrictions when referring to objects from other databases:</p>
+<ul>
+<li>You can access only objects that reside on the same server. You cannot access tables on another server.</li>
+<li>You cannot specify a cross-reference object in the SELECT portion of a CREATE MATERIALIZED VIEW statement.</li>
+<li>You cannot insert data into a table that does not reside in the current database.</li>
+<li>You cannot create an object in a different database</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Cross-database access in Netezza offers a powerful way to integrate and manage data across multiple databases. While there are restrictions on this feature, understanding these limitations is crucial for designing effective cross-database queries and ensuring optimal performance.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

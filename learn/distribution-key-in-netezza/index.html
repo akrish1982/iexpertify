@@ -1,169 +1,91 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Distribution key in Netezza - learn
-Reading Time:  7 minutes
-<p>At the point when you create a table in Netezza database, selecting column/s being a member of distribution key is one of the critical decision for good execution of the queries that will run against the table.</p>
-<p>The following are some of the key points to remember when we select distribution key:</p>
-<ul>
-<li>Maximum of four columns can be a member of distribution key</li>
-<li>We can have only one distribution key per table (Which is quite obvious)</li>
-<li>We cannot modify column (by issuing alter table command) which is a member of distribution key</li>
-<li>We create a table with random distribution then Netezza will store data based on round robin algorithm</li>
-<li>When we create a table by issuing “select * from table …….” then the newly created table will inherit the distribution key of source table.</li>
-<li>Always try to avoid using different distribution key when creating a table using “select * from table …….” as this can result in transfer of data across SPU’s because of change in distribution</li>
-<li>When we create a table, if no column is selected as distribution key then Netezza will randomly distribute on any column of the table and not always the first column (Most of the cases it first column but in theory it can be any column)</li>
-</ul>
-<p>Choosing right distribution key is one of the important factor to improve the performance of Netezza server. If you have created the table with RANDOM distribution or with different column with lots of duplicate records then you should immediately change the distribution key otherwise that will reduces the performance. Changing Netezza table distribution key is process of redistributing the Netezza table using Netezza nzsql.</p>
-<p>Redistribute using CTAS</p>
-<p>Creating new table and loading data at same time is one of the best way to redistribute table. You can use CTAS ( Create table AS) and is one of fastest way to re-create Netezza table.</p>
-<p>Syntax:</p>
-<p>CREATE TABLE &lt;CTA_table&gt; AS
-SELECT * FROM &lt;existing_table&gt; DISTRIBUTE ON (QUERIED_colume(s));</p>
-<p>For example;</p>
-<p>CREATE TABLE new_sales AS SELECT * FROM sales DISTRIBUTE ON (Year);DROP TABLE sales;
-</p>
-<p>DROP TABLE</p>
-<p>ALTER TABLE new_sales RENAME TO sales;
-ALTER TABLE</p>
-<p>Redistribute using Intermediate Table</p>
-<p>The main drawback of using only CTAS is that you have to drop the original table and rename newly created table to original table. This process will invalidate the any views built on top of base table. You have to explicitly re-compile all views which are built on top of old table.</p>
-<p>To overcome above mentioned issue, you can follow tow steps procedure to re-distribute table. First, use CTAS to create new intermediate table from old table, then, second, truncate original table and reload data from intermediate table.</p>
-<p>For example;</p>
-<p>CREATE TABLE int_sample_sales AS SELECT * FROM sample_sales DISTRIBUTE ON (MONTH_ID);
-INSERT 0 7
-TRAINING.ADMIN(ADMIN)=&gt; TRUNCATE TABLE sample_sales;
-TRUNCATE TABLE
-TRAINING.ADMIN(ADMIN)=&gt; INSERT INTO sample_sales SELECT * FROM int_sample_sales;
-INSERT 0 7
-TRAINING.ADMIN(ADMIN)=&gt;</p>
-<p>You can also create the scripts to re-distribute the Netezza table using aginity workbench. Here is the example of scripts that aginity generates for redistribution of Netezza table:</p>
-<p>CREATE TABLE USER1."RENAME_DEMO_
-(
-ID INTEGER,
-NAME CHARACTER(10)
-) DISTRIBUTE ON (ID);</p>
-<p>
-</p>
-<p>INSERT INTO USER1."RENAME_DEMO_
-SELECT * FROM USER1.RENAME_DEMO;
-ALTER TABLE USER1."RENAME_DEMO_ SET PRIVILEGES TO USER1.RENAME_DEMO;
-ALTER TABLE USER1.RENAME_DEMO RENAME TO USER1."RENAME_DEMO_
-ALTER TABLE USER1."RENAME_DEMO_ RENAME TO USER1.RENAME_DEMO;
-ALTER TABLE USER1.RENAME_DEMO OWNER TO USER1;
-DROP TABLE USER1."RENAME_DEMO_
-GENERATE EXPRESS STATISTICS ON USER1.RENAME_DEMO;</p>
-<h2>Changing Netezza Table Default Distribution key</h2>
-<p>By default, Netezza will distribute on the first column if you do not specify the distribute on hash(column) command.</p>
-<p>To change this default distribution property, you can update the /nz/data/postgresql.conf configuration file to add the below entry:</p>
-<p>enable_random_table_distribute = 1</p>
-<p>You need to perform nzstop/nzstart the database to use updated properties or you can issue command “pkill -HUP -f postmaster”.</p>
-
+<body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: Distribution Key in Netezza</h1>
 <h2>Distribution, Not Just for Joins</h2>
 <p>There are several other scenarios where data needs to be distributed to process.</p>
-<p>First one that comes to mind are count distincts.  Take for example a count of distinct users or customers like count(distinct customer_id) perhaps when doing analysis on purchase transactions.  An example sql might be</p>
-<p>select count(distinct customer_id)  from purchase_transaction</p>
-<p>For argument we’ll say that purchase_transaction has random distribution.  So Netezza has to break up the job.  It can’t just count distinct on every spu because you can’t just add up the numbers at the end because some customers might be on more than one spu.  The way to make it where you can just add them up is to make sure a customer can’t be on more than one spu, and that means you need the data distributed by customer.  That’s exactly what the query plan will do, redistribute on customer.  But of course if they data is already distributed on customer, then you save having to do a redistribution.</p>
-<p>This is just one example of where Netezza needs all of a grouping of data together.  Another is windowing analytic functions like rank , dense_rank, lead, lag, etc.  They always have a partition over set.  To do these partition overs, you need all the data for each partition on one spu.  If you partition over on customer_id, reusing our above example, and perhaps want to do a rank on dollar amount for each customer, again it will redistribute the data to get each slice of customer data located together on a single spu.</p>
-<p>Still another example is any group by aggregate function with group by columns.  If the data set is small enough and all the aggregate functions are summable, it may try to merge each spu’s results together on the host.  But look at your plan files, often if the result set will be large, it will distribute by some or often all of the group by columns.</p>
-<p>Select distincts are in may ways like a group by without any aggregate functions.  So to get like values together , it will redistribute on all or most of the column set.</p>
-<p>A key thing to realize is netezza doesn’t need to distribute purely on all of the distinct, group by , or partition over columns.  It just needs to make sure that all of that set of data is there local on the spu.  For example if you had zipcode and customer id.  Lets say we know that customer is a pure child of zipcode, in that a customer only has one zipcode and a zipcode has many customers.   It doesn’t need to redistribute on customer_id if it’s already distributed at the zipcode level.  But it has to know this relationship.  So that means in distinct or group by to make sure that zipcode is included.  Or in a partition over statement partition over zipcode, customer_id.   What I’ve seen if the optimizer sees that it is already distributed at that higher, courser grain  AND it sees that that grain’s cardinality has things pretty evenly spread out, it will usually just leave things at that distribution.  It can do this because if customers don’t cross zipcodes, and zipcodes don’t cross spus, then customers don’t cross spus.    What I do see though is if it’s going to need to do redistributions, it would redistribute on all of the column values.  I see this especially on group bys.  Sometimes joins and partition overs are a little smarter if there is a common higher grain to handle both.</p>
-<p>So  to summarize, in addition to joins , colocation of data through table distribution or redistribution is also needed for count distincts (or any agg distinct), partition overs in analytic functions,  and column grouping in group by or select distincts.  A really good table distribution strategy will find a column, perhaps like a user_id or customer_id  that can commonly be used for joins and these other calculations.  If you can find a good common distribution like that things will run very very fast.</p>
-
+<p>First one that comes to mind are count distincts. Take for example a count of distinct users or customers like `count(distinct customer_id)` perhaps when doing analysis on purchase transactions. An example sql might be</p>
+<pre><code>select count(distinct customer_id) from purchase_transaction</code></pre>
+<p>For argument we'll say that purchase_transaction has random distribution. So Netezza has to break up the job. It can't just count distinct on every spu because you can't just add up the numbers at the end because some customers might be on more than one spu. The way to make it where you can just add them up is to make sure a customer can't be on more than one spu, and that means you need the data distributed by customer. That's exactly what the query plan will do, redistribute on customer. But of course if they data is already distributed on customer, then you save having to do a redistribution.</p>
+<h2>Loading and Unloading Tables</h2>
 <a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/learn/full-course/netezza/" style="border-radius:2px;background-color:#ba0c49;color:#fffffa">Full Course</a>
 <a class="wp-block-button__link has-text-color" style="border-radius:2px;color:#ba0c49">Next: Loading and Unloading Tables</a>
-
-<p></p>
-
-<br><br>
+<section id="what-is-distribution-key">
+<h2>What is a Distribution Key?</h2>
+<p>In Netezza, a distribution key is a column or combination of columns that determines how data is distributed across the nodes of an appliance. It plays a crucial role in optimizing query performance by minimizing inter-node communication.</p>
+</section>
+<section id="benefits-of-distribution-key">
+<h2>Benefits of Using a Distribution Key</h2>
+<ul>
+<li>Improved query performance: By distributing data based on the distribution key, Netezza can reduce the amount of data that needs to be transferred between nodes, resulting in faster query execution.</li>
+<li>Simplified data management: A well-chosen distribution key helps to balance data evenly across all nodes, making it easier to manage and maintain your data warehouse.</li>
+</ul>
+</section>
+<section id="choosing-the-right-distribution-key">
+<h2>Choosing the Right Distribution Key</h2>
+<p>To choose the right distribution key for your Netezza appliance, consider the following factors:</p>
+<ol>
+<li><strong>Data usage patterns**: Identify the columns that are frequently used in your queries. These are likely to be good candidates for the distribution key.</strong></li>
+<li><strong>Data cardinality**: Choose a column or combination of columns with low cardinality (i.e., many unique values) to ensure efficient data distribution.</strong></li>
+<li><strong>Data correlation**: Consider columns that are highly correlated with each other, as they may benefit from being stored together on the same node.</strong></li>
+</ol>
+</section>
+<section id="best-practices-for-distribution-key">
+<h2>Best Practices for Distribution Key</h2>
+<ul>
+<li><strong>Keep it simple**: Use a single column or a small combination of columns as the distribution key to minimize complexity.</strong></li>
+<li><strong>Use meaningful data**: Choose columns that have meaningful values, such as dates or IDs, rather than arbitrary columns like auto-generated keys.</strong></li>
+</ul>
+</section>
+<section id="example-distribution-key">
+<h2>Example Distribution Key</h2>
+<p>In this example, we'll create a distribution key for an e-commerce database that tracks customer orders. We'll use the `customer_id` column as our distribution key:</p>
+<pre><code>CREATE TABLE orders (
+  order_id int,
+  customer_id int,
+  order_date date,
+  ...
+) WITH (DISTRIBUTION_KEY = 'customer_id');</code></pre>
+</section>
+<section id="common-mistakes-to-avoid">
+<h2>Common Mistakes to Avoid</h2>
+<table border="1" cellpadding="5">
+<tr><th>Mistake</th><th>Consequence</th></tr>
+<tr>
+<td>Choosing a column with high cardinality as the distribution key</td>
+<td>Uneven data distribution and poor query performance</td>
+</tr>
+<tr>
+<td>Using a distribution key that is not correlated with data usage patterns</td>
+<td>Inefficient data distribution and queries may not be optimized</td>
+</tr>
+</table>
+</section>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

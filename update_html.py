@@ -172,7 +172,7 @@ def main():
     url_file = "/Users/ananth/code/iexpertify/url_list.txt"
     urls = read_urls(url_file)
     
-    for url in urls[:2]:
+    for url in urls[:10]:
         url_path = urlparse(url).path.strip('/')
         print(f"Generating content for: {url_path}")
         rewritten = rewrite_content(url_path)
