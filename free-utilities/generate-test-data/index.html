@@ -15,37 +15,266 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-<h1>Generating Test Data for Free Utilities</h1>
-<p>In this guide, we will walk you through the process of generating test data for various utilities using free and open-source tools. This is an essential practice in software development to ensure your applications work as expected under different conditions.</p>
-<h2>Why Generate Test Data?</h2>
-<p>Test data generation plays a crucial role in software testing, helping developers and testers to simulate various scenarios. It allows you to check the robustness of your application and validate its behavior under expected and unexpected conditions.</p>
-<h2>Free Tools for Test Data Generation</h2>
-<h3>1. faker.js</h3>
-<p>Faker is a popular library for generating fake data in Node.js applications. It includes methods to generate content for common data types such as names, addresses, and even financial information.</p>
-<pre><code>const Faker = require('faker');
-const { Name, Address, Internet } = Faker;
+<h1>Fake Data Generator Tool</h1>
 
-console.log(Name.firstName()); // Sample output: 'Steven'
-console.log(Address.streetAddress()); // Sample output: '1234 Main St.'
-console.log(Internet.email()); // Sample output: 'john_doe@example.com'
-</code></pre>
-<h3>2. DataMask</h3>
-<p>DataMask is a Python library that provides functions to create structured test data, ideal for generating test data for databases and APIs.</p>
-<pre><code>import datamask as dm
+<div class="instructions">
+    <h3>How to Use:</h3>
+    <ol>
+        <li>Enter field name and select data type for each column</li>
+        <li>Click "Add Field" to add more columns</li>
+        <li>Specify the number of rows needed</li>
+        <li>Choose output format (JSON/CSV)</li>
+        <li>Click "Generate Data" to download the file</li>
+    </ol>
+</div>
 
-dm.init('example_data') # Initialize the data generator with a directory where you want to store your generated data
+<div id="fields-container"></div>
 
-# Generate 10 users
-dm.gen(dm.User, 10)
-</code></pre>
-<h2>Generating Test Data for APIs</h2>
-<p>When testing APIs, you can use tools such as Postman or Insomnia to generate test data and save it as collections.</p>
-<h3>1. Postman</h3>
-<p>Postman is a powerful API development and testing platform that includes an easy-to-use interface for generating test data and saving it as collections.</p>
-<h3>2. Insomnia</h3>
-<p>Insomnia is another popular API development and testing platform with similar features to Postman for generating test data.</p>
-<h2>Conclusion</h2>
-<p>Generating test data is an essential part of software development that helps ensure your applications work as expected under various conditions. By using free and open-source tools like faker.js, DataMask, Postman, and Insomnia, you can easily generate test data for a wide range of scenarios.</p>
+<button class="add-button" onclick="addField()">Add Field</button>
+
+<div>
+    <label for="rowCount">Number of Rows:</label>
+    <input type="number" id="rowCount" value="10" min="1" max="1000">
+    
+    <label for="format">Output Format:</label>
+    <select id="format">
+        <option value="json">JSON</option>
+        <option value="csv">CSV</option>
+    </select>
+</div>
+
+<button class="generate-button" onclick="generateData()">Generate Data</button>
+
+<div class="preview">
+    <h3>Preview:</h3>
+    <pre id="preview"></pre>
+</div>
+
+<script>
+    // Extended faker implementation with all required functions
+    const faker = {
+        countries: [
+            'United States', 'Canada', 'United Kingdom', 'Germany', 'France', 
+            'Japan', 'Australia', 'Brazil', 'India', 'China', 'Spain', 
+            'Italy', 'Mexico', 'South Korea', 'Netherlands'
+        ],
+        cities: {
+            'United States': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'],
+            'Canada': ['Toronto', 'Vancouver', 'Montreal', 'Calgary', 'Ottawa'],
+            'United Kingdom': ['London', 'Manchester', 'Birmingham', 'Glasgow', 'Liverpool'],
+            'Germany': ['Berlin', 'Munich', 'Hamburg', 'Frankfurt', 'Cologne']
+        },
+        name: () => {
+            const firstNames = ['John', 'Jane', 'Mike', 'Sarah', 'David', 'Lisa', 'Emma', 'James', 'Emily', 'Michael'];
+            const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez'];
+            return `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
+        },
+        email: () => {
+            const name = faker.name().toLowerCase().replace(' ', '.');
+            const domains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'];
+            return `${name}@${domains[Math.floor(Math.random() * domains.length)]}`;
+        },
+        phone: () => {
+            return `+1-${Math.floor(Math.random() * 900 + 100)}-${Math.floor(Math.random() * 900 + 100)}-${Math.floor(Math.random() * 9000 + 1000)}`;
+        },
+        address: () => {
+            const streets = ['Main St', 'Oak Ave', 'Maple Rd', 'Cedar Ln', 'Park Ave'];
+            return `${Math.floor(Math.random() * 9999 + 1)} ${streets[Math.floor(Math.random() * streets.length)]}`;
+        },
+        company: () => {
+            const prefixes = ['Tech', 'Global', 'Digital', 'Smart', 'Advanced'];
+            const suffixes = ['Solutions', 'Systems', 'Technologies', 'Industries', 'Corp'];
+            return `${prefixes[Math.floor(Math.random() * prefixes.length)]} ${suffixes[Math.floor(Math.random() * suffixes.length)]}`;
+        },
+        date: () => {
+            const start = new Date(2020, 0, 1);
+            const end = new Date();
+            return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString().split('T')[0];
+        },
+        number: (min = 1, max = 1000) => Math.floor(Math.random() * (max - min + 1)) + min,
+        sentence: () => {
+            const words = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'I'];
+            const length = Math.floor(Math.random() * 8) + 5;
+            return capitalize(Array.from({length}, () => words[Math.floor(Math.random() * words.length)]).join(' ')) + '.';
+        },
+        paragraph: () => {
+            return Array.from({length: Math.floor(Math.random() * 3) + 2}, faker.sentence).join(' ');
+        },
+        boolean: () => Math.random() > 0.5,
+        uuid: () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+            const r = Math.random() * 16 | 0;
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        }),
+        color: () => {
+            const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'brown', 'gray', 'black'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        },
+        url: () => {
+            const domains = ['example.com', 'test.org', 'demo.net', 'sample.io'];
+            return `https://www.${domains[Math.floor(Math.random() * domains.length)]}/${faker.string(5)}`;
+        },
+        username: () => {
+            const name = faker.name().toLowerCase().replace(' ', '');
+            return `${name}${faker.number(10, 99)}`;
+        },
+        ipAddress: () => {
+            return Array.from({length: 4}, () => Math.floor(Math.random() * 256)).join('.');
+        },
+        country: () => faker.countries[Math.floor(Math.random() * faker.countries.length)],
+        city: () => {
+            const country = faker.country();
+            const cities = faker.cities[country] || faker.cities['United States'];
+            return cities[Math.floor(Math.random() * cities.length)];
+        },
+        string: (length = 10) => {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            return Array.from({length}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+        },
+        id: () => Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
+    };
+
+    // Helper function
+    function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    let currentData = null;  // Store the current data for preview updates
+
+    // Data types mapping
+    const dataTypes = {
+        name: () => faker.name(),
+        email: () => faker.email(),
+        phone: () => faker.phone(),
+        address: () => faker.address(),
+        company: () => faker.company(),
+        date: () => faker.date(),
+        number: () => faker.number(1, 1000),
+        sentence: () => faker.sentence(),
+        paragraph: () => faker.paragraph(),
+        boolean: () => faker.boolean(),
+        uuid: () => faker.uuid(),
+        color: () => faker.color(),
+        url: () => faker.url(),
+        username: () => faker.username(),
+        ipAddress: () => faker.ipAddress(),
+        country: () => faker.country(),
+        city: () => faker.city(),
+        string: () => faker.string(),
+        id: () => faker.id()
+    };
+
+    let fieldCount = 0;
+
+    function addField() {
+        const container = document.createElement('div');
+        container.className = 'field-container';
+        container.id = `field-${fieldCount}`;
+
+        const html = `
+            <input type="text" placeholder="Field Name" class="field-name">
+            <select class="field-type">
+                ${Object.keys(dataTypes).map(type => 
+                    `<option value="${type}">${type.charAt(0).toUpperCase() + type.slice(1)}</option>`
+                ).join('')}
+            </select>
+            <button class="remove-button" onclick="removeField(${fieldCount})">Remove</button>
+        `;
+
+        container.innerHTML = html;
+        document.getElementById('fields-container').appendChild(container);
+        fieldCount++;
+    }
+
+    function removeField(id) {
+        document.getElementById(`field-${id}`).remove();
+    }
+
+    function updatePreview() {
+        if (currentData) {
+            const format = document.getElementById('format').value;
+            const previewData = currentData.slice(0, 3);  // Always show first 3 rows
+            
+            const content = format === 'json'
+                ? JSON.stringify(previewData, null, 2)
+                : convertToCSV(previewData);
+            
+            document.getElementById('preview').textContent = content;
+        }
+    }
+
+    function generateData() {
+        const fields = document.querySelectorAll('.field-container');
+        const rowCount = parseInt(document.getElementById('rowCount').value);
+        const format = document.getElementById('format').value;
+        
+        if (fields.length === 0) {
+            alert('Please add at least one field');
+            return;
+        }
+
+        const schema = Array.from(fields).map(field => ({
+            name: field.querySelector('.field-name').value,
+            type: field.querySelector('.field-type').value
+        }));
+
+        // Validate field names
+        if (schema.some(field => !field.name)) {
+            alert('Please provide names for all fields');
+            return;
+        }
+
+        const data = [];
+        for (let i = 0; i < rowCount; i++) {
+            const row = {};
+            schema.forEach(field => {
+                row[field.name] = dataTypes[field.type]();
+            });
+            data.push(row);
+        }
+
+        // Store the current data and update preview
+        currentData = data;
+        updatePreview();
+
+        // Download file
+        const content = format === 'json' 
+            ? JSON.stringify(data, null, 2)
+            : convertToCSV(data);
+        
+        downloadFile(content, `fake-data.${format}`, 
+            format === 'json' ? 'application/json' : 'text/csv');
+    }
+
+    function convertToCSV(data) {
+        if (data.length === 0) return '';
+        
+        const headers = Object.keys(data[0]);
+        const csvRows = [
+            headers.join(','),
+            ...data.map(row => 
+                headers.map(header => 
+                    JSON.stringify(row[header])).join(',')
+            )
+        ];
+        
+        return csvRows.join('\n');
+    }
+
+    function downloadFile(content, fileName, contentType) {
+        const blob = new Blob([content], { type: contentType });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    // Add initial field
+    addField();
+</script>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
