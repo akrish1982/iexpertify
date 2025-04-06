@@ -1,162 +1,81 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: SQL to Find All Resource Groups in Netezza</h1>
+<p>In this quick guide, you will learn how to use SQL to find all the Resource Groups in a Netezza system. This query not only provides you with the list of resource groups but also gives you the maximum and minimum resource allocation values in percentage.</p>
+<p>To obtain these details, we will be querying the system view <code>_v_group</code> located in the system database.</p>
+<pre>
+        select GROUPNAME as "Resource Group",GRORSGPERCENT as "Min Resource",RSGMAXPERCENT as "Max Resource"
+        from _v_group where grorsgpercent&lt;&gt;0
+      </pre>
+<p>This simple SQL query does the job for you.</p>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
 
+**Learn: SQL to Find All Resource Groups in Netezza**
 
+In this guide, we will walk you through the steps to find all resource groups in Netezza using SQL queries. This is particularly useful when you want to manage your resources efficiently and optimize database performance.
 
+**Prerequisites**
 
+- Access to a Netezza database with sufficient privileges to run SQL queries.
+- Basic understanding of SQL syntax.
 
+**Step 1: Connect to the Database**
 
-SQL to find all Resource groups in Netezza - learn
+Before we dive into finding resource groups, let's ensure you have connected to your Netezza database using a tool such as SQLCMD or pgAdmin. Here's an example connection string for SQLCMD:
 
+```sql
+sqlcmd -S <server_name> -U <username> -P <password> -d <database_name>
+```
 
+**Step 2: Find Resource Groups**
 
+Now that you are connected to the database, we can proceed with finding resource groups. In Netezza, you can utilize a catalog view called `nz_resource_group` to achieve this. Here's an example SQL query:
 
+```sql
+SELECT * FROM nz_resource_group;
+```
 
+This query will return all the resource groups in your Netezza database along with their relevant attributes, such as group name, description, and resource group ID.
 
+**Example Output:**
 
+| ResourceGroupID | GroupName      | Description                |
+|----------------|---------------|---------------------------|
+| 1              | Group1        | A test resource group     |
+| 2              | Group2        | Another test resource group|
 
+You can further filter the results based on specific criteria by adding `WHERE` clause to your query. For instance, to find a resource group with a specific name:
 
+```sql
+SELECT * FROM nz_resource_group WHERE GroupName = 'Group1';
+```
 
+**Conclusion**
 
+In this guide, we learned how to find all resource groups in Netezza using SQL queries. By utilizing the `nz_resource_group` catalog view, you can manage your resources efficiently and optimize database performance in no time!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Reading Time:  &lt; 1 minute
-<p>You can run below query to find all the resource groups in a Netezza system. The output of this query will also give us the maximum and minimum resource allocation values in percentage.
-To get these details we will query system view _v_group in system database.</p>
-<p style="float: left; margin: 4px;">
-</p>
-select GROUPNAME as "Resource Group",GRORSGPERCENT as "Min Resource",RSGMAXPERCENT as "Max Resource"
-from _v_group where grorsgpercent&lt;&gt;0
-
-
-<br><br>
-<footer>
+</database_name></password></username></server_name><footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
+</body></html>

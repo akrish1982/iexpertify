@@ -1,193 +1,77 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
 
+    **Title:** Data Partitioning and Collecting in Datastage
+
+    **Introduction**
+
+Data partitioning is an essential technique in big data processing for improving the performance of ETL (Extract, Transform, Load) jobs. This article provides a comprehensive guide on how to implement data partitioning and collecting in IBM InfoSphere DataStage.
+
+ **Understanding Partitioning**
+
+Partitioning involves dividing large datasets into smaller, manageable pieces called partitions or chunks. These partitions can be processed independently, improving the overall efficiency of ETL processes.
+
+ **Setting Up Partitioning in DataStage**
+
+To set up partitioning in DataStage, follow these steps:
+
+1. Create a Partition Definition file (PFX). This file describes how the data will be partitioned and can be based on various criteria such as date, region, or product.
+
+```sql
+-- Sample PFX File
+DEFINE PARTITIONS BY DATE(transaction_date) OVER (YEAR);
+DEFINE PARTITION '2021' AS transaction_date = '2021-01-01' TO '2021-12-31';
+```
+
+2. Assign the PFX file to the job or task where you want partitioning to be applied.
+
+```java
+-- Assign PFX File to a DataStage Job
+SET PARTITIONING SCHEME pfx_file USING 'path/to/your_pfx_file';
+```
+
+**Collecting Partitions in DataStage**
+
+DataStage allows you to collect partitions for parallel processing using the Collect operator. Here's a simple example of how to use it:
+
+1. Drag and drop the Collect operator from the Operators palette onto your job design canvas.
+
+2. Connect the Collect operator with the upstream and downstream operators. The Collect operator collects the partitions from multiple input streams for parallel processing.
+
+3. Configure the Collect operator settings:
+
+   - **Partitioning:** Select the partitioning method defined in your PFX file.
+   - **Max Degree of Parallelism:** Specify the maximum number of tasks that can run concurrently to process the partitions.
+   - **Output Partitioning:** Choose how you want the collected partitions to be outputted (e.g., by date, region, or product).
 
 
+ **Conclusion**
 
+Implementing data partitioning and collecting in IBM InfoSphere DataStage can significantly improve the performance of your ETL jobs, making them more efficient and scalable. By following this guide, you can easily set up and configure partitioning and collecting in your DataStage projects.
 
-Data Partitioning and Collecting in DataStage - Data Warehousing Data Warehousing
-
-
-
-Reading Time:  5 minutes
-<p>Partitioning mechanism divides a portion of data into smaller segments, which is then processed independently by each node in parallel. It helps make a benefit of parallel architectures like SMP, MPP, Grid computing and Clusters.</p>
-<p>Collecting is the opposite of partitioning and can be defined as a process of bringing back data partitions into a single sequential stream (one data partition). </p>
-
-<p>Basically there are two methods or types of partitioning in Datastage:</p>
-<p>Key less Partitioning – Partitioning is not based on the key column.</p>
-<p>Key Based Partitioning – Partitioning is based on the key column.</p>
-<p>Hash – In this method rows with same key column (or multiple columns) go to the same partition. Hash is very often used and sometimes improves performance, however it is important to have in mind that hash partitioning does not guarantee load balance and misuse may lead to skew data and poor performance.</p>
-<p>Hash Partition guarantees that all records with same key column values are located in the same partition and are processed in the same node. </p>
-
-<p>Modulus – In this method data is partitioned on one specified numeric field by calculating modulus against number of partitions. Not used very often. </p>
-<p>Range – This is an expensive refinement to hash partitioning. It is similar to hash butpartition mapping is user-determined and partitions are ordered. Rows are distributed according to the values in one or more key fields, using a range map (the ‘Write Range Map’ stage needs to be used to create it). Range partitioning requires processing the data twice which makes it hard to find a reason for using it.</p>
-<p>Same – Inthis method existing partitioning remains unchanged. No data is moved betweennodes. Carries the previous partitioning.</p>
-<p>Round robin –In this method rows are alternated evenly across partitions. This partitioningmethod guarantees an exact load balance (the same number of rows processed)between nodes and is very fast.</p>
-
-<p>Entire – In this method all rows from a dataset are distributed to each partition. Duplicated rows are stored and the data volume is significantly increased. Allrecords goes through one node and mirror image is replicated to all othernodes. Never use this technique in case of funnel.</p>
-
-<p>Random – As the name suggests it randomly distribute the data across all over the partitions and ensures approximately equal sized partition. The random partitioning has a slightly higher overhead than round robin because of the extra processing required calculating a random value for each record.</p>
-<p>Auto – default.</p>
-<p>It chooses the best partitioning method depending on:</p>
-<p>The mode of execution of the current stage and the precedingstage.</p>
-<p>The number of nodes available in the configuration file.</p>
-<p>Datastage Enterprise Edition decides between using Same or RoundRobin partitioning. Typically Same partitioning is used between two parallelstages and round robin is used between a sequential and an EE stage.</p>
-<p>Data collecting methods:</p>
-<p>A collector combines partitions into a single sequential stream. DatastageEE supports the following collecting algorithms:</p>
-<p>Auto– the default algorithm reads rows from a partition as soonas they are ready. This may lead to producing different row orders in differentruns with identical data. The execution is non-deterministic.</p>
-<p>Round Robin– picks rows from inputpartition patiently, for instance: first row from partition 0, next frompartition 1, even if other partitions can produce rows faster than partition 1.</p>
-<p>Ordered– reads all rows from first partition, then secondpartition, then third and so on.</p>
-<p>Sort Merge– produces a globally sorted sequential streamfrom within partition sorted rows. Sort Merge produces a non-deterministic onun-keyed columns sorted sequential stream using the following algorithm: alwayspick the partition that produces the row with the smallest key value. </p>
-<p></p>
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Partitioning">
-1)
-Partitioning
-</a>
- <a href="index.html#Ex">
-2)
-Ex:-
-</a>
- <a href="index.html#EMP">
-3)
-EMP
-</a>
- <a href="index.html#Repatriating">
-4)
-Repatriating
-</a>
- <a href="index.html#Reverse_Partitioning">
-4.1)
-Reverse Partitioning
-</a>
- <a href="index.html#Different_Collecting_Methods">
-4.2)
-Different Collecting Methods
-</a>
- <a href="index.html#What_to_read_next">
-4.3)
-What to read next?
-</a>
-
-Partitioning
-<p>It is a technique of distributing the records across the nodes, based on partitioning techniques.</p>
-
-<ul><li>In addition, We have a 9th technique known as ‘AUTO’</li></ul>
-<p>  NOTE:</p>
-<ul><li>Partitioning techniques plays an important role in Performance Tuning</li></ul>
-<p>  Note:-</p>
-<p>– – &gt; Key-based technique assures that the same key column values are collected at the same partition.  </p>
-Ex:-
-<h2> EMP</h2>
-<p>DNO= Primary key  </p>
-<table><tbody><tr><td>E NO</td><td>E Name</td><td>DNO</td></tr><tr><td>11</td><td>a</td><td>10</td></tr><tr><td>12</td><td>b</td><td>20</td></tr><tr><td>13</td><td>c</td><td>10</td></tr><tr><td>14</td><td>d</td><td>30</td></tr><tr><td>15</td><td>e</td><td>20</td></tr></tbody></table>
-<table><tbody><tr><td>D NO</td><td> D Name</td><td> Loc </td></tr><tr><td>10</td><td>ACE</td><td>Hyd</td></tr><tr><td>20</td><td>Meter</td><td>Sec</td></tr><tr><td>30</td><td>Sales</td><td>Eng</td></tr></tbody></table>
-<p>  When combine, I.e, using a horizontal combination</p>
-
-<p>That is Same key column values are collected at the same partition  </p>
-<h2>Repatriating</h2>
-<p>The Portioned data is once again repatriated</p>
-<p>Ex:  </p>
-<table><tbody><tr><td>EName</td><td>Dno</td><td>Loc</td></tr><tr><td>A</td><td>10</td><td>AP</td></tr><tr><td>B</td><td>20</td><td>TN</td></tr><tr><td>C</td><td>10</td><td>TN</td></tr><tr><td>D</td><td>20</td><td>KN</td></tr><tr><td>E</td><td>30</td><td>TN</td></tr><tr><td>F</td><td>10</td><td>KN</td></tr><tr><td>G</td><td>20</td><td>AP</td></tr></tbody></table>
-
-<ul><li>Partitioning and Repatriating are automatic processes in the Data stage</li></ul>
-<h3>  Reverse Partitioning</h3>
-<ul><li>Reverse Partitioning is collecting the data from the nodes.</li><li>It happens only in 1 Situation that is Parallel to Sequential.</li></ul>
-
-<p>Reverse Partitioning is also called as Collecting  </p>
-<h3>Different Collecting Methods</h3>
-<ol><li>Ordered</li><li>Round Robin</li><li>Sort – Merge</li><li>Auto</li></ol>
-
-<br><br>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

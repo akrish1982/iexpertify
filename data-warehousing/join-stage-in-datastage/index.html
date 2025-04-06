@@ -1,115 +1,81 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Join Stage in DataStage - Data Warehousing Data Warehousing
-
-
-
-<p>The Join stage is a processing stage. It performs joinoperations on two or more data sets input to the stage and then outputs theresulting data set.</p>
-<p>TheJoin stage is one of three stages that join tables based on the values of keycolumns.</p>
-<p>Thethree stages differ mainly in the memory they use, the treatment of rows withunmatched keys, and their requirements for data being input.</p>
-<p>Inthe Join stage, the input data sets are notionally identified as the“right” set and the “left” set.</p>
-<p>Ithas any number of input links and a single output link.</p>
-<p>Thedata sets input to the Join stage must be key partitioned and sorted inascending order.</p>
-<p>Thisensures that rows with the same key column values are located in the samepartition and will be processed by the same node.Thestage can perform one of four join operations:</p>
-<p>Inner It joins two or moretables and returns only those records which satisfy join condition. Recordswhose key columns do not contain equal values are dropped.</p>
-<p>Leftouter transfersall values from the left data set but transfers values from the right data setand intermediate data sets only where key columns match. The stage drops thekey column from the right and intermediate data sets. puts NULL whereverunmatched record from 2nd (Right) table.</p>
-<p>Rightouter transfersall values from the right data set and transfers values from the left data setand intermediate data sets only where key columns match. The stage drops thekey column from the left and intermediate data sets. puts NULL whereverunmatched record from 2nd (Left) table.</p>
-<p>Fullouter  Itjoins two or more tables and returns both matched and unmatched records fromall tables. (Full outer joins do not support more than two input links.)</p>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Join Stage in DataStage - Understanding Join Operations in Data Warehousing</h1>
+<p>The Join stage is a crucial processing component in DataStage, performing join operations on multiple input data sets and outputting the resulting data set.</p>
+<p>The Join stage is one of three stages that execute table joins based on key column values. These stages differ primarily in their memory usage, treatment of rows with unmatched keys, and requirements for input data.</p>
+<p>In the Join stage, input data sets are conceptually labeled as the “right” set and the “left” set. It has any number of input links and a single output link.</p>
+<p>For the Join stage to function effectively, the input data sets must be key partitioned and sorted in ascending order. This ensures that rows with identical key column values are processed by the same node, improving performance.</p>
+<p>The Join stage can perform one of four join operations:</p>
+<ul>
+<li><strong>Inner Join:</strong> This operation joins two or more tables and returns only those records that satisfy the join condition. Records whose key columns do not contain equal values are discarded.</li>
+<li><strong>Left Outer Join:</strong> This transfer all values from the left data set, while transferring values from the right data set and intermediate data sets only where key columns match. The stage drops the key column from the right and intermediate data sets and replaces any missing records with NULL.</li>
+<li><strong>Right Outer Join:</strong> This transfer all values from the right data set, while transferring values from the left data set and intermediate data sets only where key columns match. The stage drops the key column from the left and intermediate data sets and replaces any missing records with NULL.</li>
+<li><strong>Full Outer Join:</strong> This joins two or more tables and returns both matched and unmatched records from all tables. (Note: Full outer joins do not support more than two input links.)</li>
+</ul>
 <p>Options:</p>
-<p>JoinKeys/Key – Type: Input Column</p>
-<p>Nameof input column you want to join on. Columns with the same name must appear inboth input data sets and have compatible data types.</p>
-<p>JoinType – Type of join operation to perform</p>
+<ul>
+<li><strong>JoinKeys/Key:</strong> Specify the name of the input column to join on. Columns with the same name must appear in both input data sets and have compatible data types.</li>
+<li><strong>JoinType:</strong> Choose the type of join operation to perform</li>
+</ul>
+<h1>Understanding Join Stage in DataStage</h1>
+<p>DataStage is a powerful Extract, Transform, Load (ETL) tool used for building data integration solutions. One of the key stages in a DataStage map is the 'Join' stage, which is used to combine data from two or more tables based on a specified relationship. In this article, we will explore the Join stage in DataStage and learn how to effectively use it.</p>
+<h2>Types of Joins in DataStage</h2>
+<p>DataStage supports several types of joins, including Equi-join, Non-equi-join, Outer join, and Full outer join. Let's discuss each type:</p>
+<h3>Equi-Join</h3>
+<p>An equi-join is performed when the join condition specifies an equality between the columns of the two tables being joined.</p>
+<h3>Non-equi-join</h3>
+<p>A non-equi-join is used when the join condition specifies a different relationship than an equality, such as greater than, less than, or between. DataStage supports these types of joins using the WHERE clause in the SQL statement.</p>
+<h3>Outer Join</h3>
+<p>An outer join returns all records from both tables, even when there is no match for the join condition. There are two types of outer joins: left outer join and right outer join.</p>
+<h3>Full Outer Join</h3>
+<p>A full outer join returns all records from both tables, regardless of whether there is a match for the join condition. In other words, it combines both left and right outer joins into one operation.</p>
+<h2>Example: Performing an Equi-Join in DataStage</h2>
+<p>Let's consider two tables, Orders (OrderID, CustomerID, OrderDate) and Customers (CustomerID, FirstName, LastName). We want to perform an equi-join on the CustomerID column.</p>
+<pre><code data-language="sql">-- Define the input and output pipes
+OrdersIn pipe Orders_in;
+CustomersIn pipe Customers_in;
+JoinedOut pipe JoinedOut_out;
 
-<br><br>
+-- Set up the join stage
+Join1 join1 = CreateJoin(Orders_in, Customers_in);
+
+-- Define the join condition
+join1.SetCondition("CustomerID = CustomerID");
+
+-- Add input and output pipes to the join stage
+join1.AddInput("Orders_in");
+join1.AddInput("Customers_in");
+join1.AddOutput("JoinedOut_out");
+
+-- Connect the stages
+Orders_in -&gt; join1;
+Customers_in -&gt; join1;
+join1 -&gt; JoinedOut_out;
+</code></pre>
+<h2>Conclusion</h2>
+<p>The Join stage in DataStage is a powerful tool for combining data from multiple tables based on a specified relationship. By understanding the different types of joins available, you can create efficient and effective ETL solutions using DataStage.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

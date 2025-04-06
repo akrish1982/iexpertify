@@ -1,240 +1,57 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Netezza System Tables and Views</h1>
+<p>Understanding the system tables and views in Netezza is crucial for database administrators, developers, and data analysts working with this powerful data warehouse platform. In this article, we will explore various system tables and views available in Netezza.</p>
+<h2>System Tables</h2>
+<h3>1. PUBLIC</h3>
+<p>The PUBLIC table is the default schema that contains all user-defined objects, including tables, views, and stored procedures.</p>
+<h3>2. SYSIBMADM</h3>
+<p>The SYSIBMADM schema contains system tables used for administration tasks such as creating users, managing authorizations, managing jobs, and more.</p>
+<h3>3. SYSIBMADM</h3>
+<p>The SYSIBMADM schema contains system tables related to database administration and management tasks like catalog management, system statistics, and error handling.</p>
+<h3>4. SYSIBMDIAG</h3>
+<p>The SYSIBMDIAG schema contains diagnostic tables used for troubleshooting and monitoring the performance of the Netezza system.</p>
+<h2>System Views</h2>
+<h3>1. DBADM\_DATABASE</h3>
+<p>The DBADM\_DATABASE view provides information about all databases in the Netezza system, including their names, owners, and creation dates.</p>
+<h3>2. SYSCAT.TABLES</h3>
+<p>The SYSCAT.TABLES view lists all tables in the current schema, providing information such as table name, owner, and attributes like primary keys, foreign keys, and constraints.</p>
+<h3>3. SYSIBM.SYSTABLES</h3>
+<p>The SYSIBM.SYSTABLES view provides an overview of all system tables in the Netezza database, including those found in the PUBLIC, SYSIBMADM, SYSIBMADM, and SYSIBMDIAG schemas.</p>
+<h3>4. DBADM\_TABLESPACE</h3>
+<p>The DBADM\_TABLESPACE view displays information about all table spaces in the Netezza system, including their names, sizes, and usage statistics.</p>
+<h3>5. SYSIBM.SYSSTATS</h3>
+<p>The SYSIBM.SYSSTATS view displays various performance-related statistics for the Netezza system, such as memory usage, disk usage, I/O statistics, and more.</p>
+<h2>Example: Querying System Tables and Views</h2>
+<pre><code>-- Example query to list all tables in the current schema
+    SELECT * FROM SYSCAT.TABLES WHERE TABLE_SCHEMA = 'your_schema_name';
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza System Tables/ Views - learn
-
-Netezza System Tables and Views
-<p>Below are the list of some commonly used system tables and views:</p>
-<table width="665">
-<tbody>
-<tr>
-<td width="147">View</td>
-<td width="154">Table</td>
-<td width="344">Description</td>
-</tr>
-<tr>
-<td width="147">_v_sys_columns</td>
-<td width="154"></td>
-<td width="344">Return a list of all columns of table available in database. This is very important system view that can be used to search columns.</td>
-</tr>
-<tr>
-<td width="147">_v_aggregate</td>
-<td width="154">_t_aggregate</td>
-<td width="344">Returns a list of all defined aggregates</td>
-</tr>
-<tr>
-<td width="147">_v_synonym</td>
-<td width="154">_t_synonym</td>
-<td width="344">Returns a list of all synonyms in database</td>
-</tr>
-<tr>
-<td width="147">_v_objects</td>
-<td width="154"></td>
-<td width="344">Lists the all objects like tables, view, functions</td>
-</tr>
-<tr>
-<td width="147">_v_qrystat</td>
-<td width="154"></td>
-<td width="344">Returns a query status</td>
-</tr>
-<tr>
-<td width="147">_v_qryhist</td>
-<td width="154"></td>
-<td width="344">Returns query history</td>
-</tr>
-<tr>
-<td width="147">_v_database</td>
-<td width="154">_t_database</td>
-<td width="344">Returns a list of all databases</td>
-</tr>
-<tr>
-<td width="147">_v_datatype</td>
-<td width="154"></td>
-<td width="344">Returns a list of all system data types</td>
-</tr>
-<tr>
-<td width="147">_v_function</td>
-<td width="154"></td>
-<td width="344">Returns a list of all defined functions</td>
-</tr>
-<tr>
-<td width="147">_v_group</td>
-<td width="154">_t_group</td>
-<td width="344">Returns a list of all groups</td>
-</tr>
-<tr>
-<td width="147">_v_groupusers</td>
-<td width="154"></td>
-<td width="344">Returns a list of all users of a group</td>
-</tr>
-<tr>
-<td width="147">_v_index</td>
-<td width="154">_t_index</td>
-<td width="344">Returns a list of all user indexes</td>
-</tr>
-<tr>
-<td width="147">_v_operator</td>
-<td width="154">_t_operator</td>
-<td width="344">Returns a list of all defined operators</td>
-</tr>
-<tr>
-<td width="147">_v_procedure</td>
-<td width="154"></td>
-<td width="344">Returns a list of all the stored procedures and their attributes</td>
-</tr>
-<tr>
-<td width="147">_v_relation_column</td>
-<td width="154"></td>
-<td width="344">Returns a list of all attributes of a relation, Constraints and other informations</td>
-</tr>
-<tr>
-<td width="147">_v_relation_column_def</td>
-<td width="154"></td>
-<td width="344">Returns a list of all attributes of a relation that have defined defaults</td>
-</tr>
-<tr>
-<td width="147">_v_sequence</td>
-<td width="154"></td>
-<td width="344">Returns a list of all defined sequences</td>
-</tr>
-<tr>
-<td width="147">_v_session</td>
-<td width="154"></td>
-<td width="344">Returns a list of all active sessions</td>
-</tr>
-<tr>
-<td width="147">_v_table</td>
-<td width="154"></td>
-<td width="344">Returns a list of all user tables</td>
-</tr>
-<tr>
-<td width="147">_v_table_dist_map</td>
-<td width="154"></td>
-<td width="344">Returns a list of all fields that are used to determine the table’s data distribution</td>
-</tr>
-<tr>
-<td width="147">_v_table_index</td>
-<td width="154"></td>
-<td width="344">Returns a list of all user table indexes</td>
-</tr>
-<tr>
-<td width="147">_v_user</td>
-<td width="154"></td>
-<td width="344">Returns a list of all users</td>
-</tr>
-<tr>
-<td width="147">_v_usergroups</td>
-<td width="154"></td>
-<td width="344">Returns a list of all groups of which the user is a member</td>
-</tr>
-<tr>
-<td width="147">_v_view</td>
-<td width="154"></td>
-<td width="344">Returns a list of all user views</td>
-</tr>
-<tr>
-<td width="147">_v_load_status</td>
-<td width="154"></td>
-<td width="344">Display the information about the progress of loads that are running on the system</td>
-</tr>
-</tbody>
-</table>
-
-System table or view in Netezza that shows the number of records for each table
-SELECT TABLENAME,
-       OBJTYPE,
-       OWNER,
-       CREATEDATE,
-       USED_BYTES,
-       USED_BYTES/1073741824 as USED_GB, 
-       RELTUPLES as "ROWS"
- FROM _V_TABLE_ONLY_STORAGE_STAT
- WHERE OBJCLASS = 4905 OR OBJCLASS = 4911
- ORDER BY TABLENAME;
-
-
-
-Netezza System Tables and Views Examples
-
-
-<p>Example queries</p>
-<p>SYSTEM.ADMIN(ADMIN)=&gt; select SEQNAME,SEQNAME,OWNER from _v_sequence limit 2;
-SEQNAME | SEQNAME | OWNER
--------------+-------------+-------
-_S_REPL_CSN | _S_REPL_CSN | ADMIN
-_S_HWID | _S_HWID | ADMIN
-(2 rows)</p>
-<p>Views</p>
-<p>SELECT * FROM _V_SYS_VIEW; will give you the list of system views.</p>
-<p>SELECT * FROM _V_VIEW; will also list some of the system views plus any user-defined views.</p>
-<p>V_OBJECTS</p>
-<p>SYSTEM.ADMIN(ADMIN)=&gt; select * from _v_objects;
-OBJID | OBJNAME | OWNER | CREATEDATE | OBJTYPE | OBJCLASS | DESCRIPTION | SCHEMA | SCHEMAID
-——–+———+——-+———————+———-+———-+————-+——–+———-
-213243 | SEQ1 | ADMIN | 2016-09-04 07:25:19 | SEQUENCE | 4909 | | ADMIN | 6
-(1 row)</p>
-
-
-<h3>What to read next?</h3>
-
-<a class="yarpp-thumbnail" href="https://www.iexpertify.com/learn/full-course/netezza/" rel="norewrite" title="Netezza">
-Netezza</a>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+    -- Example query to list all databases in the Netezza system
+    SELECT DISTINCT SCHEMA_NAME as Database_Name, OWNER from DBADM_DATABASE;</code></pre>
+<h2>Conclusion</h2>
+<p>Familiarizing yourself with the various system tables and views in Netezza is essential for effectively managing and optimizing your data warehouse. These system objects provide valuable insights into database structures, performance metrics, and system configurations.</p>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

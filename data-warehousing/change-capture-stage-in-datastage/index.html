@@ -1,99 +1,86 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Change Capture Stage in DataStage - Data Warehousing</h1>
+<section>
+<h2>Change Capture Stage</h2>
+<p>The Change Capture Stage captures the changes between two input datasets by comparing them based on a key column. The two input datasets are linked with the Change Capture stage using default link names, 'Before' and 'After'. The stage produces a change dataset, whose table definition is transferred from the after dataset's table definition, with an addition of one column: a change code with values encoding the four actions - insert, delete, copy, and edit.</p>
+<h3>Options</h3>
+<ul>
+<li><strong>Change Keys/Key:</strong> Name of the column to be used as a key.</li>
+<li><strong>Change Values/Value:</strong> Type: Input Column, Name of a value column. When a before and after row are determined to be copies based on the difference keys, the value columns can then be used to determine if the after row is an edited version of the before row.</li>
+<li><strong>Change Mode:</strong> Defines keys &amp; Values explicitly or implicitly. Choose 'All keys, Explicit values' to specify that value columns must be defined, but all other columns are key columns unless excluded. Choose 'Explicit Keys, All Values' to specify that key columns must be defined, but all other columns are value columns unless they are excluded.</li>
+</ul>
+<h2>Example:</h2>
+<p>Consider the following two datasets: Before Dataset - COL_1 A; After Dataset - COL_1 C. If we pass these datasets through the Change Capture stage, followed by a Sequential File, and add COL_1 and CHANGE_CODE column to the output, the result will be: COL_1, CHANGE_CODE, A 2, B 0, C 1.</p>
+<h2>Change Apply Stage</h2>
+<p>The Change Apply stage is a processing stage. It takes the change dataset, that contains the changes in the before and after datasets, from the Change Capture stage and applies the encoded change operations to a before dataset to compute an after dataset.</p>
+</section>
+<h1>Understanding the Change Capture Stage in DataStage</h1>
+<p>The Change Capture Stage is a crucial component of IBM InfoSphere DataStage, a powerful data integration tool. This stage enables you to capture changes in a database, making it an essential part of ETL (Extract, Transform, Load) processes. Let's delve into the intricacies of this powerful feature.</p>
+<h2>What is the Change Capture Stage?</h2>
+<p>The Change Capture Stage reads data from a database table and identifies changes that have occurred since the last run. It captures these changes, stores them in a buffer, and makes them available for further processing.</p>
+<h2>When to Use the Change Capture Stage</h2>
+<p>You should consider using the Change Capture Stage when:</p>
+<ul>
+<li>Incremental data extraction is required, i.e., processing only new or updated records.</li>
+<li>Processing large volumes of data without having to read the entire table every time.</li>
+<li>Ensuring data consistency between source and target systems.</li>
+</ul>
+<h2>How Does it Work?</h2>
+<p>The Change Capture Stage operates based on database timestamps or keys, and it can employ three methods to capture changes:</p>
+<ul>
+<li><strong>Snapshot Method:</strong> A snapshot of the table is taken at the start of the run. Changes since this snapshot are then captured.</li>
+<li><strong>Incremental Timestamp Method:</strong> The stage reads the database timestamp, and records modified after that timestamp are captured.</li>
+<li><strong>Key-based Method:</strong> The stage captures only those records where the key value has changed.</li>
+</ul>
+<h2>Example: Setting Up a Change Capture Stage</h2>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+    ```sql
+    -- Define the table to capture changes
+    TABLES my_table (
+        TABLE_NAME 'my_table'
+        KEY_COLUMNS ('id')
+        TIMESTAMP_COLUMN 'last_modified'
+    );
 
+    -- Set up a Change Capture operator
+    CHANGE_CAPTURE capture_operator (
+        TABLES my_table
+        METHOD 'key-based'
+        REFRESH 'on demand'
+        BUFFER_SIZE '10000'
+    );
+    ```
 
-
-
-
-
-Change Capture Stage in DataStage - Data Warehousing Data Warehousing
-
-<p>Change Capture StageIt captures the change between two input data by comparing them based on key column.The two input links are linked with Change Capture stage by the two default link names  i.e. ‘Before’ and ’After’.The stage produces a change data set, whose table definition is transferred from the after data set’s table definition with the addition of one column: a change code with values encoding the four actions: insert, delete, copy, and edit.0 = If the data is copied as it is from ‘Before’ Link to ‘After’ Link1 = If the data is newly Inserted in ‘After’ link2 = If the data is Deleted from ‘Before’ link3 = If the data is Edited in ‘After’ link from ‘Before’ linkDifferent OptionsChange Keys/Key -&gt; Name of column to be used as a key.Change Values/Value -&gt; Type: Input ColumnName of a value column. When a before and after row are determined to be copies based on the difference keys, the value columns can then be used to determine if the after row is an edited version of the before row.Change Mode -&gt; 1. Explicit Keys &amp; Values  2. All keys, Explicit values  3. Explicit Keys, All ValuesChange Mode’ is the ‘Option’ which helps you to define keys &amp; Values explicitly or implicitly.Choose All keys, Explicit values to specify that value columns must be defined, but all other columns are key columns unless excluded. Choose Explicit Keys, All Values to specify that key columns must be defined but all other columns are value columns unless they are excluded.Example:Before DatasetCOL_1   A   BAfter DatasetCOL_1   C   B take above two datasets -&gt; change capture stage -&gt; sequential file and add COL_1 and CHANGE_CODE column to outputoutput will be:COL_1      CHANGE_CODE    A 2    B 0    C 1    Change Apply stageThe Change Apply stage is a processing stage. It takes the change data set, that contains the changes in the before and after data sets, from the Change Capture stage and applies the encoded change operations to a before data set to compute an after data set.</p>
-
-<br><br>
+    <h2>Conclusion</h2>
+<p>The Change Capture Stage in DataStage is a valuable asset for data integration tasks, offering efficient incremental extraction and ensuring data consistency. By understanding its operation and application, you can streamline your ETL processes and manage large datasets more effectively.</p>
+<h2>Further Reading</h2>
+<ul>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSMAQT_7.5.0/com.ibm.swg.im.ds.stages.doc/doc/t_change_capture_stage.html">Official IBM Documentation</a></li>
+<li><a href="https://www.ibm.com/support/pages/data-integration-incremental-updates">IBM InfoSphere DataStage - Incremental Updates</a></li>
+</ul>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

@@ -1,124 +1,137 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
 
 
 
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Manually Failover a Disk in Netezza</h1>
+<p>Follow these steps to manually failover a disk in Netezza:</p>
+<ol>
+<li><strong>Step 1:</strong> Check for the disk to be failed over (hwid 1355) and ensure it has a healthy mirror available.
+              MyServer:/export/home/nz-&gt;nzds -id 1355
+              <pre>
+                  Data Slice Status SPU Partition Size (GiB) % Used Supporting Disks
+                  ———- ——- —- ——— ———- ——
+                  23 Healthy 1421 7 356 79.92 1138,135524
+                      Healthy 1421 6 356 79.84 1138,1355
+              </pre>
+</li>
+<li><strong>Step 2:</strong> Identify the SPA in which this disk is located.
+              MyServer:/export/home/nz-&gt;nzhw -type Disk | grep 1355
+              <pre>
+                  Disk 1355 spa1.diskEncl4.disk6 Active Ok
+              </pre>
+</li>
+<li><strong>Step 3:</strong> Make sure we have a spare available in the SPA identified in above step.
+              MyServer:/export/home/nz-&gt;nzhw -type Disk | grep Spare
+              <pre>
+                  Disk 1582 spa3.diskEncl1.disk12 Spare Ok
+                  Disk 1586 spa4.diskEncl1.disk8 Spare Ok
+                  Disk 1621 spa2.diskEncl3.disk10 Spare Ok
+                  Disk 1622 spa2.diskEncl1.disk10 Spare Ok
+                  Disk 1623 spa1.diskEncl4.disk7 Spare Ok
+                  Disk 1624 spa4.diskEncl4.disk3 Spare Ok
+                  Disk 1625 spa3.diskEncl3.disk7 Spare Ok
+                  Disk 1626 spa1.diskEncl4.disk4 Spare Ok
+              </pre>
+</li>
+<li><strong>Step 4:</strong> Check the system usage before you manually failover a disk.
+              MyServer:/export/home/nz-&gt;nz_responders
+              <pre>
+                  Cur Time Plan # Snippet Time S/P State Busy Dataslices ...
+                  ....
+              </pre>
+</li>
+<li><strong>Step 5:</strong> Failover the disk.
+              mysqldmin netezza evict-disk 1356
+          </li>
+<li><strong>Step 6:</strong> Verify that the disk has been assigned to a new SPA and is in the assigning state.
+              MyServer:/export/home/nz-&gt;nzhw -issues
+              <pre>
+                  HW ID Location Role State
+                  ....
+                  Disk 1355 spa1.diskEncl4.disk6 Failed Ok
+                  Disk 1623 spa1.diskEncl4.disk7 Assigned Ok
+              </pre>
+</li>
+<li><strong>Step 7:</strong> Monitor the regen status until it is complete.
+              MyServer:/export/home/nz-&gt;nzds -regenstatus
+              <pre>
+                  Data Slice Status SPU Partition Size (GiB) % Used Supporting Disks Start Time % Done
+                  ....
+              </pre>
+</li>
+</ol>
+<p>Once the regen status is complete, the new disk will be fully functional and synced with the rest of your Netezza system.</p>
+<h1>Manually Failover a Disk in Netezza</h1>
+<h2>Introduction</h2>
+<p>This guide will walk you through the process of manually failing over a disk in Netezza. This procedure is typically used when a failure occurs with a disk and needs to be addressed immediately.</p>
+<h2>Requirements</h2>
+<ul>
+<li>Access to Netezza System Manager (NSM)</li>
+<li>Knowledge of the affected disk's details (slot number, node name, etc.)</li>
+</ul>
+<h2>Steps</h2>
+<ol>
+<li><strong>Identify the Affected Disk:</strong> Use NSM to identify the slot number and node name of the affected disk. You can do this by navigating to the Disks tab, finding your system, and then identifying the disk in question.</li>
+<figure>
+<figcaption>Disk Identification in Netezza System Manager</figcaption>
+</figure>
+<li><strong>Isolate the Node:</strong> To prevent data corruption, isolate the node that contains the affected disk. This can be done by running the following command in NSM:
 
+        ```
+        admin isolate [node_name]
+        ```</li>
+<li><strong>Remove the Failed Disk:</strong> Once the node is isolated, you can safely remove the failed disk using NSM's GUI or command line interface.
 
+        - **GUI:** Click on the disk in NSM and select the 'Remove' option.
+        - **CLI:** Run the following command:
 
-Manually failover a disk in Netezza - learn
+        ```
+        admin disk remove [slot_number] [node_name]
+        ```</li>
+<li><strong>Insert the New Disk:</strong> After removing the failed disk, replace it with a new one. Insert the new disk into the appropriate slot and node.</li>
+<li><strong>Add the New Disk:</strong> To add the new disk to your system, use NSM's GUI or command line interface.
 
+        - **GUI:** Click on the 'Add' button in the Disks tab and follow the prompts to add the new disk.
+        - **CLI:** Run the following command:
 
-<p>1) Check for the disk to be failed over (hwid 1355) and make sure it have a healthy mirror available.</p>
-MyServer:/export/home/nz-&gt;nzds -id 1355Data Slice Status SPU Partition Size (GiB) % Used Supporting Disks———- ——- —- ——— ———- —— —————-23 Healthy 1421 7 356 79.92 1138,135524 Healthy 1421 6 356 79.84 1138,1355
-<p>2) Identify the SPA in which this disk is located.</p>
-MyServer:/export/home/nz-&gt;nzhw -type Disk | grep 1355Disk 1355 spa1.diskEncl4.disk6 Active Ok
-<p>3) Make sure we have a spare available in the SPA identified in above step.</p>
-MyServer:/export/home/nz-&gt;nzhw -type Disk | grep SpareDisk 1582 spa3.diskEncl1.disk12 Spare OkDisk 1586 spa4.diskEncl1.disk8 Spare OkDisk 1621 spa2.diskEncl3.disk10 Spare OkDisk 1622 spa2.diskEncl1.disk10 Spare OkDisk 1623 spa1.diskEncl4.disk7 Spare OkDisk 1624 spa4.diskEncl4.disk3 Spare OkDisk 1625 spa3.diskEncl3.disk7 Spare OkDisk 1626 spa1.diskEncl4.disk4 Spare Ok
-<p> </p>
-<p>4) Just check the system usage before you manually failover a disk.</p>
-MyServer:/export/home/nz-&gt;nz_respondersCur Time Plan # Snippet Time S/P State Busy Dataslices … SQL Username/Database======== ======= ========= ========= ======= ==== ==================== ======================================== ====================07:33:45
-<p> </p>
-<p>5) Manually issue a failover command</p>
-<p>MyServer:/export/home/nz-&gt;nzhw failover -id 1355Are you sure you want to proceed (y|n)? [n] y</p>
-<p> </p>
-<p>6) Now check for hardware issue and you will now see one failed disk and other in assigning state (Which will disappear from nzhw -issue after regen is complete).</p>
-MyServer:/export/home/nz-&gt;nzhw -issuesDescription HW ID Location Role State———– —– ——————– ——— —–Disk 1355 spa1.diskEncl4.disk6 Failed OkDisk 1623 spa1.diskEncl4.disk7 Assigning Ok
-<p> </p>
-<p>7) Check for the regen status.</p>
-MyServer:/export/home/nz-&gt;nzds -regenstatusData Slice Status SPU Partition Size (GiB) % Used Supporting Disks Start Time % Done———- ——— —- ——— ———- —— —————- ———- ——-23 Repairing 1421 7 356 79.92 1138,1623 0 0.0024 Repairing 1421 6 356 79.84 1138,1623 0 0.00
-<p> </p>
-8) Now you will see thestatus is changed from assigning to assigned. It can take few seconds to couple of minutes for this state change depending on system usage, data slice used space.MyServer:/export/home/nz-&gt;nzhw -issuesDescription HW ID Location Role State———– —– ——————– ——– —–Disk 1355 spa1.diskEncl4.disk6 Failed OkDisk 1623 spa1.diskEncl4.disk7 Assigned Ok
-<p> </p>
-<p>9) You can see the regen status is also progressing now.</p>
-MyServer:/export/home/nz-&gt;nzds -regenstatusData Slice Status SPU Partition Size (GiB) % Used Supporting Disks Start Time % Done———- ——— —- ——— ———- —— —————- ——————- ——-23 Repairing 1421 7 356 79.92 1138,1623 2015-06-29 07:42:05 5.2924 Repairing 1421 6 356 79.85 1138,1623 2015-06-29 07:42:05 0.00
+        ```
+        admin disk add [slot_number] [node_name]
+        ```</li>
+<li><strong>Re-establish Connectivity:</strong> Once the new disk has been added, re-establish connectivity between the node and the rest of the system. This can be done by running the following command:
 
-
-
-<br><br>
+        ```
+        admin network link up [node_name]
+        ```</li>
+<li><strong>Validate the New Disk:</strong> Use NSM to verify that the new disk has been added correctly and is functioning properly.</li>
+<figure>
+<figcaption>New Disk Verification in Netezza System Manager</figcaption>
+</figure>
+</ol>
+<h2>Conclusion</h2>
+<p>Manually failover a disk in Netezza can be a critical task when dealing with hardware failures. By following these steps, you can safely remove the failed disk, add a new one, and ensure data integrity within your system.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

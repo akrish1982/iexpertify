@@ -1,113 +1,83 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-nzstats Command Netezza - learn
-<p>You can use the nzstats command to display the group and statistics tables. You must be the user admin or have Manage System privileges to view IBM® Netezza® statistics. You must also be the user admin to view the Database, Table, and the Query tables.</p>
-<p>Netezza appliances uses the up-to-date stat information to plan and execute the queries. The statics are very much important in performance of the query.</p>
-<p>System Statistics using Netezza nzstats Command</p>
-<p>You can use the nzstats command to display the statistics of a specific group or table, operational statistics about system capacity, system faults, and system performance or how your system is running.</p>
-<p>To display the System Group table, enter: nzstats show -type system</p>
-<p>The information in the output is obtained from the /nz/data/config/callHome.txt file. If that file is not customized for your IBM® Netezza® system, the command output might contain general placeholder text.</p>
-<p>You can use the nzstats command to display the group and table types. You can also use the command to display specific fields within a group or table.</p>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<p>Learn about the <strong>nzstats</strong> Command in Netezza:</p>
+<p>The nzstats command is a powerful tool that allows you to display group and statistics tables. To view IBM® Netezza® statistics, you must be the user 'admin' or have Manage System privileges. Additionally, you must be the user 'admin' to view the Database, Table, and Query tables.</p>
+<p>Netezza appliances leverage up-to-date statistic information for planning and executing queries. The statistics are crucial in ensuring optimal query performance.</p>
+<h2>System Statistics using Netezza nzstats Command</h2>
+<p>The nzstats command can be used to display statistics specific to a group or table, operational statistics about system capacity, faults, and performance. To view the System Group table, enter:</p>
+<pre>nzstats show -type system</pre>
+<p>Please note that the information in the output is obtained from the /nz/data/config/callHome.txt file. If this file is not customized for your IBM® Netezza® system, the command output may contain general placeholder text.</p>
+<h2>Group and Table Types with nzstats</h2>
+<p>You can also use the nzstats command to display group and table types. Additionally, you can use it to view specific fields within a group or table:</p>
 <ul>
-<li>To list the tables, enter:</li>
+<li><pre>nzstats listTypes</pre> - lists all tables.</li>
+<li><pre>nzstats listFields -type dataslice</pre> - displays specific fields of a table.</li>
 </ul>
-<p>nzstats listTypes</p>
+<p>Another useful tool for displaying statistics is the NzAdmin tool. You can check the table statistics by using the Netezza admin tool.</p>
+<h1>NzStats Command in Netezza</h1>
+<h2>Introduction</h2>
+<p>
+        The NzStats command is a powerful tool in the Netezza SQL environment. It enables users to perform statistical analysis on their data efficiently. This article aims to provide a comprehensive guide on how to use the NzStats command, its syntax, and some common examples.
+    </p>
+<h2>NzStats Syntax</h2>
+<pre>
+        NzStats (column_name | expression) [OVER (partition_clause)]
+            [SORT BY sort_expressions]
+            [SAMPLE sample_size PERCENT]
+            [STATISTICS statistics_options]
+        ;
+    </pre>
+<h3>Arguments:</h3>
 <ul>
-<li>To display specific fields of a table, enter:</li>
+<li><code>column_name | expression</code>: The column or expression to analyze.</li>
+<li><code>OVER (partition_clause)</code>: Partition the data into subsets for analysis.</li>
+<li><code>SORT BY sort_expressions</code>: Sort the data before performing the analysis.</li>
+<li><code>SAMPLE sample_size PERCENT</code>: Specify a percentage of rows to sample.</li>
+<li><code>STATISTICS statistics_options</code>: Choose the type and level of statistical analysis.</li>
 </ul>
-<p>nzstats listFields -type dataslice</p>
-<p>NzAdmin tool can also be used to display statistics. You can check the table statistics by using Netezza admin tool.</p>
+<h2>Examples</h2>
+<h3>Basic Example</h3>
+<pre>
+        SELECT NzStats(sales)
+            OVER (SORT BY region)
+            STATISTICS MEAN STDDEV MIN MAX COUNT PERCENTILE(0.5);
+    </pre>
+    In this example, we're calculating the mean, standard deviation, minimum, maximum, count, and the 50th percentile for the 'sales' column sorted by the 'region'.
 
-<br><br>
+    <h3>Partitioning Example</h3>
+<pre>
+        SELECT NzStats(sales)
+            OVER (PARTITION BY product ORDER BY region)
+            STATISTICS MEAN STDDEV MIN MAX COUNT PERCENTILE(0.5);
+    </pre>
+    In this example, the statistics are calculated for each 'product' within the sorted 'region'.
+
+    <h2>Summary</h2>
+<p>
+        The NzStats command in Netezza is an essential tool for statistical analysis. By understanding its syntax and common uses, you can quickly and efficiently analyze your data to gain valuable insights. Keep practicing, and happy analyzing!
+    </p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

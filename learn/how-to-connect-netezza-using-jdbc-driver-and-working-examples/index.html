@@ -1,197 +1,133 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Connect Netezza to Python using JDBC Driver - learn
-
-
-
-<p>Connect to Netezza by using various methods and programming languages. Netezza supports ODBC, OLEDB and JDBC drivers for connections.</p>
-
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Before_you_begin">
-1)
-Before you begin
-</a>
- <a href="index.html#Netezza_JDBC_Driver">
-1.1)
-Netezza JDBC Driver
-</a>
- <a href="index.html#Install_Jaydebeapi">
-1.1.1)
-Install Jaydebeapi
-</a>
- <a href="index.html#Set_CLASSPATH_to_Driver_Location">
-1.1.2)
-Set CLASSPATH to Driver Location
-</a>
- <a href="index.html#How_to_Connect_Netezza_using_JDBC_Driver">
-1.2)
-How to Connect Netezza using JDBC Driver?
-</a>
- <a href="index.html#Python_Sample_code_to_Connect_to_Netezza_Server">
-1.3)
-Python Sample code to Connect to Netezza Server
-</a>
- <a href="index.html#What_to_read_next">
-1.4)
-What to read next?
-</a>
-
-<h2 class="" id="before-you-begin">Before you begin</h2>
-
-<p>Before you begin, gather this connection information from the database administrator:</p>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: How to Connect Netezza using JDBC Driver and Working Examples</h1>
+<p>Explore the process of connecting to Netezza by utilizing various methods and programming languages. Netezza supports ODBC, OLEDB, and JDBC drivers for connections.</p>
+<h2 id="Before_you_begin">Before you begin</h2>
 <ul>
-<li value="1">Name of the server that hosts the database you want to connect to</li>
-<li value="2">Database name</li>
-<li value="3">User name and password</li>
-<li value="4">Are you connecting to an SSL server?</li>
+<li>Server name that hosts the database you wish to connect to</li>
+<li>Database name</li>
+<li>User name and password</li>
+<li>Indication of whether you are connecting to an SSL server</li>
 </ul>
-Netezza JDBC Driver
-<p>Connection to Netezza using JDBC driver is easy and one of the widely used method.</p>
-<p>Netezza provides JDBC driver, you can use that driver from any programming language that supports JDBC connections such as Java, Python etc. You can download JDBC driver from IBM fix central site. You should have jdbc jar by the name nzjdbc.jar.</p>
-<p>Alternatively, you will get software packages if you purchase Netezza or IBM PureData Systems for analytics.</p>
-<p>First, you need to install jaydebeapi python module using pip (or any other method).</p>
-Install Jaydebeapi
+<h2 id="Netezza_JDBC_Driver">Netezza JDBC Driver</h2>
+<p>Connecting to Netezza using the JDBC driver is straightforward and commonly employed.</p>
+<p>Netezza offers a JDBC driver, which you can utilize with any programming language that supports JDBC connections like Java, Python, etc. You can download the JDBC driver from IBM fix central site. You should have the jdbc jar named nzjdbc.jar.</p>
+<p>Alternatively, you will receive software packages if you purchase Netezza or IBM PureData Systems for analytics.</p>
+<h3 id="Install_Jaydebeapi">1.1) Install Jaydebeapi</h3>
 <p>The JayDeBeApi module allows you to connect from Python code to databases using Java JDBC. It provides a Python DB-API v2.0 to that database.</p>
-<p>You can install it using pip:</p>
-<p>pip install Jaydebeapi</p>
-Set CLASSPATH to Driver Location
-<p>As we have no other dependent jar for this Netezza JDBC driver, you can directly refer this driver in your jaydebeapi module. Alternatively, you can export jar location to CLASSPATH shell variable and run your python program without needing to set jar location in your module.</p>
-<p>You can read on how to set CLASSPATH variable in my another post Set and Use Environment Variable inside Python Script</p>
-How to Connect Netezza using JDBC Driver?
-<p>In this section we will discuss how can we connect Netezza using JDBC driver. I will be using python and jaydebeapi to execute Netezza JDBC driver.</p>
-<p>Once you have Netezza jar in a place and installed required modules, you are ready to access Netezza from withing your Python program using JDBC driver.</p>
-<p>Note that, Netezza jdbc driver class name is “org.netezza.Driver“</p>
-Python Sample code to Connect to Netezza Server
-<p>Step 1: Importing Python jaydebeapi library:</p>
-<p>import jaydebeapi, os</p>
-<p>Step 2: Setting Database connection settings:</p>
-<p>
+<p>Install it using pip:</p>
+<code>pip install Jaydebeapi</code>
+<h3 id="Database_Connection_Settings">1.2) Setting Database Connection Settings</h3>
+<pre>
 dsn_database = "DBNAME"
 dsn_hostname = "191.168.100.10"
 dsn_port = "5480"
 dsn_uid = "admin"
 dsn_pwd = "pwd"
 jdbc_driver_name = "org.netezza.Driver"
-jdbc_driver_loc = os.path.join('D:\\Work\\Connections_Softwares\\Jar\\nzjdbc.jar')</p>
-<p>sql_str = "select now()"
-</p>
-<p>connection_string=’jdbc:netezza://’+dsn_hostname+’:’+dsn_port+’/’+dsn_database</p>
-<p>url = '{0}:user={1};password={2}'.format(connection_string, dsn_uid, dsn_pwd)
-print("Connection String: " + connection_string)</p>
-<p>Step 3: Creating Database Connection:</p>
-<p>conn = jaydebeapi.connect(jdbc_driver_name, connection_string, {'user': dsn_uid, 'password': dsn_pwd},
-jars=jdbc_driver_loc)</p>
-<p>Step 4: Processing SQL Query:</p>
-<p>curs = conn.cursor()
-curs.execute(sql_str)
-result = curs.fetchall()
-print(result[0])</p>
-<p>Step 6: Closing all connections:
+jdbc_driver_loc = os.path.join('D:\\Work\\Connections_Softwares\\Jar\\nzjdbc.jar')
+sql_str = "select now()"
+connection_string=’jdbc:netezza://’+dsn_hostname+’:’+dsn_port+’/’+dsn_database
+url = '{0}:user={1};password={2}'.format(connection_string, dsn_uid, dsn_pwd)
+print("Connection String: " + connection_string)</pre>
+<h3 id="Creating_Database_Connection">1.3) Creating Database Connection</h3>
+<pre>
+connection = jaydebeapi.connect(jdbc_driver_name, connection_string, {'user': dsn_uid, 'password': dsn_pwd}, jars=jdbc_driver_loc)</pre>
+<h3 id="Processing_SQL_Query">1.4) Processing SQL Query</h3>
+<pre>
+cursor = connection.cursor()
+cursor.execute(sql_str)
+results = cursor.fetchall()
+print(results[0])</pre>
+<h3 id="Closing_all_connections">1.5) Closing all connections</h3>
+<pre>
+cursor.close()
+connection.close()</pre>
+<h1>Learning to Connect Netezza Using JDBC Driver: Working Examples</h1>
+<h2>Introduction</h2>
+<p>In this tutorial, we will walk you through the process of connecting to a Netezza database using Java and its JDBC (Java Database Connectivity) driver. We'll provide you with working examples to get started quickly.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>A Java development environment (e.g., IntelliJ IDEA, Eclipse, or NetBeans)</li>
+<li>Netezza JDBC driver JAR file (ibmdb4.jar)</li>
+<li>Access to a Netezza database and its connection details (hostname, port, username, password, etc.)</li>
+</ul>
+<h2>Step 1: Download the Netezza JDBC driver</h2>
+<p>You can download the IBM DataServer Driver for JDBC and SQLJ (Type 4) from this link:</p>
+<a href="https://www.ibm.com/support/pages/download-ibm-data-server-driver-jdbc-and-sqlj">Download Netezza JDBC driver</a>
+<h2>Step 2: Create a Java project and add the JAR file to your classpath</h2>
+<p>Create a new Java project, and add ibmdb4.jar to your classpath.</p>
+<h2>Step 3: Write the Java code to connect to Netezza using JDBC</h2>
+<h3>Example 1 - Simple Connection</h3>
+<pre><code java="">
+import java.sql.*;
 
-curs.close()
-conn.close()
+public class NetezzaConnection {
+    public static void main(String[] args) {
+        String url = "jdbc:db2://hostname:port/database";
+        String username = "username";
+        String password = "password";
 
-Here is the sample output:</p>
-<p>URL: jdbc:netezza://191.168.100.10:5480/DBNAME:user=admin;password=pwd
-Connection String: jdbc:netezza://191.168.100.10:5480/DBNAME
-('2020-01-02 06:02:12',)</p>
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            System.out.println("Connected to Netezza successfully!");
+        } catch (SQLException e) {
+            System.err.println("Error connecting to Netezza: " + e.getMessage());
+        }
+    }
+}
+</code></pre>
+<h3>Example 2 - Executing a Query</h3>
+<pre><code java="">
+import java.sql.*;
 
+public class NetezzaQuery {
+    public static void main(String[] args) {
+        String url = "jdbc:db2://hostname:port/database";
+        String username = "username";
+        String password = "password";
 
-<br><br>
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM table");
+
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString(1) + ", " + resultSet.getString(2));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error executing the query: " + e.getMessage());
+        }
+    }
+}
+</code></pre>
+<h2>Conclusion</h2>
+<p>In this tutorial, we have shown you how to connect to a Netezza database using Java and its JDBC driver. We provided simple examples for establishing a connection and executing queries.</p>
+<h2>Next Steps</h2>
+<ul>
+<li>Explore advanced topics, such as prepared statements, transaction management, and result set metadata.</li>
+<li>Create your own Java applications that connect to Netezza and perform various database operations.</li>
+</ul>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

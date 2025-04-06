@@ -1,171 +1,70 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
 
 
 
-
-
-
-Netezza Zone Maps Best Practices - learn
-
-
-Reading Time:  5 minutes
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Join_Keys_Best_Practice">
-1)
-Join Keys Best Practice
-</a>
- <a href="index.html#What_is_an_extent">
-2)
-What is an extent?
-</a>
- <a href="index.html#Netezza_Zone_maps">
-3)
-Netezza Zone maps
-</a>
- <a href="index.html#Other_data_types">
-4)
-Other data types
-</a>
- <a href="index.html#Clustered_Based_Table_for_performance">
-5)
-Clustered Based Table for performance
-</a>
- <a href="index.html#Zone_maps_and_joins">
-5.1)
-Zone maps and joins
-</a>
- <a href="index.html#What_to_read_next">
-5.2)
-What to read next?
-</a>
-
-Join Keys Best Practice
-<p>Use Integers as join keys for best performance results, example a surrogate key. Integers and integer based columns (e.g. timestamp and date) will compress with Netezza’s compression. As per Netezza docs,  floating point numerics hash poorly and will force you to slower sort merge joins if joining on numeric columns that are not integers. Relying on a standard of integer data type on keys will avoid problems like a NOT achieving good join colocation. If two tables that need to be joined are distributed on customer id but one is defined as a varchar and other is defined as an integer, the data would not colocate because a varchar and an integer are not the same.</p>
-What is an extent?
-<p>An extent is smallest unit of storage on the disk that can be allocated (each extent is 3 MB)</p>
-Netezza Zone maps
-<p>Netezza automatically generates minimum and maximum values for every integer based column</p>
-<ul>
-<li>All Integer types (int1, int2, int4, int8)</li>
-<li>Date</li>
-<li>Timestamp</li>
-</ul>
-<p>By keeping track of the min and max values, Netezza will be able to avoid reading disk extends which will be most of the disk extends in a large data warehouse environment. If your data is naturally ordered (like by date) or sorted, these will behave much like Oracle’s partitions, and only the blocks needed will be read. For e.g. if a fact table stores five million records per month for the last 5 years which is more than 2.5 billion records. If the queries process only a month’s data, Netezza will be able to read only the five million records that are relevant. If there are 96 snippet processors and if the data is uniformly distributed across all the data slices, then the amount of data read into the snippet processors will be a little over 500,000 records which is small to process. Enabling the appliance to utilize the zone map feature by selecting the best data types for columns in the tables is another key point to take into consideration during design.</p>
-Other data types
-<p>Additional data types which can be zone mapped due to organize on clause (this creates a CBT – Clustered Base Table). </p>
-<ul>
-<li>Char – all sizes, but only the first 8 bytes are used in the zone map</li>
-<li>Varchar – all sizes, but only the first 8 bytes are used in the zone map</li>
-<li>Nchar – all sizes, but only the first 8 bytes are used in the zone map</li>
-<li>Nvarchar – all sizes, but only the first 8 bytes are used in the zone map</li>
-<li>Numeric – all sizes up to and including numeric(18)</li>
-<li>Float</li>
-<li>Double</li>
-<li>Boolean</li>
-<li>Time</li>
-<li>Time with timezone</li>
-<li>Interval</li>
-</ul>
-
-
-<a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/learn/netezza-distribute-on/" rel="" style="border-radius:25px;background-color:#ba0c49;color:#fffffa">Clustered Based Tables</a>
-<a class="wp-block-button__link has-text-color" href="https://www.iexpertify.com/learn/full-course/netezza/" rel="https://www.iexpertify.com/learn/full-course/netezza/ noopener" style="border-radius:25px;color:#ba0c49" target="_blank">Full Netezza course</a>
-
-<h2>Clustered Based Table for performance</h2>
-<p>In order to organize the existing records in the table, “GROOM TABLE” needs to be executed to take advantage of the data reorganization by queries. It is a good practice to have fact tables defined as clustered base tables with data organized on often joined columns to improve multi-dimensional lookup. At the same time care needs to be taken on the data organization columns by understanding the often executed queries and also minimizing the number of columns on which the data needs to be organized on. Compared to traditional indexes or using materialized views to improve performance, CBTs have a major advantage in terms of not using additional space but organizing the table data in place. One point to note is that by changing the data organization, it will impact the compression which may result in the increase or decrease in the size of the table storage after converting a table to a CBT.</p>
-Zone maps and joins
-<p>When two tables are joined together often like a customer table and order table, the distribution key selection of the two tables can play an important role in the performance of the queries. If the distribution key is on the join column, for e.g. customer id column in both the customer and order table, the data distribution will result in the records with the same customer id values ending up in the same data slice for both the tables. When a query joining the table is being processed, since the matching data from both the tables are in the same data slice the snippet processor will be able to perform the join locally and the send the result without performing additional work which in turn improves the performance of the query. If the tables are not distributed on the columns often used for join, matching data from both the tables will end up in different data slices which means, the snippet processor needs to perform additional work to satisfy the join. The appliance will choose to temporarily redistribute one of the tables on the join column if the other is already distributed on the join column and then the snippet processors can perform the join locally. If both the tables are not distributed on the join column, then the appliance may redistribute both the tables before the snippet processors can perform the join. If a table stored relatively small number of records then Netezza can decide to broadcast the whole table to all the SPUs so that each one has its own copy for processing. What this means is the host needs to consolidate the table data from all the data slices and send it across to all the SPUs the complete table data.</p>
-
-<br><br>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<article class="wp-content-typed">
+<h1>Netezza Zone Maps Best Practices - learn</h1>
+<p>Reading Time:  5 minutes</p>
+<section id="Join_Keys_Best_Practice">
+<h2>1) Join Keys Best Practice</h2>
+<p>Use Integers as join keys for best performance results, example a surrogate key. Integers and integer based columns (e.g. timestamp and date) will compress with Netezza’s compression. As per Netezza docs, floating point numerics hash poorly and will force you to slower sort merge joins if joining on numeric columns that are not integers. Relying on a standard of integer data type on keys will avoid problems like a NOT achieving good join colocation. If two tables are not distributed on the join column, matching data from both the tables will end up in different data slices which means, the snippet processor needs to perform additional work to satisfy the join.</p>
+</section>
+<section id="Distribution_Keys">
+<h2>2) Distribution Keys</h2>
+<p>When two tables are joined together often like a customer table and order table, the distribution key selection of the two tables can play an important role in the performance of the queries. If the distribution key is on the join column, for e.g. customer id column in both the customer and order table, the data distribution will result in the records with the same customer id values ending up in the same data slice for both the tables. When a query joining the table is being processed, since the matching data from both the tables are in the same data slice the snippet processor will be able to perform the join locally and the send the result without performing additional work which in turn improves the performance of the query.</p>
+</section>
+<section id="Clustered_Based_Table">
+<h2>3) Clustered Based Table</h2>
+<p>In order to organize the existing records in the table, “GROOM TABLE” needs to be executed to take advantage of the data reorganization by queries. It is a good practice to have fact tables defined as clustered base tables with data organized on often joined columns to improve multi-dimensional lookup. At the same time care needs to be taken on the data organization columns by understanding the often executed queries and also minimizing the number of columns on which the data needs to be organized on.</p>
+</section>
+<section id="Full_Netezza_course">
+<h2>4) Full Netezza course</h2>
+<p><a class="wp-block-button__link has-text-color" href="https://www.iexpertify.com/learn/full-course/netezza/" rel="noopener" target="_blank">Full Netezza course</a></p>
+</section>
+</article>
+<h1>Best Practices for Using Netezza Zone Maps</h1>
+<p>Netezza Zone Maps (Z-Maps) are a powerful tool to optimize query performance in Netezza by reducing I/O operations. In this article, we'll discuss best practices for using Z-Maps effectively.</p>
+<h2>Understand Your Data</h2>
+<p>Before creating Zone Maps, it is essential to understand the distribution of your data. Analyze the hot and cold spots in your tables to optimize Zone Map creation.</p>
+<h2>Create Z-Maps Carefully</h2>
+<p>1. Create Z-Maps for large tables with many partitions. 
+      2. Use a sufficiently high sample rate (minimum 50%) to get an accurate representation of the data. 
+      3. Avoid creating Zone Maps on tables with rapidly changing data as they may become outdated quickly.</p>
+<h2>Optimize Z-Map Maintenance</h2>
+<p>1. Schedule regular Z-Map refreshes to keep them up-to-date. 
+      2. Use the REBUILD_ZMAP command to refresh your Zone Maps when necessary. 
+      3. Consider enabling automatic Z-Map refreshing for specific tables.</p>
+<h2>Monitor Z-Map Performance</h2>
+<p>Regularly monitor the performance of your Zone Maps using tools like DBMON or the Netezza Performance Profiler (NPP). This will help you identify any issues and optimize their performance.</p>
+<h2>Example: Creating a Z-Map</h2>
+<pre>
+    CREATE ZONEMAP FOR table_name ON columns_to_zonemap USING SAMPLE 75;
+    </pre>
+<h2>Conclusion</h2>
+<p>By following these best practices, you can effectively use Netezza Zone Maps to optimize query performance and reduce I/O operations. Always keep your Z-Maps up-to-date, monitor their performance, and adapt them as needed for optimal results.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

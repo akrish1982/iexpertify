@@ -1,128 +1,89 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Steps to restore Netezza table - learn
-
-<p>Steps to restore table in Netezza:</p>
-<p>1) Find the backup history of database you want to restore by running below query.</p>
- select DBName, DBNAMEORIG, OPTYPE as Backup_Type, StartTime, BackupSet, Logfile
-from _v_backup_history
-where DBName = 'TEST_DB'
--- DBNAMEORIG = 'TEST_DB'
-and starttime &gt; '2013-08-01 05:13:13'
-
-<p>Output of above sql will be:</p>
-DBNAME DBNAMEORIG BACKUP_TYPE STARTTIME BACKUPSET LOGFILE
-TEST_DB TEST_DB FULL 2013-08-19 07:40:18 20130819114018 backupsvr.1649.2013-08-19.log
-TEST_DB TEST_DB FULL 2013-08-12 06:39:15 20130812103915 backupsvr.29095.2013-08-12.log
-TEST_DB TEST_DB FULL 2013-08-05 07:09:39 20130805110939 backupsvr.9521.2013-08-05.log
-<p>Here we pull information from column DBNAMEORIG also, this wil be helpful if the database need to be restored is deleted.</p>
-<p>2) From above we can find the backup set that needs to be restored
-3) Now you can find the path where backup was taken by looking into the log file by going to path /nz/kit/log/backupsvr</p>
-<p>It will look like:</p>
- 2013-08-12 06:39:15.190780 EDT Info: NZ-00022: --- program 'backupsvr' (29095) starting on host 'testserver-1a' ... ---
-2013-08-12 06:39:15.307384 EDT Info: Backup command: /nz/kit/bin/nzbackup -u UTL_DBA -dir /netezza/backup_Path/testserver.domain.com -db TEST_DB -streams 6
-2013-08-12 06:39:15.307418 EDT Info: Setting the command line options
-2013-08-12 06:39:15.307535 EDT Info: Starting the backup process
-2013-08-12 06:39:15.309282 EDT Info: Backing up to base directory '/netezza/backup_Path/testserver.domain.com'
-<p>So, here we can see backup is going to /netezza/backup_Path/testserver.domain.com</p>
-<p>4) Now run below script to restore the table.</p>
-<p>/nz/kit/bin/nzrestore -dir /netezza/backup_Path/testserver.domain.com -backupset 20130812103915 -tables Table_Name -db ‘TEST_DB’</p>
-<p>NOTE: If table already exists then this command will overwrite that table.</p>
-<p>Incase you have differential backups and want to restore form there as well then command will be like</p>
-<p>/nz/kit/bin/nzrestore -dir /netezza/backup_Path/testserver.domain.com -backupset 20130812103915 -increment 3 -tables Table_Name -db ‘TEST_DB’</p>
-<p>Or use below command if you have to restore this table in different database</p>
-<p>nzrestore -db TEST_DB1 -sourcedb TEST_DB -backupset 20130812103915 -tables Table_Name -dir /netezza/backup_Path/testserver.domain.com</p>
-
-<br><br>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Steps to Restore a Table in Netezza</h1>
+<p>This guide will walk you through the process of restoring a table in Netezza.</p>
+<ol>
+<li><strong>Step 1:</strong> Retrieve the backup history of the database you wish to restore by executing the following SQL query:</li>
+        ```sql
+        select DBName, DBNAMEORIG, OPTYPE as Backup_Type, StartTime, BackupSet, Logfile
+        from _v_backup_history
+        where DBName = 'YOUR_DATABASE_NAME'
+        and starttime &gt; 'YYYY-MM-DD HH:MM:SS'
+        ```
+        <p>Replace 'YOUR_DATABASE_NAME' with the name of your database and 'YYYY-MM-DD HH:MM:SS' with the desired start time. The output will look like:</p>
+<code>
+          DBNAME DBNAMEORIG BACKUP_TYPE STARTTIME BACKUPSET LOGFILE
+          TEST_DB TEST_DB FULL 2023-05-12 09:45:21 20230512094521 backupsvr.123456.2023-05-12.log
+        </code>
+<p>Note that we also pull information from the DBNAMEORIG column, which can be useful if the database you want to restore has been deleted.</p>
+<li><strong>Step 2:</strong> Identify the backup set that needs to be restored from the output of step 1.</li>
+<li><strong>Step 3:</strong> Find the location where the backup was taken by examining the log file. The backup path can usually be found in a line similar to the following, which can be located in the /nz/kit/log/backupsvr directory:</li>
+        ```
+          2023-05-12 09:45:21.190780 EDT Info: Backup command: /path/to/backup_Path/YOUR_SERVER.domain.com -db TEST_DB
+        ```
+        <li><strong>Step 4:</strong> Execute the following script to restore the table using the backup set identified in step 3.</li>
+</ol>
+<p>/nz/kit/bin/nzrestore -dir /path/to/backup_Path/YOUR_SERVER.domain.com -backupset BACKUPSET_ID -tables Table_Name -db ‘TEST_DB’</p>
+<p>Replace 'BACKUPSET_ID' with the ID of the backup set identified in step 3, and 'Table_Name' with the name of the table you wish to restore. If the table already exists, this command will overwrite it.</p>
+<p>If you have differential backups and want to restore from there instead, use the following command:</p>
+        ```
+           /nz/kit/bin/nzrestore -dir /path/to/backup_Path/YOUR_SERVER.domain.com -backupset BACKUPSET_ID -increment INCREMENT_NUMBER -tables Table_Name -db ‘TEST_DB’
+        ```
+        <p>Replace 'INCREMENT_NUMBER' with the number of increments you wish to apply (e.g., 3 for a 3rd increment backup).</p>
+<p>If you need to restore the table in a different database, use the following command:</p>
+        ```
+          nzrestore -db TARGET_DATABASE -sourcedb SOURCE_DATABASE -backupset BACKUPSET_ID -tables Table_Name -dir /path/to/backup_Path/YOUR_SERVER.domain.com
+        ```
+        <p>Replace 'TARGET_DATABASE' with the name of the database you wish to restore the table in, 'SOURCE_DATABASE' with the name of the database containing the backup set, and 'BACKUPSET_ID' with the ID of the backup set identified in step 3.</p>
+<h1>Steps to Restore a Table in Netezza</h1>
+<p>In this guide, we will walk you through the steps to restore a table in Netezza using the RESTORE TABLE command.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Access to Netezza database with appropriate permissions</li>
+<li>Backup of the table you wish to restore</li>
+</ul>
+<h2>Steps to Restore a Table</h2>
+<ol>
+<li><strong>Connect to your Netezza database:</strong> Use the following command to connect to your Netezza database using your preferred SQL client.</li>
+<pre>
+            nzsql -h <hostname> -u <username> -p <password> -d </password></username></hostname></pre>
+<li><strong>Identify the backup file:</strong> Locate the backup file of the table you wish to restore. The backup files typically have a .nzf extension.</li>
+<li><strong>Restore the table:</strong> Use the RESTORE TABLE command along with the backup file and optional options, such as the new table name or location.</li>
+<pre>
+            RESTORE TABLE <table_name> FROM BACKUP FILE = '<backup_file_location>.nzf' TO TABLESPACE <tablespace_name>;
+        </tablespace_name></backup_file_location></table_name></pre>
+<li><strong>Verify the restoration:</strong> After restoring the table, verify that it has been successfully restored by querying its data.</li>
+<pre>
+            SELECT * FROM <table_name>;
+        </table_name></pre>
+</ol>
+<h2>Illustration</h2>
+<p>For better understanding, let's consider a simple scenario where we have a backup file named 'backup.nzf' and want to restore it to a new table called 'restored_table'. The following command will perform the restoration:</p>
+<pre>
+        RESTORE TABLE restored_table FROM BACKUP FILE = '/path/to/backup.nzf' TO TABLESPACE mytablespace;
+    </pre>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

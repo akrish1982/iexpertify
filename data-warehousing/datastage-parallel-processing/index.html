@@ -1,114 +1,68 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Understanding Parallel Processing in DataStage - A Key Concept in Data Warehousing</h1>
+<p>Parallel processing, or Parallelism, refers to the simultaneous use of multiple CPUs or processor cores to execute a program or computational threads. This technique makes programs run faster as it leverages multiple engines (CPUs or Cores). In DataStage, parallel processing is supported through two types: Pipeline Parallelism and Partition Parallelism.</p>
+<h2>Pipeline Parallelism</h2>
+<p>In pipeline parallelism, all stages run concurrently, even in a single-node configuration. As data is read from the source, it is passed to the next stage for transformation, and then to the target. This method allows the source data stream to start producing rows as soon as it begins, which are then passed to subsequent stages. All three stages operate simultaneously regardless of the degree of parallelism in the configuration file.</p>
+<p>If you ran the example job on a system with multiple processors, the stage reading would start on one processor and begin filling a pipeline with data it had read. The transformer stage would start running as soon as there was data in the pipeline, process it and start filling another pipeline. The stage writing the transformed data to the target database would similarly start writing as soon as there was data available.</p>
+<h2>Partition Parallelism</h2>
+<p>Partition parallelism is used for handling large volumes of data. It partitions the data into several separate sets, with each partition handled by a separate instance of the job stages. Partition parallelism is accomplished at run time, eliminating the need for manual processes required by traditional systems.</p>
+<p>The DataStage developer only needs to specify the algorithm to partition the data, not the degree of parallelism or where the job will execute. By using partition parallelism, the same job would effectively be run simultaneously by several processors, each handling a separate subset of the total data. At the end of the job, the data partitions can be collected back together again and written to a single data source.</p>
+<h2>Parallel-processing Environments</h2>
+<p>Parallel-processing environments can be categorized as Symmetric Multiprocessing (SMP) and Cluster or Massively Parallel Processing (MPP).</p>
+<ul>
+<li><strong>Symmetric Multiprocessing (SMP)</strong>: SMP systems share some hardware resources, with processors communicating via shared memory and having a single operating system. SMP is beneficial for online Transaction Processing as many users can access the same database to do a search with a relatively simple set of common transactions.</li>
+<li><strong>Cluster or Massively Parallel Processing (MPP)</strong>: MPP, also known as shared nothing, allows each processor exclusive access to hardware resources. Cluster systems can be physically dispersed, and the processors communicate via high-speed connections.</li>
+</ul>
+<h1>Understanding DataStage Parallel Processing</h1>
+<p>DataStage is a powerful ETL (Extract, Transform, Load) tool developed by IBM. One of its key features is parallel processing, which allows for improved performance and efficiency when dealing with large volumes of data. This article aims to explain DataStage parallel processing and how it can be utilized effectively.</p>
+<h2>What is Parallel Processing in DataStage?</h2>
+<p>Parallel processing in DataStage is a technique that breaks down a single job into smaller, manageable tasks. These tasks are then distributed across multiple processors or nodes, allowing the job to complete faster than if it were executed sequentially.</p>
+<h3>Components of Parallel Processing</h3>
+<ul>
+<li><strong>Processors:</strong> The physical resources (CPUs) that execute the tasks in a DataStage job.</li>
+<li><strong>Nodes:</strong> Logical groupings of processors. A node represents a set of connected resources, which can be hardware (multiple CPUs on a single server) or software (a cluster of servers).</li>
+<li><strong>Task:</strong> The smallest unit of work in a DataStage job. Each task performs a specific action like reading data from a source, transforming the data, or writing the data to a target.</li>
+</ul>
+<h2>Configuring Parallel Processing</h2>
+<p>To configure parallel processing in DataStage, you need to understand the concepts of granularity and degrees of parallelism. Granularity refers to the size of the tasks assigned to each processor or node. Degrees of parallelism describe the number of processors or nodes available for executing a job.</p>
+<h3>Example: Setting Up Parallel Processing</h3>
+<pre>
+    // Set the maximum number of processors (degrees of parallelism) to 4
+    %%MAX_PROCESSORS(4);
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Datastage Parallel Processing - Data Warehousing Data Warehousing
-
-
-<p>The simultaneous use of more than one CPU or processor core to execute a program or multiple computational threads is called parallel processing or Parallelism. Ideally, parallel processing makes programs run faster because there are more engines (CPUs or Cores) running it. As you all know DataStage supports 2 types of parallelism.</p>
-<p>1. Pipeline parallelism  </p>
-<p>2. Partition parallelism</p>
-<p>Pipeline parallelism</p>
-<p>In pipeline parallelism all stages run concurrently, even in a single-node configuration. As data is read from the source, it is passed to the next stage for transformation, where it is then passed to the target. Instead of waiting for all source data to be read, as soon as the source data stream starts to produce rows, these are passed to the subsequent stages. This method is called pipeline parallelism, and all three stages in our example operate simultaneously regardless of the degree of parallelism of the configuration file.  The Information Server Engine always executes jobs with pipeline parallelism.</p>
-
-<p>If you ran the example job on a system with multiple processors, the stage reading would start on one processor and start filling a pipeline with the data it had read. The transformer stage would start running as soon as there was data in the pipeline, process it and start filling another pipeline. The stage writing the transformed data to the target database would similarly start writing as soon as there was data available. Thus all three stages are operating simultaneously.</p>
-<p>As shown into the below diagram 1st record is inserted into the target even if the other records are in process of extraction and transformation.</p>
-<p>Partition parallelism</p>
-<p>Parallel-processing comes into play when large volumes of data are involved. It partition the data into a number of separate sets, with each partition being handled by a separate instance of the job stages. Partition parallelism is accomplished at run time, instead of a manual process that would be required by traditional systems.</p>
-<p>The DataStage developer only needs to specify the algorithm to partition the data, not the degree of parallelism or where the job will execute. i.e the appropriate partitioning method can be used. Using partition parallelism the same job would effectively be run simultaneously by several processors, each handling a separate subset of the total data. At the end of the job the data partitions can be collected back together again and written to a single data source. </p>
-
-<p>Parallel-processing environments can be categorized as</p>
-<p>Symmetric Multiprocessing (SMP) – Some Hardware resources may be shared by processor. Processor communicate via shared memory and have single operating system. SMP is better than MMP systems when online Transaction Processing is done, in which many users can access the same database to do a search with a relatively simple set of common transactions. </p>
-<p>Cluster or Massively Parallel Processing (MPP) – Known as shared nothing in which each processor have exclusive access to hardware resources. Cluster systems can be physically dispersed. The processor have their own operating system and communicate via high speed. </p>
-
-<br><br>
+    // Define a task with granularity of 100 rows (small)
+    TASK small_task OPTIONS (ROWS=100)...
+    </pre>
+<h2>Benefits and Limitations of Parallel Processing</h2>
+<ul>
+<li><strong>Benefits:</strong> Improved performance, scalability, and throughput when dealing with large data volumes.</li>
+<li><strong>Limitations:</strong> Increased complexity in job design and management, potential for increased resource usage, and possible difficulty in debugging due to the distributed nature of parallel processing.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>DataStage parallel processing offers significant benefits for ETL jobs dealing with large data volumes. By understanding the components, configuring granularity and degrees of parallelism, and considering the benefits and limitations, you can optimize your DataStage jobs for performance and efficiency.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

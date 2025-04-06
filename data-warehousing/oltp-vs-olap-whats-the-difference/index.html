@@ -1,172 +1,89 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
 
+ <h2>OLTP vs OLAP: Understanding the Differences</h2>
 
+ <p>Data warehousing involves storing and processing data from multiple sources for business intelligence, analytics, and reporting purposes. Two primary types of systems are used within a data warehouse: Online Transaction Processing (OLTP) systems and Online Analytical Processing (OLAP) systems. This article provides an overview of OLTP and OLAP systems, highlighting their differences.</p>
 
+ <h3>Online Transaction Processing (OLTP)</h3>
 
+ <p>OLTP systems are designed to handle a high volume of transactional data in real-time. They support concurrent access by multiple users and ensure data consistency across the system. OLTP databases are optimized for insert, update, delete, and search operations.</p>
 
-OLTP vs OLAP: What's the Difference? - Data Warehousing Data Warehousing
-Reading Time:  7 minutes
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
+ <h4>Key Features:</h4>
 
+ <ul>
+<li><strong>Transactional Data:</strong> Supports day-to-day transactions such as sales, banking, and inventory management.</li>
+<li><strong>Concurrency Control:</strong> Ensures that multiple users can access the data simultaneously without conflicting changes.</li>
+<li><strong>ACID Properties:</strong> Maintains the Atomicity, Consistency, Isolation, and Durability of transactions.</li>
+<li><strong>Normalized Schema:</strong> Reduces redundancy and improves data integrity by organizing data in a structured manner.</li>
+</ul>
 
+ <h3>Online Analytical Processing (OLAP)</h3>
 
- <a href="index.html#What_is_OLAP">
-1)
-What is OLAP?
-</a>
- <a href="index.html#Advantages_of_OLAP">
-2)
-Advantages of OLAP
-</a>
- <a href="index.html#Disadvantages_of_OLAP">
-3)
-Disadvantages of OLAP
-</a>
- <a href="index.html#What_is_OLTP">
-4)
-What is OLTP?
-</a>
- <a href="index.html#Advantages_of_OLTP">
-5)
-Advantages of OLTP:
-</a>
- <a href="index.html#Disadvantages_of_OLTP">
-6)
-Disadvantages of OLTP
-</a>
- <a href="index.html#Example_of_OLAP">
-7)
-Example of OLAP
-</a>
- <a href="index.html#Example_of_OLTP_system">
-8)
-Example of OLTP system
-</a>
- <a href="index.html#Difference_between_OLTP_and_OLAP">
-9)
-Difference between OLTP and OLAP
-</a>
- <a href="index.html#What_to_read_next">
-9.1)
-What to read next?
-</a>
+ <p>OLAP systems are designed to analyze large amounts of data for business intelligence, reporting, and querying purposes. They enable users to perform complex analyses such as aggregation, slicing, dicing, and drilling down on data dimensions.</p>
 
-<h2>What is OLAP?</h2>
-<p class="has-drop-cap">OLAP stands for On-Line Analytical Processing. Online Analytical Processing, a category of software tools which provide analysis of data for business decisions. OLAP systems allow users to analyze database information from multiple database systems at one time. The primary objective is data analysis and not data processing. The key feature of OLAP is “Multidimensional.” In other words, the ability to analyze metrics in different dimensions such as time, geography, gender, product, etc. For example, sales for the company are up. What region is most responsible for this increase? Which store in this region is most responsible for the increase? What particular product category or categories contributed the most to the increase? Answering these types of questions in order means that you are performing an OLAP analysis.</p>
-<h2>Advantages of OLAP</h2>
-<ul><li>OLAP is a platform for all type of business includes planning, budgeting, reporting, and analysis.</li><li>Information and calculations are consistent in an OLAP cube. This is a crucial benefit.</li><li>Quickly create and analyze “What if” scenarios</li><li>Easily search OLAP database for broad or specific terms.</li><li>OLAP provides the building blocks for business modeling tools, Data mining tools, performance reporting tools.</li><li>Allows users to do slice and dice cube data all by various dimensions, measures, and filters.</li><li>It is good for analyzing time series.</li><li>Finding some clusters and outliers is easy with OLAP.</li><li>It is a powerful visualization online analytical process system which provides faster response times</li></ul>
-<h2>Disadvantages of OLAP</h2>
-<ul><li>OLAP requires organizing data into a star or snowflake schema. These schemas are complicated to implement and administer</li><li>You cannot have large number of dimensions in a single OLAP cube</li><li>Transactional data cannot be accessed with OLAP system.</li><li>Any modification in an OLAP cube needs a full update of the cube. This is a time-consuming process</li></ul>
-<h2>What is OLTP?</h2>
-<p class="has-drop-cap">OLTP is an operational system that supports transaction-oriented applications in a 3-tier architecture. It administers the day to day transaction of an organization. OLTP is basically focused on query processing, maintaining data integrity in multi-access environments as well as effectiveness that is measured by the total number of transactions per second. The full form of OLTP is Online Transaction Processing</p>
+ <h4>Key Features:</h4>
 
-<h2>Advantages of OLTP:</h2>
-<ul><li>OLTP offers accurate forecast for revenue and expense.</li><li>It provides a solid foundation for a stable business /organization due to timely modification of all transactions.</li><li>OLTP makes transactions much easier on behalf of the customers.</li><li>It broadens the client base for an organization by speeding up and simplifying individual processes.</li><li>OLTP provides support for bigger databases.</li><li>Partition of data for data manipulation is easy.</li><li>We need OLTP to use the tasks which are frequently performed by the system.</li><li>When we need only a small number of records.</li><li>The tasks that include insertion, updation, or deletion of data.</li><li>It is used when you need consistency and concurrency in order to perform tasks that ensure its greater availability.</li></ul>
-<h2>Disadvantages of OLTP</h2>
-<ul><li>If the OLTP system faces hardware failures, then online transactions get severely affected.</li><li>OLTP systems allow multiple users to access and change the same data at the same time, which many times created an unprecedented situation.</li><li>If the server hangs for seconds, it can affect to a large number of transactions.</li><li>OLTP required a lot of staff working in groups in order to maintain inventory.</li><li>Online Transaction Processing Systems do not have proper methods of transferring products to buyers by themselves.</li><li>OLTP makes the database much more susceptible to hackers and intruders.</li><li>In B2B transactions, there are chances that both buyers and suppliers miss out efficiency advantages that the system offers.</li><li>Server failure may lead to wiping out large amounts of data from the database.</li><li>You can perform a limited number of queries and updates.</li></ul>
-OLTP vs OLAP
-<h2>Example of OLAP</h2>
-<p>Any Datawarehouse system is an OLAP system. Uses of OLAP are as follows</p>
-<ul><li>A company might compare their mobile phone sales in September with sales in October, then compare those results with another location which may be stored in a sperate database.</li><li>Amazon analyzes purchases by its customers to come up with a personalized homepage with products which likely interest to their customer.</li></ul>
-<h2>Example of OLTP system</h2>
-<p>An example of OLTP system is ATM center. Assume that a couple has a joint account with a bank. One day both simultaneously reach different ATM centers at precisely the same time and want to withdraw total amount present in their bank account.</p>
-<p>However, the person that completes authentication process first will be able to get money. In this case, OLTP system makes sure that withdrawn amount will be never more than the amount present in the bank. The key to note here is that OLTP systems are optimized for transactional superiority instead data analysis.</p>
-<p>Other examples of OLTP system are:</p>
-<ul><li>Online banking</li><li>Online airline ticket booking</li><li>Sending a text message</li><li>Order entry</li><li>Add a book to shopping cart</li></ul>
-<h2>Difference between OLTP and OLAP</h2>
-<table><tbody><tr><td>Parameters</td><td>OLTP</td><td>OLAP</td></tr><tr><td>Process</td><td>It is an online transactional system. It manages database modification.</td><td>OLAP is an online analysis and data retrieving process.</td></tr><tr><td>Characteristic</td><td>It is characterized by large numbers of short online transactions.</td><td>It is characterized by a large volume of data.</td></tr><tr><td>Functionality</td><td>OLTP is an online database modifying system.</td><td>OLAP is an online database query management system.</td></tr><tr><td>Method</td><td>OLTP uses traditional DBMS.</td><td>OLAP uses the data warehouse.</td></tr><tr><td>Query</td><td>Insert, Update, and Delete information from the database.</td><td>Mostly select operations</td></tr><tr><td>Table</td><td>Tables in OLTP database are normalized.</td><td>Tables in OLAP database are denormalized.</td></tr><tr><td>Source</td><td>OLTP and its transactions are the sources of data.</td><td>Different OLTP databases become the source of data for OLAP.</td></tr><tr><td>Data Integrity</td><td>OLTP database must maintain data integrity constraint.</td><td>OLAP database does not get frequently modified. Hence, data integrity is not an issue.</td></tr><tr><td>Response time</td><td>It’s response time is in millisecond.</td><td>Response time in seconds to minutes.</td></tr><tr><td>Data quality</td><td>The data in the OLTP database is always detailed and organized.</td><td>The data in OLAP process might not be organized.</td></tr><tr><td>Usefulness</td><td>It helps to control and run fundamental business tasks.</td><td>It helps with planning, problem-solving, and decision support.</td></tr><tr><td>Operation</td><td>Allow read/write operations.</td><td>Only read and rarely write.</td></tr><tr><td>Audience</td><td>It is a market orientated process.</td><td>It is a customer orientated process.</td></tr><tr><td>Query Type</td><td>Queries in this process are standardized and simple.</td><td>Complex queries involving aggregations.</td></tr><tr><td>Back-up</td><td>Complete backup of the data combined with incremental backups.</td><td>OLAP only need a backup from time to time. Backup is not important compared to OLTP</td></tr><tr><td>Design</td><td>DB design is application oriented. Example: Database design changes with industry like Retail, Airline, Banking, etc.</td><td>DB design is subject oriented. Example: Database design changes with subjects like sales, marketing, purchasing, etc.</td></tr><tr><td>User type</td><td>It is used by Data critical users like clerk, DBA &amp; Data Base professionals.</td><td>Used by Data knowledge users like workers, managers, and CEO.</td></tr><tr><td>Purpose</td><td>Designed for real time business operations.</td><td>Designed for analysis of business measures by category and attributes.</td></tr><tr><td>Performance metric</td><td>Transaction throughput is the performance metric</td><td>Query throughput is the performance metric.</td></tr><tr><td>Number of users</td><td>This kind of Database users allows thousands of users.</td><td>This kind of Database allows only hundreds of users.</td></tr><tr><td>Productivity</td><td>It helps to Increase user’s self-service and productivity</td><td>Help to Increase productivity of the business analysts.</td></tr><tr><td>Challenge</td><td>Data Warehouses historically have been a development project which may prove costly to build.</td><td>An OLAP cube is not an open SQL server data warehouse. Therefore, technical knowledge and experience is essential to manage the OLAP server.</td></tr><tr><td>Process</td><td>It provides fast result for daily used data.</td><td>It ensures that response to the query is quicker consistently.</td></tr><tr><td>Characteristic</td><td>It is easy to create and maintain.</td><td>It lets the user create a view with the help of a spreadsheet.</td></tr><tr><td>Style</td><td>OLTP is designed to have fast response time, low data redundancy and is normalized.</td><td>A data warehouse is created uniquely so that it can integrate different data sources for building a consolidated database</td></tr></tbody></table>
+ <ul>
+<li><strong>Multidimensional Data Model:</strong> Organizes data into dimensions (e.g., time, geography, products) and facts (measures of interest).</li>
+<li><strong>Aggregation:</strong> Allows users to perform calculations on groups of data.</li>
+<li><strong>On-the-fly Data Processing:</strong> Supports ad-hoc queries without the need for pre-aggregation or materialized views.</li>
+<li><strong>Analytical Queries:</strong> Provides fast response times for complex and large data sets using specialized algorithms such as Monte Carlo simulations and regression analysis.</li>
+</ul>
 
-<br><br>
+ <h3>OLTP vs OLAP Comparison</h3>
+
+ <table style="width:100%">
+<tr>
+<th>OLTP</th>
+<th>OLAP</th>
+</tr>
+<tr>
+<td><strong>Purpose:</strong></td>
+<td>Transactional processing and data management.</td>
+<td>Analytical processing for business intelligence and reporting.</td>
+</tr>
+<tr>
+<td><strong>Optimization:</strong></td>
+<td>Insert, update, delete, and search operations.</td>
+<td>Complex calculations and aggregations.</td>
+</tr>
+<tr>
+<td><strong>Data Model:</strong></td>
+<td>Relational (denormalized)</td>
+<td>Multidimensional</td>
+</tr>
+<tr>
+<td><strong>Example Systems:</strong></td>
+<td>MySQL, Oracle, Microsoft SQL Server</td>
+<td>Mondrian (Pentaho), MondoDB, Microsoft Analysis Services</td>
+</tr>
+</table>
+
+ <p>Understanding the differences between OLTP and OLAP systems is crucial for selecting the appropriate system for your data warehousing needs. By leveraging the strengths of both systems, organizations can achieve optimal performance, scalability, and insights from their data.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
-
-
+</body></html>

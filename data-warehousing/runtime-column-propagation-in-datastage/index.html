@@ -1,123 +1,76 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Runtime Column Propagation in DataStage - Data Warehousing Data Warehousing
-
-
-<p>WHAT IS RCP IN DATASTAGE?</p>
-<p>InfoSphere DataStage is also flexible about meta data. It can handle the situation in case meta data is not fully defined.</p>
-<p>When we send the data from source to the target, sometimes we need to send only required columns. You can define part of your schema and specify that, if your job encounters additional columns that are not defined in the meta data when it actually runs, it will adopt these extra columns and propagate them through the rest of the job.  Which is called as Runtime Column Propagation (RCP).</p>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Runtime Column Propagation in DataStage - Data Warehousing</h1>
+<p>InfoSphere DataStage offers flexibility when it comes to handling metadata. It can manage situations where the metadata is not fully defined.</p>
+<p>When data is sent from source to target, sometimes only required columns are needed. You can define a portion of your schema and specify that if your job encounters additional columns during runtime that are not defined in the metadata, it will adopt these extra columns and propagate them throughout the job. This process is called Runtime Column Propagation (RCP).</p>
 <p>RCP can be enabled for a project via the Administrator client, and set for individual links via the Output Page Columns tab for most stages, or in the Output page General tab for Transformer stages.</p>
-<p>RCP Enable/Disable done at:</p>
-<p>Project level:  in Administrator project properties </p>
-<p>Job level: Job properties General tab</p>
-<p>Stage/s:  Link Output Column tab</p>
-
-<p>If run time column propagation is enabled in the DataStage Administrator, you can select the Run time column propagation to specify that columns encountered by a stage in a parallel job can be used even if they are not explicitly defined in the meta data. You should always ensure that run time column propagation is turned on if you want to use schema files to define column meta data.</p>
-<p>Run time column propagation is used in case of partial schema usage. When we only know about the columns to be processed and we want all other columns to be propagated to target as they are.</p>
-<p>USING RCP WITH SEQUENTIAL STAGES</p>
-<p>Runtime column propagation (RCP) allows DataStage to be flexible about the columns you define in a job.</p>
+<ul>
+<li>Project level: in Administrator project properties</li>
+<li>Job level: Job properties General tab</li>
+<li>Stage/s: Link Output Column tab</li>
+</ul>
+<p>If run time column propagation is enabled in the DataStage Administrator, you can select the Run time column propagation to specify that columns encountered by a stage in a parallel job can be used even if they are not explicitly defined in the metadata. It's essential to ensure that run time column propagation is turned on if you want to use schema files to define column metadata.</p>
+<p>Run time column propagation is useful for partial schema usage. When we only know about the columns to be processed, and we want all other columns to be propagated to the target as they are.</p>
+<h2>Using RCP with Sequential Stages</h2>
+<p>Runtime column propagation (RCP) provides DataStage with flexibility regarding the columns defined in a job.</p>
 <p>If RCP is enabled for a project, you can just define the columns you are interested in using in a job, but ask DataStage to propagate the other columns through the various stages.</p>
-<p>So such columns can be extracted from the data source and end up on your data target without explicitly being operated on in between.</p>
-<p>Sequential files, unlike most other data sources, do not have inherent column definitions, and so DataStage cannot always tell where there are extra columns that need propagating.</p>
-<p>You can only use RCP on sequential files if you have used the Schema File property to specify a schema which describes all the columns in the sequential file.</p>
-<p>You need to specify the same schema file for any similar stages in the job where you want to propagate columns. Stages that will require a schema file are:</p>
-<p>Sequential File</p>
-<p>File Set</p>
-<p>External Source</p>
-<p>External Target</p>
-<p>Column Import</p>
-<p>Column Export</p>
-
-<br><br>
+<p>So such columns can be extracted from the data source and end up on your data target without explicitly being operated on in between. However, it's important to note that sequential files don't have inherent column definitions, so DataStage cannot always tell where there are extra columns that need propagating.</p>
+<p>To use RCP with sequential files, you must use the Schema File property to specify a schema that describes all the columns in the sequential file. You should specify the same schema file for any similar stages in the job where you want to propagate columns.</p>
+<ul>
+<li>Sequential File</li>
+<li>File Set</li>
+<li>External Source</li>
+<li>External Target</li>
+<li>Column Import</li>
+<li>Column Export</li>
+</ul>
+<h1>Understanding Runtime Column Propagation in DataStage</h1>
+<p>In the realm of ETL (Extract, Transform, Load) tools, DataStage by IBM stands out as a powerful solution for data integration. One of its key features is the ability to handle and propagate columns dynamically at runtime, a functionality we refer to as 'Runtime Column Propagation'. This article aims to shed light on this important aspect of DataStage.</p>
+<h2>What is Runtime Column Propagation?</h2>
+<p>Runtime Column Propagation is the ability for columns created or selected in one task to be made available for use in subsequent tasks within a DataFlow. This functionality allows for greater flexibility in designing and executing your data pipelines, as it enables the creation of dynamic, adaptable workflows.</p>
+<h2>When to Use Runtime Column Propagation</h2>
+<p>Runtime Column Propagation can be particularly useful in scenarios where the structure of the input data is not fixed or predictable. For example:</p>
+<ul>
+<li><strong>Data from multiple sources:</strong> If your pipeline ingests data from various sources with varying structures, you can use Runtime Column Propagation to handle this dynamicity.</li>
+<li><strong>Dynamic transformation rules:</strong> If the transformation rules for your data change during runtime or are determined at runtime, you can take advantage of this feature to adapt your pipeline accordingly.</li>
+</ul>
+<h2>How to Configure Runtime Column Propagation</h2>
+<p>To enable Runtime Column Propagation in DataStage, follow these steps:</p>
+<ol>
+<li><strong>Create a new DataFlow or open an existing one.</strong></li>
+<li><strong>Identify the task where columns need to be made available for propagation.</strong></li>
+<li><strong>Configure the task to create or select the necessary columns. Select the 'Add to Propagated Columns' checkbox for these columns, as shown below:</strong>
+</li>
+<li><strong>Use the propagated columns in subsequent tasks as needed.</strong></li>
+</ol>
+<h2>Best Practices for Using Runtime Column Propagation</h2>
+<ul>
+<li>Minimize the use of Runtime Column Propagation to avoid unnecessary complexity and potential performance issues.</li>
+<li>Document your DataFlow to make it clear which columns are propagated, when, and why.</li>
+<li>Test your pipelines thoroughly to ensure data integrity and processing accuracy.</li>
+</ul>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

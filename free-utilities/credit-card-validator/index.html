@@ -1,199 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credit Card Validator and Generator</title>
-    <link href="/simplecss/styles.css" rel="stylesheet"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-         crossorigin="anonymous"></script>
-         <script
-        src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-        user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-        btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-        embed-version="v1"
-        button-text="Let's Connect"
-        position-right="30px"
-        position-bottom="30px"
-        custom-padding="0px"
-        custom-font-size="16px"
-        custom-font-weight="500"
-        custom-width="200px"
-        async=""
-        defer=""
-      ></script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h1>Credit Card Validator and Generator</h1>
-    <div class="disclaimer">
-        <strong>Disclaimer:</strong> This utility runs completely within your browser. No information entered or generated here is sent to any server or transmitted over the internet. All processing occurs locally on your device.
-    </div>
-    <h2>Validate Credit Card Number</h2>
-    <input type="text" id="ccNumber" placeholder="Enter credit card number">
-    <button onclick="validateCreditCard()">Validate</button>
-    <div id="validationResult" class="result"></div>
-    <table id="cardInfo" style="display: none;">
-        <tr>
-            <th>Issuer</th>
-            <th>Major Industry Identifier</th>
-            <th>Issuer Identification Number</th>
-            <th>Personal Account Number & Checksum</th>
-        </tr>
-        <tr>
-            <td id="issuer"></td>
-            <td id="mii"></td>
-            <td id="iin"></td>
-            <td id="pan"></td>
-        </tr>
-    </table>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Credit Card Validator</h1>
+<button onclick="validateCreditCard()">Validate</button>
+<div id="cardInfo" style="display: none;">
+<h3>Issuer:</h3>
+<h3>MI:</h3>
+<h3>IIN:</h3>
+<h3>PAN:</h3>
+</div>
+<h3>Generate Random Credit Card Number</h3>
+<select id="issuerSelect">
+<option value="visa">Visa</option>
+<option value="mastercard">MasterCard</option>
+<option value="amex">American Express</option>
+<option value="discover">Discover</option>
+<option value="dinersclub">Diners Club</option>
+<option value="jcb">JCB</option>
+</select>
+<button onclick="generateCreditCard()">Generate</button>
+<script>
+         function luhnCheck(num) {
+           let arr = (num + '').split('').reverse().map(x => parseInt(x));
+           let lastDigit = arr.splice(0, 1)[0];
+           let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
+           sum += lastDigit;
+           return sum % 10 === 0;
+         }
 
-    <h2>Generate Test Credit Card Number</h2>
-    <select id="issuerSelect">
-        <option value="visa">Visa</option>
-        <option value="mastercard">Mastercard</option>
-        <option value="amex">American Express</option>
-        <option value="discover">Discover</option>
-        <option value="dinersclub">Diners Club</option>
-        <option value="jcb">JCB</option>
-    </select>
-    <button onclick="generateCreditCard()">Generate</button>
-    <div id="generatedCC" class="result"></div>
+         function identifyIssuer(num) {
+           const patterns = {
+             Visa: /^4/,
+             Mastercard: /^(5[1-5]|2[2-7])/,
+             'American Express': /^3[47]/,
+             Discover: /^(6011|65|64[4-9]|622)/,
+             'Diners Club': /^(30[0-5]|36|38)/,
+             JCB: /^35/
+           };
+           for (let [issuer, pattern] of Object.entries(patterns)) {
+             if (pattern.test(num)) return issuer;
+           }
+           return 'Unknown';
+         }
 
-    <div class="explanation">
-        <h3>How Credit Card Validation is Processed</h3>
-        <p>This validator evaluates cards for Visa, MasterCard, Discover, American Express, Diners Club, and JCB cards. The validation process checks the following:</p>
-        <ul>
-            <li><strong>Luhn Algorithm:</strong> Ensures that the credit card number passes the Luhn algorithm to prove itself to be a valid credit card number.</li>
-            <li><strong>Major Industry Identifier (MII):</strong> The first digit of the credit card number.</li>
-            <li><strong>Issuer Identification Number (IIN):</strong> The next six digits after the MII.</li>
-            <li><strong>Personal Account Number & Checksum:</strong> The last digits include the personal account number and a checksum digit.</li>
-        </ul>
-        <p>The validator checks these components in the following order:</p>
-        <ol>
-            <li>First Digit – Major Industry Identifier</li>
-            <li>Six Digits – Issuer Identification Number</li>
-            <li>Remaining Digits – Personal Account Number and Checksum</li>
-        </ol>
+         function validateCreditCard() {
+           let ccNum = document.getElementById('ccNumber').value.replace(/\D/g, '');
+           let isValid = luhnCheck(ccNum);
+           document.getElementById('validationResult').innerText = isValid ? 'Valid credit card number' : 'Invalid credit card number';
 
-        <h3>How to Find Bank Identification Numbers</h3>
-        <p>The Bank Identification Number (BIN) is the first four to six digits of a cardholder number. It identifies both the major industry the card is primarily used with and the issuer of that card.</p>
-        <ul>
-            <li>The first number (MII) differentiates banking cards from other cards:</li>
-            <ul>
-                <li>3, 4, 5, 6: Banking and financial industries</li>
-                <li>1, 2: Airline industry</li>
-                <li>7: Petroleum industry</li>
-                <li>8: Healthcare or telecommunications industries</li>
-                <li>9, 0: Assignment by ISO or other national standards bodies</li>
-            </ul>
-            <li>Common issuer IIN ranges:</li>
-            <ul>
-                <li>Visa: All BINs starting with 4</li>
-                <li>American Express: BINs starting with 34 and 37</li>
-                <li>Mastercard: BINs starting with 2221-2720 and 51-55</li>
-                <li>Discover: BINs starting with 6011, 622126–622925, 624000–626999, 628200–628899, 64, or 65</li>
-            </ul>
-        </ul>
-        <p>Note: Due to the finite number of 4-6 digit BINs, issuers are starting to create 8-digit BINs. This doesn't change the length of the Primary Account Number (PAN) but affects the remaining digits used to identify specific accounts.</p>
-    </div>
+           if (isValid) {
+             let issuer = identifyIssuer(ccNum);
+             document.getElementById('issuer').innerText = issuer;
+             document.getElementById('mii').innerText = ccNum[0];
+             document.getElementById('iin').innerText = ccNum.slice(0, 6);
+             document.getElementById('pan').innerText = ccNum.slice(6);
+             document.getElementById('cardInfo').style.display = 'table';
+           } else {
+             document.getElementById('cardInfo').style.display = 'none';
+           }
+         }
 
-    <script>
-        function luhnCheck(num) {
-            let arr = (num + '').split('').reverse().map(x => parseInt(x));
-            let lastDigit = arr.splice(0, 1)[0];
-            let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
-            sum += lastDigit;
-            return sum % 10 === 0;
+         function generateCreditCard() {
+           const issuer = document.getElementById('issuerSelect').value;
+           let prefix;
+           let length;
+
+           switch(issuer) {
+             case 'visa':
+               prefix = '4';
+               length = 16;
+               break;
+             case 'mastercard':
+               prefix = String(Math.floor(Math.random() * 5) + 51);
+               length = 16;
+               break;
+             case 'amex':
+               prefix = Math.random() < 0.5 ? '34' : '37';
+               length = 15;
+               break;
+             case 'discover':
+               prefix = '6011';
+               length = 16;
+               break;
+             case 'dinersclub':
+               prefix = '300';
+               length = 14;
+               break;
+             case 'jcb':
+               prefix = '352';
+               length = 16;
+               break;
+           }
+
+           let randomNumber = Math.floor(Math.random() * (999999999 - 100000000 + 1)) + 100000000;
+           document.getElementById('generatedCC').innerText = prefix + '-' + randomNumber.toString().substr(0, length);
+         }
+       </script>
+<h1>Free Credit Card Validator in HTML</h1>
+<p>In this tutorial, we will learn how to create a simple yet effective credit card validator using HTML, JavaScript, and CSS. This tool can help you ensure the inputted credit card number is valid before processing further transactions.</p>
+<h2>Step 1: HTML Structure</h2>
+<pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;Credit Card Validator&lt;/title&gt;
+        &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Credit Card Validator&lt;/h1&gt;
+        &lt;div id="card-container"&gt;
+            &lt;input type="text" id="cc-number" placeholder="Enter Credit Card Number"&gt;
+            &lt;button id="validate-btn"&gt;Validate
+        &lt;/div&gt;
+        &lt;script src="scripts.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code></pre>
+<h2>Step 2: CSS Styling</h2>
+<pre><code>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    #card-container {
+        width: 300px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid lightgray;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #cc-number {
+        width: calc(100% - 80px);
+        padding: 10px;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    #validate-btn {
+        width: 80px;
+        height: 40px;
+        padding: 10px;
+        font-size: 20px;
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    </code></pre>
+<h2>Step 3: JavaScript Validation</h2>
+<p>To validate the credit card number, we will use a simple algorithm that checks if the number is valid according to the Luhn algorithm.</p>
+<pre><code>
+    function validateCreditCard(num) {
+        num = String(num);
+        let sum = 0;
+        for (let i = num.length - 1; i &gt;= 0; i--) {
+            const n = parseInt(num[i]);
+            if (i % 2 !== 0 &amp;&amp; n &gt;= 5) n *= 2;
+            if (n &gt; 9) n -= 9;
+            sum += n;
         }
+        return sum % 10 === 0;
+    }
 
-        function identifyIssuer(num) {
-            const patterns = {
-                Visa: /^4/,
-                Mastercard: /^(5[1-5]|2[2-7])/,
-                'American Express': /^3[47]/,
-                Discover: /^(6011|65|64[4-9]|622)/,
-                'Diners Club': /^(30[0-5]|36|38)/,
-                JCB: /^35/
-            };
-            for (let [issuer, pattern] of Object.entries(patterns)) {
-                if (pattern.test(num)) return issuer;
-            }
-            return 'Unknown';
+    const validateBtn = document.getElementById('validate-btn');
+    const ccNumber = document.getElementById('cc-number');
+
+    validateBtn.addEventListener('click', function() {
+        const number = ccNumber.value.trim();
+        if (validateCreditCard(number)) {
+            alert('The entered credit card is valid.');
+        } else {
+            alert('The entered credit card is invalid.');
         }
-
-        function validateCreditCard() {
-            let ccNum = document.getElementById('ccNumber').value.replace(/\D/g, '');
-            let isValid = luhnCheck(ccNum);
-            document.getElementById('validationResult').innerText = isValid ? 'Valid credit card number' : 'Invalid credit card number';
-            
-            if (isValid) {
-                let issuer = identifyIssuer(ccNum);
-                document.getElementById('issuer').innerText = issuer;
-                document.getElementById('mii').innerText = ccNum[0];
-                document.getElementById('iin').innerText = ccNum.slice(0, 6);
-                document.getElementById('pan').innerText = ccNum.slice(6);
-                document.getElementById('cardInfo').style.display = 'table';
-            } else {
-                document.getElementById('cardInfo').style.display = 'none';
-            }
-        }
-
-        function generateCreditCard() {
-            const issuer = document.getElementById('issuerSelect').value;
-            let prefix;
-            let length;
-
-            switch(issuer) {
-                case 'visa':
-                    prefix = '4';
-                    length = 16;
-                    break;
-                case 'mastercard':
-                    prefix = String(Math.floor(Math.random() * 5) + 51);
-                    length = 16;
-                    break;
-                case 'amex':
-                    prefix = Math.random() < 0.5 ? '34' : '37';
-                    length = 15;
-                    break;
-                case 'discover':
-                    prefix = '6011';
-                    length = 16;
-                    break;
-                case 'dinersclub':
-                    prefix = '36';
-                    length = 14;
-                    break;
-                case 'jcb':
-                    prefix = '35';
-                    length = 16;
-                    break;
-            }
-
-            while (prefix.length < length - 1) {
-                prefix += Math.floor(Math.random() * 10);
-            }
-
-            let checkDigit = 0;
-            while(!luhnCheck(prefix + checkDigit)) {
-                checkDigit = (checkDigit + 1) % 10;
-            }
-
-            let ccNum = prefix + checkDigit;
-            document.getElementById('generatedCC').innerText = 'Generated CC: ' + ccNum;
-        }
-    </script>
-</body>
-</html>
+    });
+    </code></pre>
+<h2>Step 4: Testing</h2>
+<p>Now, simply run the HTML file in your browser, and you can test the validator using different credit card numbers. The tool will display a message to indicate whether the number is valid or invalid.</p>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

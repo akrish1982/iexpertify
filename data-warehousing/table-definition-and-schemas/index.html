@@ -1,118 +1,68 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Table definition and Schemas - Data Warehousing Data Warehousing
-
-<p>When transforming or cleansing data, you must define the data that you are working with.</p>
-<p>You define the data by importing or defining table definitions. You can save the table definitions for use in your job designs.</p>
-<p>Table definitions are the key to your DataStage project and specify the data to be used at each stage of a job. Table definitions are stored in the repository and are shared by all the jobs in a project. You need, as a minimum, table definitions for each data source and one for each data target in the data warehouse.</p>
-<p>When you develop a job you will typically load your stages with column definitions from table definitions held in the repository. You do this on the relevant Columns tab of the stage editor. If you select the options in the Grid Properties dialog box, the Columns tab will also display two extra fields: Table Definition Reference and Column Definition Reference. These show the table definition and individual columns that the columns on the tab were derived from.</p>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Understanding Table Definitions and Schemas in Data Warehousing</h1>
+<p>When working with data, it's crucial to define the data you are handling. This definition is achieved by importing or creating table definitions, which can be used in your job designs.</p>
+<p>Table definitions serve as the foundation for your DataStage project, specifying the data to be utilized at each stage of a job. These definitions are stored in the repository and are shared among all projects. A minimum of table definitions should be available for each data source and one for each data target in the data warehouse.</p>
+<p>When developing a job, you'll usually populate your stages with column definitions from table definitions found in the repository. This is done on the Columns tab of the stage editor. If you select specific options in the Grid Properties dialog box, the Columns tab will display two additional fields: Table Definition Reference and Column Definition Reference. These show the table definition and individual columns that the columns on the tab were derived from.</p>
 <p>You can import, create, or edit a table definition using the Designer.</p>
-<h3>IMPORTING A TABLE DEFINITION</h3>
-<p>The easiest way to specify a table definition is to import it directly from the source or target database.</p>
-<p>A new table definition is created and the properties are automatically filled in with the details of your data source or data target.</p>
-<p>You can import table definitions from the following data sources:</p>
-<ul><li>Assembler files</li><li>COBOL files</li><li>DCLGen files</li><li>ODBC tables</li><li>Orchestrate schema definitions</li><li>Data sources accessed using certain connectivity stages.</li><li>Sequential files</li><li>Stored procedures</li><li>UniData files</li><li>UniData 6 tables</li><li>UniVerse files</li><li>UniVerse tables</li><li>Web services WSDL definitions</li><li>XML table definitions</li><li>IBM InfoSphere DataStage connects to the specified data source and extracts the required table definition metadata. You can use the Data Browser to view the actual data in data sources from which you are importing table definitions.</li></ul>
-<p>To import table definitions in this way:</p>
-<h3>PROCEDURE:</h3>
-<ol><li>Choose Import &gt; Table Definitions &gt; Data Source Type from the main menu.or most data source types, a dialog box appears enabling you to connect to the data source (for some sources, a wizard appears and guides you through the process).</li><li>Fill in the required connection details and click OK. Once a connection to the data source has been made successfully, the updated dialog box gives details of the table definitions available for import.</li><li>Select the required table definitions and click OK. The table definition metadata is imported into the repository.</li></ol>
-<p>In Datastage, Schemas are an alternative way for you to specify column definitions for the data used by parallel jobs.</p>
+<h2>Importing a Table Definition</h2>
+<p>The simplest way to specify a table definition is by directly importing it from the source or target database.</p>
+<p>A new table definition will be created, and its properties will automatically fill in with the details of your data source or data target.</p>
+<p>Table definitions can be imported from various sources, including:</p>
+<ul>
+<li>Assembler files</li>
+<li>COBOL files</li>
+<li>DCLGen files</li>
+<li>ODBC tables</li>
+<li>Orchestrate schema definitions</li>
+<li>Data sources accessed using certain connectivity stages</li>
+<li>Sequential files</li>
+<li>Stored procedures</li>
+<li>UniData files</li>
+<li>UniData 6 tables</li>
+<li>UniVerse files</li>
+<li>UniVerse tables</li>
+<li>Web services WSDL definitions</li>
+<li>XML table definitions</li>
+<li>IBM InfoSphere DataStage connects to the specified data source and extracts the required table definition metadata. You can use the Data Browser to view actual data in data sources from which you are importing table definitions.</li>
+</ul>
+<p>To import table definitions:</p>
+<h3>Procedure:</h3>
+<ol>
+<li>Select Import &gt; Table Definitions &gt; Data Source Type from the main menu. For most data source types, a dialog box appears enabling you to connect to the data source (for some sources, a wizard appears and guides you through the process).</li>
+<li>Enter the required connection details and click OK. Once a successful connection to the data source has been established, the updated dialog box displays details of the table definitions available for import.</li>
+<li>Select the desired table definitions and click OK. The table definition metadata is imported into the repository.</li>
+</ol>
+<p>In DataStage, Schemas offer an alternative method for specifying column definitions for data used by parallel jobs.</p>
 <p>Schema format:</p>
-<p>The following schema format is used to read a fixed width file:</p>
-//Schema File  is used to read Input data with out specifyinh metadata in the Sequential File stagerecord{final_delim=end,delim=none}(CUSTOMER_SSN:STRING[11];CUSTOMER_NAME:STRING[30];CUSTOMER_CITY::STRING[40];CUSTOMER_ZIPCODE:STRING[10];)
-<p>Now we use sequential file stage to read data from the datafile using schemafile.</p>
-<p>In order to use schema file concept we need to enable runtime propagation in the job properties.</p>
-<p>In the sequential file stage add Schema File option and give schema file name including path as shown like below.</p>
-
-<br><br>
+<p>The following schema format is utilized to read a fixed width file:</p>
+<pre>//Schema File  is used to read Input data with out specifyinh metadata in the Sequential File stage
+record{final_delim=end,delim=none}(CUSTOMER_SSN:STRING[11];CUSTOMER_NAME:STRING[30];CUSTOMER_CITY::STRING[40];CUSTOMER_ZIPCODE:STRING[10];)</pre>
+<p>Now we use the sequential file stage to read data from the datafile using schemafile.</p>
+<p>To utilize schema file concept, enable runtime propagation in the job properties.</p>
+<p>In the sequential file stage, add the Schema File option and provide the schema file name including path as demonstrated below.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

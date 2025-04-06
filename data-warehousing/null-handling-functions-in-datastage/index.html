@@ -41,11 +41,66 @@
 
 
 
-NULL handling functions in Datastage - Data Warehousing Data Warehousing
-Reading Time:  &lt; 1 minute
+<h1></h1>NULL handling functions in Datastage </h1>
+
 <table><tbody><tr><td>If IsNotNull(mylink.mycolumn) Then mylink.mycolumn Else “NULL”</td><td> If the Derivation field for an output column contained the following code, then the Transformer stage checks if the input column named mylink.mycolumn contains a null value. If the input column does not contain a null, the output column contains the value of the input column. If the input column does contain a null, then the output column contains the string NULL</td></tr><tr><td>If IsNull(mylink.mycolumn) Then “NULL” Else mylink.mycolumn</td><td> If the Derivation field for an output column contained the following code, then the Transformer stage checks if the input column named mylink.mycolumn contains a null value. If the input column contains a null, the output column contains the string NULL. If the input column does not contain a null, then the output column contains the value of the input column</td></tr><tr><td>NullToEmpty(mylink.mycolumn)</td><td>Returns an empty string if the input column is null, otherwise returns the input column value</td></tr><tr><td>NullToZero(mylink.mycolumn)</td><td>Returns zero if the input column is null, otherwise returns the input column value</td></tr><tr><td>NullToValue(mylink.mycolumn,42)</td><td>Returns the specified value if the input column is null, otherwise returns the input column value</td></tr><tr><td>setnull()</td><td>Assigns a null value to the target column</td></tr></tbody></table>
 
 <br><br>
+<p>DataStage is a powerful ETL (Extract, Transform, Load) tool that helps organizations integrate their data and make it more accessible for business intelligence purposes. When working with DataStage, you may encounter situations where null values need to be handled during the ETL process. This article will focus on null handling functions in DataStage.</p>
+<br>
+<p_null affect="" and="" as="" calculations,="" can="" data="" data,="" due="" during="" errors="" etl="" even="" extraction="" if="" inconsistent="" incorrect="" lead="" left="" missing="" more.="" null="" occur="" of="" or="" overall="" p="" performance="" process.<="" reasons="" such="" the="" these="" to="" transformation,="" unhandled,="" values="" various="" your="">
+<br>
+<p>DataStage provides several null handling functions that you can use to handle null values effectively. The following are some of the most commonly used null handling functions:</p>
+<table border="1">
+<tr>
+<th>Function Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>null_if_missing()</code></td>
+<td>This function returns a null value if the input expression is missing or null.</td>
+</tr>
+<tr>
+<td><code>coalesce()</code></td>
+<td>This function returns the first non-null value from a list of expressions. It's useful when you want to replace null values with default values.</td>
+</tr>
+<tr>
+<td><code>nvl()</code></td>
+<td>This function is similar to coalesce(), but it only works with two input expressions. If the first expression is null, it returns the second expression.</td>
+</tr>
+<tr>
+<td><code>null_if_unknown()</code></td>
+<td>This function returns a null value if the input expression is unknown or cannot be evaluated (e.g., due to data type mismatch).</td>
+</tr>
+</table>
+<br>
+<p>The following code samples demonstrate how to use some of these null handling functions in DataStage:</p>
+<pre><code>
+// Using null_if_missing() function
+input_table:="MyTable"
+output_column:=null_if_missing(input_table, "CustomerID")
+
+// Using coalesce() function
+input_expression1:=MyTable.CustomerName
+input_expression2:="Unknown Customer"
+
+output_column:=coalesce(input_expression1, input_expression2)
+
+// Using nvl() function
+input_expression1:=MyTable.Price
+input_expression2:=0
+
+output_column:=nvl(input_expression1, input_expression2)
+</code></pre>
+<h3>Best practices</h3> 
+<p>Here are some best practices to keep in mind when handling null values in DataStage:</p>
+<ul>
+<li>Avoid using null values in your data unless it's absolutely necessary.</li>
+<li>Use null handling functions consistently throughout your ETL process.</li>
+<li>Test your ETL process thoroughly to ensure that null values are handled correctly.</li>
+</ul>
+<h3>conclusion</h3>
+<p>In this article, we've explored the importance of null handling in DataStage and introduced some of the most commonly used null handling functions. By following best practices and using these functions effectively, you can ensure that your ETL process handles null values correctly and provides accurate and reliable data for your business intelligence applications.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 

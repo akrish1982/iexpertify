@@ -1,121 +1,115 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Understanding Datastage Jobs, Sequences, and Containers in Data Warehousing</h1>
+<p>Reading Time: &lt; 1 minute</p>
+<h2>Parallel jobs:</h2>
+<ul>
+<li>Executed under the control of DataStage Server runtime environment</li>
+<li>Built-in functionality for Pipeline and Partitioning Parallelism</li>
+<li>Compiled into Orchestrate Scripting Language (OSH)</li>
+<li>Runtime monitoring in DataStage Director</li>
+</ul>
+<h2>Job Sequences (Batch jobs, Controlling jobs):</h2>
+<ul>
+<li>Master Server jobs that kick-off jobs and other activities</li>
+<li>Can kick-off Server or Parallel jobs</li>
+<li>Runtime monitoring in DataStage Director</li>
+</ul>
+<h3>Containers:</h3>
+<p>A container is a group of stages and links.</p>
+<h4>Types of containers:</h4>
+<ul>
+<li><strong>Local:</strong> The main purpose of local container is to convert complex job designs into simple, readable job designs.</li>
+<li><strong>Shared:</strong> Similar to local container but can be reused in multiple jobs within the same project.</li>
+</ul>
+<h2>Job Sequences:</h2>
+<p>A job sequence allows you to specify a sequence of Data Stage jobs to be executed, and actions to be taken depending on results.</p>
+<h2>Server jobs (Requires Server Edition license):</h2>
+<ul>
+<li>Executed by the DataStage Server Edition</li>
+<li>Compiled into Basic (interpreted pseudo-code)</li>
+<li>Runtime monitoring in DataStage Director</li>
+</ul>
+<h2>Mainframe jobs (Requires Mainframe Edition license):</h2>
+<ul>
+<li>Compiled into COBOL</li>
+<li>Executed on the Mainframe, outside of DataStage</li>
+</ul>
 
 
+**Understanding DataStage Jobs, Sequences, and Containers**
 
-Datastage Jobs, Sequences and Containers - Data Warehousing Data Warehousing
-Reading Time:  &lt; 1 minute
-<p>Parallel jobs</p>
-<p>                Executed under control of DataStage Server runtime environment</p>
-<p>                Built-in functionality for Pipeline and Partitioning Parallelism</p>
-<p>                Compiled into OSH (Orchestrate Scripting Language)</p>
-<p>                Runtime monitoring in DataStage Director</p>
-<p>Job Sequences (Batch jobs, Controlling jobs)</p>
-<p>                Master Server jobs that kick-off jobs and other activities</p>
-<p>                Can kick-off Server or Parallel jobs</p>
-<p>                Runtime monitoring in DataStage Director</p>
-<p>Container is a group of stages and links.</p>
-<p>Types of containers</p>
-<p>                 1.local</p>
-<p>                 2.shared</p>
-<p>Local containers: Main purpose of local container is to convert the complex job design in to simple readable job design.</p>
-<p>Shared containers: it is similar to local container but we can reuse it in many numbers of jobs in the same project. </p>
-<p>A job sequence allows you to specify a sequence of Data Stage jobs to be executed, and actions to be taken  depending on results.</p>
-<p>Server jobs (Requires Server Edition license)</p>
-<p>                Executed by the DataStage Server Edition</p>
-<p>                Compiled into Basic (interpreted pseudo-code)</p>
-<p>                Runtime monitoring in DataStage Director</p>
-<p>Mainframe jobs (Requires Mainframe Edition license)</p>
-<p>                Compiled into COBOL</p>
-<p>                Executed on the Mainframe, outside of DataStage</p>
+DataStage, a powerful ETL (Extract, Transform, Load) tool from IBM, provides an efficient way to create and manage data integration processes. A key component of DataStage is the ability to organize tasks into **Jobs**, **Sequences**, and **Containers**. Let's explore these concepts.
 
-<br><br>
-<footer>
+**Jobs**
+
+A DataStage job consists of one or more tasks that are grouped together to perform a specific ETL function. Each job has an entry point, which triggers the execution of all tasks within it. Jobs can be executed in parallel, allowing for efficient processing when working with large datasets.
+
+```java
+DEFINE JOB job_name AS BEGIN OF JOB
+   TASK task1;
+   TASK task2;
+   -- more tasks...
+END OF JOB;
+```
+
+**Sequences**
+
+A sequence in DataStage represents a logical unit of work within a job. Sequences can be used to group related tasks and control their order of execution. This helps in organizing complex ETL processes and improving maintainability.
+
+```java
+DEFINE SEQUENCE sequence_name AS BEGIN OF SEQUENCE
+   TASK task1;
+   TASK task2;
+   -- more tasks...
+END OF SEQUENCE;
+```
+
+**Containers**
+
+A container in DataStage is a special type of sequence that can hold multiple sequences and/or jobs. Containers are useful when you want to reuse specific tasks or groups of tasks across multiple jobs or sequences, promoting code reusability and reducing development time.
+
+```java
+DEFINE CONTAINER container_name AS BEGIN OF CONTAINER
+   DEFINE SEQUENCE sequence1 AS ...;
+   DEFINE JOB job1 AS ...;
+   -- more sequences and jobs...
+END OF CONTAINER;
+```
+
+**Container Usage in a Job**
+
+You can include a container within a job by using the `USE` statement. This will make all sequences and jobs defined inside the container available for use within the job.
+
+```java
+DEFINE JOB job_name AS BEGIN OF JOB
+   USE container_name;
+   -- tasks using sequences and jobs from the container...
+END OF JOB;
+```
+
+By understanding DataStage jobs, sequences, and containers, you can effectively design and manage complex ETL processes with improved efficiency and maintainability.<footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

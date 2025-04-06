@@ -1,102 +1,85 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learning Local and External Tables in Netezza</h1>
+<p>When your query generates a substantial amount of results and takes over an hour to execute, consider utilizing local external tables. This technique is beneficial for queries that require large data sets.</p>
+<h2>Tool Selection</h2>
+<p>Depending on the tool you are using, you may opt for either a JDBC SQL tool such as Squirrel or an ODBC tool like Aginity.</p>
+<h3>Creating a Local External Table</h3>
+<pre>
+    CREATE EXTERNAL TABLE ‘C:\Users\MyUser\Account dim dump.csv’
+    USING ( DELIMITER ‘,’ Y2BASE 2000 ENCODING ‘internal’ REMOTESOURCE ‘JDBC’<or>'ODBC' ESCAPECHAR ‘\’ ) AS
+    select Query here with multiple complex joins
+    </or></pre>
+<h2>Temporary External Table</h2>
+<p>Remember that local external tables are temporary, and the data they contain will be removed when the table is dropped or when the session ends.</p>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+  <h1>Learning Local and External Tables in Netezza</h1>
 
+  <h2>Introduction</h2>
+  <p>In this guide, we will learn about local and external tables in Netezza. These table types provide a convenient way to work with data residing outside the Netezza database. We will discuss their differences, usage scenarios, and how to create and manage them.</p>
 
+  <h2>Local Tables</h2>
+  <p>A local table is a database object that maps to an external file on the Netezza server. It allows you to read data from the file without the need for any ETL (Extract, Transform, Load) process.</p>
+  <h3>Creating a Local Table</h3>
+  <pre><code>
+  CREATE LOCAL TABLE my_local_table (
+    col1 data_type,
+    col2 data_type,
+    ...
+  )
+  UNDER /path/to/myfile.csv;
+  </code></pre>
 
+  <h3>Loading Data into a Local Table</h3>
+  <p>To load data from a local table, you can use the SELECT statement with the INTO clause:</p>
+  <pre><code>
+  SELECT * FROM my_local_table
+    INTO table_in_db;
+  </code></pre>
 
+  <h2>External Tables</h2>
+  <p>An external table is similar to a local table, but it maps to a file stored on an external system (e.g., Hadoop or NFS). This allows you to read data from large data stores without the need for data movement.</p>
+  <h3>Creating an External Table</h3>
+  <pre><code>
+  CREATE EXTERNAL TABLE my_external_table (
+    col1 data_type,
+    col2 data_type,
+    ...
+  )
+  UNDER EXTERNAL SCHEMA my_schema@my_hdfs_location;
+  </code></pre>
 
+  <h3>Loading Data into an External Table</h3>
+  <p>To load data from an external table, you can use the SELECT statement with the INTO clause:</p>
+  <pre><code>
+  SELECT * FROM my_external_table
+    INTO table_in_db;
+  </code></pre>
 
-Local External Tables Netezza - learnReading Time:  &lt; 1 minute
-<p>If your query build a large set of results and takes a long time to run (an hour or more), try using local external tables.</p>
-<p>Based on what tool you are using: JDBC SQL tool such as Squirrel or a ODBC tool such as Aginity</p>
-CREATE EXTERNAL TABLE ‘C:\\Users\\MyUser\\Account dim dump.csv’ USING ( DELIMITER ‘,’ Y2BASE 2000 ENCODING ‘internal’ REMOTESOURCE ‘JDBC’&lt;OR&gt;'ODBC' ESCAPECHAR ‘\’ ) AS select Query here with multiple complex joins
-
-Temporary External Table
-
-<br><br>
+  <h2>Summary</h2>
+  <p>Both local and external tables in Netezza provide a way to work with data residing outside the database. Local tables are used for files on the Netezza server, while external tables are used for files on an external system. Understanding these table types can help you optimize your data loading process and make the most of your Netezza environment.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

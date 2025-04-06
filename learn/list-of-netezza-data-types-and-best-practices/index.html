@@ -1,162 +1,113 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<article>
+<h1>Learn: List of Netezza Data Types and Best Practices</h1>
+<section id="Netezza_Data_Types">
+<h2>1) Netezza Data Types</h2>
+<p>Below is an example of the data types available in Netezza at this time. Here's a Netezza CREATE TABLE example demonstrating all the supported Netezza data types.</p>
+<pre>
+                CREATE TABLE NETEZZA_TABLE_NAME (
+                    BYTEINT_COLUMN BYTEINT,
+                    SMALLINT_COLUMN SMALLINT,
+                    INTEGER_COLUMN INTEGER,
+                    BIGINT_COLUMN BIGINT,
+                    BOOLEAN_COLUMN BOOLEAN,
+                    CHAR_COLUMN CHARACTER(2),
+                    VARCHAR_COLUMN CHARACTER VARYING(10),
+                    NCHAR_COLUMN NATIONAL CHARACTER(10),
+                    DATE_COLUMN DATE,
+                    TIME_COLUMN TIME,
+                    TIME_WITH_TIME_ZONE_COLUMN TIME WITH TIME ZONE,
+                    TIMESTAMP_COLUMN TIMESTAMP,
+                    INTERVAL_COLUMN INTERVAL,
+                    DOUBLE_PRECISION_COLUMN DOUBLE PRECISION,
+                    FLOAT_COLUMN DOUBLE PRECISION,
+                    NUMERIC_COLUMN NUMERIC(18,0),
+                    NVARCHAR_COLUMN NATIONAL CHARACTER VARYING(10),
+                    REAL_COLUMN REAL,
+                    ST_GEOMETRY_COLUMN ST_GEOMETRY(10),
+                    VARBINARY_COLUMN BINARY VARYING(10),
+                    DECIMAL_COLUMN DECIMAL(16,2),
+                    FLOAT_COLUMN FLOAT(6),
+                    MONEY_COLUMN MONEY
+                ) DISTRIBUTE ON (BIGINT_COLUMN) |[ DISTRIBUTE ON RANDOM] ;</pre>
+</section>
+<section id="Netezza_Data_Types_Best_Practices">
+<h2>2) Netezza Data Types Best Practices</h2>
+<ul>
+<li>Convert INTEGER types for better performance and zonemap utilization.</li>
+<li>Use floating point data types (REAL/DOUBLE PRECISION) sparingly as they are lossy by nature, affecting collocated joins and performance.</li>
+<li>Ensure consistent data types for the same column on different tables to optimize performance.</li>
+<li>Use Char(x) instead of Varchar(x) when expecting fixed-length data as this helps save disk space and improves performance due to reduced I/O.</li>
+</ul>
+</section>
+<section id="Restrictions_Netezza_Database_Maximum_Lengths">
+<h2>3) Restrictions: Netezza Database Maximum Lengths</h2>
+<ol>
+<li>Columns per table or view: 1600 (4 distributions per table)</li>
+<li>Connections to the server: 2000 (default connection value 500)</li>
+<li>Character fields: 64,000 characters</li>
+<li>Database and column names: 128 bytes</li>
+<li>Row size: 65,535 bytes (applies to query results as well)</li>
+</ol>
+</section>
+</article>
+<h1>Learn: List of Netezza Data Types and Best Practices</h1>
+<h2>Understanding Netezza Data Types</h2>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+    Netezza, an IBM product, is a data warehouse appliance optimized for analytic queries on large datasets. Understanding the available data types in Netezza can help you design efficient and effective database structures. Here's a list of common Netezza data types:
 
-
-
-
-
-
-Netezza Data Types - learn
-
-
-
-
-<table><tbody><tr><td>Type</td><td>SIZE</td><td>DESCRIPTION</td></tr><tr><td>BOOL</td><td>1</td><td>boolean, ‘true’/’false’</td></tr><tr><td>CHAR</td><td>1</td><td>single character</td></tr><tr><td>INT8</td><td>8</td><td>~18 digit integer, 8-byte storage</td></tr><tr><td>INT2</td><td>2</td><td>-32 thousand to 32 thousand,   2-byte storage</td></tr><tr><td>INT4</td><td>4</td><td>-2 billion to 2 billion integer,   4-byte storage</td></tr><tr><td>FLOAT4</td><td>4</td><td>single-precision floating point   number, 4-byte storage</td></tr><tr><td>FLOAT8</td><td>8</td><td>double-precision floating point   number, 8-byte storage</td></tr><tr><td>DOUBLE</td><td>15</td><td>same as a FLOAT15, 15-bytes of   storge, 32-bit</td></tr><tr><td>BPCHAR</td><td>VAR</td><td>char(length), blank-padded string,   fixed storage length</td></tr><tr><td>VARCHAR</td><td>VAR</td><td>varchar(length), non-blank-padded   string, variable storage length</td></tr><tr><td>DATE</td><td>4</td><td>ANSI SQL date</td></tr><tr><td>TIME</td><td>8</td><td>hh:mm:ss, ANSI SQL time</td></tr><tr><td>TIMESTAMP</td><td>8</td><td>date and time</td></tr><tr><td>INTERVAL</td><td>12</td><td>@ , time interval</td></tr><tr><td>TIMETZ</td><td>12</td><td>hh:mm:ss, ANSI SQL time</td></tr><tr><td>NUMERIC</td><td>19</td><td>numeric(precision, decimal),   arbitrary precision number</td></tr><tr><td>INT1</td><td>1</td><td>-128 to 127, 1-byte storage</td></tr><tr><td>NCHAR</td><td>VAR</td><td>nchar</td></tr><tr><td>NVARCHAR</td><td>VAR</td><td>nvarchar</td></tr><tr><td>ST_GEOMETRY</td><td>VAR</td><td>st_geometry</td></tr><tr><td>VARBINARY</td><td>VAR</td><td>varbinary</td></tr></tbody></table>
-
-<p>Data type is an attribute that specifies type of data of any object. Each column, variable and expression has related data type in SQL. However, different database offers the different data types for columns. Netezza data types are almost similar to what the traditional RDBMS supports.</p>
-<p>When you issue Netezza create table command each column in a database tables has to have name and a data type associated with it. The data type is based on the types of data which are stored inside the each column of the table. When you perform Netezza alter table to add or change the column that also requires the Netezza data type associated with it. You can get information about the column name and data types when you use Netezza describe table along with table name.</p>
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Netezza_Data_Types">
-1)
-Netezza Data Types
-</a>
- <a href="index.html#Netezza_Data_Types_Best_Practices">
-2)
-Netezza Data Types Best Practices
-</a>
- <a href="index.html#Restrictions_Netezza_Database_Maximum_Lengths">
-3)
-Restrictions: Netezza Database Maximum Lengths
-</a>
- <a href="index.html#What_to_read_next">
-4)
-What to read next?
-</a>
-
-Netezza Data Types
-<p>Below are the list of an example of the data types available in Netezza at this time. Here is the Netezza CREATE TABLE example having all the supported Netezza data types at this time.</p>
-<p>CREATE TABLE NETEZZA_TABLE_NAME (
-BYTEINT_COLUMN BYTEINT,
-SMALLINT_COLUMN SMALLINT,
-INTEGER_COLUMN INTEGER,
-BIGINT_COLUMN BIGINT,
-BOOLEAN_COLUMN BOOLEAN,
-CHAR_COLUMN CHARACTER(2),
-VARCHAR_COLUMN CHARACTER VARYING(10),
-NCHAR_COLUMN NATIONAL CHARACTER(10),
-DATE_COLUMN DATE,
-TIME_COLUMN TIME,
-TIME_WITH_TIME_ZONE_COLUMN TIME WITH TIME ZONE,
-TIMESTAMP_COLUMN TIMESTAMP,
-INTERVAL_COLUMN INTERVAL,
-DOUBLE_PRECISION_COLUMN DOUBLE PRECISION,
-FLOAT_COLUMN DOUBLE PRECISION,
-NUMERIC_COLUMN NUMERIC(18,0),
-NVARCHAR_COLUMN NATIONAL CHARACTER VARYING(10),
-REAL_COLUMN REAL,
-ST_GEOMETRY_COLUMN ST_GEOMETRY(10),
-VARBINARY_COLUMN BINARY VARYING(10),
-DECIMAL_COLUMN DECIMAL(16,2),
-FLOAT_COLUMN FLOAT(6),
-MONEY_COLUMN MONEY
-) DISTRIBUTE ON (BIGINT_COLUMN) |[ DISTRIBUTE ON RANDOM] ;</p>
-
-Netezza Data Types Best Practices
-<ul><li>INTEGER types provide better performance and zonemap utilization so convert NUMERIC types with scale 0 to INTEGER types</li></ul>
-<ul><li>Floating point data types (REAL/DOUBLE PRECISION) are, by definition, lossy in nature those eliminates possibility for collocated joins and that will definitely affect the performance. Use them only if you working with very large numbers or very small fractions</li><li>Inconsistent data types for the same column on different tables affects performance so always use the same data types for same columns on different tables.</li><li>Use Char(x) instead of Varchar(x) when you expect the data to be a fixed length as this not only helps to save disk space but also helps performance due to reduced I/O.</li></ul>
-
-Restrictions: Netezza Database Maximum Lengths
-<ol><li>Columns: Maximum per table or view – 1600 (maximum 4 distributions per table)</li><li>Connections: Maximum connections to the server – 2000. Default connection value 500</li><li>Character: Maximum number of characters in a char/varchar field – 64,000. You will not be able to load file to table which exceeds 64,000 characters</li><li>Names: maximum length of database and column names – 128 bytes</li><li>Row size: Maximum row size – 65,535 bytes. Limit also applies to the result set of a query. Within each row, there is a small amount of overhead for special columns and other factors such as padding.</li></ol>
-
-<br><br>
+    <h3>Character Data Types</h3>
+<ul>
+<li><code>CHAR(n)</code>: Fixed-length character string with length 'n'. If the input is smaller than 'n', it will be padded with spaces.</li>
+<li><code>VARCHAR(n)</code>: Variable-length character string with maximum length 'n'.</li>
+<li><code>NCHAR(n)</code>: Fixed-length Unicode character string with length 'n'. If the input is smaller than 'n', it will be padded with spaces.</li>
+<li><code>NVARCHAR(n)</code>: Variable-length Unicode character string with maximum length 'n'.</li>
+</ul>
+<h3>Numeric Data Types</h3>
+<ul>
+<li><code>INT</code>: 4-byte signed integer, ranging from -2147483648 to 2147483647.</li>
+<li><code>BIGINT</code>: 8-byte signed integer, ranging from -9223372036854775808 to 9223372036854775807.</li>
+<li><code>SMALLINT</code>: 2-byte signed integer, ranging from -32768 to 32767.</li>
+<li><code>FLOAT(p)</code>, <code>FLOAT(p,s)</code>: Single precision floating point number. 'p' is the total number of digits after the decimal point, and 's' (optional) is the maximum number of digits before the decimal point.</li>
+<li><code>DOUBLE PRECISION</code>, <code>DOUBLE(p)</code>, <code>DOUBLE(p,s)</code>: Double precision floating point number. 'p' and 's' have the same meaning as for FLOAT.</li>
+</ul>
+<h3>Date and Time Data Types</h3>
+<ul>
+<li><code>DATE</code>: Date data type, with format YYYY-MM-DD.</li>
+<li><code>TIME</code>: Time of day data type, with format HH:MI:SS.ssss.</li>
+<li><code>DATETIME</code>, <code>TIMESTAMP</code>: Combined date and time data type, with format YYYY-MM-DD HH:MI:SS.ssss.</li>
+</ul>
+<h2>Best Practices for Using Netezza Data Types</h2>
+<ol>
+<li><strong>Use the smallest data type possible:</strong> Smaller data types require less storage space and lead to faster query performance.</li>
+<li><strong>Avoid null values:</strong> Null values can cause issues with indexes, aggregations, and join operations. Use default values or check constraints whenever possible to prevent nulls.</li>
+<li><strong>Use TIMESTAMP for all date/time data:</strong> TIMESTAMP is more efficient than DATE or TIME when performing date arithmetic or sorting.</li>
+<li><strong>Consider using CHAR(1) for flag-type columns:</strong> This reduces storage space and can improve query performance compared to BOOLEAN or BIT data types.</li>
+</ol>
+<h2>Illustration: Example Usage of Data Types in Netezza</h2>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

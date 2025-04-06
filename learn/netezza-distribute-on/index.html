@@ -1,115 +1,94 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: Netezza Distribute on</h1>
+<p class="has-drop-cap">When creating tables in databases and storing data, the data gets allocated into disk extents. Netezza distributes this data across all available data slices based on the specified distribution key during table creation. A maximum of four columns can be used as a distribution key if you prefer not to distribute randomly.</p>
+<p class="has-drop-cap">If a specific column is chosen for distribution, Netezza uses this column's data to distribute the records across dataslices using hashing. When random is selected as the option for data distribution, the appliance employs a round robin algorithm to distribute data evenly.</p>
+<h2>Data Slices in Each SPU</h2>
+<p class="has-drop-cap">Ensuring that table data is uniformly distributed across all data slices helps maximize system performance. This way, all SPUs can process any query efficiently. Data imbalance, or data skew, may occur if data is not evenly distributed. This can slow down processing times and affect overall query performance. To avoid this, choose columns with high cardinality for distribution.</p>
+<h2>Netezza Distribution Key</h2>
+<p>In addition to distributing data during table definition, Netezza also allows organizing distributed data within a data slice. For example, you might have a distributed employee table on the employee id but want employee records from the same department stored together, in which case the department id column could be specified.</p>
+<p class="has-drop-cap">Netezza supports up to four columns for organization. When data gets stored on the data slice, it organizes based on these columns. This helps optimize joins and other operations.</p>
+<h3>Factors to Consider when Choosing a Distribution Key</h3>
+<ul>
+<li>Avoid using Varchar as a distribution key because it operates slower compared to Integer/binary keys.</li>
+<li>Choose Random Distribution only if necessary, as it may lead to tables being redistributed or broadcasted, affecting performance on large tables.</li>
+<li>If possible, distribute fact and dimension tables using the same column for optimal performance.</li>
+</ul>
+<h3>Useful Documentation</h3>
+<p><a href="https://www.ibm.com/developerworks/community/blogs/Netezza/entry/distribution_what_s_up_with_that13?lang=en">https://www.ibm.com/developerworks/community/blogs/Netezza/entry/distribution_what_s_up_with_that13?lang=en</a></p>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+  <h1>Learning Netezza: Understanding Distributed Processing (DIST ON)</h1>
 
+  <p>In this tutorial, we will explore the concept of Distributed Processing (DIST ON) in Netezza. This feature enables efficient data processing across multiple nodes in a Netezza system.</p>
 
+  <h2>What is DIST ON?</h2>
 
+  <p>DIST ON is a keyword used in Netezza SQL queries to specify that the query should be processed in a distributed manner. It helps to reduce the number of rows returned to the client and speeds up the execution of the query by allowing it to run across multiple nodes simultaneously.</p>
 
+  <h3>Syntax</h3>
 
+  <pre>
+  SELECT column1, column2, ...
+  FROM table_name
+  DIST ON (expression)
+  [WHERE condition]
+  [GROUP BY grouping_expression];
+  </pre>
+<p>In the above syntax:</p>
 
-Netezza Distribute on - learn
+  <ul>
+<li><code>expression</code> - The expression used to partition the data across nodes.</li>
+<li><code>condition</code> (Optional) - A WHERE clause to filter the data before distribution.</li>
+<li><code>grouping_expression</code> (Optional) - Specifies grouping of results.</li>
+</ul>
 
-Reading Time:  6 minutes
-<p class="has-drop-cap">When users create tables in databases and store data into it, data gets stored in disk extents which is the minimum storage allocated on disks for data storage. Netezza distributes the data in data extents across all the available data slices based on the distribution key specified during the table creation. If you don’t want to distribute randomly, a maximum of four columns can be mentioned as distribution key during table creation process. If a user provides no distribution specification, Netezza uses one of the columns to distribute the data and the selection of which cannot be influenced.</p>
-<p class="has-drop-cap">When the user specifies particular column for distribution then Netezza uses the column data to distribute the records being inserted across the dataslices. Netezza uses hashing to determine the dataslice into which the record needs to be stored. When the user selects random as the option for data distribution, then the appliance uses round robin algorithm to distribute the data uniformly across all the available dataslices.</p>
-Data Slices in each SPU
-<p class="has-drop-cap">The key is to make sure that the data for a table is uniformly distributed across all the data slices so that there are no data skews. By distributing data across the data slices, all the SPUs in the system can be utilized to process any query and in turn improves performance. In addition, the performance of any query depends on the slowest SPUs handling the query. If the data is not uniformly distributed then some of the SPUs will have more data in the data slice attached to it called data skew which will impact the processing time and in turn the overall query performance. Selecting columns with high cardinality for the distribution is a good practice to follow. Even if a column with high cardinality like a date column is chosen to distribute data, there is a possibility of creating processing skew. For e.g. using the date column as the distribution key, the data gets distributed fairly evenly across all the data slices. But if most of the queries are looking for data for a particular month which is fairly often in a data warehousing environment, then only a particular set of data slices may need to be processed by the appliance which in turn will only utilize a subset of SPUs causing the query performing sub optimally. This is called processing skew and needs to be prevented by understanding the processing requirements and choosing the correct distribution keys.</p>
-Netezza Distribution Key
-<h2>CBT – Clustered Base Tables</h2>
-<p>Along with the option to distribute data during table definition, Netezza also provides an option to organize the distributed data with in a data slice. For e.g., we may have distributed employee table on employee id but wanted to have employee records from the same department to be stored closely together, the column dept id in the table can be specified.</p>
-<p></p>
-<p>Netezza allows up to four columns to organize on. When data gets stored on the data slice, records with the same organize on column values will get stored in the same or close by extends. Organize on improves queries on fact tables when they are defined with the frequently joined columns to organize the data. All the columns specified in the organize on clause are zone mapped and by knowing the range of values of these columns stored in each physical extent, Netezza can eliminate reading unwanted extents during a join query which improves the query performance. </p>
-<p>The distribution of the data across the various disks is the single most important factor that can impact performance. Consider below points when choosing the distribution key:</p>
-<ul><li>Column with High Cardinality.</li><li>Column(s) that will frequently be used in join conditions.</li><li>Avoid using a boolean column, which causes Data Skew.</li><li>Distribute on one column whenever possible and do not create keys for the sake of distribution.</li></ul>
-<p>Avoid distributing the tables on columns that are often used in the where clause as it will cause processing skew. Date columns would be an example of where not to use this, especially in DW environments.</p>
-<ul><li>Choose Random Distribution only as the last resort as it will more often lead to a table being redistributed or broadcasted. This is okay for a small table but will impact performance if done to large tables.</li><li>When possible, distribute your fact and dimension on the same column.</li><li>Even if both the fact and dimension table can’t be distributed on the same key, make effort to avoid redistribution on the fact table by choosing the right column for distribution.</li><li>In addition to joins , colocation of data through table distribution or redistribution is also needed for count distincts (or any agg distinct), partition overs in analytic functions,  and column grouping in group by or select distincts.  A really good table distribution strategy will find a column, perhaps like a user_id or customer_id  that can commonly be used for joins and these other calculations.  If you can find a good common distribution like that things will run very very fast.</li></ul>
-<p>Why Varchar is not a good candidate for a distribution key:</p>
-<ul><li>The datatype matters between a varchar and a bigint in more than just width of the field.</li><li>The bigint can be compared to another bigint in the CPU with a hardware subtract, usually on a CPU register (very close to the hardware)</li><li>A varchar however, has to be interpreted, that is, compared against each other in loop, requiring an algorithm in the CPU.</li><li>Integer/binary keys will operate 100x faster than their varchar counterparts. This is why dates are ultimately stored as binary and numeric(18,x) as scaled bigint.</li><li>Why does a binary key operate faster? If we perform a comparison on a varchar, it will have to loop through the characters, comparing one-or-several at a time until it gets a match/mismatch. With a binary value, it’s a register-based subtraction on the CPU, about as close to the metal as we can get. In short, binary comparison is on the deep-metal. Varchar comparison requires a firmware algorithm.</li></ul>
-<p>Some helpful Documentation: • <a href="https://www.ibm.com/developerworks/community/blogs/Netezza/entry/distribution_what_s_up_with_that13?lang=en">https://www.ibm.com/developerworks/community/blogs/Netezza/entry/distribution_what_s_up_with_that13?lang=en</a></p>
+  <h2>Example</h2>
 
-<br><br>
+  <p>Let's consider a table named "Orders" with columns "OrderID", "CustomerID", and "Total". We want to find the total sales for each customer, grouped by customer ID.</p>
+
+  <pre>
+  SELECT CustomerID, SUM(Total)
+  FROM Orders
+  DIST ON (CustomerID)
+  GROUP BY CustomerID;
+  </pre>
+<h2>Benefits of Using DIST ON</h2>
+
+  <ul>
+<li><strong>Improved Performance:</strong> By partitioning the data and processing it on multiple nodes, Netezza can significantly reduce the amount of data that needs to be transferred between nodes.</li>
+<li><strong>Scalability:</strong> As the volume of data grows, DIST ON allows Netezza to process larger datasets more efficiently.</li>
+</ul>
+
+  <h2>Considerations</h2>
+
+  <p>When using DIST ON, keep in mind that:</p>
+
+  <ul>
+<li><strong>The expression used for partitioning should be selective and efficient to compute.</strong> This ensures that the data is evenly distributed across nodes and reduces the likelihood of hotspots.</li>
+<li><strong>Avoid using DIST ON with aggregations when the number of distinct values in the grouping expression is small or when the dataset is relatively small.</strong> In these cases, it may be more efficient to process the data sequentially.</li>
+</ul>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

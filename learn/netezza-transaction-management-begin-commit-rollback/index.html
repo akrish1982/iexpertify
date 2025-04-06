@@ -1,137 +1,118 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza Transactions BEGIN, COMMIT, ROLLBACK - learn
-
-
-
-
-<p class="p">Netezza  transactions can be summarized using the following :</p>
-<ul class="ul">
-<li class="li">Transactions start with BEGIN WORK.</li>
-<li class="li">Transactions are validated with COMMIT WORK.</li>
-<li class="li">Transactions are canceled with ROLLBACK WORK.</li>
-<li class="li">Statements executed outside of a transaction are automatically committed.</li>
-<li>If an SQL error occurs in one of the statements executed inside the transaction, Netezza cancels the entire transaction </li>
-<li class="li">DDL statements can be executed (and canceled) in transactions.</li>
-<li class="li">A transaction must only contain INSERTs if you want concurrent processes to insert rows at the same time (UPDATEs/DELETEs lock the whole table).</li>
-<li class="li">Only the SERIALIZABLE isolation level is implemented by Netezza.</li>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<article class="article">
+<h1 class="title">Netezza Transaction Management: BEGIN, COMMIT, ROLLBACK</h1>
+<section class="content">
+<p>In Netezza transactions, the following commands are used:</p>
+<ul>
+<li>Transactions begin with <code>BEGIN WORK</code>.</li>
+<li>Transactions are validated with <code>COMMIT WORK</code>.</li>
+<li>Transactions are canceled with <code>ROLLBACK WORK</code>.</li>
+<li>Statements executed outside of a transaction are automatically committed.</li>
+<li>If an SQL error occurs in one of the statements executed inside the transaction, Netezza cancels the entire transaction.</li>
+<li>DDL statements can be executed (and canceled) in transactions.</li>
+<li>A transaction must only contain INSERTs if you want concurrent processes to insert rows at the same time (UPDATEs/DELETEs lock the whole table).</li>
+<li>Only the SERIALIZABLE isolation level is implemented by Netezza.</li>
 </ul>
-BEGIN WORK
+</section>
+<h2 class="title sectiontitle">Example</h2>
+<pre><code>BEGIN WORK
 INSERT INTO existingtable ( 1, 'abc' )   -- successful sql
 SELECT FROM unexisting WHERE key = 123   -- unexisting table = sql error
 COMMIT WORK
-<p class="p">The table will remain empty after executing this piece of code, because the server will rollback the whole transaction.</p>
-
+</code></pre>
+<section class="content">
+<p>The table will remain empty after executing this piece of code, because the server will rollback the whole transaction.</p>
+</section>
 <h2 class="title sectiontitle">Solution</h2>
-<p class="p">Since Netezza is not designed for OLTP applications, review any code doing complex data modifications to ensure it doesn’t error out. To get the same behavior in case of error when connected to a different database than Netezza, you must issue a ROLLBACK to cancel all the SQL statements that succeeded in the transaction, for example with a TRY/CATCH block.</p>
-TRY
+<section class="content">
+<p>Since Netezza is not designed for OLTP applications, review any code doing complex data modifications to ensure it doesn’t error out. To get the same behavior in case of error when connected to a different database than Netezza, you must issue a ROLLBACK to cancel all the SQL statements that succeeded in the transaction, for example with a <code>TRY/CATCH</code> block.</p>
+<pre><code>TRY
   BEGIN WORK
   ...
   COMMIT WORK
 CATCH
   ROLLBACK WORK
 END TRY
+</code></pre>
+</section>
+<h2 class="title sectiontitle">Transaction Parameters</h2>
+<p>The <code>BEGIN/COMMIT/ROLLBACK</code> commands take the optional input parameters, <code>WORK or TRANSACTION</code> – and have no effect on the transactions.</p>
+</article>
 
-<p>BEGIN/COMMIT/ROLLBACK commands takes the optional input parameters, WORK or TRANSACTION – and have no effect on the transactions.</p>
-<p> </p>
 
-RollBack
-<h2>Four Isolation Levels</h2>
-<table><tbody><tr><td>   Isolcation Level   </td><td>   Uncommited Data   </td><td>   Non Repeatable   Data   </td><td>   Phantom Data   </td></tr><tr><td>   Uncommitted   </td><td>   Y   </td><td>   Y   </td><td>   Y   </td></tr><tr><td>   Committed   </td><td>   N   </td><td>   Y   </td><td>   Y   </td></tr><tr><td>   Repeatable Read   </td><td>   N   </td><td>   N   </td><td>   Y   </td></tr><tr><td>   Serializable   </td><td>   N   </td><td>   N   </td><td>   N   </td></tr></tbody></table>Isolation levels
-<p>Uncommitted Data: Transaction can see data from another transaction which is still not committed </p>
-<p>Non Repeatable Data: When a transaction tries to read the same data, the data is changed by another transaction but committed after the previous read. </p>
-<p>Phantom Data: When a transaction tries to read the same data, the data previously read is not changed but new rows has been added which satisfies the previous query criteria i.e. new rows has been added to the data rows.</p>
+    **Understanding Transaction Management in Netezza**
 
-<br><br>
+    In database systems like Netezza, transaction management plays a crucial role in maintaining data consistency. This article will guide you through the basics of transaction management, including BEGIN, COMMIT, and ROLLBACK statements.
+
+    **What are Transactions?**
+
+    A transaction is a logical unit of work that consists of one or more SQL statements. Each transaction follows an ACID (Atomicity, Consistency, Isolation, Durability) property to ensure data integrity.
+
+    **BEGIN Statement**
+
+    The BEGIN statement marks the beginning of a new transaction in Netezza. All subsequent DML statements within this transaction are executed as part of that specific transaction until either a COMMIT or ROLLBACK command is issued.
+
+    ```sql
+    BEGIN TRANSACTION;
+    ```
+
+    **COMMIT Statement**
+
+    The COMMIT statement saves all changes made within the current transaction to the database and releases the lock on the data, making it accessible to other transactions. It ensures that the changes are durable and persist even in case of system failures.
+
+    ```sql
+    COMMIT TRANSACTION;
+    ```
+
+    **ROLLBACK Statement**
+
+    The ROLLBACK statement discards all changes made within the current transaction, restoring the database to its state before the transaction began. It is useful in case of errors or data inconsistencies during a transaction.
+
+    ```sql
+    ROLLBACK TRANSACTION;
+    ```
+
+    **Example Scenario**
+
+    Consider a table named `emp` with two columns: `id` and `salary`. Suppose we want to transfer half of the salary from employee A to employee B, but we want this operation to be atomic - either both changes should occur together or none at all. Here's how you can do it using transactions in Netezza:
+
+    ```sql
+    BEGIN TRANSACTION;
+
+    -- Transfer half of the salary from employee A to employee B
+    UPDATE emp SET salary = salary - 500 WHERE id = 'A';
+    UPDATE emp SET salary = salary + 500 WHERE id = 'B';
+
+    IF ROWCOUNT() &lt;&gt; 2 THEN
+        ROLLBACK TRANSACTION;
+    ELSE
+        COMMIT TRANSACTION;
+    END IF;
+    ```
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

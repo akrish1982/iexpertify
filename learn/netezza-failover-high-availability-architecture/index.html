@@ -1,109 +1,56 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza Failover Architecture - learn
-
-
-
-
-
-<p>As an appliance Netezza includes necessary failover components to function seamlessly in the event of any hardware issues so that its availability is more than 99.99%. There are two hosts in a cluster in all the Netezza appliances so that if one fails the other one can takes over.</p>
-<p>Netezza uses Linux-HA (High Availability) and Distributed Replicated Block Device for the host cluster management and mirroring of data between the hosts. </p>
-<p>As far as data storage is concerned, one third of every disk in the disk array stores primary copy of user data, a third stores mirror of the primary copy of data from another disk and another third of the disk is used for temporary storage.</p>
-<p> </p>
-
-Netezza Failover
-<p class="has-drop-cap">In the event of disk failure the mirror copy will be used and the SPU to which the disk in error was attached will be updated with the disk holding the mirror copy. In the event of error in a disk track, the track will be marked as invalid and valid data will be copied from the mirror copy on to a new track. If there are any issues with one of the S-Blades, other S-Blades will be assigned the work load. All failures will be notified based on event monitors defined and enabled. Similar to the dual host for high availability, the appliance also has dual power systems and all the connection between the components like host to SPA and SPA to disk array also has a secondary. Any issues with the hardware components can be viewed through the NZAdmin GUI tool.</p>
-
-<br><br>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Understanding Netezza Failover High Availability Architecture</h1>
+<p>Netezza, as an appliance, is equipped with essential failover components to ensure smooth operation even in the face of hardware issues. This architecture guarantees an availability rate exceeding 99.99%. Two hosts constitute a cluster in every Netezza appliance, enabling seamless takeover if one host encounters a failure.</p>
+<p>Netezza leverages Linux-HA (High Availability) and Distributed Replicated Block Device for managing the host cluster and data mirroring between these hosts respectively.</p>
+<p>Regarding data storage, one-third of each disk in the array houses the primary copy of user data. Another third mirrors the primary data from a different disk, while the remaining third serves as temporary storage.</p>
+<h2>Netezza Failover Mechanism</h2>
+<p class="has-drop-cap">In the event of a disk failure, the mirror copy will be utilized, and the SPU (Service Processing Unit) attached to the faulty disk will be updated with the disk containing the mirror copy. If a disk track fails, the track will be marked as invalid, and valid data will be copied from the mirror copy onto a new track.</p>
+<p>Should any issues arise with an S-Blade, the workload will be reassigned to other available S-Blades.</p>
+<p>All failures will be notified based on event monitors defined and enabled. Similar to the dual host setup for high availability, the appliance also features dual power systems. All connections between components like host to SPA (Service Processing Array) and SPA to disk array also have a secondary.</p>
+<p>Any hardware-related issues can be monitored using the NZAdmin GUI tool.</p>
+<h1>Understanding Netezza Failover and High Availability Architecture</h1>
+<h2>Introduction</h2>
+<p>In this article, we will delve into the concepts of failover and high availability in the context of Netezza, a high-performance data warehouse appliance. We will explore how Netezza ensures uninterrupted service by implementing a robust failover architecture.</p>
+<h2>Netezza Architecture</h2>
+<p>The Netezza architecture consists of one or more nodes, each with its own storage and processing capabilities. The system is designed to be highly parallel, leveraging massively parallel processing (MPP) technology.</p>
+<h2>Failover in Netezza</h2>
+<p>Netezza employs an active-active/active-passive high availability configuration. In the active-active model, all nodes are actively serving queries. In case of failure of a node, the workload is automatically redistributed among the remaining active nodes.</p>
+<h2>Active-Passive Failover</h2>
+<p>In an active-passive configuration, one node acts as the active node while the others are passive. The passive nodes can take over the role of the active node in case of failure. This is achieved through a process called "standby switchover."</p>
+<h3>Standby Switchover</h3>
+<p>Standby switchover involves transferring the database connection from the failed active node to a standby (passive) node. The process ensures minimal downtime and guarantees service continuity.</p>
+<h2>High Availability in Netezza</h2>
+<p>In addition to failover, Netezza also provides features that enhance high availability, such as:</p>
+<ul>
+<li><strong>Automatic Failover:</strong> Automatically redirecting workload to healthy nodes when a failure occurs.</li>
+<li><strong>Load Balancing:</strong> Distributing the workload evenly across all available nodes for optimal performance.</li>
+<li><strong>Self-Healing:</strong> Automatic recovery from minor failures, eliminating the need for manual intervention.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>By understanding Netezza's failover and high availability architecture, we can appreciate how this powerful data warehouse appliance ensures uninterrupted service and maximizes uptime. With its robust design and intelligent failover mechanisms, Netezza stands as a reliable solution for mission-critical data warehousing needs.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

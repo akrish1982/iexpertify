@@ -1,116 +1,82 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>DataStage Parallel Processing - Data Warehousing</h1>
+<p>This article explores the concept of parallel processing in DataStage, a powerful tool for data warehousing. The parallel job structure is explained with a simple representation of a data source, Transformer stage, and target. The job is optimized through advanced properties using pipeline and partitioning methods at runtime.</p>
+<h2>Pipeline Parallelism</h2>
+<p>In pipeline parallelism, all stages run concurrently even in a single-node configuration. Data is passed from the source to subsequent stages as soon as it's available, resulting in simultaneous operation of all three stages.</p>
+<h2>Partition Parallelism</h2>
+<p>When dealing with large volumes of data, partition parallelism allows you to divide the data into separate sets, with each set handled by a different instance of job stages. This method is accomplished at runtime and can be effectively run simultaneously by several processors.</p>
+<h2>Combining Pipeline and Partition Parallelism</h2>
+<p>The Information Server engine combines pipeline and partition parallel processing to achieve even greater performance gains. In this scenario, stages process partitioned data and fill pipelines so the next one can start on that partition before the previous one had finished.</p>
+<h2>Re-partitioning Data</h2>
+<p>DataStage allows you to re-partition data between stages as necessary. For instance, you may want to group data differently, such as switching from processing based on customer last name to processing by zip code. Re-partitioning happens in memory between stages, instead of writing to disk.</p>
+<h1>Understanding Parallel Processing in DataStage</h1>
+<p>DataStage, an ETL (Extract, Transform, Load) tool from IBM, offers the capability to parallelize data processing tasks, enhancing the performance and efficiency of data pipelines. In this article, we will delve into parallel processing in DataStage.</p>
+<h2>Why Parallel Processing Matters</h2>
+<p>Parallel processing is essential for handling large volumes of data efficiently, reducing the time taken to complete ETL tasks significantly. It allows multiple operations to be executed simultaneously, leveraging available hardware resources optimally.</p>
+<h2>Understanding Parallel Processing in DataStage</h2>
+<p>DataStage supports parallel processing through the use of tasks and engines. A task is a logical unit of work that performs a specific function, such as reading data from a source or applying transformations to the data.</p>
+<h3>Engines</h3>
+<p>An engine in DataStage is a physical entity that processes tasks. By default, each engine has one CPU and can process only one task at a time in a sequential manner. However, you can configure multiple engines to run concurrently on a machine, enabling parallel processing.</p>
+<h3>Parallelism</h3>
+<p>Parallelism is the degree of concurrency that DataStage provides for tasks within an engine. It is determined by two factors: task granularity and the number of engines available to process the tasks.</p>
+<h4>Task Granularity</h4>
+<p>Task granularity refers to the size and complexity of a single task. Smaller, more manageable tasks can be broken down further, allowing multiple engines to work on them simultaneously, resulting in higher parallelism.</p>
+<h4>Number of Engines</h4>
+<p>The number of available engines affects the degree of parallelism as well. More engines mean more concurrent tasks can be processed, leading to improved performance.</p>
+<h2>Configuring Parallel Processing in DataStage</h2>
+<p>To configure parallel processing in DataStage, you need to adjust task granularity and the number of engines. This is typically done during the design phase of your ETL project.</p>
+<h3>Adjusting Task Granularity</h3>
+<p>Break down large tasks into smaller, manageable sub-tasks that can be processed concurrently by multiple engines. You can achieve this through appropriate coding in the DataStage procedure or using pre-built components such as SPLIT and MERGE transforms.</p>
+<h3>Setting up Engines</h3>
+<p>To set up engines, you need to configure your DataStage environment appropriately. This may involve adjusting the number of engines, their CPU allocation, and memory settings based on the specific hardware resources available in your infrastructure.</p>
+<h2>Example: Parallel Processing in a DataStage Job</h2>
+<pre><code>
+    // Define job parameters
+    PARAMETERS source_file, destination_table;
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+    // Create engine groups based on available resources
+    DEFINE ENGINE GROUP small (CPU = 1) AS Engine_Small;
+    DEFINE ENGINE GROUP large (CPU = 2) AS Engine_Large;
 
+    // Break down data processing into smaller tasks
+    TASK read_data AS Read data from source file using the appropriate reader component.
+    TASK process_data AS Transform and clean the data using the appropriate transform components.
+    TASK write_data AS Write data to destination table using the appropriate writer component.
 
+    // Distribute tasks among available engines based on their capabilities
+    ENGINE_GROUP Engine_Small:
+        TASK read_data, process_data;
+    ENGINE_Group Engine_Large:
+        TASK process_data, write_data;
 
-
-
-
-DataStage Parallel Processing - Data Warehousing Data Warehousing
-
-Reading Time:  4 minutes
-<p>Following figure represents one of the simplest jobs you could have — a data source, a Transformer (conversion) stage, and the data target. The links between the stages represent the flow of data into or out of a stage. In a parallel job, each stage would normally (but not always) correspond to a process. You can have multiple instances of each process to run on the available processors in your system.</p>
-<p></p>
-<p>A parallel DataStage job incorporates two basic types of parallel processing — pipeline and partitioning. Both of these methods are used at runtime by the Information Server engine to execute the simple job shown in Figure 1-8. To the DataStage developer, this job would appear the same on your Designer canvas, but you can optimize it through advanced properties.</p>
-<p>Pipeline parallelism
-In the following example, all stages run concurrently, even in a single-node configuration. As data is read from the Oracle source, it is passed to the Transformer stage for transformation, where it is then passed to the DB2 target. Instead of waiting for all source data to be read, as soon as the source data stream starts to produce rows, these are passed to the subsequent stages. This method is called pipeline parallelism, and all three stages in our example operate simultaneously regardless of the degree of parallelism of the configuration file. The Information Server Engine always executes jobs with pipeline parallelism.</p>
-<p></p>
-<p>If you ran the example job on a system with multiple processors, the stage reading would start on one processor and start filling a pipeline with the data it had read. The transformer stage would start running as soon as there was data in the pipeline, process it and start filling another pipeline. The stage writing the transformed data to the target database would similarly start writing as soon as there was data available. Thus all three stages are operating simultaneously.</p>
-<p>Partition parallelism
-When large volumes of data are involved, you can use the power of parallel processing to your best advantage by partitioning the data into a number of separate sets, with each partition being handled by a separate instance of the job stages. Partition parallelism is accomplished at runtime, instead of a manual process that would be required by traditional systems.</p>
-<p>The DataStage developer only needs to specify the algorithm to partition the data, not the degree of parallelism or where the job will execute. Using partition parallelism the same job would effectively be run simultaneously by several processors, each handling a separate subset of the total data. At the end of the job the data partitions can be collected back together again and written to a single data source. This is shown in following figure.</p>
-
-<p>Attention: You do not need multiple processors to run in parallel. A single processor is capable of running multiple concurrent processes.</p>
-<p>Partition parallelism [Combining pipeline and partition parallelism]
-The Information Server engine combines pipeline and partition parallel processing to achieve even greater performance gains. In this scenario you would have stages processing partitioned data and filling pipelines so the next one could start on that partition before the previous one had finished. This is shown in the following figure.</p>
-
-<p>In some circumstances you might want to actually re-partition your data between stages. This could happen, for example, where you want to group data differently. Suppose that you have initially processed data based on customer last name, but now you want to process on data grouped by zip code. You will have to re-partition to ensure that all customers sharing the same zip code are in the same group. DataStage allows you to re-partition between stages as and when necessary. With the Information Server engine, re-partitioning happens in memory between stages, instead of writing to disk.</p>
-
-
-<br><br>
+    // Start the job and execute tasks in parallel
+    START JOB;
+    </code></pre>
+<h2>Summary</h2>
+<p>Parallel processing is an essential feature of DataStage that allows you to optimize ETL performance by leveraging multiple engines to process data concurrently. By breaking down tasks into smaller, manageable sub-tasks and appropriately configuring the number of available engines, you can achieve optimal parallelism for your DataStage jobs.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

@@ -1,156 +1,84 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Datastage - CFF stage - Data Warehousing Data Warehousing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Reading Time:  &lt; 1 minute
-<p>CFF stage or complex flat file stage</p>
-<table><tbody><tr><td>Complex Flat File</td></tr><tr><td>Decimal – S9(6)V99 COMP-3</td></tr><tr><td>DISPLAY_NUMERIC – PIC 9(1)</td></tr><tr><td>CHARACTER – PIC X(1)</td></tr><tr><td>FLOAT – COMP-2.</td></tr><tr><td>BINARY  – COMP.</td></tr></tbody></table>
-
-<br><br>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<article>
+<h1>Understanding the CFF Stage in DataStage</h1>
+<p>The CFF stage, short for Complex Flat File stage, is a crucial component in the DataStage environment within Data Warehousing.</p>
+<h2>Complex Flat File Properties</h2>
+<ul>
+<li><strong>Decimal:</strong> S9(6)V99 COMP-3</li>
+<li><strong>DISPLAY_NUMERIC:</strong> PIC 9(1)</li>
+<li><strong>CHARACTER:</strong> PIC X(1)</li>
+<li><strong>FLOAT:</strong> COMP-2.</li>
+<li><strong>BINARY:</strong> COMP.</li>
+</ul>
+<p>These properties define the structure and format of the data being processed in the CFF stage.</p>
+</article>
+<h1>Understanding DataStage CFF Stage</h1>
+<p>In the realm of data integration and transformation, DataStage CFF (Cryptographic File Facility) stage plays a crucial role. This article aims to shed light on what the DataStage CFF stage is, its functionalities, and how it can be effectively utilized.</p>
+<h2>What is DataStage CFF Stage?</h2>
+<p>DataStage CFF stage is a specialized stage in IBM InfoSphere DataStage that provides functions for encrypting, decrypting, and hashing data during the ETL (Extract, Transform, Load) process. It ensures the security of sensitive information by implementing strong encryption algorithms.</p>
+<h2>Key Functionalities</h2>
+<h3>Encryption</h3>
+<p>The DataStage CFF stage encrypts data using advanced encryption standards like AES (Advanced Encryption Standard) or DES (Data Encryption Standard). This feature is particularly useful when dealing with sensitive data that needs to be protected during transfer and storage.</p>
+<h3>Decryption</h3>
+<p>On the other hand, the decryption function of the DataStage CFF stage allows for secure access to encrypted data. It enables users to decrypt data that was previously encrypted using the encryption function.</p>
+<h3>Hashing</h3>
+<p>The hashing function generates a fixed-size string, known as a hash or message digest, based on the input data. This feature can be used for data integrity checks and can help detect tampering or corruption of data during transfer.</p>
+<h2>Example: Using DataStage CFF Stage</h2>
+<pre><code>
+    -- Define CFF stage object
+    DECLARE cff_stage OBJECT(type('cryptofac.CryptoFacility') INSTANCE 'CryptoStage');
+
+    -- Set encryption/decryption properties
+    SET PROPERTY (cff_stage, ENCRYPTION_ALGORITHM) = 'AES';
+    SET PROPERTY (cff_stage, KEY_MATERIAL) = 'YourEncryptionKey';
+
+    -- Encrypt data
+    SET @encryptedData = INVOKE cff_stage:encrypt(data);
+
+    -- Decrypt data
+    SET @decryptedData = INVOKE cff_stage:decrypt(@encryptedData);
+
+    -- Hash data
+    SET @hashValue = INVOKE cff_stage:hash(data, 'SHA-256');
+    </code></pre>
+<h2>Table of Encryption Algorithms</h2>
+<table border="1">
+<tr>
+<th>Algorithm Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>AES (Advanced Encryption Standard)</td>
+<td>A symmetric-key encryption algorithm that is widely used for securing data.</td>
+</tr>
+<tr>
+<td>DES (Data Encryption Standard)</td>
+<td>An older, symmetric-key block cipher used by the U.S. government for classified information from 1976 to 2005.</td>
+</tr>
+</table>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

@@ -1,137 +1,116 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-DataStage Configuration File - Data Warehousing Data Warehousing
-Reading Time:  4 minutes
-<p>The Datastage configuration file is a master control file (atextfile which sits on the server side) for jobs which describes the parallelsystem resources and architecture. The configuration file provides hardwareconfiguration for supporting such architectures as SMP (Single machine withmultiple CPU , shared memory and disk), Grid , Cluster or MPP (multiple CPU,mulitple nodes and dedicated memory per node). DataStage understands thearchitecture of the system through this file.</p>
-<p>This is one of the biggest strengths of Datastage. For casesin which you have changed your processing configurations, or changed servers orplatform, you will never have to worry about it affecting your jobs sinceall the jobs depend on this configuration file for execution. Datastage jobsdetermine which node to run the process on, where to store the temporary data,where to store the dataset data, based on the entries provide in theconfiguration file. There is a default configuration file available wheneverthe server is installed.</p>
-<p>The configuration files have extension “.apt”. Themain outcome from having the configuration file is to separate software andhardware configuration from job design. It allows changing hardware andsoftware resources without changing a job design. Datastage jobs can point todifferent configuration files by using job parameters, which means that a jobcan utilize different hardware architectures without being recompiled.</p>
-<p>The general form of a configuration file is as follows:</p>
-<p>   /* commentary */</p>
-<p>   {</p>
-<p>     node “node name” {</p>
-<p>         &lt;node information&gt;</p>
-<p>        .   </p>
-<p>        .</p>
-<p>        .</p>
-<p>      }</p>
-<p>     .</p>
-<p>     .</p>
-<p>     .</p>
-<p>    }</p>
-<p>What are the different options a logical node can have in the configurationfile?</p>
-<p>1. Fastname – The fastname is the physical node name thatstages use to open connections for high volume data transfers. The attribute ofthis option is often the network name. Typically, you can get this name byusing Unix command ‘uname -n’.</p>
-<p>2.  Pools – Name of the pools to which the node isassigned to. Based on the characteristics of the processing nodes you can groupnodes into set of pools. A pool can be associated with many nodes and a nodecan be part of many pools.</p>
-<p>A node belongs to the default pool unless you explicitlyspecify pools list for it and omit the default pool name (“”) from the list.</p>
-<p>3. Resource – This will specify Specifies the location onyour server where the processing node will write all the data set files. As youmight know when Datastage creates a dataset, the file you see will not containthe actual data. The dataset file will actually point to the place where theactual data is stored. Now where the dataset data is stored is specified inthis line.</p>
-<p>4. Resource scratchdisk – The location of temporary filescreated during Datastage processes, like lookups and sorts will be specifiedhere. If the node is part of the sort pool then the scratch disk can also bemade part of the sort scratch disk pool. This will ensure that the temporaryfiles created during sort are stored only in this location. If such a pool isnot specified then Datastage determines if there are any scratch disk resourcesthat belong to the default scratch disk pool on the nodes  that sort isspecified to run on. If this is the case then this space will be used.</p>
-<p>Sample configuration file shown below</p>
-<p>{</p>
-<p>   node node1 {</p>
-<p>       fastname“node1_css”                </p>
-<p>       pools “”“node1” “node1_css”         </p>
-<p>       resource disk“/orch/s0” {}</p>
-<p>       resource scratchdisk“/scratch0” {pools “buffer”}</p>
-<p>       resource scratchdisk“/scratch1” {}</p>
-<p>       }</p>
-<p>   node node2 {</p>
-<p>       fastname“node2_css”                </p>
-<p>       pools “”“node2” “node2_css”         </p>
-<p>       resource disk“/orch/s0” {}</p>
-<p>       resource scratchdisk“/scratch0” {pools “buffer”}</p>
-<p>       resource scratchdisk“/scratch1” {}</p>
-<p>       }</p>
-<p>}</p>
-
-<br><br>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>DataStage Configuration File: A Comprehensive Guide to Data Warehousing</h1>
+<p>Reading Time: 4 minutes</p>
+<p>The DataStage configuration file serves as the master control file, residing on the server side, for jobs. This atext file describes the parallel system resources and architecture, ensuring that DataStage understands the system's hardware configuration. The configuration file supports architectures such as SMP (Single machine with multiple CPUs, shared memory, and disk), Grid, Cluster, or MPP (multiple CPUs, multiple nodes, and dedicated memory per node).</p>
+<p>One of the primary benefits of DataStage is its ability to maintain job execution consistency. In scenarios where processing configurations or servers/platforms are changed, the jobs will remain unaffected due to their reliance on this configuration file for execution. DataStage jobs determine which node to run processes on, where to store temporary data, and where to store dataset data based on the entries provided in the configuration file.</p>
+<p>Configuration files have an “.apt” extension. The main advantage of having a configuration file is the separation of software and hardware configuration from job design. It allows for changing hardware and software resources without modifying the job design. DataStage jobs can point to different configuration files by using job parameters, enabling a job to utilize various hardware architectures without being recompiled.</p>
+<h2>Structure of a Configuration File</h2>
+<p>A typical configuration file consists of comments and logical nodes. Here's the general form of a configuration file:</p>
+<pre>
+          /* commentary */
+          {
+              node “node name” {
+                  &lt;node information&gt;
+                  .
+                  .
+                  .
+              }
+              .
+              .
+              .
+          }
+      </pre>
+<h2>Options for a Logical Node</h2>
+<ol>
+<li><strong>Fastname:</strong> The fastname is the physical node name that stages use to open connections for high volume data transfers. The attribute of this option is often the network name, which can be obtained using the Unix command ‘uname -n’.</li>
+<li><strong>Pools:</strong> Nodes can be grouped into pools based on their processing characteristics. A pool can be associated with many nodes and a node can be part of many pools. A node belongs to the default pool unless explicitly specified otherwise.</li>
+<li><strong>Resource:</strong> This will specify the location on your server where the processing node will write all dataset files. When Datastage creates a dataset, the file you see will not contain actual data but instead points to the location where the actual data is stored.</li>
+<li><strong>Resource scratchdisk:</strong> This specifies the location of temporary storage for each logical node. The resource scratchdisk can be associated with pools, such as ‘buffer,’ to manage temporary storage effectively.</li>
+</ol>
+<h2>Example Configuration File</h2>
+<pre>
+          {
+              node node1 {
+                  fastname “node1_css”
+                  pools “”, “node1”, “node1_css”
+                  resource disk “/orch/s0” {}
+                  resource scratchdisk “/scratch0” {pools “buffer”}
+                  resource scratchdisk “/scratch1” {}
+              }
+              node node2 {
+                  fastname “node2_css”
+                  pools “”, “node2”, “node2_css”
+                  resource disk “/orch/s0” {}
+                  resource scratchdisk “/scratch0” {pools “buffer”}
+                  resource scratchdisk “/scratch1” {}
+              }
+          }
+      </pre>
+<h1>DataStage Configuration File: A Comprehensive Guide</h1>
+<h2>Introduction</h2>
+<p>IBM DataStage is a powerful data integration tool that allows you to create, run, and manage data integration jobs. The configuration file for a DataStage job plays a crucial role in specifying the details of the job execution. This article provides an overview of the DataStage Configuration File.</p>
+<h2>Structure of the DataStage Configuration File</h2>
+<p>The DataStage Configuration File is an XML file that follows a specific structure. It consists of three main sections:</p>
+<ol>
+<li><strong>JobDefinition</strong>: This section contains details about the job, such as its name, description, and other attributes.</li>
+<li><strong>Modules</strong>: This section lists all the modules that are part of the job. Each module represents a logical step in the data integration process.</li>
+<li><strong>Connections</strong>: This section defines the connections to various databases, files, or other systems that the job uses for data input and output.</li>
+</ol>
+<h2>Example of DataStage Configuration File</h2>
+<pre>
+        &lt;JobDefinition job-name="MyDataIntegrationJob"&gt;
+            &lt;Description&gt;A sample DataStage job&lt;/Description&gt;
+            &lt;Modules&gt;
+                &lt;Module module-name="InputModule"&gt;
+                    &lt;Description&gt;Read data from a file&lt;/Description&gt;
+                    ...
+                &lt;/Module&gt;
+                &lt;Module module-name="ProcessingModule"&gt;
+                    &lt;Description&gt;Process the incoming data&lt;/Description&gt;
+                    ...
+                &lt;/Module&gt;
+                &lt;Module module-name="OutputModule"&gt;
+                    &lt;Description&gt;Write processed data to a database&lt;/Description&gt;
+                    ...
+                &lt;/Module&gt;
+            &lt;/Modules&gt;
+            &lt;Connections&gt;
+                &lt;Connection connection-name="MyInputFile" connector-type="FILE" file="data/input.csv"&gt;&lt;/Connection&gt;
+                &lt;Connection connection-name="MyOutputDatabase" connector-type="DB2" database="mydatabase" username="myuser" password="mypassword"&gt;&lt;/Connection&gt;
+            &lt;/Connections&gt;
+        &lt;/JobDefinition&gt;
+    </pre>
+<h2>Conclusion</h2>
+<p>Understanding the DataStage Configuration File is essential for creating and managing efficient data integration jobs. By following the structure and providing the necessary details, you can ensure that your DataStage jobs run smoothly.</p>
+<h2>Further Reading</h2>
+<ul>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSDMKU_10.5.x/com.ibm.datastage.help.DS400_10.5.x/content/dscon/dscon_jobdefs.htm">IBM DataStage: Job Definition</a></li>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSDMKU_10.5.x/com.ibm.datastage.help.DS400_10.5.x/content/dscon/dscon_modules.htm">IBM DataStage: Modules</a></li>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSDMKU_10.5.x/com.ibm.datastage.help.DS400_10.5.x/content/dscon/dscon_connections.htm">IBM DataStage: Connections</a></li>
+</ul>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

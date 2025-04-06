@@ -1,190 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML to Markdown Converter</title>
-    <link href="/simplecss/styles.css" rel="stylesheet"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-         crossorigin="anonymous"></script>
-         <script
-        src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-        user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-        btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-        embed-version="v1"
-        button-text="Let's Connect"
-        position-right="30px"
-        position-bottom="30px"
-        custom-padding="0px"
-        custom-font-size="16px"
-        custom-font-weight="500"
-        custom-width="200px"
-        async=""
-        defer=""
-      ></script>  
-    <!-- <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        textarea {
-            width: 100%;
-            height: 400px;
-            padding: 10px;
-            font-family: monospace;
-        }
-        .instructions {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px 0;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #copyButton {
-            background-color: #008CBA;
-        }
-        #copyButton:hover {
-            background-color: #007399;
-        }
-    </style> -->
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h1>HTML to Markdown Converter</h1>
-    
-    <div class="instructions">
-        <h3>How to Use:</h3>
-        <ol>
-            <li>Paste your HTML code in the input textarea on the left</li>
-            <li>Click "Convert to Markdown" to see the converted result</li>
-            <li>Use the "Copy to Clipboard" button to copy the result</li>
-        </ol>
-        <p><strong>Note:</strong> This converter handles common HTML elements including:</p>
-        <ul>
-            <li>Headings (h1-h6)</li>
-            <li>Paragraphs</li>
-            <li>Links</li>
-            <li>Lists (ordered and unordered)</li>
-            <li>Bold and italic text</li>
-            <li>Code blocks</li>
-            <li>Blockquotes</li>
-        </ul>
-    </div>
-
-    <div class="container">
-        <div>
-            <h3>Input HTML:</h3>
-            <textarea id="input" placeholder="Paste your HTML code here..."></textarea>
-        </div>
-        <div>
-            <h3>Markdown Output:</h3>
-            <textarea id="output" readonly></textarea>
-        </div>
-    </div>
-
-    <button onclick="convertToMarkdown()">Convert to Markdown</button>
-    <button id="copyButton" onclick="copyToClipboard()">Copy to Clipboard</button>
-
-    <script>
-        function convertToMarkdown() {
-            const html = document.getElementById('input').value;
-            let markdown = html;
-
-            // Convert headings
-            markdown = markdown.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n');
-            markdown = markdown.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n');
-            markdown = markdown.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1\n');
-            markdown = markdown.replace(/<h4[^>]*>(.*?)<\/h4>/gi, '#### $1\n');
-            markdown = markdown.replace(/<h5[^>]*>(.*?)<\/h5>/gi, '##### $1\n');
-            markdown = markdown.replace(/<h6[^>]*>(.*?)<\/h6>/gi, '###### $1\n');
-
-            // Convert paragraphs
-            markdown = markdown.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
-
-            // Convert links
-            markdown = markdown.replace(/<a[^>]*href="(.*?)"[^>]*>(.*?)<\/a>/gi, '[$2]($1)');
-
-            // Convert bold text
-            markdown = markdown.replace(/<strong[^>]*>(.*?)<\/strong>/gi, '**$1**');
-            markdown = markdown.replace(/<b[^>]*>(.*?)<\/b>/gi, '**$1**');
-
-            // Convert italic text
-            markdown = markdown.replace(/<em[^>]*>(.*?)<\/em>/gi, '*$1*');
-            markdown = markdown.replace(/<i[^>]*>(.*?)<\/i>/gi, '*$1*');
-
-            // Convert unordered lists
-            markdown = markdown.replace(/<ul[^>]*>([\s\S]*?)<\/ul>/gi, function(match, content) {
-                return content.replace(/<li[^>]*>(.*?)<\/li>/gi, '* $1\n');
-            });
-
-            // Convert ordered lists
-            markdown = markdown.replace(/<ol[^>]*>([\s\S]*?)<\/ol>/gi, function(match, content) {
-                let index = 1;
-                return content.replace(/<li[^>]*>(.*?)<\/li>/gi, function(match, item) {
-                    return `${index++}. ${item}\n`;
-                });
-            });
-
-            // Convert code blocks
-            markdown = markdown.replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, '```\n$1\n```');
-            markdown = markdown.replace(/<code[^>]*>(.*?)<\/code>/gi, '`$1`');
-
-            // Convert blockquotes
-            markdown = markdown.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, '> $1\n');
-
-            // Clean up
-            markdown = markdown
-                .replace(/&nbsp;/g, ' ')
-                .replace(/&lt;/g, '<')
-                .replace(/&gt;/g, '>')
-                .replace(/&amp;/g, '&')
-                .replace(/\n\s*\n/g, '\n\n')
-                .trim();
-
-            document.getElementById('output').value = markdown;
-        }
-
-        function copyToClipboard() {
-            const output = document.getElementById('output');
-            output.select();
-            document.execCommand('copy');
-            
-            const copyButton = document.getElementById('copyButton');
-            const originalText = copyButton.textContent;
-            copyButton.textContent = 'Copied!';
-            setTimeout(() => {
-                copyButton.textContent = originalText;
-            }, 2000);
-        }
-    </script>
-</body>
-</html>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>HTML to Markdown Converter</h1>
+<div class="instructions">
+<h3>How to Use:</h3>
+<ol>
+<li>Paste your HTML code in the input textarea on the left</li>
+<li>Click "Convert to Markdown" to see the converted result</li>
+<li>Use the "Copy to Clipboard" button to copy the result</li>
+</ol>
+<p><strong>Note:</strong> This converter handles common HTML elements including:</p>
+<ul>
+<li>Headings (h1-h6)</li>
+<li>Paragraphs</li>
+<li>Links</li>
+<li>Lists (ordered and unordered)</li>
+<li>Bold and italic text</li>
+<li>Code blocks</li>
+<li>Blockquotes</li>
+</ul>
+</div>
+<div class="container">
+<div>
+<h3>Input HTML:</h3>
+</div>
+<div>
+<h3>Markdown Output:</h3>
+</div>
+</div>
+<button onclick="convertToMarkdown()">Convert to Markdown</button>
+<button id="copyButton" onclick="copyToClipboard()">Copy to Clipboard</button>
+<h1>Converting HTML to Markdown: A Comprehensive Guide</h1>
+<p>Welcome to our guide on converting HTML to Markdown! This tutorial will walk you through the process of transforming your HTML documents into Markdown using various methods. Whether you're a developer, blogger, or content creator looking to simplify and streamline your workflow, this guide is here to help.</p>
+<h2>Why Convert HTML to Markdown?</h2>
+<p>Markdown offers several advantages over HTML. It's easier to read, write, and understand, making it ideal for creating and editing documents quickly. Markdown files are also lightweight and portable, which is a significant benefit for content creators on the go.</p>
+<h2>Methods for Converting HTML to Markdown</h2>
+<h3>Online Tools</h3>
+<p>There are numerous online tools available for converting HTML to Markdown. Here's how to use one such tool:</p>
+<ol>
+<li>Navigate to an online HTML-to-Markdown converter, such as <a href="https://html2md.com/">HTML to Markdown</a>.</li>
+<li>Paste your HTML code into the text box provided.</li>
+<li>Click "Convert" to generate the corresponding Markdown code.</li>
+</ol>
+<h3>Manual Conversion</h3>
+<p>For a more hands-on approach, you can manually convert HTML to Markdown. Here are some common HTML elements and their Markdown equivalents:</p>
+<table>
+<thead>
+<tr>
+<th>HTML Element</th>
+<th>Markdown Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;h1&gt;</code></td>
+<td><code># Heading 1</code></td>
+</tr>
+<tr>
+<td><code>&lt;h2&gt;</code></td>
+<td><code>## Heading 2</code></td>
+</tr>
+<tr>
+<td><code>&lt;h3&gt;</code></td>
+<td><code>### Heading 3</code></td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td><code>paragraph text</code></td>
+</tr>
+<tr>
+<td><code>&lt;strong&gt;</code></td>
+<td><code>**bold text**</code></td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td><code>*italic text*</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Code Libraries and Applications</h3>
+<p>If you're working with a large number of HTML files, consider using code libraries or applications designed for this purpose. For example, the popular Node.js library "marked" can convert HTML to Markdown.</p>
+<h2>Wrapping Up</h2>
+<p>Now that you've learned how to convert HTML to Markdown, you can streamline your content creation process and enjoy the benefits of using Markdown for editing and sharing documents.</p>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

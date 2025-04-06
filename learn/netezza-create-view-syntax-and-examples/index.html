@@ -1,107 +1,96 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learning Netezza: Create View Syntax and Examples</h1>
+<p>In this article, we will explore the syntax for creating views in Netezza and provide some examples. A view is a virtual table based on the result-set of a complex SQL statement that may involve multiple table joins or a simple SELECT statement with selected columns needed by the analyst group.</p>
+<h2>Netezza Create View Syntax</h2>
+<p>The syntax for creating a view in Netezza is:</p>
+<pre>CREATE [OR REPLACE] VIEW <view_name> AS SELECT <query>;</query></view_name></pre>
+<p>Note that, unlike other databases such as Teradata, Netezza does not support the creation of RECURSIVE views.</p>
+<h2>Checking for Obsolete Views in Netezza</h2>
+<p>If you alter or change the underlying view table, the view becomes obsolete and unusable until you re-compile it. IBM has provided a script to check if a view is obsolete. The general location of this script is /nz/support/bin, but you should consult your Netezza admin team for the exact location. Below is the script and its usage:</p>
+<pre>nz_check_views [database] [-replace <flag>]</flag></pre>
 
 
+    **Learning Netezza: Create View Syntax and Examples**
 
+    In this article, we will explore how to create views in Netezza, a high-performance data warehouse database system. Views are virtual tables based on the result-set of an SQL statement. They can be used to simplify complex queries, enhance security, and promote better organization of your database schema.
 
+    **Syntax**
 
+    The basic syntax for creating a view in Netezza is as follows:
 
-Netezza Create View Syntax - learn
-Reading Time:  &lt; 1 minute
-<p>Utilize the create view statement to create a virtual table based on the result-set of a complex SQL statement that may have multiple table joins or a simple SELECT statement with selected columns that are needed to be viewed by the analyst group. Netezza Views are read-only. The system does not allow you an insert, update, or delete on a view.</p>
-Netezza Create View Syntax
-<p>Syntax for creating a view:</p>
-CREATE &lt;OR REPLACE&gt; VIEW &lt;view_name&gt; AS SELECT &lt;query&gt;;
+    ```sql
+    CREATE VIEW view_name AS
+        SELECT column1, column2, ...
+        FROM table_name
+        WHERE condition;
+    ```
 
-<p>Other databases like Teradata supports creating RECURSIVE VIEW but Netezza does not supports RECURSIVE view creation,</p>
-<p>Netezza check View if it is not obsolete</p>
-<p>If you alter or change the underlying view table then that view will become obsolete and not usable until you re-compile that. IBM has provided the script that will allow you to check if view is obsolete. Generally, script is available at /nz/support/bin location. Ask your Netezza admin team for exact location. Below is the script and its usage:</p>
-nz_check_views [ database ] [-replace &lt;flag&gt;]
+    **Example 1 - Simple View**
 
-<br><br>
+    Suppose we have a table named `sales` containing columns `region`, `product`, and `amount`. To create a view that displays the total sales for each region, we can use the following SQL statement:
+
+    ```sql
+    CREATE VIEW total_sales AS
+        SELECT region, SUM(amount) as total_sales
+        FROM sales
+        GROUP BY region;
+    ```
+
+    **Example 2 - View with Joins**
+
+    If we have another table named `customers` containing columns `region`, `customer_name`, and we want to see the top 5 customers in each region, we can create a view that joins both tables:
+
+    ```sql
+    CREATE VIEW top_5_customers AS
+        SELECT region, customer_name, amount
+        FROM sales
+        JOIN customers ON sales.region = customers.region
+        WHERE rownum &lt;= 5
+        GROUP BY region, customer_name;
+    ```
+
+    **Note**
+
+    Netezza does not support the `AS` keyword when renaming columns in a view. Instead, you should use a subquery to achieve column renames:
+
+    ```sql
+    CREATE VIEW sales_view AS
+        SELECT region, product, SUM(amount) as total_sales_per_product
+        FROM sales
+        GROUP BY region, product;
+
+    -- To query the view and rename columns:
+    SELECT region, product as item, total_sales_per_product as sales
+    FROM sales_view;
+    ```
+
+    **Conclusion**
+
+    Views are a powerful tool in Netezza for simplifying complex queries, improving organization, and enhancing database security. By following the syntax outlined in this article, you can create views that meet your specific requirements. Keep practicing with different examples to become more comfortable working with views in Netezza.
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

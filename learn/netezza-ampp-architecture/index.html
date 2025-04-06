@@ -1,135 +1,82 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Netezza AMPP Architecture - learn</h1>
+<nav id="toc">
+<a class="lwptoc_toggle_label" data-label="show" href="#">hide</a>
+<ul>
+<li><a href="#Primary_Tier">Primary Tier</a></li>
+<li><a href="#Secondary_Tier">Secondary Tier</a></li>
+<li><a href="#Overall">Overall</a></li>
+<li><a href="#What_to_read_next">What to read next?</a></li>
+</ul>
+</nav>
+<h2 id="Primary_Tier">1) Primary Tier</h2>
+<ul>
+<li>Netezza’s AMPP architecture is a two-tiered system designed to handle very large queries from multiple users. The first tier is a high-performance Linux SMP host, with a secondary host available for fully redundant, dual-host configurations.</li>
+<li>The host compiles queries received from applications, and generates query execution plans.</li>
+<li>It then divides a query into a sequence of sub-tasks, or snippets, that can be executed in parallel, and distributes the snippets to the second tier for execution. The host returns the final results to the requesting application.</li>
+</ul>
+<h2 id="Secondary_Tier">2) Secondary Tier</h2>
+<ul>
+<li>The second tier consists of dozens to hundreds or thousands of Snippet Processing Units (SPUs) operating in parallel.</li>
+<li>Each SPU is an intelligent query processing and storage node, consisting of a powerful commodity processor, dedicated memory, a disk drive, and a field-programmable disk controller with hard-wired logic to manage data flows and process queries at the disk level.</li>
+<li>The massively parallel, shared-nothing SPU blades provide the performance advantage of MPP (Massively Parallel Processing).</li>
+</ul>
+<h2 id="Overall">3) Overall</h2>
+<ul>
+<li>Nearly all query processing is done at the SPU level, with each SPU operating on its portion of the database.</li>
+<li>All operations that lend themselves easily to parallel processing, including record operations, parsing, filtering, projecting, interlocking, and logging, are performed by the SPU nodes. This significantly reduces the amount of data required to be moved within the system.</li>
+<li>Operations on sets of intermediate results, such as sorts, joins, and aggregates, are executed primarily on the SPUs, but can also be done on the host, depending on the processing cost and complexity of that operation.</li>
+</ul>
+<h2 id="What_to_read_next">3.1) What to read next?</h2>
+ Add additional content here if necessary 
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza AMPP Architecture - learn
-
-
-
-
-
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Primary_Tier">
-1)
-Primary Tier
-</a>
- <a href="index.html#Secondary_Tier">
-2)
-Secondary Tier
-</a>
- <a href="index.html#Overall">
-3)
-Overall
-</a>
- <a href="index.html#What_to_read_next">
-3.1)
-What to read next?
-</a>
-
-Primary Tier 
-<ul><li>Netezza’s AMPP architecture is a two-tiered system designed to handle very large queries from multiple users. The first tier is a high-performance Linux SMP host. A second host is available for fully redundant, dual-host configurations. </li><li>The host compiles queries received from applications, and generates query execution plans. </li><li>It then divides a query into a sequence of sub-tasks, or snippets, that can be executed in parallel, and distributes the snippets to the second tier for execution. The host returns the final results to the requesting application. </li></ul>
-Secondary Tier 
-<ul><li>The second tier consists of dozens to hundreds or thousands of Snippet Processing Units (SPUs) operating in parallel. </li><li>Each SPU is an intelligent query processing and storage node, and consists of a powerful commodity processor, dedicated memory, a disk drive and a field-programmable disk controller with hard-wired logic to manage data flows and process queries at the disk level. </li><li>The massively parallel, shared-nothing SPU blades provide the performance advantage of MPP. </li></ul>
-<h2>Overall</h2>
-<ul><li>Nearly all query processing is done at the SPU level, with each SPU operating on its portion of the database. </li></ul>
-<ul><li>All operations that lend themselves easily to parallel processing including: record operations, parsing, filtering, projecting, interlocking and logging, are performed by the SPU nodes, significantly reducing the amount of data required to be moved within the system. </li></ul>
-<ul><li>Operations on sets of intermediate results, such as sorts, joins and aggregates, are executed primarily on the SPUs, but can also be done on the host, depending on the processing cost and complexity of that operation. </li></ul>
-
-<p></p>
-
-<br><br>
+<h1>Understanding Netezza AMPP Architecture</h1>
+<p>Netezza AMPP (Accelerated Massively Parallel Processing) is a high-performance data warehouse connectivity solution developed by IBM for Netezza and other big data systems. This article provides an overview of the Netezza AMPP architecture.</p>
+<h2>Key Components</h2>
+<ul>
+<li><strong>Netezza Appliance:</strong> The core component, which includes massively parallel processing (MPP) hardware and proprietary database software.</li>
+<li><strong>AMPP Server:</strong> The AMPP server acts as a bridge between the client applications and the Netezza appliance. It manages the data flow and handles query optimization for better performance.</li>
+<li><strong>Client Applications:</strong> These include SQL clients like DB2, SQL Navigator, or third-party BI tools that can connect to the AMPP server to access the data in the Netezza appliance.</li>
+</ul>
+<h2>AMPP Architecture</h2>
+<p>The Netezza AMPP architecture is designed to distribute data and workload across multiple nodes for efficient processing:</p>
+<h3>Data Distribution</h3>
+<p>In the Netezza appliance, data is stored in tables that are horizontally partitioned across multiple nodes. Each node processes a portion of each table. This allows for parallel processing and improved query performance.</p>
+<h3>Query Processing</h3>
+<p>When a query is submitted to the AMPP server, it is first optimized based on the distributed data layout. The query is then broken down into smaller pieces (sub-queries) that can be executed in parallel across the Netezza appliance nodes.</p>
+<h3>Data Exchange</h3>
+<p>If a sub-query requires data from multiple nodes, data exchange occurs between nodes using a high-speed interconnect. The exchanged data is compressed for faster transfer.</p>
+<h3>Results Aggregation</h3>
+<p>Once the sub-queries are processed and results are gathered, they are aggregated to produce the final query result. This aggregation can occur on individual nodes or in a global aggregate node if necessary.</p>
+<h2>Benefits of Netezza AMPP</h2>
+<ul>
+<li>Improved query performance through parallel processing and data distribution</li>
+<li>Scalability to handle large amounts of data with minimal impact on query performance</li>
+<li>Flexibility to use various SQL clients or BI tools for accessing the data in the Netezza appliance</li>
+</ul>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

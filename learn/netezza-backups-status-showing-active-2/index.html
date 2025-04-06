@@ -1,134 +1,83 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza backup - learn
-
-Query to find database backup time – Netezza
-<p>You can use below query to find database backup time in Netezza environment. This query will provide the database backup time (Full / Differential / User backup) for each database along with the backup start and finish time. Query will not display any data for failed database backup attempts.
-Here we will query system view _v_backup_history in system database.</p>
-select DBName, OPTYPE, starttime, lastupdate, (lastupdate-starttime)/60 as DurationInMinutes from _v_backup_history
-
-where status='COMPLETED' and DBNAME is NOT NULL
-
-and StartTime&gt;'2012-10-01 00:00:00'
-
-order by DBName, starttime
-<p>Unfortunately, we cannot retrieve the backup location as it is not stored in any system table/view in Netezza. For that we have to look into the backup log file.</p>
-<p>ISSUE: Backup status shows active</p>
-<p>When you check the database backup history using below query for your Netezza you may find some active backups.</p>
-select * from _V_Backup_History
-
-<p>CAUSE
-Now when you try to check active connections, you are not able to find any backup running. Here you may also see the start time being too old. So why is system table/view showing us wrong information? Reason for this wrong information is that if you kill any backup process directly from OS by issuing Kill Linux process id, then Netezza is not able to understand if backup is really killed and mark it as failed or if backup is still running. So, system table is not updated and you get wrong information.</p>
-<p>RESOLUTION
-In order to fix this you may have to directly update the system table _T_Backup_History which holds this information.</p>
-<p>Below query will return list of all active backups</p>
-<p style="float: left; margin: 4px;">
-</p>select * from _V_Backup_History where status = 'ACTIVE'
-<p>Below query will return the output as total count of active, completed or failed backups</p>
-select distinct status, count(*) from _T_Backup_History group by status
-<p>Not, Here is the decoding for status field in _T_Backup_History table.
-0 = Active
-1 = Completed
-2 = Failed</p>
-<p>RUn below query to update the system table and mark the actually failed backups (still showing active in system table) to failed.</p>
-update _T_Backup_History
-set Status = 2 where status=0
-<p>ADDITIONAL USEFUL INFO
-Query to find active backups in Netezza</p>
-Select DBNAME, STATUS,USERNAME,STARTTIME, LASTUPDATE from _V_Backup_History
-where DBNAME != 'NULL' and status = 'ACTIVE'
-<p>Here we have put DBNAME not equal to NULL because if a database is dropped from Netezza then it updates the backup tale and replace the database name with NULL.</p>
-
-<br><br>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: Netezza Backups Status Showing Active</h1>
+<p>In this article, we will discuss how to find database backup time in a Netezza environment, troubleshoot when the backup status shows active, and provide useful queries for tracking backups.
+       </p>
+<h2>Query to find database backup time – Netezza</h2>
+<p>You can use the following query to find database backup time in a Netezza environment. This query will provide the database backup type (Full / Differential / User backup) for each database along with the backup start and finish time. The query will not display any data for failed database backup attempts.</p>
+<pre>
+           select DBName, OPTYPE, starttime, lastupdate, (lastupdate-starttime)/60 as DurationInMinutes
+             from _v_backup_history
+            where status='COMPLETED' and DBNAME is NOT NULL
+              and StartTime&gt;'2012-10-01 00:00:00'
+           order by DBName, starttime
+       </pre>
+<h3>Unable to Retrieve Backup Location</h3>
+<p>Unfortunately, we cannot retrieve the backup location as it is not stored in any system table/view in Netezza. For that, we have to look into the backup log file.</p>
+<h3>Issue: Backup status shows active</h3>
+<p>When you check the database backup history using the following query for your Netezza environment, you may find some active backups.</p>
+<pre>
+           select * from _V_Backup_History
+       </pre>
+<h4>Cause</h4>
+<p>Now when you try to check active connections, you are not able to find any backup running. Here you may also see the start time being too old. So why is the system table/view showing us wrong information? The reason for this incorrect information is that if you kill any backup process directly from the OS by issuing Kill Linux process id, then Netezza is not able to understand if the backup is really killed and mark it as failed or if the backup is still running. So, the system table is not updated, and you get wrong information.</p>
+<h4>Resolution</h4>
+<p>To fix this, you may have to directly update the system table _T_Backup_History, which holds this information.</p>
+<pre>
+           select * from _V_Backup_History where status = 'ACTIVE'
+       </pre>
+<h4>Query to find active backups in Netezza</h4>
+<pre>
+           Select DBNAME, STATUS,USERNAME,STARTTIME, LASTUPDATE from _V_Backup_History
+           where DBNAME != 'NULL' and status = 'ACTIVE'
+       </pre>
+<p>Here we have put DBNAME not equal to NULL because if a database is dropped from Netezza, then it updates the backup table, and replaces the database name with NULL.</p>
+<h1>Understanding Active Backups in Netezza: Checking Backup Status</h1>
+<p>In this article, we will discuss how to check the status of active backups in Netezza and understand their implications for your database management. We'll provide examples, tables, and illustrations to help you easily follow along.</p>
+<h2>Why Check Backup Status?</h2>
+<p>It is crucial to verify the backup status in Netezza to ensure data protection, monitor ongoing operations, and resolve potential issues before they cause significant downtime. An active backup indicates that the system is currently backing up a database or table, preventing new write operations until the process completes.</p>
+<h2>Checking Backup Status</h2>
+<p>To check the status of active backups in Netezza, you can utilize the following SQL command:</p>
+<pre>
+      SELECT * FROM QUERY_MANAGER.QUERY WHERE TASK_STATE IN ('RUNNING', 'WAITING');
+      </pre>
+<h3>Explanation</h3>
+<p>This command selects all running and waiting tasks from the QUERY_MANAGER.QUERY table, which contains information about ongoing queries in Netezza. The TASK_STATE clause filters for only active tasks (RUNNING) and those waiting to start (WAITING).</p>
+<h2>Interpreting Backup Status Output</h2>
+<p>The output of the command will display various columns containing information about each active task, including its ID, database name, task type, and status. To identify backups, look for tasks with a type matching "BACKUP" or "DIFFBACKUP." Here's an example:</p>
+<pre>
+      | TASK_ID | DATABASE_NAME | TASK_TYPE    | TASK_STATE  |
+      |--------|--------------|-------------|------------|
+      | 123456 | mydb         | BACKUP      | RUNNING    |
+      </pre>
+<h3>Illustration</h3>
+<p>The above table illustrates an example of an active backup task for the "mydb" database.</p>
+<h2>Conclusion</h2>
+<p>Checking and understanding the status of active backups in Netezza is essential to efficient data management. By following this guide, you can ensure that your backups are running smoothly and take appropriate actions if any issues arise.</p>
+<h3>Next Steps</h3>
+<p>Explore other SQL commands and techniques to further enhance your Netezza backup management skills. Happy learning!</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

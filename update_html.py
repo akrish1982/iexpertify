@@ -8,7 +8,8 @@ head = '''<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
 <script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
-</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>'''
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+'''
 
 footer = '''<footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
@@ -90,14 +91,14 @@ def read_urls(file_path):
         urls = [line.strip() for line in file if line.strip().startswith("https://www.")]
     return urls
 
-def call_ollama_api(prompt):
+def call_ollama_api(prompt, model="llama"):
     """Calls ollama API to generate HTML content."""
     # Ollama API endpoint
     api_url = "http://localhost:11434/api/generate"
     
     # Request payload
     payload = {
-        "model": "llama3",
+        "model": model,
         "prompt": prompt,
         "stream": False
     }
@@ -114,17 +115,16 @@ def call_ollama_api(prompt):
 def generate_content(url_path):
     """Calls local Ollama API to generate HTML content only."""
     # Prompt construction
-    prompt = f"Generate an <body> portion HTML article for the topic: {url_path}. Include structured content with headings, code samples, tables, and illustrations where applicable. Ensure the content is human-like and informative. Return only <body> element of valid HTML content."
-    result = call_ollama_api(prompt)
+    prompt = f"Generate an article for the topic: {url_path} in HTML format, without <header> or <footer>. Return just the portion of the article. Include structured content with headings, code samples, tables, and illustrations where applicable. Ensure the content is human-like and informative. Return only <body> element of valid HTML content, starting with <body> tag and ending with </body> tags."
+    result = call_ollama_api(prompt, model="mistral")
     return result
-
 
 def rewrite_content(url_path):
     """Calls local Ollama API to rewrite the content."""
     #Read the content from the URL
     old_content = extract_body_content(url_path)
-    prompt = f"Rewrite an <body> portion HTML article for the topic: {url_path}.Ensure the content is human-like and informative. NOTE ONLY Return only <body> element of valid HTML content without <body> and </body> tags. Please rewrite: {old_content} "
-    result = call_ollama_api(prompt)
+    prompt = f"Rewrite an <body> portion HTML article for the topic: {url_path}. I need the just the HTML code for the article portion. Ensure the content is human-like and informative. NOTE ONLY Return only <body> element of valid HTML content. Return only <body> element of valid HTML content, starting with <body> tag and ending with </body> tags. Please rewrite: {old_content} "
+    result = call_ollama_api(prompt, model="mistral")
     return result
 
 def old_save_content(url, rewritten, content):
@@ -193,9 +193,9 @@ def save_content(url, rewritten, content):
         final_content = head + content + footer
     else:
         # Extract content from body tags using BeautifulSoup
-        rewritten_soup = BeautifulSoup(rewritten, 'html.parser')
-        content_soup = BeautifulSoup(content, 'html.parser')
-        
+        rewritten_soup = cleanup_body(BeautifulSoup(rewritten, 'html.parser'))
+        content_soup = cleanup_body(BeautifulSoup(content, 'html.parser'))
+
         # Get inner content without the body tags
         rewritten_inner = ''.join(str(item) for item in rewritten_soup.body.contents) if rewritten_soup.body else ''
         content_inner = ''.join(str(item) for item in content_soup.body.contents) if content_soup.body else ''
@@ -235,46 +235,43 @@ def save_content(url, rewritten, content):
 
     print(f"Content saved: {file_path}")
 
+def cleanup_body(soup):
+    # If multiple <body> tags are found, keep only the last one
+    bodies = soup.find_all('body')
+    if len(bodies) > 1:
+        print(f"[Warning] Found {len(bodies)} <body> tags. Keeping only the last one.")
+        last_body = bodies[-1]
+        
+        # Create a new BeautifulSoup with only the last body and existing <head> if any
+        new_soup = BeautifulSoup("<html></html>", 'html.parser')
+        head = soup.find('head')
+        if head:
+            new_soup.html.append(head)
+        new_soup.html.append(last_body)
+        
+        soup = new_soup  # replace the original soup
+            # Remove top-level stray text nodes
+    for element in list(soup.contents):
+        if isinstance(element, NavigableString) and element.strip():
+            element.extract()
 
-def new_save_content(url, rewritten, content):
-    """
-    Saves the generated content to a corresponding HTML file with a predefined header and footer.
-    Properly handles HTML body tags to ensure valid HTML with only one body.
-    """
-    parsed_url = urlparse(url)
-    local_path = parsed_url.path.strip('/')
-    file_path = os.path.join(local_path, "index.html")
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    
-    # Handle case when rewritten is None
-    if rewritten is None:
-        final_content = head + content + footer
-    else:
-        # Extract content from body tags using BeautifulSoup
-        rewritten_soup = BeautifulSoup(rewritten, 'html.parser')
-        content_soup = BeautifulSoup(content, 'html.parser')
-        
-        # Get inner content without the body tags
-        rewritten_inner = ''.join(str(item) for item in rewritten_soup.body.contents) if rewritten_soup.body else ''
-        content_inner = ''.join(str(item) for item in content_soup.body.contents) if content_soup.body else ''
-        
-        # Combine with header and footer
-        final_content = head + rewritten_inner + content_inner + footer
-    
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(final_content)
-    
-    print(f"Content saved: {file_path}")
+    # Remove empty tags recursively
+    remove_empty_tags(soup)
+
+    # Run basic HTML sanity checks
+    run_basic_html_sanity_check(soup)
+
+    return soup
 
 def main():
     url_file = "/Users/ananth/code/iexpertify/url_list.txt"
     urls = read_urls(url_file)
-    for url in urls[:2]:
+    for url in urls:
         url_path = urlparse(url).path.strip('/')
         print(f"Generating content for: {url_path}")
         rewritten = rewrite_content(url_path)
         content = generate_content(url_path)
-        new_save_content(url, rewritten, content)
+        save_content(url, rewritten, content)
 
 if __name__ == "__main__":
     main()

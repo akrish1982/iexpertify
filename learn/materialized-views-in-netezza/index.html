@@ -1,179 +1,58 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learning Materialized Views in Netezza</h1>
+<h2>Introduction</h2>
+<p>Materialized views are a powerful tool for improving the performance of complex queries in databases, and Netezza is no exception. In this article, we will explore how to create and use materialized views in Netezza.</p>
+<h2>What is a Materialized View?</h2>
+<p>A materialized view is a stored version of the results of an SQL query. When you query a materialized view, the database engine retrieves the data from the materialized view rather than recomputing it every time. This can significantly improve query performance for complex queries that are run frequently.</p>
+<h2>Creating a Materialized View</h2>
+<p>To create a materialized view in Netezza, you use the CREATE MATERIALIZED VIEW statement. Here is an example:</p>
+<pre>
+    CREATE MATERIALIZED VIEW my_mv AS
+        SELECT column1, column2, ...
+        FROM table_name
+        WHERE condition;
+    </pre>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+    In the above example, `my_mv` is the name of the materialized view, and the query selects columns from a table based on a specific condition.
 
+    <h2>Refreshing a Materialized View</h2>
+<p>By default, a materialized view does not automatically update when the data in the underlying tables changes. To refresh a materialized view, you use the REFRESH MATERIALIZED VIEW statement:</p>
+<pre>
+    REFRESH MATERIALIZED VIEW my_mv;
+    </pre>
 
+    You can also schedule the refresh of a materialized view to run at regular intervals using Netezza's scheduling features.
 
-
-
-
-Materialized Views in Netezza - learn
-
-
-
-
-
-
-Reading Time:  5 minutes
-<p>Materialized View is a sorted projection of one and only one table MVs reduce the width of the data being scanned by creating a thin version of the table–based on frequently queried columns. This selection of frequently queried columns is called projection.</p>
-<p>MVs are typically sorted like the base tables, but can be ordered on columns different from base table. This reduces table scans due to enhanced zone maps. and it improves query performance if the sorted columns are included in the “where” clause of the query.  Essentially, MVs improve performance by reducing the amount of data transferred from the disk to the CPU-RAM.</p>
-<p> </p>
-<p>Materialized view will always has same distribution key as base table. Materialized view inherits the insertion order from base table if the order by is not specified. New rows that are inserted to to the base table are appended to end of MV.</p>
-
- 
-
-
-<p>The materialized views containing the sorted projection (columns) is stored in a table on disk and is used to increase query performance. A materialized views reduces scan time for multi-column queries that examine only a few columns and a small subset of the overall base table.</p>
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Benefits_of_Materialized_views">
-1)
-Benefits of Materialized views
-</a>
- <a href="index.html#Following_are_some_of_the_benefits_of_Materialized_views">
-2)
-Following are some of the benefits of Materialized views:
-</a>
- <a href="index.html#Restriction_on_Materialized_Views">
-3)
-Restriction on Materialized Views
-</a>
- <a href="index.html#Materialized_Views_Best_Practices">
-4)
-Materialized Views: Best Practices
-</a>
- <a href="index.html#Materialized_Views_Maintenance">
-5)
-Materialized Views: Maintenance
-</a>
- <a href="index.html#Drop_materialized_views">
-6)
-Drop materialized views
-</a>
- <a href="index.html#To_create_materialized_view">
-7)
-To create materialized view
-</a>
- <a href="index.html#What_to_read_next">
-8)
-What to read next?
-</a>
-
-Benefits of Materialized views
-Following are some of the benefits of Materialized views:
-<ul><li>User defined</li><li>Simple to create</li><li>Netezza MV are automatically managed</li><li>If there are multiple MV’s created on same base table then optimizer determines when and which materialized views to use</li><li>Reflected in the Netezza query plan</li><li>Automatically maintained</li></ul>
-Restriction on Materialized Views
-<p>Like any other databases, Netezza also has the some restrictions on the Materialized views:</p>
-<ul><li>One cannot insert, update, delete or truncate a materialized view</li><li>You must specify at least one column in projection list</li><li>You can specify only one base table in from clause</li><li>one cannot specify NULLS LAST or DESC in the ORDER BY clause</li></ul>
-<ul><li>Expressions are not allowed as a column</li><li>Base table cannot be a external table, system table or temp tables</li><li>You cannot use WHERE clause in a materialized view</li><li>You cannot specify clustered base table (CBT) as base table</li></ul>
-Materialized Views:  Best Practices
-<p>Below are the some of the best practices you should follow:</p>
-<ul><li>Create very thin MATERIALIZED VIEW: Use as few columns as possible</li><li>Create MATERIALIZED VIEW on columns that are frequently queried together</li><li>Put ORDER BY clause on restrictive columns. i.e. columns used in WHERE condition</li><li>Create few MATERIALIZED VIEW for each table</li><li>Periodically or manually REFRESH the MATERIALIZED VIEWS</li><li>Set an acceptable threshold percentage of unsorted data in a MATERIALIZED VIEW – SET SYSTEM DEFAULT MATERIALIZE [REFRESH] THRESHOLD &lt;%&gt;</li></ul>
-Materialized Views: Maintenance
-<p>Below are the some of maintenance tips:</p>
-<ul><li>Automatically maintained on LOAD, INSERT, UPDATE, DELETE and TRUNCATE TABLE: Performance of queries that use a MATERIALIZED VIEW may degrade over time as unsorted rows are appended to the materialized view as a result of LOAD, INSERT and UPDATE operations</li><li>For large modifications (LOAD, INSERT, DELETE) to a given table, it is recommended to SUSPEND a MATERIALIZED VIEW before the batch operation and REFRESH after the completion of the batch operation</li><li>ALTER VIEWS ON &lt;table&gt; MATERIALIZE {SUSPEND|REFRESH}: Command to SUSPEND / REFRESH a MATERIALIZED VIEW</li></ul>
-<p>e.g.</p>
-<p>$nzsql TRAINING(admin)=&gt;ALTER VIEWS ON customer MATERIALIZE SUSPEND;</p>
-<p>To rebuild a view after a base table change, use the CREATE OR REPLACEMATERIALIZED VIEW command to update the view, as follows:</p>
-<p class="has-vivid-cyan-blue-color has-text-color">MYDB.SCHEMA(ADMIN)=&gt;CREATE OR REPLACE MATERIALIZED VIEW weather_v AS SELECTcity, temp_lo, temp_hi FROM weather ORDER BY city;CREATE MATERIALIZED VIEW</p>
-<p>Do not drop and re-create the materialized view because those steps result in anew view with a different object ID, which can affect other objects that reference the materialized view.</p>
-Drop materialized views
-<p>When you use SQL to drop a materialized view, the system removes the view definition, the materialized table that contains the materialized records, and frees the disk storage that is allocated to the table. To drop a materialized view, enter:</p>
-<p class="has-vivid-cyan-blue-color has-text-color">MYDB.SCHEMA(USER)=&gt;DROP VIEW customers_mview;</p>
-<p>When you create a materialized views from a base table, the Netezza system stores the view definition for the lifetime of the SPM view and is visible as a materialized view. SPM view data slices are co-located on the same data slices as the corresponding base table data slices hence increases the performance of the query.</p>
-<p>A materialized views reduces the width of number of columns being scanned in a base table, these type of view contains a small subset of frequently queried columns. When you query the table (table with large number of columns) Materialized Views  avoid scanning unreferenced columns from the base tables.</p>
-<p>E.g. If the base table has 300 columns, and only 4 columns to be referenced then you can create materialized view on top of base table by taking only those 10 columns.</p>
-To create materialized view
-<p class="has-vivid-cyan-blue-color has-text-color">CREATE MATERIALIZED VIEW CUSTOMER_DIM_MVASSELECTcustomer_key,persona_key,customer_birthdate,customer_zip,update_datetimeFROMCUSTOMER_DIMORDER BY customer_key;</p>
-<p class="has-vivid-cyan-blue-color has-text-color">selectcustomer_key, customer_birthdate, customer_emailfrom (select base.customer_key,cd.customer_birthdate,cd.customer_email,row_number() over (partition by base.customer_key order by cd.update_datetime desc) trans_datefrom extract_base basejoin CUSTOMER_DIM cd on base.customer_key = cd.customer_key) awhere a.trans_date = 1;</p>
-
-<br><br>
+    <h2>Dropping a Materialized View</h2>
+<p>To drop a materialized view, you use the DROP MATERIALIZED VIEW statement:</p>
+<pre>
+    DROP MATERIALIZED VIEW my_mv;
+    </pre>
+<h2>Conclusion</h2>
+<p>Materialized views can significantly improve the performance of complex queries in Netezza. By storing the results of a query, you can avoid recomputing it every time the data is accessed. In this article, we learned how to create, refresh, and drop materialized views in Netezza.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

@@ -1,130 +1,118 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza CREATEXID DELETEXID
-
-
-<p>Note: TRUNCATING TABLE cannot be UNDONE</p>
-<p>Note: Netezza “soft” deletes until the groom process runs.  i.e. deleted data is really still there.  </p>
-<p>Note: Netezza Updates are just soft deletes and inserts. So, they can be recovered too</p>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Undoing Deletes, Updates, or Inserts in Netezza</h1>
+<p>In Netezza, it is important to understand the concept of transaction ids (xids) when dealing with data manipulation operations such as delete, update, or insert.</p>
+<h3>Understanding Transaction Ids</h3>
 <ul>
-<li>Every insert, update, or delete transaction is assigned a sequential transaction id or xid.</li>
-<li>To indicate which transaction last updated the row, createxid indicates the latest transaction for each row</li>
-<li>To indicate deleted rows deletexid, assigned to each row is set to 0 if this is a readable (not a deleted row).  When the row gets deleted, this column gets populated with the transaction id assigned to the delete or update statement</li>
-<li>Updates are essentially deletes that set the transaction id as deletexid to old row and createxid in the new row</li>
-<li>Groom would make the soft deletes final</li>
+<li>Every transaction, whether an insert, update, or delete, is assigned a sequential transaction id (xid).</li>
+<li>The latest transaction for each row is indicated by the createxid.</li>
+<li>Deleted rows are assigned a deletexid. If a row is readable (not deleted), its deletexid is set to 0. When a row gets deleted, this column gets populated with the transaction id assigned to the delete or update statement.</li>
+<li>Updates are essentially deletes followed by inserts, where the transaction id from the old row becomes the deletexid and a new createxid is assigned to the new row.</li>
 </ul>
-<p>Typically, when you run a select you will not see rows that have a deletexid not equal to zero.  To change that, set the below option</p>
+<h3>Viewing Deleted Rows</h3>
+<p>By default, you will not see rows that have a non-zero deletexid. To change this behavior, set the following option:</p>
+<code>set show_deleted_records = true</code>
+<h3>Restoring Netezza Records</h3>
+<p>Here is a simple select statement to view all data, including deleted rows:</p>
+<code>select createxid,deletexid, * from table</code>
+<h4>Viewing Deleted Rows Only</h4>
+<p>To see just the deleted rows, use a WHERE clause to filter on non-zero deletexid:</p>
+<code>select createxid,deletexid, * from table where deletexid !=0</code>
+<h4>Undoing Deletes</h4>
+<p>Once you can see your deleted data, and figure out which transaction you are trying to undo, you can simply re-insert the data:</p>
+<code>insert into table select * from table where deletexid=142233;</code> –transaction id from delete.
 
-set show_deleted_records = true
+      <h4>Undoing Updates</h4>
+<p>To undo an update, just re-insert the deleted rows and delete the inserted rows:</p>
+<code>insert into table select * from table where deletexid=146443;</code> –transaction id from update
+<code>delete from table where createxid=146443;</code> –transaction id from update
 
-<h2>How to restore Netezza records</h2>
-<p>Here is a simple select statement:</p>
-select createxid,deletexid, * from table
+      <h4>Undoing Inserts</h4>
+<p>To undo an insert, use the following SQL:</p>
+<code>delete from table where createxid=1434443;</code> –transaction id from insert
+   
 
-Netezza Createxid and Deletexid
-<p>If you want to see just the deleted rows , just select where deletexid is not zero</p>
-select createxid,deletexid, * from table where deletexid !=0
-<p>Once you can see your deleted data, and figure out which transaction you are trying to undo, you can simply re-insert the data</p>
-insert into table
-select * from table where deletexid=142233; –transaction id from delete.
-<p>To undo an update, just re-insert the deleted rows and delete the inserted rows.</p>
-insert into table 
-select * from table where deletexid=146443 ;–transaction id from update
-delete from table where createxid=146443; –transaction id from update
-<p>To undo an insert, use the below SQL</p>
-delete from table where createxid=1434443; –transaction id from insert
-<p></p>
+    **Undoing a DELETE, UPDATE or INSERT Operation in Netezza**
 
-<br><br>
-<footer>
+    In Netezza, there's no direct way to undo a `DELETE`, `UPDATE` or `INSERT` operation. However, you can use various strategies to recover data or mimic an "undo" operation. This article outlines different methods for handling these scenarios.
+
+    ## Recovering Deleted Data
+
+    ### Using the RECOVER command
+
+    Netezza provides a `RECOVER` command to restore deleted rows from a table within a specified time frame. The syntax is as follows:
+
+```sql
+RECOVER TABLE <table_name> [TO TIMESTAMP <timestamp>];
+```
+
+Example:
+
+```sql
+RECOVER TABLE customers TO TIMESTAMP '2021-03-01 00:00:00';
+```
+
+**Important**: Remember that the recovery window for a table is controlled by the `RETAIN` option of the `CREATE TABLE` statement. For more information on this, refer to the [Netezza SQL Reference Guide](https://www.ibm.com/support/knowledgecenter/SSW2820_12.6.0/com.ibm.nz.doc/nz_ref/nzr1260.htm).
+
+    ### Using the Backup and Recovery Feature
+
+    In case you have a backup of your table, you can restore it using the `RESTORE` command:
+
+```sql
+RESTORE TABLE <table_name> FROM BACKUP;
+```
+
+Make sure to backup your tables regularly using the `BACKUP` command.
+
+    ## Reverting an UPDATE or INSERT Operation
+
+    Since Netezza doesn't support transactions in the traditional sense, there is no direct way to undo an `UPDATE` or `INSERT`. However, you can implement a workaround by using the following strategies:
+
+    ### Using a Temporary Table
+
+    One approach is to store the original data in a temporary table before performing an update or insert operation. Then, if needed, you can swap the tables to restore the previous state.
+
+```sql
+-- Before the UPDATE or INSERT operation:
+CREATE TEMPORARY TABLE <temp_table> AS SELECT * FROM <original_table>;
+
+-- Perform the UPDATE or INSERT operation on the original table:
+UPDATE <original_table> SET column1 = 'new value';
+
+-- To undo the update, swap the tables:
+SELECT INTO <original_table> FROM <temp_table>;
+```
+
+    ### Using a Versioning Strategy
+
+    Another approach is to use a versioning strategy for tracking changes in your data. This involves storing multiple versions of the table, which allows you to roll back to any previous state when needed. There are various ways to implement a versioning strategy, such as using triggers or logging mechanisms.
+
+    **Note**: These strategies may come with their own overheads in terms of storage and performance. Use them judiciously based on your specific use case and requirements.
+
+    Hope this article helps you manage data changes effectively in Netezza! For more information on Netezza features, refer to the [IBM Netezza SQL Reference Guide](https://www.ibm.com/support/knowledgecenter/SSW2820_12.6.0/com.ibm.nz.doc/nz_ref/nzr1260.htm).
+
+</temp_table></original_table></original_table></original_table></temp_table></table_name></timestamp></table_name><footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

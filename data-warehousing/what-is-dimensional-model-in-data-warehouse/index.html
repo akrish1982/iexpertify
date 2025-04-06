@@ -1,205 +1,63 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
 
 
 
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Understanding Dimensional Model in Data Warehouse</h1>
+<p>In the realm of data warehousing, a Dimensional Model is a fundamental structure that helps organize and analyze large volumes of data from operational systems in a way that's efficient for business intelligence (BI) reporting and analysis. This model is crucial for understanding patterns, trends, and other insights hidden within your data.</p>
+<h2>Components of a Dimensional Model</h2>
+<p>A dimensional model consists of two primary components:</p>
+<ul>
+<li><strong>Facts:</strong> Represents the measurements or events that are being analyzed. Fact tables usually have many-to-many relationships with dimension tables.</li>
+<li><strong>Dimensions:</strong> Categories used to analyze the facts. Dimension tables provide context and meaning to the measures in fact tables.</li>
+</ul>
+<h2>Example of a Dimensional Model</h2>
+<p>Let's consider an e-commerce scenario:</p>
+<pre>
+		Fact Table: Sales
+			- OrderID (foreign key)
+			- ProductID (foreign key)
+			- Quantity
+			- Price
+			- Discount
+			- TotalAmount
 
-
-
-What is Dimensional Model in Data Warehouse? - Data Warehousing Data Warehousing
-Reading Time:  5 minutes
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#What_is_Dimensional_Model">
-1)
-What is Dimensional Model?
-</a>
- <a href="index.html#Fact">
-1.1)
-Fact
-</a>
- <a href="index.html#Dimension">
-1.2)
-Dimension
-</a>
- <a href="index.html#Attributes">
-1.3)
-Attributes
-</a>
- <a href="index.html#Steps_of_Dimensional_Modelling">
-2)
-Steps of Dimensional Modelling
-</a>
- <a href="index.html#Step_1_Understanding_the_Business_Problem">
-2.1)
-Step 1: Understanding the Business Problem
-</a>
- <a href="index.html#Step_2_Identify_the_grain">
-2.2)
-Step 2: Identify the grain
-</a>
- <a href="index.html#Step_3_Identify_the_dimensions">
-2.3)
-Step 3: Identify the dimensions
-</a>
- <a href="index.html#Step_4_Identify_the_Fact">
-2.4)
-Step 4: Identify the Fact
-</a>
- <a href="index.html#Step_5_Build_Schema">
-2.5)
-Step 5: Build Schema
-</a>
- <a href="index.html#Dimensional_Modelling_Rules">
-3)
-Dimensional Modelling Rules
-</a>
- <a href="index.html#Benefits_of_dimensional_modeling">
-4)
-Benefits of dimensional modeling
-</a>
- <a href="index.html#What_to_read_next">
-4.1)
-What to read next?
-</a>
-
-<h2>What is Dimensional Model?</h2>
-<p>A dimensional model is a data structure technique optimized for Data warehousing tools. Dimensional modelling is used in Data Warehouse to organize data effectively and assist analytical operations on huge volumes of data. The concept of Dimensional Modelling was developed by Ralph Kimball and is comprised of “fact” and “dimension” tables. </p>
-<p>Data Warehouse uses denormalized tables (flat tables). Whereas, operational database or OLTP systems use Normalized tables. </p>
-<p>A Dimensional model is designed to read, summarize, analyze numeric information like values, balances, counts, weights, etc. in a data warehouse. In contrast, relation models are optimized for addition, updating and deletion of data in a real-time Online Transaction System.</p>
-<p>The relational mode, normalization and ER models reduce redundancy in data. On the contrary, dimensional model arranges data in such a way that it is easier to retrieve information and generate reports.</p>
-<p>Hence, Dimensional models are used in data warehouse /OLAP and not a good fit for OLTP or operational databases.</p>
-
-<h3>Fact</h3>
-<p>Fact table consists of the measurements, metrics or facts of a business process. It is located at the center of a star schema or a snowflake schema surrounded by dimension tables</p>
-<p>Eg. Monthly sales volume, Average Customer Balance etc…</p>
-<p>A Fact Table contains</p>
-<ol><li>Measurements/facts</li><li>Foreign key to dimension table</li></ol>
-<h3>Dimension</h3>
-<p>A category of information. For example, the time dimension. In simple terms, they give who, what, where of a fact. In the Sales business process, for the fact quarterly sales number, dimensions would be</p>
-<ul><li>Who – Customer Names</li><li>Where – Location</li><li>What – Product Name</li><li>When – Time Dimension</li></ul>
-<p>Dimension table properties:</p>
-<ul><li>A dimension table contains dimensions of a fact</li><li>They are joined to fact table via a foreign key</li><li>Dimension tables are de-normalized tables</li><li>The dimension can also contain one or more hierarchical relationships</li></ul>
-<h3>Attributes</h3>
-<p>The Attributes are the various characteristics of the dimension.In the Location dimension, the attributes can be</p>
-<ul><li>State</li><li>Country</li><li>Zipcode etc</li></ul>
-<p>Attributes are used to search, filter, or classify facts. Dimension Tables contain Attributes</p>
-<h2>Steps of Dimensional Modelling</h2>
-<p>A good dimensional model determines the success of your data warehouse implementationHere are the steps in dimenstional data modelling</p>
-<ol><li>Understanding the Business Problem</li><li>Identify Grain (level of detail)</li><li>Identify Dimensions</li><li>Identify Facts</li><li>Build Star</li></ol>
-<h3>Step 1: Understanding the Business Problem</h3>
-<p>Identifying the actual business process a datawarehouse should cover. This could be Marketing, Sales, HR, etc. as per the data analysis needs of the organization. It is the most important step of the Data Modelling process, and a failure here would have cascading and irreparable defects</p>
-<h3>Step 2: Identify the grain</h3>
-<p>The Grain describes the level of detail for the business problem/solution. It is the process of identifying the lowest level of information for any table in your data warehouse. If a table contains sales data for every day, then it should be daily granularity. If a table contains total sales data for each month, then it has monthly granularity. During this stage, you answer questions like</p>
-<ul><li>Do we need to store all the available products or just a few types of products?</li><li>Do we store the product sale information on a monthly, weekly, daily or hourly basis? This decision depends on the nature of reports requested by executives</li><li>How do the above two choices affect the database size?</li></ul>
-<h3>Step 3: Identify the dimensions</h3>
-<p>Dimensions are nouns like date, store, inventory, etc. These dimensions are where all the data should be stored. For example, the date dimension may contain data like a year, month and weekdayExample of Dimensions:</p>
-<p>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis</p>
-<p>Dimensions: Product, Location and Time Attributes: For Product: Product key (Foreign Key), Name, Type, Specifications Hierarchies: For Location: Country, State, City, Street Address, Name</p>
-<h3>Step 4: Identify the Fact</h3>
-<p>This step is co-associated with the business users of the system because this is where they get access to data stored in the data warehouse. Most of the fact table rows are numerical values like price or cost per unit, etc.Example of Facts:</p>
-<p>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis</p>
-<p>The fact here is Sum of Sales by product by location by time</p>
-<h3>Step 5: Build Schema</h3>
-<p>The Database schema is designed and finalized in this step. There are two popular schemasStar Schema</p>
-<p>The star schema architecture is easy to design. It is called a star schema because diagram resembles a star, with points radiating from a center. The center of the star consists of the fact table, and the points of the star is dimension tablesThe fact tables in a star schema which is third normal form whereas dimensional tables are de-normalizedSnowflake Schema</p>
-<p>The snowflake schema is an extension of the star schema. In a snowflake schema, each dimension are normalized and connected to more dimension tables</p>
-<h2>Dimensional Modelling Rules</h2>
-<ul><li>Load atomic data into dimension tables</li><li>Design dimensional models around business processes</li><li>Ensure that every fact table has an associated dimension table</li><li>Ensure that all facts in a single fact table are at the same grain or level of detail</li><li>Need to ensure that dimension tables use a surrogate key</li></ul>
-<h2>Benefits of dimensional modeling</h2>
-<ul><li>Bring together data from many different sources and create a single, consistent user view</li><li>Support the ad hoc queries that arise from real business questions</li><li>Maximize flexibility and scalability</li><li>Optimize the end-user experience</li></ul>
-
-<br><br>
+		Dimension Tables:
+			- Time (Year, Quarter, Month, Day)
+			- Customer (CustomerID, Name, Address, Phone)
+			- Product (ProductID, ProductName, CategoryID)
+		</pre>
+<h2>Advantages of Dimensional Model in Data Warehouse</h2>
+<ul>
+<li><strong>Simplified Querying:</strong> Queries are simpler and more efficient due to the structured nature of the model.</li>
+<li><strong>Effective Analysis:</strong> Dimensional modeling enables users to analyze data along multiple dimensions (e.g., sales by product category, by time period).</li>
+<li><strong>Improved Performance:</strong> The denormalization of data in the fact table provides faster access to aggregated data.</li>
+<li><strong>Flexibility:</strong> Easier to add new measures and dimensions as business requirements change.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>The Dimensional Model is an essential component of a data warehouse, allowing businesses to easily analyze their data for insights that drive better decision-making. By understanding the components and benefits of this model, you'll be well on your way to creating effective data warehousing solutions.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
-
-
+</body></html>

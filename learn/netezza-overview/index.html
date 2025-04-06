@@ -1,117 +1,96 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: An Overview of Netezza</h1>
+<p>Welcome to our comprehensive guide on Netezza! This article will provide an in-depth overview of IBM's advanced analytics and warehousing solution, now rebranded as IBM PureData for Analytics (PDA).</p>
+<ul>
+<li>Netezza was initially launched as a product from the company Netezza in 1999. It was later acquired by IBM in 2010 and has been developed since as a subsidiary of IBM.</li>
+<li>It operates on the Asymmetric Massively Parallel Processing (AMPP) architecture, which combines the massive data processing capabilities of Massively Parallel Processing (MPP), where nothing is shared, with symmetric multiprocessing to optimize data processing.</li>
+<li>IBM Netezza Analytics' advanced technology supports data warehousing and in-database analytics, creating a scalable, high-performance, massively parallel advanced analytic platform designed to handle petascale data volumes.</li>
+</ul>
+<h2>Understanding the AMPP Architecture</h2>
+<p>Netezza leverages an innovative design called Asymmetric Massively Parallel Processing (AMPP). This architecture combines the enormous data processing efficiency of MPP, where nothing is shared, with symmetric multiprocessing to arrange equal processing. The MPP is achieved through an array of S-Blades, which are independent workers running their own operating systems connected to disk arrays.</p>
+<p>A unique hardware component used by Netezza called the Database Accelerator card is attached to each S-Blade. These accelerator cards can perform some of the processing stages while data is being read from the disk, rather than the processing being done in the CPU. This helps eliminate one of the significant bottlenecks in large data set management systems used for data warehousing and analytic use cases.</p>
+<h2>Key Components of Netezza</h2>
+<p>The primary hardware components of a Netezza system consist of a host, which is a Linux worker, and an array of S-Blades. Each S-Blade has 8 processor cores and 16 GB of RAM, running the Linux operating system. Every processor in an S-Blade is connected to disk arrays through Database Accelerator cards that use FPGA technology.</p>
+<h3>Netezza's Unique Data Processing</h3>
+<ul>
+<li>The S-Blades process large volumes of data in parallel, and the key is to ensure that the data is distributed evenly to take advantage of equal processing.</li>
+<li>Optimize plans so that most of the processing occurs in the S-Blades; minimize communication between S-Blades and insignificant information transfers to the host.</li>
+</ul>
+<h2>Exploring FPGA Acceleration</h2>
+<p><a class="wp-block-button__link" href="https://www.iexpertify.com/learn/full-course/netezza/">Full Netezza Course</a></p>
+<p><a class="wp-block-button__link" href="https://www.iexpertify.com/learn/netezza-twinfin-architecture/">Next: Netezza Architecture</a></p>
 
 
+    <h1>Netezza Overview</h1>
 
+    <p>Netezza is a high-performance data warehouse appliance developed by IBM. It's designed for large-scale analytics and business intelligence (BI) workloads, providing fast query performance on massive datasets. This article provides an overview of Netezza's features, architecture, and benefits.</p>
 
+    <h2>Key Features</h2>
 
+    <ul>
+<li><strong>Massive Parallel Processing:</strong> Netezza uses massively parallel processing to execute queries across the entire dataset simultaneously, delivering fast query performance.</li>
+<li><strong>Columnar Storage:</strong> Data is stored in columns rather than rows, which reduces I/O operations and improves compression for better performance and storage efficiency.</li>
+<li><strong>Data Compression:</strong> Netezza uses advanced compression techniques to store data more efficiently, reducing the amount of storage required and improving query performance.</li>
+<li><strong>Distributed Architecture:</strong> The system is designed as a distributed database, with each node containing its own processing power and storage, allowing for horizontal scalability.</li>
+</ul>
 
-What is Netezza - learn
+    <h2>Architecture</h2>
 
-Reading Time:  5 minutes
+    <p>Netezza's architecture consists of three main components:</p>
 
-<p>Netezza Twinfin is the advanced analytics and warehousing solution provided by IBM. It currently has been rebranded as IBM Puredata for analytics (PDA).</p>
-<ul><li>It was an offering from a company known as Netezza launched in 1999 and then got acquired by IBM in the year 2010. Ever since it has been developed as a subsidiary of IBM.</li><li>It is based on the AMPP (asymmetric massively parallel processing) architecture which has an SMP frontend to get the queries from the client and communicate with the MPP backend to do the processing</li><li>IBM Netezza Analytics’ advanced technology supports data warehousing and in-database analytics into a scalable, high-performance, massively parallel advanced analytic platform that is designed to work with petascale data volumes.</li></ul>
-<p>Netezza utilizes a restrictive design called Asymmetric Massively Parallel Processing (AMPP) which joins the enormous information processing proficiency of Massively Parallel Processing (MPP) where nothing (CPU, memory, stockpiling) is shared and symmetric multiprocessing to arrange the equal processing. The MPP is accomplished through an array of S-Blades which are workers on its own running its own working frameworks associated with plates. While there might be different items which follow comparable design, one extraordinary equipment part utilized by Netezza called the Database Accelerator card which is joined to the S-Blades. These quickening agent cards can play out a portion of the question processing stages while information is being perused from the circle rather than the processing being done in the CPU. Moving huge measure of information from the circle to the CPU and playing out all the phases of question processing in the CPU is one of the significant bottlenecks in the huge numbers of the data set administration frameworks utilized for information warehousing and investigation use cases.</p>
-<p>The fundamental equipment segments of the Netezza machine are a host which is a Linux worker, which can convey to an array of S-Blades every one of which has 8 processor centers and 16 GB of RAM running Linux working framework. Every processor in the S-Blade is associated with plates in a circle array through a Database Accelerator card which utilizes FPGA innovation. Host is additionally liable for all the customer collaborations to the apparatus like dealing with information base questions, meetings and so on alongside dealing with the meta-information about the items like data set, tables and so on put away in the apparatus. The S-Blades among themselves and to the host can convey through an exclusively fabricated IP based superior organization.</p>
-<h2>Netezza S-Blades</h2>
-<p>The S-Blades are likewise alluded as Snippet Processing Array or SPA in short and every CPU in the S-Blades joined with the Database Accelerator card appended to the CPU is alluded as a Snippet Processor.</p>
-Netezza S-Blades
-<p>Let us use the example of a Data Warehouse for a huge retail firm and one of the tables store the insights concerning the entirety of its 10 million clients. Likewise expect that there are 25 columns in the tables and the absolute length of each table column is 250 bytes. In Netezza the 10 million client records will be stored fairly equally across all the disks available in the disk arrays connected to the snippet processors in the S-Blades in a compressed form. At the point when an user queries for state Customer Id, Name and State who joined the retail firm in a specific period arranged by state and name, the below is how the processing will occur:</p>
-<ul><li>The host gets the query, parses and confirms the question, makes the code to be executed to by the snippet processors in the S-Blades and passes the code for the S-Blades</li><li>The snippet processors execute the code and as a feature of the execution, the information block which stores the information needed to fulfill the inquiry in a compacted structure from the circle connected to the snippet processor will be added something extra to memory. The Database Accelerator card in the snippet processor will un-pack the information which will remember all the sections for the table, at that point it will eliminate the undesirable segments from the information which in the event that will be 22 segments for example 220 bytes out of the 250 bytes, applies the where proviso which will eliminate the undesirable columns from the information and passes the modest quantity of the information to the CPU in the snippet processor. In customary information bases every one of these means are acted in the CPU.</li><li>The CPU in the snippet processor performs assignments like accumulation, whole, sort and so forth on the information from the information base quickening agent card and parses the outcome to the host through the organization.</li><li>The host combines the outcomes from all the S-Blades and plays out extra advances like arranging or accumulation on the information prior to imparting back the end-product to the customer.</li></ul>
-<h2>Conclusion</h2>
-<ul><li>The Netezza can deal with huge volume of information in equal and the key is to ensure that the information is disseminated properly to use the enormous equal processing.</li><li>Execute plans such that the vast majority of the processing occurs in the snippet processors; limit correspondence between snippet processors and insignificant information correspondence to the host.</li></ul>
-FPGA Accelerator
+    <ul>
+<li><strong>Nodes:</strong> Each node in a Netezza system contains its own processing power and storage, allowing for horizontal scalability.</li>
+<li><strong>Switches:</strong> The switches connect the nodes together and manage data communication within the system.</li>
+<li><strong>Storage:</strong> Data is stored on high-performance disk arrays that are optimized for the columnar storage format.</li>
+</ul>
 
-<a class="wp-block-button__link" href="https://www.iexpertify.com/learn/full-course/netezza/">Full Netezza Course</a>
-<a class="wp-block-button__link" href="https://www.iexpertify.com/learn/netezza-twinfin-architecture/">Next: Netezza Architecture</a>
+    <h2>Benefits</h2>
 
-<p></p>
+    <p>Some of the key benefits of using Netezza include:</p>
 
-<br><br>
+    <ul>
+<li><strong>Fast Query Performance:</strong> Due to its massive parallel processing and columnar storage capabilities, Netezza can execute complex queries on large datasets in a matter of seconds.</li>
+<li><strong>Scalability:</strong> The distributed architecture allows for horizontal scalability, making it easy to add more nodes to the system as data grows.</li>
+<li><strong>Storage Efficiency:</strong> Netezza's advanced compression techniques help reduce storage requirements and improve query performance.</li>
+<li><strong>Integration:</strong> Netezza integrates with popular BI tools like IBM Cognos, MicroStrategy, and Tableau, making it easy to visualize and analyze data.</li>
+</ul>
+
+    <h2>Code Sample</h2>
+
+    <p>Here's a simple SQL example of querying data in Netezza:</p>
+
+    ```sql
+SELECT COUNT(*) FROM sales;
+```
+
+    <h2>Illustration</h2>
+
+    
+
+    <p>This diagram provides a high-level overview of the Netezza system architecture.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

@@ -1,112 +1,89 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>DataStage Overview - Data Warehousing</h1>
+<p>DataStage is an ETL (Extract, Transform, Load) tool that forms part of the IBM InfoSphere. Widely used for the development and maintenance of Data Warehouses and Data Marts, this tool can extract data from various sources, perform transformations based on business requirements, and load the processed data into selected data warehouses. Originally launched by VMark in the mid-90s, it was later acquired by IBM in 2005 and renamed to IBM WebSphere DataStage, and subsequently to IBM InfoSphere.</p>
+<p>In the realm of Business Intelligence (BI), DataStage plays a significant role in managing information. It provides a Graphical User Interface (GUI) for carrying out the ETL work. The ETL work is executed through jobs, which are individual units of implementable work that describe the data flow between various stages.</p>
+<p>A job consists of several stages connected via links. Each stage serves a specific purpose, such as linking to source and target systems, carrying out data transformations, connecting to multiple file systems, etc. Links are used to connect these stages within a job and define the flow of data.</p>
+<h2>What is DataStage?</h2>
+<p>DataStage is an ETL tool that extracts data, applies transformations, and loads data from source to target systems. It supports various data sources such as sequential files, indexed files, relational databases, external data sources, archives, enterprise applications, etc., helping businesses gain valuable insights through business intelligence.</p>
+<h3>DataStage Features</h3>
+<ul>
+<li>DataStage can extract and load data from any source to any target.</li>
+<li>Jobs designed on one platform can run on other platforms as well, if the job was designed for uniprocessing, it can be executed on an SMP machine.</li>
+<li>Node Configuration is a technique used to create logical C.P.U. nodes, where a Logical C.P.U. represents a Node.</li>
+<li>Partition Parallelism is a technique for distributing data across nodes based on partition techniques.</li>
+<li>It can be utilized to build and load Data Warehouses that operate in batch, real-time, or as a Web service.</li>
+<li>It handles complex transformations and manages multiple integration processes.</li>
+</ul>
+<h3>DataStage ETL Jobs</h3>
+<ul>
+<li>Server jobs - Run on a single node on the DataStage server engine and handle less volume of data with slower processing capabilities.</li>
+<li>Parallel jobs - Run on multiple nodes on the DataStage parallel engine, handling large volumes of data with high processing speed.</li>
+<li>Sequence jobs - Used for complex designs, allowing multiple jobs to run together. They enable programming controls in job workflow, such as branching and looping, providing different courses of action depending on whether a job succeeds or fails.</li>
+</ul>
+<h1>DataStage Overview</h1>
+<p>DataStage is a high-performance ETL (Extract, Transform, Load) tool developed by IBM for data integration tasks. It allows users to create workflows that extract data from various sources, apply transformations, and load the processed data into target systems.</p>
+<h2>Key Features</h2>
+<ul>
+<li><strong>High-Performance:</strong> DataStage is designed for high-volume, high-speed ETL processing.</li>
+<li><strong>Data Integration:</strong> It can work with various data sources and targets, including relational databases, big data platforms, and cloud services.</li>
+<li><strong>Transformations:</strong> DataStage supports a wide range of transformations such as sorting, aggregating, filtering, and cleaning data.</li>
+<li><strong>Visual Development:</strong> The tool provides a visual development interface for easy creation and management of ETL workflows.</li>
+</ul>
+<h2>DataStage Architecture</h2>
+<p>The DataStage architecture consists of three main components:</p>
+<ol>
+<li><strong>Control Flow Engine:</strong> This component handles the control flow, coordinating the execution of tasks in a workflow.</li>
+<li><strong>Data Flow Engine:</strong> It processes data, performing transformations and moving data between stages.</li>
+<li><strong>Modules:</strong> These are reusable pieces of code that perform specific functions such as reading data from a database or writing data to a file.</li>
+</ol>
+<h2>DataStage Workflow Development</h2>
+<p>In DataStage, workflows are developed using a visual interface called the DataStage Designer. The following steps outline the process:</p>
+<ol start="1">
+<li><strong>Define Sources and Targets:</strong> Identify the data sources and targets for your ETL task.</li>
+<li><strong>Create Stages:</strong> Create stages to read from sources, perform transformations, and write to targets.</li>
+<li><strong>Connect Stages:</strong> Connect the stages using paths, specifying how data moves between stages.</li>
+<li><strong>Configure Transformations:</strong> Apply necessary transformations to the data flowing through each stage.</li>
+<li><strong>Test and Deploy:</strong> Test the workflow in the DataStage Designer and deploy it to the appropriate environment for execution.</li>
+</ol>
+<h2>Code Sample</h2>
+<pre>
+    // Define a source stage to read from an Oracle database
+    Source ora_source
+        format DBMS_DBI.DBMS_DATABASE_SOURCE_FORMAT
+            database "mydb"
+            server "myserver"
+            port 1521
+            service "xe";
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-DataStage – Overview - Data Warehousing Data Warehousing
-
-<p>DataStage is an ETL tool and it’s a component of the IBM information PlatformsSolution suite and the InfoSphere. Thus called as IBM InfoSphere DataStage. This tool can extract information from dissimilar sources, carry outtransformations as per a business’s requirements and transfer the data intochosen data warehouses. It is widely used for development and maintenance ofData warehouses and Data marts. It was first launched by VMark in mid-90’s. Later IBM acquiring DataStage in 2005, itwas renamed to IBM WebSphere DataStage and later to IBM InfoSphere. DataStageis available in various versions in the market so far was Enterprise Edition(PX), Server Edition, MVS Edition, DataStage for PeopleSoft and so on. Thelatest edition is IBM InfoSphere DataStage. </p>
-<p>DataStageplays major role of information management in stream of Business intelligence(BI). Datastage provides a GUI (Graphical User Interface) driven interface tocarry out the Extract Transform Load work. </p>
-<p>The ETLwork is carried out through jobs. A DataStage job can be referred to as animplementable unit of work that can be gathered &amp; executed individually oras a component of a stream data flow. </p>
-<p>A job ismade of various stages that are connected via links. </p>
-<p>A stageserves many purposes, comparable to database stages to link to target systemsand source, running stages to carry out many data transformations, file stagesso as to link to many file systems and so on. Links areused to bring together various stages in a job to describe the flow of data.</p>
-<p>What is DataStage?</p>
-<p>DataStage is an ETL tool which extracts data, transform and load data from source to the target. The data sources might include sequential files, indexed files, relational databases, external data sources, archives, enterprise applications, etc. DataStagefacilitates business analysis by providing quality data to help in gaining business intelligence.</p>
-<p>DataStage Features </p>
-<ul><li>DataStage can Extract the data from any source and can loads the data into the any target.</li><li>The Job developed in the one platform can run on the any other platform If we designed a job in the Uni level processing, it can be run in the SMP machine.</li><li>Node Configuration is a technique to create logical C.P.U. Node is a Logical C.P.U.</li><li>Partition parallelism is a technique distributing the data across the nodes based on the partition techniques.</li><li>It can be used to build and load data warehouse which can operate in batch, real time, or as a Web service.</li><li>It can handle complex transformations and manage multiple integration processes. </li></ul>
-<p>DataStage ETL work carried out through jobs. It contains mainly three different types of jobs.</p>
-<ul><li>Server jobs</li><li>Parallel jobs</li><li>Sequence jobs</li></ul>
-<p>DataStage server jobs runs on single node on DataStage server engine. Server jobs handle less volume of data and slow processing capabilities. Server jobs contain less number of components and compiled into Basic language.</p>
-<p>DataStage parallel jobs runs on multiple nodes on DataStage parallel engine. Parallel jobs can handles huge volume of data and processing speed is high. Parallel jobs contain more number of components and compiled into OSH (Orchestrate Shell script) except Transformer which compiles into C++.</p>
-<p>Sequence jobs – For more complex designs, you can build sequence jobs to run multiple jobs in conjunction with other jobs. By using sequence jobs, you can integrate programming controls into your job workflow, such as branching and looping. You specify the control information, such as the different courses of action to take depending on whether a job in the sequence succeeds or fails. After youcreate a sequence job, you schedule it to run using the InfoSphere DataStageDirector client, just like you would with a parallel job or server job.</p>
-
-<br><br>
+    // Define a transformation stage to sort data
+    Transform transformer
+        Sort;
+    </pre>
+<h2>Conclusion</h2>
+<p>DataStage is a powerful tool for ETL tasks, offering high performance and flexibility in data integration. With its visual development interface and robust set of features, DataStage simplifies the process of designing and executing complex data workflows.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

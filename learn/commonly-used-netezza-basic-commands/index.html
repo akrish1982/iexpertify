@@ -1,370 +1,97 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
 
+  **Learn: Commonly Used Netezza Basic Commands**
 
+Welcome to our guide on Netezza basic commands! This tutorial will walk you through various essential commands for operating Netezza, an advanced data warehouse system from IBM. Let's dive in!
 
+**1. Connecting to Netezza Database**
 
+To connect to a Netezza database, use the following command:
 
-Commonly used Netezza Basic Commands - learn
+```sql
+zConnect -h <hostname> -p <port> -U <username> -d <database_name>
+```
+Replace `<hostname>`, `<port>`, `<username>`, and `<database_name>` with appropriate values.
 
+**2. Query Execution**
 
+To execute a SQL query, simply type your statement after connecting to the database:
 
+```sql
+SELECT * FROM <table_name>;
+```
+Replace `<table_name>` with the table you want to select data from.
 
-Reading Time:  4 minutes
+**3. Explanation of SQL Statements**
 
-<table>
-<tbody>
-<tr>
-<td>\a</td>
-<td>toggle between   unaligned and aligned mode</td>
-</tr>
-<tr>
-<td>\act</td>
-<td>show current active   sessions</td>
-</tr>
-<tr>
-<td>\c[onnect]   [dbname [user] [password]]</td>
-<td>connect to new   database (currently ‘RJEYARAJ_DB’)</td>
-</tr>
-<tr>
-<td>\C   &lt;title&gt;</td>
-<td>HTML table title</td>
-</tr>
-<tr>
-<td>\copy …</td>
-<td>perform SQL COPY with   data stream to the client machine</td>
-</tr>
-<tr>
-<td>\d   &lt;table&gt;</td>
-<td>describe table (or   view, index, sequence, Synonym)</td>
-</tr>
-<tr>
-<td>\d{t|v|i|s|e|x}</td>
-<td>list   tables/views/indices/sequences/temp tables/external tables</td>
-</tr>
-<tr>
-<td>\d{m|y}</td>
-<td>list materialized   views/synonyms</td>
-</tr>
-<tr>
-<td>\dS{t|v|i|s}</td>
-<td>list system   tables/views/indexes/sequences</td>
-</tr>
-<tr>
-<td>\dM{t|v|i|s}</td>
-<td>list system   management tables/views/indexes/sequences</td>
-</tr>
-<tr>
-<td>\dp   &lt;name&gt;</td>
-<td>list user permissions</td>
-</tr>
-<tr>
-<td>\dpu   &lt;name&gt;</td>
-<td>list permissions   granted to a user</td>
-</tr>
-<tr>
-<td>\dpg   &lt;name&gt;</td>
-<td>list permissions   granted to a group</td>
-</tr>
-<tr>
-<td>\dgp   &lt;name&gt;</td>
-<td>list grant   permissions for a user</td>
-</tr>
-<tr>
-<td>\dgpu   &lt;name&gt;</td>
-<td>list grant   permissions granted to a user</td>
-</tr>
-<tr>
-<td>\dgpg   &lt;name&gt;</td>
-<td>list grant   permissions granted to a group</td>
-</tr>
-<tr>
-<td>\d{u|U}</td>
-<td>list users/User   Groups</td>
-</tr>
-<tr>
-<td>\d{g|G|Gr}</td>
-<td>list groups/Group   Users/Resource Group Users</td>
-</tr>
-<tr>
-<td>\da[+]   [name]</td>
-<td>list aggregates; +   for additional fields</td>
-</tr>
-<tr>
-<td>\dd   [object]</td>
-<td>list comment for   object</td>
-</tr>
-<tr>
-<td>\df[+]   [name]</td>
-<td>list functions; + for   additional fields</td>
-</tr>
-<tr>
-<td>\dl[+]   [name]</td>
-<td>list libraries; + for   additional fields</td>
-</tr>
-<tr>
-<td>\do</td>
-<td>list operators</td>
-</tr>
-<tr>
-<td>\dT</td>
-<td>list data types</td>
-</tr>
-<tr>
-<td>\e [file]</td>
-<td>edit the current   query buffer or [file] with external editor</td>
-</tr>
-<tr>
-<td>\echo   &lt;text&gt;</td>
-<td>write text to stdout</td>
-</tr>
-<tr>
-<td>\f   &lt;sep&gt;</td>
-<td>change field   separator</td>
-</tr>
-<tr>
-<td>\g [file]</td>
-<td>send query to backend   (and results in [file] or |pipe)</td>
-</tr>
-<tr>
-<td>\h [cmd]</td>
-<td>help on syntax of sql   commands; * for all commands</td>
-</tr>
-<tr>
-<td>\H</td>
-<td>toggle HTML mode   (currently off)</td>
-</tr>
-<tr>
-<td>\i   &lt;file&gt;</td>
-<td>read and execute   queries from &lt;file&gt;</td>
-</tr>
-<tr>
-<td>\l</td>
-<td>list all databases</td>
-</tr>
-<tr>
-<td>\o [file]</td>
-<td>send all query   results to [file] or |pipe</td>
-</tr>
-<tr>
-<td>\p</td>
-<td>show the content of   the current query buffer</td>
-</tr>
-<tr>
-<td>\pset   &lt;opt&gt;</td>
-<td>set table output   &lt;opt&gt; =   {format|border|expanded|fieldsep|null|recordsep|tuples_only|title|tableattr|pager}</td>
-</tr>
-<tr>
-<td>\q</td>
-<td>quit nzsql</td>
-</tr>
-<tr>
-<td>\qecho   &lt;text&gt;</td>
-<td>write text to query   output stream (see \o)</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>reset (clear) the   query buffer</td>
-</tr>
-<tr>
-<td>\s [file]</td>
-<td>print history or save   it in [file]</td>
-</tr>
-<tr>
-<td>\set   &lt;var&gt; &lt;value&gt;</td>
-<td>set internal variable</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>show only rows   (currently off)</td>
-</tr>
-<tr>
-<td>\time</td>
-<td>print time taken by   queries</td>
-</tr>
-<tr>
-<td>\T   &lt;tags&gt;</td>
-<td>HTML table tags</td>
-</tr>
-<tr>
-<td>\unset   &lt;var&gt;</td>
-<td>unset (delete)   internal variable</td>
-</tr>
-<tr>
-<td>\w   &lt;file&gt;</td>
-<td>write current query   buffer to a &lt;file&gt;</td>
-</tr>
-<tr>
-<td>\x</td>
-<td>toggle expanded   output (currently off)</td>
-</tr>
-<tr>
-<td>\! [cmd]</td>
-<td>shell escape or   command</td>
-</tr>
-</tbody>
-</table>
+- **CREATE TABLE**: Use this command to create a new table in Netezza:
 
-<p>nzrev Command</p>
-<p>Check the Netezza build version</p>
-[[username] ~]$ nzrev
-Release 7.2.1.0 [Build 46322]
-<p>nzstats Command</p>
-<p>Provide the statistics about the Netezza appliance</p>
-[[username] ~]$ nzstats
-Field Name Value
--------------------- --------------------------------------------
-Name netezza 01
-Description &lt;sys description&gt;
-Contact &lt;contact name&gt;
-Location &lt;sys location&gt;
-IP Addr 127.0.0.1
-Up Time 34640 secs
-Up Time Text 9 hrs, 37 mins, 20 secs
-Date 21-Oct-16, 00:53:47 EDT
-State 8
-State Text Online
-Model IBM Netezza 100-1
-Serial Num &lt;serial #&gt;
-Num SFIs 0
-Num SPAs 1
-Num SPUs 1
-Num Data Slices 8
-Num Hardware Issues 0
-Num Dataslice Issues 0
-<p>nzhw Command</p>
-<p>You can verify the Netezza hardware and check the issues if any</p>
-[[username] ~]$ nzhw
-Description HW ID Location Role State Security
------------ ----- ---------- ------ ------ --------
-Rack 1001 rack1 Active Ok N/A
-SPA 1002 spa1 Active Ok N/A
-SPU 1003 spa1.spu1 Active Online N/A
-Disk 1004 spa1.disk1 Active Ok Disabled
-Disk 1005 spa1.disk2 Active Ok Disabled
-Disk 1006 spa1.disk3 Active Ok Disabled
-<p>nzstate Command</p>
-<p>You can verify the status of the Netezza system with help of this command</p>
-[[username] ~]$ nzstate
-System state is 'Online'
-<p>nzsql Command</p>
-<p>nzsql is Netezza command line interface. You can use those command to connect to Netezza data warehouse system.</p>
-<p>Read: nzsql command and its usage</p>
-[[username] ~]$ nzsql -u username -pw password -db training
-Welcome to nzsql, the IBM Netezza SQL interactive terminal.
-Type: \h for help with SQL commands
-\? for help on internal slash commands
-\g or terminate with semicolon to execute query
-\q to quit
-TRAINING.ADMIN(ADMIN)=&gt;
-<p>nzload Command</p>
-<p>This command is used to get data into the Netezza data warehouse system.</p>
-[[username] ~]$ nzload -h
-Usage: nzload [-h|-rev] [&lt;options&gt;]
-<p>nzsession Command</p>
-<p>This command is used to maage the Netezza sessions.</p>
-[[username] ~]$ nzsession
-ID Type User Start Time PID Database Schema State Priority Name Client IP Client PID Command
-—– —- —– ———————– —– ——– —— —— ————- ——— ———- ————————
-16634 sql ADMIN 21-Oct-16, 01:03:48 EDT 16113 SYSTEM ADMIN active normal 127.0.0.1 16112 SELECT session_id, client
-<p>nzpassword Command</p>
-<p>Encrypt the password with help of nzpassword command.</p>
-<p>nzbackup and nzrestore Commands</p>
-<p>With help of these command you can backup your Netezza data warehouse and restore whenever you want it back.</p>
-<p>groom table command</p>
-<p>You can use this command to reclaim the Netezza space.</p>
-TRAINING.ADMIN(ADMIN)=&gt; groom table STUDENTS;
-NOTICE: Groom will not purge records deleted by transactions that started after 2016-10-21 01:22:05.
-NOTICE: Groom processed 2 pages; purged 0 records; scan size unchanged; table size unchanged.
-GROOM RECORDS ALL
-TRAINING.ADMIN(ADMIN)=&gt;
+  ```sql
+  CREATE TABLE <table_name> (<column1_data_type> <column1_name>, <column2_data_type> <column2_name>, ...);
+  ```
 
+- **ALTER TABLE**: Modify the structure of an existing table using ALTER TABLE:
 
-<br><br>
-<footer>
+  ```sql
+  ALTER TABLE <table_name> ADD COLUMN <new_column_data_type> <new_column_name>;
+  ```
+
+- **INSERT INTO**: Add new rows to a table with the following command:
+
+  ```sql
+  INSERT INTO <table_name> (<column1>, <column2>, ...) VALUES (<value1>, <value2>, ...);
+  ```
+
+**4. Data Manipulation Language (DML)**
+
+- **DELETE**: Remove rows from a table using DELETE:
+
+  ```sql
+  DELETE FROM <table_name> WHERE <condition>;
+  ```
+
+- **UPDATE**: Modify existing data in a table with UPDATE:
+
+  ```sql
+  UPDATE <table_name> SET <column_name>=<new_value> WHERE <condition>;
+  ```
+
+**5. Data Definition Language (DDL)**
+
+- **DROP TABLE**: Remove an existing table using DROP TABLE:
+
+  ```sql
+  DROP TABLE <table_name>;
+  ```
+
+For more complex operations, you can refer to the official [Netezza SQL Reference Guide](https://www.ibm.com/support/knowledgecenter/ssw_ibm_db_n/com.ibm.swg.im.nz.db.sqlref/doc/r0215796.html) for detailed documentation on Netezza SQL commands.
+
+Good luck with your data analysis using Netezza!
+
+</table_name></condition></new_value></column_name></table_name></condition></table_name></value2></value1></column2></column1></table_name></new_column_name></new_column_data_type></table_name></column2_name></column2_data_type></column1_name></column1_data_type></table_name></table_name></table_name></database_name></username></port></hostname></database_name></username></port></hostname><footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

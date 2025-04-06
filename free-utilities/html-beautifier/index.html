@@ -1,141 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Beautifier Tool</title>
-    <link href="/simplecss/styles.css" rel="stylesheet"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-         crossorigin="anonymous"></script>
-         <script
-        src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-        user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-        btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-        embed-version="v1"
-        button-text="Let's Connect"
-        position-right="30px"
-        position-bottom="30px"
-        custom-padding="0px"
-        custom-font-size="16px"
-        custom-font-weight="500"
-        custom-width="200px"
-        async=""
-        defer=""
-      ></script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h1>HTML Beautifier/Formatter Tool</h1>
-    
-    <div class="instructions">
-        <h3>How to Use:</h3>
-        <ol>
-            <li>Paste your HTML code in the input textarea on the left</li>
-            <li>Configure your formatting preferences:
-                <ul>
-                    <li>Choose indentation type (spaces or tabs)</li>
-                    <li>Set the number of spaces for indentation (if using spaces)</li>
-                    <li>Select line wrapping length</li>
-                </ul>
-            </li>
-            <li>Click "Format HTML" to see the beautified result</li>
-        </ol>
-    </div>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>HTML Beautifier / Formatter Tool</h1>
+<div class="instructions">
+<h3>How to Use:</h3>
+<ol>
+<li>Paste your HTML code in the input textarea on the left.</li>
+<li>Configure your formatting preferences:
+                  <ul>
+<li>Choose indentation type (Spaces or Tabs).</li>
+<li>Set the number of spaces for indentation (if using Spaces).</li>
+<li>Select line wrapping length.</li>
+</ul>
+</li>
+<li>Click "Format HTML" to see the beautified result.</li>
+</ol>
+</div>
+<div class="settings">
+<label>Indentation: </label>
+<select id="indentType">
+<option value="space">Spaces</option>
+<option value="tab">Tabs</option>
+</select>
+<label>Spaces: </label>
+<select id="spaceCount">
+<option value="2">2</option>
+<option value="4">4</option>
+<option value="8">8</option>
+</select>
+<label>Wrap Lines: </label>
+<select id="wrapLength">
+<option value="0">Don't wrap</option>
+<option value="40">40 characters</option>
+<option value="70">70 characters</option>
+<option value="80">80 characters</option>
+</select>
+</div>
+<div class="container">
+<div>
+<h3>Input HTML:</h3>
+</div>
+<div>
+<h3>Formatted Output:</h3>
+</div>
+</div>
+<button onclick="formatHTML()">Format HTML</button>
+<h1>Understanding and Using HTML Beautifier: A Comprehensive Guide</h1>
+<h2>Introduction</h2>
+<p>HTML Beautifier is a powerful tool that helps developers to format, clean, and simplify their HTML code. This guide will walk you through the basics of using HTML Beautifier, its benefits, and why it should be an essential part of your web development toolkit.</p>
+<h2>What is HTML Beautifier?</h2>
+<p>HTML Beautifier is a free online tool that automatically formats and indents the HTML code to make it more readable, consistent, and easier to maintain. It helps developers save time by avoiding manual reformatting of their code.</p>
+<h2>Benefits of Using HTML Beautifier</h2>
+<ul>
+<li><strong>Improves Readability:</strong> Well-formatted code is easier to read and understand, reducing the chances of errors and improving collaboration with other developers.</li>
+<li><strong>Saves Time:</strong> Manually formatting HTML can be time-consuming. HTML Beautifier does this for you automatically.</li>
+<li><strong>Consistency:</strong> HTML Beautifier ensures that your code is consistently formatted, making it easier to maintain and work with in the long run.</li>
+</ul>
+<h2>How to Use HTML Beautifier</h2>
+<ol>
+<li><strong>Paste Your Code:</strong> Visit the HTML Beautifier website (<a href="https://beautifytools.com/online-html-beautifier">Link to the site</a>) and paste your HTML code into the text area provided.</li>
+<li><strong>Format Your Code:</strong> Click the "Beautify" button, and wait for the tool to format your code. This process is almost instantaneous.</li>
+<li><strong>Download or Copy:</strong> Once the formatting is complete, you can choose to download or copy the beautified HTML code to use in your projects.</li>
+</ol>
+<h2>Example Usage</h2>
+<pre><code class="language-html">
+Before Beautification:
+&lt;div&gt;&lt;h1&gt;Welcome to My Website&lt;/h1&gt;&lt;/div&gt;&lt;br /&gt;&lt;p&gt;This is a paragraph.&lt;/p&gt;
 
-    <div class="settings">
-        <label>Indentation: </label>
-        <select id="indentType">
-            <option value="space">Spaces</option>
-            <option value="tab">Tabs</option>
-        </select>
-
-        <label>Spaces: </label>
-        <select id="spaceCount">
-            <option value="2">2</option>
-            <option value="4">4</option>
-            <option value="8">8</option>
-        </select>
-
-        <label>Wrap Lines: </label>
-        <select id="wrapLength">
-            <option value="0">Don't wrap</option>
-            <option value="40">40 characters</option>
-            <option value="70">70 characters</option>
-            <option value="80">80 characters</option>
-        </select>
-    </div>
-
-    <div class="container">
-        <div>
-            <h3>Input HTML:</h3>
-            <textarea id="input" placeholder="Paste your HTML code here..."></textarea>
-        </div>
-        <div>
-            <h3>Formatted Output:</h3>
-            <textarea id="output" readonly></textarea>
-        </div>
-    </div>
-
-    <button onclick="formatHTML()">Format HTML</button>
-
-    <script>
-        function formatHTML() {
-            const input = document.getElementById('input').value;
-            const indentType = document.getElementById('indentType').value;
-            const spaceCount = parseInt(document.getElementById('spaceCount').value);
-            const wrapLength = parseInt(document.getElementById('wrapLength').value);
-
-            // Create indentation string
-            const indent = indentType === 'space' ? ' '.repeat(spaceCount) : '\t';
-
-            // Basic HTML formatting
-            let formatted = '';
-            let depth = 0;
-            let lines = input
-                .replace(/>\s+</g, '><')
-                .replace(/</g, '\n<')
-                .split('\n')
-                .filter(line => line.trim());
-
-            lines.forEach(line => {
-                // Decrease depth for closing tags
-                if (line.match(/^<\//)) {
-                    depth--;
-                }
-
-                // Add indentation
-                let currentLine = indent.repeat(Math.max(0, depth)) + line;
-
-                // Handle line wrapping
-                if (wrapLength > 0 && currentLine.length > wrapLength) {
-                    // Basic wrapping implementation
-                    currentLine = currentLine.replace(
-                        new RegExp(`(.{${wrapLength}})`, 'g'),
-                        '$1\n' + indent.repeat(Math.max(0, depth))
-                    );
-                }
-
-                formatted += currentLine + '\n';
-
-                // Increase depth for opening tags that aren't self-closing
-                if (line.match(/^<[^/]/) && !line.match(/\/>$/)) {
-                    depth++;
-                }
-            });
-
-            document.getElementById('output').value = formatted.trim();
-        }
-    </script>
-</body>
-</html> 
+After Beautification:
+&lt;div&gt;
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+    </code></pre>
+<h2>Conclusion</h2>
+<p>HTML Beautifier is an invaluable tool for any web developer looking to streamline their workflow, improve the readability of their code, and ensure consistency across projects. Give it a try today, and see how much easier coding can be!</p>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

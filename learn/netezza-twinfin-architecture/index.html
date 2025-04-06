@@ -1,164 +1,78 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza TwinFin Architecture - learn
-
-
-
-
-
-
-Reading Time:  6 minutes
-<p>Netezza is a data warehouse and big data analytics appliance. It uses Asymmetric Massively Parallel Processing (AMPP) architecture, which combines an SMP front end with a shared MPP back end for query processing. Netezza is a result of  database integration , processing engine and storage in a system. Netezza architecture resembles Hadoop cluster design in may ways. e.g. Distribution, active-passive node, data storing methods, replications etc.</p>
-<p>As a commodity based appliance, Netezza TwinFin is a low-cost analytic option. But its value goes beyond the initial low purchase price. The Netezza appliance requires minimal ongoing administration, both in internal resources as well as implementation costs, for an overall low total cost of ownership. There are no hidden costs. Netezza TwinFin also provides built-in compliance controls, reports and workflow that significantly reduce the costs necessary to satisfy mandatory compliance regulations (e.g. SOX, PCI, HIPAA, FISMA, Basel II).</p>
-<p>Netezza TwinFin comes in 3 models: TwinFin 3, TwinFin 6 and TwinFin 12; this number indicates number of S-blades or processors. All models come with</p>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Netezza Architecture Overview</h1>
+<h2>TwinFin 12 Components:</h2>
 <ul>
-<li>Storage: 1 TB hard drives</li>
-<li>Processor: two CPU, quad core (that is, TwinFin 3 is 3 x 2 CPU with quad core processors).</li>
-<li>Disk storage: Processor-core factor in TB. For instance, for TwinFin 3 it is 24 TB (take above number, 3 x 2 x 4 core, take this in TB; in other words, each core gets a disk).</li>
-<li>Netezza version: 5.0 onwards; 6.0 beta is already out as of beginning for 2010 Q1.</li>
+<li><strong>Storage Array:</strong> Holds the data disks, which are high density and high performance.</li>
+<li><strong>Linux Hosts (2):</strong> Configured for high availability. They compile SQL queries into executable code segments called snippets and create optimized query plans by distributing the snippets across all nodes.</li>
+<li><strong>FPGA:</strong> A Netezza proprietary hardware tool that filters out unwanted data as early as possible when a SQL query is submitted to the hosts, improving performance.</li>
+<li><strong>S-Blades (Intelligent Processing Nodes):</strong> Contain powerful multi-core CPUs, multi-engine FPGAs, and gigabytes of RAM. They make up the MPP engine of the Netezza data warehouse appliance.</li>
+<li><strong>KVM:</strong> Not explicitly mentioned in the text, but typically used for system management tasks.</li>
 </ul>
-<p> It integrates database, processing and storage in a compact system. Netezza Twinfin is the latest generation data warehouse appliance. It has four major components:</p>
-<p> </p>
-
-
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Netezza_Architecture_-_Hosts">
-1)
-Netezza Architecture – Hosts
-</a>
- <a href="index.html#Field_Programmable_Ggate_Arrays_-_FPGA">
-2)
-Field Programmable Ggate Arrays – FPGA
-</a>
- <a href="index.html#Snippet_Blades_S-Blades">
-3)
-Snippet Blades (S-Blades)
-</a>
- <a href="index.html#Disk_Enclosure">
-4)
-Disk Enclosure
-</a>
- <a href="index.html#Netezza_key_features">
-5)
-Netezza key features
-</a>
- <a href="index.html#What_to_read_next">
-5.1)
-What to read next?
-</a>
-
-Netezza Architecture – Hosts
-<p>The Netezza hosts are high-performance Linux servers that are set up in an active-passive mode for high availability. In case of active server failure, the passive host will take over the processing tasks. It just requires very small time to passive node to take over. The active host is an interface to external tools and client applications such BI, ETL, JDBC, ODBC tools. Client submits SQL requests via ODBC/JDBC. Number of tools such as Aginity, Squirrel, nzsql utility are used to submit SQL query to Netezza host. The  Netezza compiles them into executable code segments called snippets (usually C/C++ codes) , and creates optimised query plans by distributing the snippets across to all the nodes for execution. FPGA fetches the required data and snippet execution takes place.</p>
-Field Programmable Ggate Arrays – FPGA
-<p>The FPGA is a Netezza proprietary hardware tool developed to filters out unwanted data as early as possible when SQL query is submitted to hosts. The data will be eliminated as early as when reading from disks. This process of data elimination removes IO bottlenecks and frees up downstream components such as the CPU, memory and network from processing extra data hence notably improves performance. The FPGA always rely on the zone maps to eliminate the unwanted data. Zone maps are created to every column in the tables during certain Netezza operations.</p>
-
-Snippet Blades (S-Blades)
-<p>S-Blades are intelligent processing nodes that make up the MPP engine of the Netezza data warehouse appliance. Each S-Blade is an independent server that contains powerful multi-core CPUs, multi-engine FPGAs and gigabytes of RAM, all working in parallel to deliver high performance. FPGA in each s-blade is important Netezza architecture hardware that improves the performance.</p>
-<p>TwinFin 12 is a full rack containing all components. Top portion is occupied by storage array, followed by two hosts (Linux based hosts, configured for high availability so that if one host fails another takes over), KVM and an array of S-blades. Data between two hosts are replicated and are always synched up so that if one host fails, another can assume that role without any problem.</p>
-
-<p>Disk space for TwinFin 12 is a total of 96 TB; one third of it is only used for storing data, another one third is for disk mirror and the other one third is for spool or temporary space for processing queries. Roughly, 32 TB is available on TwinFin 12 for storage of data.</p>
-Disk Enclosure
-<p>Finally, other important Netezza architecture hardware is high performance Disks.  The disk enclosures contain high density and high performance disks that are RAID protected. Each disk contains a slice of the data in a database tables. Either hash or random algorithm will be used by host to distributes the data across all the disks evenly. A mirror copy of each slice of data is maintained on a different disk drive if the mirroring is enabled. The disk enclosures are connected to the S-Blades via high-speed interconnects that allow all the disks simultaneously stream data to the S-Blades at the maximum rate possible. The data distribution and the storage is based on the distribution key which we use while creating table.</p>
-<h2>Netezza key features</h2>
-<p>The ones below are chosen from the most meaningful TwinFin’s features:</p>
-<ul><li>supporting both, Business Intelligence and advanced analytics</li><li>scalable (10-100x) performance at petascale</li><li>efficient even if being used by thousands of users at the same time</li><li>i-Class technology use for analytic developing</li><li>streaming architecture based on blades</li><li>ubiquitous simplicity of deployment and management</li><li>data compliant</li><li>compatible with the most popular Business Intelligence and analytic tools</li><li>standard SQL, ODBC, JDBC, and OLE DB interfaces</li><li>reliability and availability at 99,99% uptime level</li><li>green orientation thank to low cooling and power requirements</li><li>high load pace – over 2 TB of data per hour</li><li>high backup creating pace – over 4 TB of data per hour</li></ul>
-<p>TwinFin is radically different from earlier models. Netezza implemented CPU, memory and storage along with an FPGA on previous models. TwinFin uses S-blades that includes CPU, memory and FPGA (a new term coined by Netezza: database accelerator card = FPGA + memory + IO interface); storage is separated and is located in a storage array.</p>
-
-<br><br>
+<h2>Data Distribution:</h2>
+<p>Data is distributed evenly across all disks using either hash or random algorithms. A mirror copy of each slice of data is maintained on a different disk drive if mirroring is enabled. The disk enclosures are connected to the S-Blades via high-speed interconnects.</p>
+<h2>Key Features:</h2>
+<ul>
+<li>Supports both Business Intelligence and advanced analytics</li>
+<li>Scalable performance at petascale</li>
+<li>Efficient for thousands of users simultaneously</li>
+<li>Uses i-Class technology for analytic development</li>
+<li>Streaming architecture based on blades</li>
+<li>Ubiquitous simplicity of deployment and management</li>
+<li>Data compliant</li>
+<li>Compatible with popular Business Intelligence and analytic tools</li>
+<li>Supports standard SQL, ODBC, JDBC, and OLE DB interfaces</li>
+<li>Reliability and availability at 99.99% uptime level</li>
+<li>Green orientation with low cooling and power requirements</li>
+<li>High load pace - over 2 TB of data per hour</li>
+<li>High backup creating pace - over 4 TB of data per hour</li>
+</ul>
+<h2>TwinFin vs. Previous Models:</h2>
+<p>TwinFin uses S-blades that include CPU, memory, and FPGA (a new term coined by Netezza: database accelerator card = FPGA + memory + IO interface); storage is separated and located in a storage array.</p>
+<h1>Understanding Netezza TwinFin Architecture</h1>
+<p>Netezza TwinFin is a massively parallel database system from IBM that offers superior performance for complex analytical workloads. This article provides an overview of the unique TwinFin architecture and its key components.</p>
+<h2>TwinFin Architecture Components</h2>
+<ul>
+<li><strong>Processing Nodes:</strong> The primary component of the TwinFin system, processing nodes consist of CPUs, GPUs, and memory. Each node can process data independently, allowing for massively parallel processing.</li>
+<li><strong>Accelerator Nodes:</strong> Accelerator nodes contain custom IBM PowerPC chips that handle specialized tasks, such as compression and encryption, freeing up the CPUs to focus on analytical workloads. </li>
+<li><strong>Storage Nodes:</strong> Storage nodes provide high-speed storage for data. They can be configured in a variety of ways, depending on the specific needs of the system.</li>
+<li><strong>Interconnect:</strong> The interconnect is responsible for the communication between processing and storage nodes. It uses proprietary technology to ensure low latency and high throughput.</li>
+</ul>
+<h2>Massively Parallel Processing</h2>
+<p>The key advantage of the TwinFin architecture is its ability to process data in a massively parallel manner. Instead of a single CPU processing data sequentially, thousands of CPUs can work on different parts of the same dataset simultaneously.</p>
+<h3>Example: SQL Query Execution</h3>
+<pre>
+    SELECT column1, column2
+    FROM table
+    WHERE condition;
+    </pre>
+<p>In a traditional database system, this query would be executed sequentially, scanning through each row of the table to find those that match the specified condition. In TwinFin, the query is broken up into smaller parts, with each part processed by a different processing node. This allows for much faster execution times, especially for large datasets.</p>
+<h2>Data Compression and Encryption</h2>
+<p>TwinFin's use of accelerator nodes enables efficient data compression and encryption without significant impact on performance. These capabilities are crucial for managing large datasets in a secure and space-efficient manner.</p>
+<h2>Summary</h2>
+<p>The Netezza TwinFin architecture offers a unique approach to data processing, leveraging massively parallel processing, specialized hardware, and efficient data management techniques. This results in superior performance for complex analytical workloads.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

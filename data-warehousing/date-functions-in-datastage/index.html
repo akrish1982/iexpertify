@@ -1,100 +1,97 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<h2>DataStage and Date Functions</h2>
 
+<p>In DataStage, date functions are essential for manipulating dates and times in a variety of ways. This article provides an overview of the most commonly used date functions in DataStage.</p>
 
+<h3>1. Current_Date()</h3>
 
+<p>The <code>Current_Date()</code> function returns the current system date. Here's a simple example:</p>
 
+<pre><code class="language-java">
+StreamStage currentDateStage = new StreamStage("Current Date Stage");
+TransformModule currentDateTrans = currentDateStage.newTransformModule("Current Date Transformer");
+currentDateTrans.setExpression("Output(Current_Date())");
+currentDateStage.setInput(inputStream)
+                .addTransform(currentDateTrans)
+                .setOutput(outputStream);
+</code></pre>
 
+<h3>2. Add_Months()</h3>
 
-Date Functions in Datastage - Data Warehousing Data Warehousing
-Reading Time:  4 minutes
-<table><tbody><tr><td>For a timestamp, the format is %yyyy-%mm-%dd %hh:%nn:%ss. If extended to include microseconds, the format is %yyyy-%mm-%dd %hh:%nn:%ss.x, where x gives the number of decimal places seconds is given to</td></tr></tbody></table>For a date, the format is %yyyy-%mm-%dd
-<table><tbody><tr><td>CurrentDate()</td><td>Use this function to add a new column containing the date to the data output by the Transformer stage</td></tr><tr><td>CurrentTime()</td><td>Use this function to add a new column containing the time to the data output by the Transformer stage</td></tr><tr><td>CurrentTimeMS()</td><td>Use this function to add a new column containing the time to the data output by the Transformer stage. You must set the Extended field in the column metadata to Microseconds to contain the full time</td></tr><tr><td>CurrentTimestamp()</td><td>Use this function to add a new column containing the timestamp to the data output by the Transformer stage</td></tr><tr><td>CurrentTimestampMS()</td><td>Use this function to add a new column containing the timestamp to the data output by the Transformer stage. You must set the Extended field in the column metadata to Microseconds to contain the full timestamp</td></tr><tr><td>DateFromDaysSince(-1,”1958-08-18″)</td><td>If mylink.mynegintcol contains the integer -1, and mylink.mydatecol contains the date 1958–08–18, then the following three functions are equivalent, and return the date 1958–08–17</td></tr><tr><td>DaysSinceFromDate(“1958-08-18″,”2008-08-18”)</td><td>If mylink.mysourcedate contains the date 1958–08–18 and mylink.mygivendate contains the date 2008–08–18, then the two following functions are equivalent, and return the integer value 18263</td></tr><tr><td>DateOffsetByComponents(“2011-08-18”, 2011, 8, 18)</td><td>If mylink.basedate contains 2011-08-18 and mylink.yearos contains the value 2, mylink.monthos contains the value 0, and mylink.dayofmonthosol contains the value 0, then the two following functions are equivalent, and return the date 2013–08–18</td></tr><tr><td>DateFromComponents(2010, 12, 2)</td><td>If mylink.yearcol contains the value 2010, mylink.monthcol contains the value 12, and mylink.dayofmonthcol contains the value 2, then the two following functions are equivalent, and return the date 2010–12–02</td></tr><tr><td>DateFromJulianDay(2454614)</td><td>If mylink.myjulcol contains the value 2454614, then the two following functions are equivalent, and return the date 2008–05–27.</td></tr><tr><td>JulianDayFromDate(“2008–05–27”)</td><td>If mylink.mydate contains the date 2008–05–27, then the two following functions are equivalent, and return the value 2454614</td></tr><tr><td>DaysInMonth(“1958-08-18”)</td><td>If mylink.mysourcedate contains the date 1958–08–18, then the two following functions are equivalent, and return the integer value 31</td></tr><tr><td>DaysInYear(“2012-08-18”)</td><td>If mylink.mysourcedate contains the date 2012–08–18, then the two following functions are equivalent, and return the integer value 366</td></tr><tr><td>DateOffsetByDays(“2011-08-18”, 2)</td><td>If mylink.basedate contains 2011-08-18 and mylink.dayoffset contains the value 2, then the two following functions are equivalent, and return the date 2011–08–20</td></tr><tr><td>HoursFromTime(“22:30:00”)</td><td>If mylink.mytime contains the time 22:30:00, then the following two functions are equivalent, and return the integer value 22</td></tr><tr><td>MinutesFromTime(“22:30:52”)</td><td>If mylink.mytime contains the time 22:30:52, then the two following functions are equivalent, and return the value 30</td></tr><tr><td>SecondsFromTime(“22:30:52”)</td><td>If mylink.mytime contains the time 22:30:52, then the two following functions are equivalent, and return the value 52</td></tr><tr><td>YearweekFromDate(“2008-08-18”)</td><td>If mylink.mydate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 33:</td></tr><tr><td>YeardayFromDate(“2008-08-18”)</td><td>If mylink.mydate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 231</td></tr><tr><td>MonthDayFromDate(“2008-08-18”)</td><td>If mylink.mydate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 18</td></tr><tr><td>WeekdayFromDate(“2008-08-18”)</td><td>If mylink.mydate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 1:</td></tr><tr><td>MonthFromDate(“2008-08-18”)</td><td>If mylink.mydate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 8</td></tr><tr><td>YearFromDate(“2008-08-18”)</td><td>If mylink.mydate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 2008:</td></tr><tr><td>NextWeekdayFromDate(“2008-08-18”, “thursday”)</td><td>If mylink.mysourcedate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 2008–08–21</td></tr><tr><td>PreviousWeekdayFromDate(“2008-08-18”, “thursday”)</td><td>If mylink.mysourcedate contains the date 2008-08-18, then the two following functions are equivalent, and return the value 2008–08–14</td></tr><tr><td>NthWeekdayFromDate(“2009-08-18”, “thursday”, 1)</td><td>Returns first thrusday after the date mentioned.</td></tr><tr><td>If mylink.mydate contains the date 2009-08-18, then the two following functions are equivalent, and return the value 2009–08–27</td></tr><tr><td>SecondsSinceFromTimestamp(“2008–08–18 22:30:52″,”2008–08–19 22:30:52”)</td><td>If mylink.mytimestamp contains the timestamp 2008–08–18 22:30:52, and mylink.mytimestamp_base contains the timestamp 2008–08–19 22:30:52, then the two following functions are equivalent, and return the value -86400</td></tr></tbody></table>
+<p>The <code>Add_Months(date, number)</code> function adds a specified number of months to a given date. For example:</p>
 
-<br><br>
+<pre><code class="language-java">
+StreamStage addMonthsStage = new StreamStage("Add Months Stage");
+TransformModule addMonthsTrans = addMonthsStage.newTransformModule("Add Months Transformer");
+addMonthsTrans.setExpression("Output(Add_Months(Input(), 3))");
+addMonthsStage.setInput(inputStream)
+              .addTransform(addMonthsTrans)
+              .setOutput(outputStream);
+</code></pre>
+
+<h3>3. Add_Years()</h3>
+
+<p>The <code>Add_Years(date, number)</code> function adds a specified number of years to a given date. For example:</p>
+
+<pre><code class="language-java">
+StreamStage addYearsStage = new StreamStage("Add Years Stage");
+TransformModule addYearsTrans = addYearsStage.newTransformModule("Add Years Transformer");
+addYearsTrans.setExpression("Output(Add_Years(Input(), 5))");
+addYearsStage.setInput(inputStream)
+             .addTransform(addYearsTrans)
+             .setOutput(outputStream);
+</code></pre>
+
+<h3>4. Extract Functions</h3>
+
+<p>DataStage provides various extract functions to get specific parts of a date. For example, <code>Year(date)</code>, <code>Month(date)</code>, <code>Day(date)</code>, <code>Hour(date)</code>, <code>Minute(date)</code>, and <code>Second(date)</code>. Here's an example using the <code>Year()</code> function:</p>
+
+<pre><code class="language-java">
+StreamStage yearStage = new StreamStage("Year Stage");
+TransformModule yearTrans = yearStage.newTransformModule("Year Transformer");
+yearTrans.setExpression("Output(Year(Input()))");
+yearStage.setInput(inputStream)
+         .addTransform(yearTrans)
+         .setOutput(outputStream);
+</code></pre>
+
+<h3>5. Format_Date()</h3>
+
+<p>The <code>Format_Date(date, format)</code> function formats a date according to the specified pattern. For example:</p>
+
+<pre><code class="language-java">
+StreamStage formatDateStage = new StreamStage("Format Date Stage");
+TransformModule formatDateTrans = formatDateStage.newTransformModule("Format Date Transformer");
+formatDateTrans.setExpression("Output(Format_Date(Input(), 'YYYY-MM-DD'))");
+formatDateStage.setInput(inputStream)
+               .addTransform(formatDateTrans)
+               .setOutput(outputStream);
+</code></pre>
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

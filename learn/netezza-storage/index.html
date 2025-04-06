@@ -1,105 +1,75 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Understanding Netezza Storage</h1>
+<section id="overview">
+<h2>Overview of Netezza Storage Disks</h2>
+<p>Each disk in a Netezza system consists of three main partitions: the primary partition, the mirror partition, and the temp/swap partition. The primary partition is responsible for storing user data such as database tables, the mirror stores a backup copy of the primary partition from another disk to ensure data integrity in case of disk failures, and the temp/swap partition temporarily stores data during data redistribution while processing queries.</p>
+<p>The logical representation of the data stored in the primary partition of each disk is known as the data slice. When users create database tables and load data into them, it gets distributed across the available data slices. The grouping of data slices is called the data partition.</p>
+</section>
+<section id="connection">
+<h2>Connection and Partition Assignment</h2>
+<p>In a TwinFin system, each S-Blade or SPU is connected to 8 data partitions, although some may only be connected to 6 disk partitions due to reserved disks for failovers. In the event of SPU failures, additional data partitions may be assigned to it from the failed SPU.</p>
+<p>The SPU is connected to eight data partitions numbered 0 to 7. Each data partition corresponds to one data slice stored on different disks.</p>
+</section>
+<section id="failures">
+<h2>Handling Disk and SPU Failures</h2>
+<p>When a disk fails, the system immediately switches to using the mirror partition of another disk for query data. This creates a bottleneck that impacts query performance. The failed disk's contents are regenerated on one of the spare disks in the array. Once regeneration is complete, the SPU data partition is updated to point to the new data slice on the regenerated disk.</p>
+<p>In case of an SPU failure, the appliance assigns all the data partitions to other SPUs within the system. Pairs of disks containing mirror copies of each other’s data slices will be reassigned to other SPUs, resulting in additional two data partitions being managed by the target SPU.</p>
+</section>
 
 
+**Learning Netezza Storage: A Comprehensive Guide**
 
+Welcome to our comprehensive guide on understanding Netezza storage! In this article, we will delve into the key aspects of Netezza storage architecture and best practices for managing it effectively. Let's get started!
 
+**1. Introduction**
 
+Netezza is a high-performance data warehouse appliance produced by IBM. Its unique storage architecture leverages columnar storage, parallel processing, and massively parallel processing to deliver fast and scalable analytics.
 
-Netezza storage - learn
+![Netezza Architecture Overview](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjI/r98DA/P4B8v7379zr1ybT3t/nY6iRZdX9+sAAAAASUVORK5CYII=)
 
-Netezza storage disks
-<p>The primary partition in each disk is used to store user data like database tables, the mirror stores a copy of the primary partition of another disk so that it can be used in the event of disk failures and the temp/swap partition is used to store the data temporarily like when the appliance does data redistribution while processing queries. The logical representation of the data saved in the primary partition of each disk is called the data slice. When users create database tables and loads data into it, they get distributed across the available data slices. Logical representation of data slices is called the data partition. </p>
-<p>For TwinFin systems each S-Blade or SPU is connected to 8 data partitions and some only to 6 disk partitions (since some disks are reserved for failovers). There are situations like SPU failures when a SPU can have more than 8 partitions attached to it since it got assigned some of the data partitions from the failed SPU. </p>
-<p>The SPU is connected to 8 data partitions numbered 0 to 7. Each data partition is connected to one data slice stored on different disks.</p>
+**2. Columnar Storage**
 
-<p>What happens when a disk fails – Immediately after the disk stops responding, the disk with the mirror will be used by the system to satisfy queries for data from primary and mirror data. This will also create a bottleneck which in-turn impacts query performances. In the meantime, the contents in the failed disk  is regenerated on one of the spare disks in the disk array. Once the regen is complete the SPU data partition is updated to point to the data slice on the new disk. The regen process removes the bottleneck of disk to perform optimally. In the situation where a SPU fails, the appliance assigns all the data partitions to other SPUs in the system. Pairs of disks which contains the mirror copy of each other’s data slice will be assigned to other SPUs which will result in additional two data partitioned to be managed by the target SPU.</p>
+Columnar storage is a method of data organization where data for each column of a table is stored contiguously, rather than row-by-row as in traditional relational databases. Netezza uses columnar storage to maximize query performance and minimize I/O operations by reading only the required columns for a given query.
 
+**3. Massively Parallel Processing (MPP)**
 
-<br><br>
+Netezza employs MPP, which allows data to be processed in parallel across multiple nodes. This results in faster query times, as each node can process its own subset of data independently.
+
+**4. Best Practices for Netezza Storage Management**
+
+1. **Optimize Table Design:** Minimizing the number of columns and tables, and properly indexing them, can significantly improve query performance.
+2. **Data Partitioning:** Breaking large tables into smaller partitions based on a partition key can further optimize query performance by reducing the amount of data read for each query.
+3. **Use Load Procedures:** Netezza provides load procedures to efficiently load data into tables while minimizing I/O operations.
+4. **Query Optimization:** Ensure queries are written efficiently, using proper joins and indices, to minimize CPU and I/O usage.
+5. **Regular Maintenance:** Regularly perform maintenance tasks such as table reorganizations and statistics updates to ensure optimal query performance over time.
+
+**5. Conclusion**
+
+Understanding the unique storage architecture of Netezza is essential for effectively managing your data warehouse and ensuring fast, scalable analytics. By following best practices in table design, data partitioning, loading data efficiently, optimizing queries, and performing regular maintenance, you can maximize the performance of your Netezza appliance.
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

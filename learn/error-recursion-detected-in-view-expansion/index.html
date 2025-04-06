@@ -1,123 +1,151 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Troubleshooting: Netezza Error - "Recursion detected in view expansion"</h1>
+<p>Issue:</p>
+<ul>
+<li>You may encounter this error when attempting to query a view or create a view on another view.</li>
+</ul>
+<p>Error:</p>
+<code>Recursion detected in view expansion</code>
+<p>Cause:</p>
+<ul>
+<li>Netezza does not permit the creation of a view that points to itself or any object with the same name within a database. This deviates from databases such as Oracle or Teradata, but there is a bug in Netezza that allows you to create a view pointing to itself if the view already exists.</li>
+</ul>
+<p>Resolution:</p>
+<ol>
+<li>To resolve this issue, you must recreate the view with the correct definition for the query to run successfully.</li>
+</ol>
+<p>More Explanation:</p>
+<ol start="1">
+<li>If you create a brand new view pointing to itself, you will receive an error:</li>
+<pre>CREATE OR REPLACE VIEW MyView1 AS SELECT * FROM MyView1;</pre>
+<code>ERROR: relation does not exist TESTDB.ADMIN.MYVIEW1</code>
+</ol>
+<ol start="2">
+<li>Now, if you create this view with a valid definition it will run fine:</li>
+<pre>CREATE OR REPLACE VIEW MyView1 AS SELECT * FROM T1;</pre>
+<code>CREATE VIEW</code>
+</ol>
+<ol start="3">
+<li>Running a select on the view will run successfully:</li>
+<pre>SELECT * FROM MyView1;</pre>
+</ol>
+<ol start="4">
+<li>Attempting to recreate this view as in step 1 will work without error:</li>
+<pre>CREATE OR REPLACE VIEW MyView1 AS SELECT * FROM MyView1;</pre>
+<code>CREATE VIEW</code>
+</ol>
+<ol start="5">
+<li>Running a select on the view will throw an error:</li>
+<pre>SELECT * FROM MyView1;</pre>
+<code>ERROR: Recursion detected in view expansion</code>
+</ol>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
 
+ **Title:** Understanding and Resolving "Recursion Detected in View Expansion" Error in Rails
 
+ **Introduction**
 
+ Welcome to this informative guide on resolving the "Recursion Detected in View Expansion" error in Ruby on Rails applications. This article will provide you with a comprehensive understanding of the error, its causes, and effective strategies for troubleshooting and resolution. Let's dive right in!
 
+ **Table of Contents**
 
+1. **Understanding Recursion Detected Error**
+2. **Common Causes**
+3. **How Rails Detects View Recursion**
+4. **Troubleshooting Steps**
+   - Inspect the Stack Trace
+   - Identify the Problematic View
+   - Understand Dependencies with `rake routes` and `rails routes`
+   - Analyze View Source Code
+5. **Resolution Strategies**
+   - Break the Recursion Chain
+   - Use Layered Partial Rendering
+   - Optimize Shared Layouts
+6. **Prevention Measures**
+   - Keep Your Gems Updated
+   - Monitor Complex Nested Layouts and Partials
+   - Avoid Over-relying on Shared Components
+7. **Conclusion**
 
-Netezza error: Recursion detected in view expansion - learn
+ **1. Understanding Recursion Detected Error**
 
-<p>ISSUE:
-You may see this error when trying to query a view or create a view on another view.</p>
-<p>ERROR: Recursion detected in view expansion</p>
-<p>CAUSE:
-Netezza does not allow creating a view pointing to itself or any object with same name in a database. This is a departure if you are coming from other databases such as Oracle or Teradata. But there is a bug in Netezza which allows you to create a view pointing to itself if the view already exists.</p>
-<p style="float: left; margin: 4px;">
-</p>
-<p>To resolve the issue you have to recreate a view with correct definition for the query to run successfully.</p>
-<p>MORE EXPLANATION:
-1) If you create a brand new view pointing to itself you will get error:</p>
-TESTDB.ADMIN(ADMIN)=&gt; create or replace view MyView1 as select * from MyView1;
-ERROR: relation does not exist TESTDB.ADMIN.MYVIEW1
-<p>2) Now, if you create this view as valid view it will run fine:</p>
-TESTDB.ADMIN(ADMIN)=&gt; create or replace view MyView1 as select * from T1;
-CREATE VIEW
-<p>3) Run select on view and it will run fine:</p>
-TESTDB.ADMIN(ADMIN)=&gt; select * from MyView1;
-&lt;Runs Successfully&gt;
-<p>4) Now, again try to recreate this view as we tried to create in step 1. It will work fine:</p>
-TESTDB.ADMIN(ADMIN)=&gt; create or replace view MyView1 as select * from MyView1;
-CREATE VIEW
-<p>5) Run select on view and it will throw error:</p>
-TESTDB.ADMIN(ADMIN)=&gt; select * from MyView1;
-<p>ERROR: Recursion detected in view expansion</p>
+The "Recursion Detected in View Expansion" error occurs when Rails encounters an infinite loop while rendering a view, resulting in excessive stack usage and eventual failure of your application.
 
-<br><br>
+ **2. Common Causes**
+
+- Nested layouts with overlapping content or interdependent components
+- Overuse of partial views without proper isolation
+- Circular dependencies within views, helpers, or controllers
+
+ **3. How Rails Detects View Recursion**
+
+Rails keeps track of the view rendering stack by storing view paths in a `ViewPaths` object. During the rendering process, if the same view is added to the stack twice, Rails detects this as a recursion and raises an error.
+
+ **4. Troubleshooting Steps**
+
+Follow these steps when faced with the "Recursion Detected in View Expansion" error:
+
+- Inspect the Stack Trace
+  - The stack trace will help you identify the problematic view file
+
+- Identify the Problematic View
+  - Locate the view causing the recursion by examining the line numbers and filenames mentioned in the stack trace
+
+- Understand Dependencies with `rake routes` and `rails routes`
+  - Use these commands to explore the relationships between your routes, controllers, and views for context on the problematic view's dependencies
+
+- Analyze View Source Code
+  - Examine the source code of the problematic view to determine the cause of the recursion
+
+ **5. Resolution Strategies**
+
+- Break the Recursion Chain
+  - Modify the view source code to avoid recursive calls or dependencies between views, helpers, or controllers
+
+- Use Layered Partial Rendering
+  - Render partials in layers rather than nested them, ensuring that each layer is self-contained and doesn't rely on other layers for its content
+
+- Optimize Shared Layouts
+  - Refactor shared layouts to avoid overlapping or interdependent components, minimizing the risk of recursion
+
+**6. Prevention Measures**
+
+- Keep Your Gems Updated
+  - Make sure your gems are up-to-date, as new versions often include bug fixes that may address issues causing view recursion
+
+- Monitor Complex Nested Layouts and Partials
+  - Regularly review complex nested layouts and partials for potential recursive dependencies
+
+- Avoid Over-relying on Shared Components
+  - Be cautious when using shared components, as overuse can increase the risk of view recursion
+
+**7. Conclusion**
+
+Encountering the "Recursion Detected in View Expansion" error can be a frustrating experience, but understanding its causes and following troubleshooting steps can help you quickly resolve the issue. By implementing prevention measures, you can minimize the chance of encountering this error again in your Rails applications. Happy coding!
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
+</body></html>

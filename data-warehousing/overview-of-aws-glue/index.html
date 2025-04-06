@@ -1,160 +1,149 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Overview of AWS Glue - Data Warehousing AWS, Cloud, Data Warehousing
-
-
-
-
-
-
-
-Reading Time:  4 minutes
-
-
-<a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"> 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Data_stores">
-1)
-Data stores
-</a>
- <a href="index.html#Crawlers">
-2)
-Crawlers
-</a>
- <a href="index.html#Data_Catalog">
-3)
-Data Catalog
-</a>
- <a href="index.html#Migrating_from_on_Premise_solution_to_AWS_Glue">
-3.1)
-Migrating from on Premise solution to AWS Glue
-</a>
- <a href="index.html#Steps_to_Build_your_ETL_jobs">
-3.2)
-Steps to Build your ETL jobs
-</a>
- <a href="index.html#Set_up_connections_to_source_and_target">
-3.3)
-Set up connections to source and target
-</a>
- <a href="index.html#Create_crawlers_to_gather_schemas_of_source_and_target_data">
-3.4)
-Create crawlers to gather schemas of source and target data
-</a>
- <a href="index.html#Build_ETL_jobs_using_AWS_Glue_Studio">
-3.5)
-Build ETL jobs using AWS Glue Studio
-</a>
- <a href="index.html#Scheduling_and_monitoring_jobs">
-3.6)
-Scheduling and monitoring jobs
-</a>
- <a href="index.html#What_to_read_next">
-3.7)
-What to read next?
-</a>
-
-<h2 class="kt-blocks-info-box-title">Data stores</h2><p class="kt-blocks-info-box-text">access and combine data from multiple source data stores, and keep that combined data</p></a>
-
-
-<a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"><h2 class="kt-blocks-info-box-title">Crawlers</h2><p class="kt-blocks-info-box-text">AWS Glue crawls your data sources, identifies data formats, and suggests schemas to store your data</p></a>
-
-
-<a class="kt-blocks-info-box-link-wrap info-box-link kt-blocks-info-box-media-align-top kt-info-halign-center"><h2 class="kt-blocks-info-box-title">Data Catalog</h2><p class="kt-blocks-info-box-text">You can use the AWS Glue Data Catalog to quickly discover and search across multiple AWS data sets without moving the data</p></a>
-
-
-
-Migrating from on Premise solution to AWS Glue
-<p>When you run AWS Glue, there are no servers or other infrastructure to manage. Pay only for the resources used while running the jobs and the metadata that is stored. If your organization is already invested in Informatica or Datastage, Talend, etc., it may be easy for the developers to pick up Amazon Glue easily by using the AWS Glue studio. AWS Glue Studio makes it easy to visually create, run, and monitor AWS Glue ETL jobs. You can compose ETL jobs that move and transform data using a drag-and-drop editor, and AWS Glue automatically generates the code. You can then use the AWS Glue Studio job run dashboard to monitor ETL execution and ensure that your jobs are operating as intended. </p>
-<p>Though it is important to remember that the 3rd party connectors that are commonly available in other ETL tools may not be available (yet!). No Salesforce connector 🙂</p>
-<p>If your company has already significantly invested in on-prem for ETL pipelines, migration may be expensive.</p>
-
-
-
-Steps to Build your ETL jobs
-<ul class="kt-svg-icon-list"><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0">Set up connections to source and target</li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1">Create crawlers to gather schemas of source and target data</li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-2">Build ETL jobs using Amazon Glue Studio</li><li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-3">Schedule the ETL jobs and monitor them</li></ul>
-Set up connections to source and target
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<article class="kt-content kt-margin-bottom-20">
+<h1 class="kt-headline kt-headline--primary">Understanding AWS Glue: A Guide to Serverless ETL</h1>
+<section>
+<h2>Overview of AWS Glue</h2>
+<p>Amazon Web Services (AWS) Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics. It automates the process of creating, running, and monitoring ETL jobs.</p>
+</section>
+<section>
+<h2>Why Use AWS Glue?</h2>
+<p>AWS Glue simplifies data integration by eliminating the need for extensive programming and manually writing scripts. It offers a visual interface to design ETL jobs, with code generation based on your design.</p>
+</section>
+<section>
+<h2>Steps to Build ETL Jobs with AWS Glue</h2>
+<ul class="kt-svg-icon-list">
+<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-0">Set up connections to source and target</li>
+<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-1">Create crawlers to gather schemas of source and target data</li>
+<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-2">Build ETL jobs using Amazon Glue Studio</li>
+<li class="kt-svg-icon-list-style-default kt-svg-icon-list-item-wrap kt-svg-icon-list-item-3">Schedule the ETL jobs and monitor them</li>
+</ul>
+</section>
+<section id="setup-connections">
+<h3>Setup Connections to Source and Target</h3>
 <p>All connections are setup using IAM roles. Connections to RDBMS in Amazon ecosystem can be configured using IAM roles and connected using RDBMS connector.</p>
+<p>For non-RDBMS connections, example connection to S3 can be established based on IAM roles that have access to read/update respective S3 buckets.</p>
+</section>
+<section id="create-crawlers">
+<h3>Create Crawlers to Gather Schemas of Source and Target Data</h3>
+<p>AWS GLUE crawlers infer schemas from connected datastores and store metadata in the data catalog.</p>
+<p>Crawlers can connect to data stores using IAM roles configured by you. You can set up crawlers to choose the data store to include and crawl all JSON, text files, system logs, relational database tables, etc. Include or exclude patterns as per your requirements.</p>
+</section>
+<section id="build-etl-jobs">
+<h3>Build ETL Jobs using Amazon Glue Studio</h3>
+<p>While building the ETL job in AWS Glue studio, the job references source and target table schemas based on the data catalog. You can set up arguments for the job and schedule it based on events or time.</p>
+<p>After the job is compiled, it generates a PySpark or Scala script that is executed during runtime.</p>
+</section>
+<section id="scheduling-monitoring">
+<h3>Scheduling and Monitoring Jobs</h3>
+<p>AWS provides logging within the Cloudwatch logs, which can be useful for troubleshooting and monitoring your ETL jobs.</p>
+<p>Knowledge of Python PySpark or Scala may be helpful in case of troubleshooting or large projects with multiple changes. Consider your team's strengths on these before diving into AWS Glue.</p>
+</section>
+<section id="further-reading">
+<h3>What to Read Next?</h3>
+<ul class="kt-list-inline kt-margin-bottom-10">
+<li><a class="kt-link kt-font-bold kt-margin-right-5" href="#">Comparison of AWS Glue with Other ETL Tools</a></li>
+<li><a class="kt-link kt-font-bold kt-margin-right-5" href="#">Best Practices for Designing Efficient ETL Jobs in AWS Glue</a></li>
+</ul>
+</section>
+<style scoped="">
+.kt-content {
+    max-width: 960px;
+}
 
-<p>For non RDBMS connections, example connection to S3 can be established based on IAM roles that have access to read/update respective S3 buckets.</p>
-Create crawlers to gather schemas of source and target data
-AWS GLUE crawlers infer schemas from connected datastores and stores metadata in the data catalog
-<p>AWS Glue crawlers can connect to data stores using the IAM roles that you can configure. After connection, you can set up the crawlers to choose data store to include and crawl all JSON, text files, system logs, relational database tables, etc. You can include or exclude patterns that the crawler infers schemas from. For example, if you don’t want the *.csv files on the S3 bucket to be crawled, you can exclude them. The crawler can be one time or be setup to run on a given schedule. It can store the output in the data catalog. The output includes the format (eg. JSON) and the schema.</p>
-Build ETL jobs using AWS Glue Studio
-AWS Glue generates PySpark or Scala script
-<p>While building the ETL job in AWS Glue studio, the job references source and target table schemas based on the data catalog. Job argument can be setup in the job and it can be scheduled based on events or time. After the job is complied it generates a PySpark or Scala script that is executed during run time. Serverless means we pay only for the processing and loading data and for discovering data (crawlers) and these are billed by the second. For AWS Glue catalog, a monthly fee is paid for storing and accessing the metadata. The first million objects stored and the first million accesses are free.</p>
-Scheduling and monitoring jobs
-<p>AWS provides logging within the Cloudwatch logs</p>
+.kt-headline--primary {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    text-align: center;
+}
 
-<p>Knowledge of Python PySpark or Scala may be useful in case of troubleshooting or large project with multiple changes. Consider your teams strength on these before you dive into AWS Glue.</p>
+@media (max-width: 768px) {
+    .kt-content {
+        max-width: 100%;
+    }
 
-<h3>What to read next?</h3>
+    .kt-headline--primary {
+        font-size: 28px;
+    }
+}
+</style></article>
+<h1>Overview of AWS Glue</h1>
+<p>Amazon Web Services (AWS) Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to categorize their data, cleanse it, enrich it, and move it reliably between various data stores. This service automates the process of creating and running ETL jobs by incorporating metadata about your data and schema, as well as providing the ability to easily monitor and manage these jobs.</p>
+<h2>Key Features</h2>
+<ul>
+<li><strong>Schema Registry:</strong> AWS Glue automatically generates and maintains metadata (such as schemas, statistics, and lineage) for your data stores, allowing you to understand the composition of your data and where it comes from.</li>
+<li><strong>ETL Development:</strong> You can easily create and run ETL jobs using Visual Workflow or Apache Spark, depending on your requirements.</li>
+<li><strong>Job Monitoring &amp; Management:</strong> AWS Glue makes it easy to monitor the progress of your ETL jobs and manage their execution, including retries, scheduling, and triggers.</li>
+</ul>
+<h2>Example Use Case: Extract Data from S3 into Redshift</h2>
+<p>Let's consider an example where you have data stored in Amazon Simple Storage Service (S3) and want to extract it and load it into Amazon Redshift for analysis. Here's how you could use AWS Glue to accomplish this:</p>
+<h3>1. Create a Crawler</h3>
+<p>First, you'd create a crawler that discovers the schema of your data stored in S3.</p>
 
-<a class="yarpp-thumbnail" href="https://www.iexpertify.com/data-warehousing/traditional-etl-vs-aws-glue/" rel="norewrite" title="Traditional ETL vs AWS Glue">
-Traditional ETL vs AWS Glue</a>
-<a class="yarpp-thumbnail" href="https://www.iexpertify.com/learn/full-course/aws-glue-serverless-etl/" rel="norewrite" title="AWS Glue (Serverless ETL)">
-AWS Glue (Serverless ETL)</a>
+    ```python
+import boto3
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
 
+def main(**options):
+    sc = SparkContext()
+    glueContext = GlueContext(sc)
 
+    # Create a crawler that discovers your S3 data
+    crawler = glueContext.create_crawler()
+    crawler.init( options, 's3-crawler')
+    crawler.setTargetDatabase('mydb')
+    crawler.setTargetTable('mysource')
+    crawler.run()
+```
 
+    <h3>2. Create a Job</h3>
+<p>Next, you'd create an ETL job that uses the discovered schema to extract data from S3 and load it into Redshift.</p>
 
+    ```python
+import boto3
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
 
- 
+def main(**options):
+    sc = SparkContext()
+    glueContext = GlueContext(sc)
 
+    # Create an ETL job that extracts data from S3 and loads it into Redshift
+    source = glueContext.create_dynamic_frame.from_catalog(database='mydb', table_name='mysource', redshift_ temporary_sort_prefix='glue_tmp sort_')
+    sink = glueContext.write_columnar(source, 's3://mybucket/mydata', format='csv', connection_type='redshift')
+    sink.commit()
+```
 
-
-
-
- 
- 
-
-
-
-
-
-
+    <h2>Conclusion</h2>
+<p>AWS Glue is a powerful tool for managing your data in AWS and simplifying the process of creating and running ETL jobs. By automating the metadata management, schema discovery, and job execution, you can focus on analyzing your data rather than worrying about the details of the data pipelines.</p>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

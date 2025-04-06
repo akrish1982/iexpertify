@@ -1,135 +1,72 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
 
 
 
-
-
-
-Netezza Databases, Tables and Database Objects - learn
-
-
-
-
-<p>The following are the major object groups in Netezza.</p>
-<ul><li>Users</li><li>Users Groups </li><li>Tables </li><li>Views </li><li>Materialized View </li><li>Synonyms </li><li>Database </li><li>Procedures and </li><li>User Defined Function </li></ul>
-<p>For anyone who is familiar with the other relational database management systems, it will be obvious that there are no indexes, bufferpools or tablespaces to deal with in Netezza.</p>
-Netezza Database Objects
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Users">
-1)
-Users
-</a>
- <a href="index.html#User_Groups">
-2)
-User Groups
-</a>
- <a href="index.html#Database">
-3)
-Database
-</a>
- <a href="index.html#What_to_read_next">
-3.1)
-What to read next?
-</a>
-
-<h2>Users</h2>
-<p>The appliance comes preconfigured with the following 3 user ids which can’t be modified or deleted from the system. </p>
-<ul><li>root – The super user for the host system on the appliance and has all the access as a super user in any Linux system</li><li>nz – Netezza system administrator Linux account that is used to run host software on Linux</li><li>admin – The default Netezza SQL database administrator user which has access to perform all database related tasks against all the databases in the appliance</li></ul>
-<h2>User Groups</h2>
-<p>By default Netezza comes with a database group called public. All database users created in the system are automatically added as members of this group and cannot be removed from this group.</p>
-<h2>Database</h2>
-<p class="has-luminous-vivid-amber-background-color has-background">Netezza comes with two databases System and a model database both owned by Admin user. The system database consists of objects like tables, views, synonyms, functions and procedures. The system database is primarily used to catalog all user database and user object details which will be used by the host when parsing, validating and creation of execution code for queries from the users. </p>
-
-<br><br>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learning about Netezza Databases, Tables, and Database Objects</h1>
+<p>This article provides an overview of the major object groups in Netezza, including Users, User Groups, Tables, Views, Materialized Views, Synonyms, Databases, Procedures, and User Defined Functions. If you are familiar with other relational database management systems, you'll notice that there are no indexes, bufferpools, or tablespaces to manage in Netezza.</p>
+<h2 id="Netezza Database Objects">Netezza Database Objects</h2>
+<ul>
+<li><a href="#Users">1) Users</a></li>
+<li><a href="#User_Groups">2) User Groups</a></li>
+<li><a href="#Database">3) Database</a></li>
+<li><a href="#What_to_read_next">3.1) What to read next?</a></li>
+</ul>
+<h2 id="Users">Users</h2>
+<p>The appliance comes preconfigured with three user ids that cannot be modified or deleted from the system. These are:</p>
+<ul>
+<li>root – The super user for the host system on the appliance and has all the access as a super user in any Linux system</li>
+<li>nz – Netezza system administrator Linux account that is used to run host software on Linux</li>
+<li>admin – The default Netezza SQL database administrator user, which has access to perform all database-related tasks against all the databases in the appliance</li>
+</ul>
+<h2 id="User_Groups">User Groups</h2>
+<p>By default, Netezza comes with a database group called public. All database users created in the system are automatically added as members of this group and cannot be removed from it.</p>
+<h2 id="Database">Database</h2>
+<p class="luminous-vivid-amber-background-color">Netezza comes with two databases: System and a model database, both owned by the Admin user. The system database consists of objects like tables, views, synonyms, functions, and procedures. The system database is primarily used to catalog all user database and user object details, which will be utilized by the host when parsing, validating, and creating execution code for queries from the users.</p>
+<h1>Getting Started with Netezza Databases, Tables, and Database Objects</h1>
+<h2>Introduction</h2>
+<p>Netezza is a high-performance data warehouse appliance that provides fast analytic processing for large datasets. Understanding its database structure, specifically tables and other database objects, can help you optimize your queries and make the most of this powerful tool.</p>
+<h2>Databases</h2>
+<p>A Netezza database consists of one or more schemas. A schema is a logical container for tables, views, and other database objects.</p>
+<h2>Tables</h2>
+<p>Tables are the primary data structures in a Netezza database. They store the actual data that you query. Here's an example of creating a simple table:</p>
+<pre>
+    CREATE TABLE my_table (
+        id INTEGER,
+        name VARCHAR(255)
+    );
+    </pre>
+<h2>Database Objects</h2>
+<h3>Views</h3>
+<p>A view is a virtual table based on the result-set of an SQL query. Views can be used to improve application and database portability, enhance table independence, simplify large and complex SELECT statements, reduce data redundancy, and restrict access to base tables.</p>
+<h3>Sequences</h3>
+<p>A sequence is a database object that generates numeric values according to user-defined rules. Sequences are often used for automatically generating primary keys or other auto-incrementing columns in tables.</p>
+<h3>Indexes</h3>
+<p>An index is a data structure that improves the speed of data retrieval operations on a table, at the cost of slower write operations. Indexes can be created using one or more columns of a table and are used to quickly locate rows meeting certain conditions.</p>
+<h2>Summary</h2>
+<p>Understanding Netezza databases, tables, and other database objects is crucial for optimizing your queries and leveraging the power of this high-performance data warehouse appliance. Remember to use views to simplify complex queries, sequences for auto-incrementing columns, indexes to speed up data retrieval, and always design your schema with efficiency in mind.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

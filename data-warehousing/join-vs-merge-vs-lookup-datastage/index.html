@@ -1,99 +1,123 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html><head>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Join vs Merge vs Lookup - Datastage - Data Warehousing</h1>
+<p>In this article, we will discuss the differences between Join, Merge, and Lookup operations in Datastage for data warehousing.</p>
+<table>
+<tbody>
+<tr>
+<th>Join</th>
+<th>Merge</th>
+<th>Lookup</th>
+</tr>
+<tr>
+<td>Supports four types of joins: Inner Join, Left Outer Join, Right Outer Join, Full Outer Join. Inputs can vary from 1 (for Inner Join) to N for other join types.</td>
+<td>Supports only two types of joins: Inner Join and Left Outer Join. Inputs can be variable.</td>
+<td>Supports both normal stages and sparse lookups. For normal stages, inputs can vary from 1 to N. For sparse lookups, inputs are limited to 2.</td>
+</tr>
+<tr>
+<td>Outputs one link</td>
+<td>Outputs one link</td>
+<td>Outputs one link</td>
+</tr>
+<tr>
+<td>No reject links</td>
+<td>Has N-1 reject links (where N is the number of inputs minus 1)</td>
+<td>Has one reject link</td>
+</tr>
+<tr>
+<td>Requires key column names to be identical for primary and secondary records</td>
+<td>Requires key column names to be identical for primary and secondary records</td>
+<td>Key column names can be optional, but should be identical in case of sparse lookups</td>
+</tr>
+<tr>
+<td>Primary and secondary records should be sorted before this stage</td>
+<td>Primary and secondary records should be sorted before this stage</td>
+<td>Sorted order for primary and secondary records is optional in Lookup stage.</td>
+</tr>
+<tr>
+<td>Memory usage is light</td>
+<td>Memory usage is light</td>
+<td>Memory usage is heavy</td>
+</tr>
+</tbody>
+</table>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
 
 
+    **DataStage: Join vs Merge vs Lookup**
 
+    In DataStage, data integration and transformation tasks can be performed using various operations such as Join, Merge, and Lookup. These three operations are commonly used for combining data from multiple sources, but they function differently and have specific use cases. Let's explore each operation in detail.
 
+    **Join**
 
+    A Join in DataStage is an operation that combines rows from two or more tables based on a related column between them (usually the primary key). There are various types of Joins, such as Inner Join, Left Outer Join, Right Outer Join, and Full Outer Join.
 
-Join vs Merge vs Lookup - Datastage - Data Warehousing Data WarehousingReading Time:  &lt; 1 minute
-<table><tbody><tr><td>Join</td><td>Merge</td><td>Lookup</td></tr><tr><td>We can perform four types of Joins in Join Stage. Inner JoinLeft Outer JoinRight Outer JoinFull Outer Join</td><td>We can perform only two types of Joins in Merge Stage.Inner JoinLeft Outer Join</td><td>We can perform only two types of Joins in Look Stage.Inner JoinAnd Left Outer Join</td></tr><tr><td>There will be a N-Inputs ( In the case of Left, Inner, Right Outer Joins)There will be a 2 Inputs ( In the case of Full Outer Join) </td><td>There will be a N-Inputs</td><td>There will be a N-Inputs ( In the Case of Normal Stage)2 Inputs (In the Case of Sparse Look Up ) </td></tr><tr><td>One Output Link</td><td>One Output Link</td><td>One Output Link</td></tr><tr><td>No Reject Links</td><td>N-1 Reject Links</td><td>One Reject Link</td></tr><tr><td>Light Memory Usage</td><td>Light Memory Usage</td><td>Heavy Memory usage </td></tr><tr><td>Key Column Names should be Same. That is Primary record should be same with Secondary Records.</td><td>Key Column Names should be Same. That is Primary record should be same with Secondary Records.</td><td>Key column names Optional.It should be same in the case of Sparse Look Up</td></tr><tr><td>Primary and secondary records should be in sorted order before this stage</td><td>Primary and secondary records should be in sorted order before this stage</td><td>In Look Up stage it is Optional. That is all the primary and secondary records no need to be sorted.</td></tr></tbody></table>
+    Here's an example of how to create an Inner Join in DataStage:
 
-<br><br>
+    ```
+    Stream1(EmployeeID, FirstName, LastName)
+       |-- INNER JOIN --|
+    Stream2(EmployeeID, DepartmentID, DepartmentName)
+          |-- OutputStream --&gt; (EmployeeID, FirstName, LastName, DepartmentName)
+    ```
+
+    **Merge**
+
+    Merge in DataStage is used to combine data from two sorted streams into a single stream based on a common key. It can be either an Upstream Merge (when the merge key is present in both streams) or a Downstream Merge (when the merge key is only present in one of the streams).
+
+    Here's an example of how to create a simple Upstream Merge in DataStage:
+
+    ```
+    Stream1(EmployeeID, FirstName, LastName, Salary)
+       |-- UPSTREAM MERGE --|
+    Stream2(DepartmentID, DepartmentName)
+          |-- OutputStream --&gt; (EmployeeID, FirstName, LastName, Salary, DepartmentName)
+    ```
+
+    **Lookup**
+
+    Lookup in DataStage is an operation that retrieves data from a reference table (lookup table) based on the key provided in the input stream. It allows you to enrich or filter data as needed.
+
+    Here's an example of how to create a Lookup in DataStage:
+
+    ```
+    InputStream(EmployeeID, PositionID)
+       |-- LOOKUP --|
+    ReferenceTable(PositionID, PositionName)
+          |-- OutputStream --&gt; (EmployeeID, EmployeePosition)
+    ```
+
+    **When to Use Each Operation**
+
+    - Join: When you need to combine data from two tables based on a common key.
+    - Merge: When you want to combine sorted streams into a single stream based on a common key. Upstream Merge is useful when both input streams are sorted, while Downstream Merge can be used when only one input stream is sorted.
+    - Lookup: When you need to enrich or filter data by retrieving data from a reference table based on the key provided in the input stream.
+
+    **Conclusion**
+
+    In summary, Join, Merge, and Lookup are essential operations in DataStage for combining and transforming data. Knowing when to use each operation will help you design efficient data integration solutions that meet your business requirements effectively.
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
+</body></html>

@@ -1,115 +1,90 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
 
 
 
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Merge Stage in DataStage - Data Warehousing</h1>
+<p>The Merge stage is a processing stage that can have any number of input links, a single output link, and the same number of reject links as there are update input links. This stage is one of three stages used for joining tables based on key columns.</p>
+<p>The Merge stage combines a master dataset with one or more update datasets based on the key columns. The output record contains all the columns from the master record plus any additional columns from each update record that are required. A master record and update record will be merged only if both have the same key column values.</p>
+<p>It's essential to note that the data sets input to the Merge stage must be key-partitioned and sorted. Preprocessing your data for the Merge stage includes removing duplicate records from the master data set, as well as the update data sets if there are more than one.</p>
+<p>The Merge stage offers several reject links, which you must have the same number as you have update links. The reject link contains data from respective input update link that failed to match with the master.</p>
+<h2>Options:</h2>
+<ul>
+<li><strong>Unmatched Masters Mode:</strong> Keep means unmatched rows (without any updates) from the master link are output; Drop means those rows are dropped instead.</li>
+<li><strong>Warn On Reject Updates:</strong> True to generate a warning when bad records from any update links are rejected.</li>
+<li><strong>Warn On Unmatched Masters:</strong> True to generate a warning when there are unmatched rows from the master link.</li>
+</ul>
+<h2>Example:</h2>
+<p>Master dataset: CUSTOMER_ID, CUSTOMER_NAME
+      1                     Peter
+      2                     Maria
+      Update dataset: CUSTOMER_ID, CITY, ZIP_CODE, SEX
+      1                     Mexico 90630 M
+      2                     Mexico 90630 F
+      Output: CUSTOMER_ID, CUSTOMER_NAME, CITY, ZIP_CODE, SEX
+      1                     Peter   Mexico 90630 M
+      2                     Maria   Mexico 90630 F</p>
+<h1>Understanding Merge Stage in DataStage</h1>
+<h2>Introduction</h2>
 
+    The Merge stage in IBM DataStage is a powerful component that combines data from multiple input paths into a single output stream. This article aims to provide a comprehensive understanding of the Merge stage, its usage, and how it can be effectively utilized within DataStage pipelines.
 
+    <h2>When to Use Merge Stage</h2>
 
-Merge Stage in DataStage - Data Warehousing Data Warehousing
+    The Merge stage is particularly useful in scenarios where you need to combine data from multiple sources into one output. This could include merging data from different databases, flat files, or even other DataStage tasks.
 
+    <h2>How Merge Stage Works</h2>
 
+    The Merge stage works by creating a merge object that defines the mapping between the input streams and the output stream. Each input stream is associated with a unique key, which determines how the data from each input will be merged in the output. By default, DataStage uses the first record encountered for each unique key as the master record and any subsequent records are compared to this master record using the specified comparison operator (e.g., equal, greater than, etc.).
 
+    <h3>Example: Merging Two Input Streams</h3>
 
-<p></p>
+    ```
+    Merge Object:
+        - Input 1: Key Field = 'ID'
+        - Input 2: Key Field = 'ID'
+        - Output: Key Field = 'ID'
+    ```
 
-<p> </p>
+    
 
+    In the above example, we have two input streams (Input1 and Input2) with a common key field 'ID'. This data is merged into one output stream based on the specified merge object.
 
+    <h2>Advanced Merge Features</h2>
 
+    DataStage offers advanced merge features such as the ability to specify multiple comparison operators, handling conflicts using rules like Union, Min, Max, or user-defined scripts, and even merging data from more than two input streams.
 
-<p>The Merge stage is a processing stage. It can have any number of input links, a single output link, and the same number of reject links as there are update input links.The Merge stage is one of three stages that join tables based on the values of key columns.</p>
-<p>The three stages differ mainly in the memory they use, the treatment of rows with unmatched keys, and their requirements for data being input (for example, whether it is sorted).</p>
-<p>Merge stage combines a master dataset with one or more update datasets based on the key columns.the output record contains all the columns from master record plus any additional columns from each update record that are required.</p>
-<p>A master record and update record will be merged only if both have same key column values.</p>
-<p>The data sets input to the Merge stage must be key partitioned and sorted. As part of preprocessing your data for the Merge stage, you should also remove duplicate records from the master data set. If you have more than one update data set, you must remove duplicate records from the update data sets as well.Unlike Join stages and Lookup stages, the Merge stage allows you to specify several reject links. You must have the same number of reject links as you have update links.Reject Link contains data from respective input Update link which are failed to match with Master.</p>
-<p>Different options:Unmatched Masters Mode: Keep means that unmatched rows (those without any updates) from the master link are output; Drop means that unmatched rows are dropped instead.Warn On Reject Updates:True to generate a warning when bad records from any update links are rejected.Warn On Unmatched Masters: True to generate a warning when there are unmatched rows from the master link.</p>
-<p>Example:Master dataset:CUSTOMER_ID CUSTOMER_NAME1                     Peter2            MariaUpdate datasetCUSTOMER_ID CITY ZIP_CODE SEX1                    Mexico 90630 M2                    Mexico 90630 FOutput:CUSTOMER_ID CUSTOMER_NAME CITY ZIP_CODE SEX1                     Peter     Mexico 90630 M2                     Maria     Mexico 90630 F</p>
+    <h2>Conclusion</h2>
 
-<br><br>
+    The Merge stage is an essential tool in any DataStage developer's arsenal. By understanding its capabilities and learning how to effectively use it, you can create complex DataStage pipelines that efficiently merge data from various sources into one output stream.
+
+    <h2>References</h2>
+
+    - [IBM DataStage Documentation](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.3.0/com.ibm.datastage.studio.doc/tasks/t_mergeobject.html)
+    - [DataStage Merge Stage Tutorial](https://www.youtube.com/watch?v=WZJd7h52NcI)
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>
