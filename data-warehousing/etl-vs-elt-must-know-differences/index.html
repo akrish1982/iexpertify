@@ -1,276 +1,53 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+    <h1>Data Warehousing: ETL vs ELT - Must Know Differences</h1>
+    <h2>Introduction</h2>
+    <p>In the realm of data warehousing, two acronyms often come up: ETL (Extract, Transform, Load) and ELT (Extract, Load, Transform). Understanding the differences between these processes is crucial for designing efficient and effective data pipelines. This article will delve into the contrasting methodologies of ETL and ELT.</p>
 
+    <h2>ETL Process</h2>
+    <p>The Extract, Transform, Load (ETL) process is a traditional approach to moving data from operational systems into a data warehouse. The data extraction involves fetching the required data from multiple sources, then transforming it for consistency and suitability for analysis within the data warehouse. Finally, the transformed data is loaded into the target schema of the data warehouse.</p>
 
+    <h2>ELT Process</h2>
+    <p>In contrast, the Extract, Load, Transform (ELT) process bypasses the transform step during the data pipeline. Data is extracted from source systems and immediately loaded into the data warehouse. The transformation takes place after the data has been loaded into the data warehouse.</p>
 
+    <h2>Key Differences</h2>
+    <ul>
+        <li><b>Performance:</b> ELT is generally faster than ETL due to less processing performed on-the-fly during the data pipeline. As a result, ELT can handle large volumes of data more efficiently.</li>
+        <li><b>Complexity:</b> ETL tends to be more complex due to the need for extensive transformations before loading data into the warehouse. In contrast, ELT is simpler because it only requires extraction and loading tasks during the data pipeline.</li>
+        <li><b>Flexibility:</b> ELT offers greater flexibility since the transformation can be performed on-demand by end users. This allows for more ad hoc queries and analysis to be conducted within the data warehouse.</li>
+    </ul>
 
+    <h2>Choosing Between ETL and ELT</h2>
+    <p>Ultimately, the decision between ETL and ELT depends on specific use cases, data volumes, and performance requirements. For smaller datasets or simpler transformations, ELT may be more suitable due to its speed and flexibility. However, for large, complex datasets that require extensive transformations before analysis, ETL may be the best choice.</p>
 
-
-ETL vs ELT: Must Know Differences - Data Warehousing Data Warehousing
-Reading Time:  5 minutes
-
-<p>What is ETL?</p>
-
-<p>ETL stands for Extract, Transform &amp; Load, and ELT stands for Extract, Load &amp; Transform, and so in ETL Transforming the data into a common format is done before loading.</p>
-<p></p>
-<p style="text-align: center;"><a class="jh-image-popup-colorbox" href="images/1/022218_0954_ETLvsELTMus1.html"></a></p>
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#What_is_ELT">
-1)
-What is ELT?
-</a>
- <a href="index.html#Difference_between_ETL_vs_ELT">
-2)
-Difference between ETL vs. ELT
-</a>
- <a href="index.html#Summary">
-3)
-Summary:
-</a>
- <a href="index.html#What_to_read_next">
-3.1)
-What to read next?
-</a>
-
-<h2>What is ELT?</h2>
-<p>In ELT, loading the data to the destination is performed first, and then the transformation is applied based on the destination format. The data first copied to the target and then transformed in place.  In some architectures, the Staging area using ELT system is a part of the target. In most architectures, ELT systems directly transform data in the target database.</p>
-<p>ELT is preferred to be used with no-Sql databases like Hadoop cluster, data appliance or cloud installation.</p>
-<p></p>
-<p style="text-align: center;"><a class="jh-image-popup-colorbox" href="images/1/022218_0954_ETLvsELTMus2.html"></a></p>
-<h2>Difference between ETL vs. ELT</h2>
-<p>ETL and ELT process are different in following parameters:</p>
-<table class="table1 table-striped">
-<thead>
-<tr>
-<th>Parameters</th>
-<th>ETL</th>
-<th>ELT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Process</td>
-<td>Data is transformed at staging server and then transferred to Datawarehouse DB.</td>
-<td>Data remains in the DB of the Datawarehouse.</td>
-</tr>
-<tr>
-<td>Code Usage</td>
-<td>Used for
-<ul>
-<li>Compute-intensive Transformations</li>
-<li>Small amount of data</li>
-</ul>
-</td>
-<td>Used for High amounts of data</td>
-</tr>
-<tr>
-<td>Transformation</td>
-<td>Transformations are done in ETL server/staging area.</td>
-<td>Transformations are performed in the target system</td>
-</tr>
-<tr>
-<td>Time-Load</td>
-<td>Data first loaded into staging and later loaded into target system. Time intensive.</td>
-<td>Here since data is directly loaded into the target systems initially and all transformations are carried out at the objective systems.</td>
-</tr>
-<tr>
-<td>Time-Transformation</td>
-<td>Since this process involves loading the data into ETL systems first and then into the respective target system this pulls in a comparatively larger time.</td>
-<td>In ELT process, speed is never dependent on the size of the data.</td>
-</tr>
-<tr>
-<td>Time- Maintenance</td>
-<td>It needs highs maintenance as you need to select data to load and transform.</td>
-<td>Low maintenance as data is always available.</td>
-</tr>
-<tr>
-<td>Implementation Complexity</td>
-<td>At an early stage, easier to implement.</td>
-<td>To implement ELT process organization should have deep knowledge of tools and expert skills.</td>
-</tr>
-<tr>
-<td>Support for Data warehouse</td>
-<td>ETL model used for on-premises, relational and structured data.</td>
-<td>Used in scalable cloud infrastructure which supports structured, unstructured data sources.</td>
-</tr>
-<tr>
-<td>Data Lake Support</td>
-<td>Does not support.</td>
-<td>Unstructured data can be processed with data lakes here.</td>
-</tr>
-<tr>
-<td>Complexity</td>
-<td>The ETL process loads only the important data, as identified at design time.</td>
-<td>This process involves development from the output-backward and loading only relevant data.</td>
-</tr>
-<tr>
-<td>Cost</td>
-<td>High costs for small and medium businesses.</td>
-<td>Low entry costs using online Software as a Service Platforms.</td>
-</tr>
-<tr>
-<td>Lookups</td>
-<td>In the ETL process, both facts and dimensions need to be available in staging area.</td>
-<td>All data will be available because Extract and load occur in one single action.</td>
-</tr>
-<tr>
-<td>Aggregations </td>
-<td>Complexity increase with the additional amount of data in the dataset.</td>
-<td>Power of the target platform can process significant amount of data quickly.</td>
-</tr>
-<tr>
-<td>Calculations</td>
-<td>Overwrites existing column or Need to append the dataset and push to the target platform.</td>
-<td>Easily add the calculated column to the existing table.</td>
-</tr>
-<tr>
-<td>Maturity</td>
-<td>The process is used for over two decades. It is well documented and best practices easily available.</td>
-<td>Relatively new concept and complex to implement.</td>
-</tr>
-<tr>
-<td>Hardware</td>
-<td>Most tools have unique hardware requirements that are expensive.</td>
-<td>Being Saas hardware cost is not an issue.</td>
-</tr>
-<tr>
-<td>Support for Unstructured Data</td>
-<td>Mostly supports relational data</td>
-<td>Support for unstructured data readily available.</td>
-</tr>
-</tbody>
-</table>
-<h2>Summary:</h2>
-<table class="table table-bordered">
-<tbody>
-<tr>
-<td>Criteria</td>
-<td>ETL</td>
-<td>ELT</td>
-</tr>
-<tr>
-<td>Flexibility</td>
-<td>High</td>
-<td>Low</td>
-</tr>
-<tr>
-<td>Working methodology</td>
-<td>Data from the source system to the data warehouse</td>
-<td>Leverages the target system to transform data</td>
-</tr>
-<tr>
-<td>Performance</td>
-<td>Average</td>
-<td>Good</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>ETL stands for Extract, Transform and Load while ELT stands for Extract, Load, Transform</li>
-<li>In ETL process data flows from the source to staging to the target. ELT lets the target system to do the transformation. No staging system involved.</li>
-<li>ETL is an older concept and been there in the market for more than two decades, ELT relatively new concept and comparatively complex to get implemented.</li>
-<li>In an ETL case, a large number of tools have only one of its kind hardware requirements that are posh. In the case of an ELT Since this falls under Saas hardware cost is not a concern.</li>
-<li>To carry out a lookup, ETL operates row by row pattern to map a fact-value with its dimension key element from a different table. In ELT we can directly map fact-value with dimension key elements.</li>
-<li>In ETL Relational data is prioritized here, whereas ELT Readily supports unstructured data.</li>
-<li>ELT address many a challenge of ELT but is expensive and requires niche skills to implement and maintain.</li>
-</ul>
-
-
-
-<p id="slidetag">
-</p>
-<br><br>
+    <h2>Conclusion</h2>
+    <p>In summary, understanding the differences between ETL and ELT is vital when designing data warehousing solutions. By choosing the appropriate methodology for your use case, you can ensure efficient data processing, improved performance, and a more flexible analysis environment.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
-
-
+</body></html>

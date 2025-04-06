@@ -1,7 +1,7 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Remove Duplicates Stage in DataStage - A Comprehensive Guide</h1>
@@ -13,11 +13,11 @@
 <p>Duplicate to retain - Specifies which of the duplicate columns encountered to retain. Choose between 'First' and 'Last'. It is set to 'First' by default.</p>
 <h3>Example Input Data:</h3>
 <pre>ID Name
-      10 Joe
-      11 Marsh
-      12 Shawn
-      10 Joe
-      10 Roger</pre>
+          10 Joe
+          11 Marsh
+          12 Shawn
+          10 Joe
+          10 Roger</pre>
 <h4>Step 1: Job Structure Design</h4>
 <p>Design the job structure as shown below.</p>
 <h4>Step 2: Sort Data</h4>
@@ -30,74 +30,16 @@
 <h4>Step 4: Map Output Columns</h4>
 <p>Map all the required output columns under ‘Output’ tab in Remove duplicate stage.</p>
 <pre>ID Name
-      10 Joe
-      11 Marsh
-      12 Shawn
-      Duplicate entries will get removed.</pre>
+          10 Joe
+          11 Marsh
+          12 Shawn
+          Duplicate entries will get removed.</pre>
 <h3>Alternative Methods to Remove Duplicates without using Remove Duplicates Stage in DataStage:</h3>
 <ul>
 <li><strong>Using Hash File Stage</strong> (Specify the keys and check the unique checkbox, Unique Key is not allowed duplicate values)</li>
 <li>Using a sort stage, set property: ALLOW DUPLICATES : false</li>
 <li>You can do it at any stage. Just do a hash partition of the input data and check the options stable Sort and Unique.</li>
 </ul>
-
-**Removing Duplicates in DataStage: A Comprehensive Guide**
-
-Welcome to our tutorial on removing duplicates in IBM DataStage! In this article, we'll walk you through a step-by-step process of creating a DataFlow to eliminate duplicate records based on specific columns.
-
-**Why Remove Duplicates?**
-
-Duplicate data can lead to errors and inconsistencies in your analysis. Removing duplicates ensures that your data is clean, accurate, and efficient for further processing.
-
-**Creating a DataFlow to Remove Duplicates**
-
-1. **Create a New DataFlow**
-
-   Start by creating a new DataFlow using IBM DataStage Designer. Give it an appropriate name such as "RemoveDuplicates."
-
-2. **Define Input and Output**
-
-   Define your input and output tables or files. For this example, we'll assume you have an input table named `InputTable` and an output table named `OutputTable`.
-
-3. **Create a Sort and Aggregate Transformer**
-
-   Add a `Sort` transformer to the DataFlow. Set the sort column(s) based on which you want to remove duplicates.
-
-   After the Sort transformer, add an `Aggregate` transformer with the following settings:
-
-   - Group by: The same column(s) used for sorting
-   - Aggregate function: Count (to count the number of occurrences)
-   - Keep group only if: Count = 1 (to keep only unique records)
-
-4. **Add a Transpose Transformer**
-
-   After the Aggregate transformer, add a `Transpose` transformer to reshape the data back into rows instead of columns.
-
-5. **Define Output**
-
-   Define your output table or file based on the output from the Transpose transformer.
-
-6. **Execute and Verify**
-
-   Execute the DataFlow, and verify that duplicate records have been removed from your data.
-
-**Code Sample**
-
-Here's a simple example of a SQL script you can use within an `Aggregate` transformer to remove duplicates based on a column named "ID":
-
-```sql
-GROUP BY ID
-HAVING COUNT(*) = 1;
-```
-
-**Illustration**
-
-![DataStage Duplicate Removal Diagram](datastage_duplicate_removal.png)
-
-*Diagram illustrating the steps for removing duplicates in DataStage.*
-
-That's it! You now have a basic understanding of how to remove duplicates in IBM DataStage. Happy data wrangling!
-
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

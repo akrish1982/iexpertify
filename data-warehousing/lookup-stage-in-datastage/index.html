@@ -1,160 +1,57 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Lookup Stage in DataStage - Data Warehousing</h1>
-<p>The Lookup stage is a processing stage used to perform lookup operations on a data set read into memory from any other Parallel job stage that can output data. It is most appropriate when the reference data for all lookup stages in a job is small enough to fit into available physical memory. Each lookup reference requires a contiguous block of shared memory. If the Data Sets are larger than available memory resources, the JOIN or MERGE stage should be used.</p>
-<h2>Types of Lookup</h2>
+<section>
+<h2>Overview</h2>
+<p>The Lookup stage in IBM InfoSphere DataStage is a powerful tool used for mapping data between different sources during the ETL (Extract, Transform, Load) process. It allows you to create relationships between two tables based on matching values, which can significantly improve the efficiency and accuracy of your data integration tasks.</p>
+</section>
+<section id="benefits">
+<h3>Benefits</h3>
 <ul>
-<li><b>Normal lookup:</b> All the data from the database is read into memory, and then lookup is performed.</li>
-<li><b>Sparse lookup:</b> For each incoming row from the primary link, the SQL is fired on the database at run time.</li>
-<li><b>Range Lookup:</b> Range Lookup performs range checking on selected columns. For example, to find the grades of an employee based on their salary, you can use the range lookup.</li>
+<li><strong>Improve Performance:</strong> By pre-fetching data from a reference table, you can reduce the number of I/O operations during the transformation phase, leading to improved performance.</li>
+<li><strong>Enhance Data Quality:</strong> The Lookup Stage ensures that consistent and accurate data is used across your system by resolving conflicts and providing standardized values.</li>
+<li><strong>Streamline Development:</strong> By simplifying complex mapping logic, the Lookup Stage makes it easier for developers to understand and maintain ETL jobs.</li>
 </ul>
-<h3>Example</h3>
-<p>Let's consider the following data:</p>
-<table>
-<thead>
-<tr>
-<th>Emp ID</th>
-<th>EmpName</th>
-<th>Dept</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source</td>
-<td>1001</td>
-<td>John</td>
-<td>IT</td>
-</tr>
-<tr>
-<td>1002</td>
-<td>Russ</td>
-<td>IT</td>
-</tr>
-<tr>
-<td>1003</td>
-<td>Jane</td>
-<td>HR</td>
-</tr>
-</tbody>
-</table>
-<p>And the reference table:</p>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Salary</th>
-<th>Dept</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Reference 1</td>
-<td>1001</td>
-<td>2000</td>
-<td>IT</td>
-</tr>
-<tr>
-<td>Reference 2</td>
-<td>1001</td>
-<td>3000</td>
-<td>IT</td>
-</tr>
-<tr>
-<td>Reference 3</td>
-<td>1001</td>
-<td>4000</td>
-<td>IT</td>
-</tr>
-</tbody>
-</table>
-<p>If you use a lookup stage with this data, it will only retrieve one record for each ID. However, if you need to retrieve all records for an ID, you can modify the Lookup stage as follows:</p>
-<ul>
-<li>Go to the constraints page of the lookup stage.</li>
-<li>'Multiple rows returned from link'</li>
-<li>Select the reference link</li>
-</ul>
-<p>This will modify your output to include all records for an ID:</p>
-<table>
-<thead>
-<tr>
-<th>Emp ID</th>
-<th>Salary</th>
-<th>Dept</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source</td>
-<td>1001</td>
-<td>2000</td>
-<td>IT</td>
-</tr>
-<tr>
-<td>1001</td>
-<td>3000</td>
-<td>IT</td>
-</tr>
-<tr>
-<td>1001</td>
-<td>4000</td>
-<td>IT</td>
-</tr>
-</tbody>
-</table>
-<p>Note that only one reference link in the lookup stage can return multiple rows. This cannot be done for more than one reference link and can only be done for in-memory lookups.</p>
+</section>
+<section id="how-it-works">
+<h3>How It Works</h3>
+<p>The Lookup Stage works by creating a temporary table that stores data from the reference table. When new data is encountered during the transformation process, the Lookup Stage checks if there's a matching value in the temporary table. If a match is found, it returns the corresponding values from the reference table.</p>
+<section id="example">
+<h4>Example</h4>
+<pre><code>
+                -- Define lookup table
+                CREATE TABLE customer_lookup (
+                    CustomerID INT PRIMARY KEY,
+                    CustomerName VARCHAR(50)
+                );
 
+                -- Insert sample data into the lookup table
+                INSERT INTO customer_lookup VALUES (1, 'John Doe');
+                INSERT INTO customer_lookup VALUES (2, 'Jane Smith');
 
-    **Lookup Stage in DataStage**
+                -- Define main transformation table
+                CREATE TABLE orders (
+                    OrderID INT PRIMARY KEY,
+                    CustomerID INT,
+                    OrderAmount DECIMAL(10, 2)
+                );
 
-    The Lookup Stage in IBM InfoSphere DataStage is a powerful tool used for mapping data between different sources during the ETL (Extract, Transform, Load) process. It allows you to create relationships between two tables based on matching values, which can significantly improve the efficiency and accuracy of your data integration tasks.
-
-    **Why Use Lookup Stage?**
-
-    - **Improve Performance**: By pre-fetching data from a reference table, you can reduce the number of I/O operations during the transformation phase, leading to improved performance.
-    - **Enhance Data Quality**: The Lookup Stage ensures that consistent and accurate data is used across your system by resolving conflicts and providing standardized values.
-    - **Streamline Development**: By simplifying complex mapping logic, the Lookup Stage makes it easier for developers to understand and maintain ETL jobs.
-
-    **How Does It Work?**
-
-    The Lookup Stage works by creating a temporary table that stores data from the reference table. When new data is encountered during the transformation process, the Lookup Stage checks if there's a matching value in the temporary table. If a match is found, it returns the corresponding values from the reference table.
-
-    Here's a simple example:
-
-    ```sql
-    -- Define lookup table
-    CREATE TABLE customer_lookup (
-        CustomerID INT PRIMARY KEY,
-        CustomerName VARCHAR(50)
-    );
-
-    -- Insert sample data into the lookup table
-    INSERT INTO customer_lookup VALUES (1, 'John Doe');
-    INSERT INTO customer_lookup VALUES (2, 'Jane Smith');
-
-    -- Define main transformation table
-    CREATE TABLE orders (
-        OrderID INT PRIMARY KEY,
-        CustomerID INT,
-        OrderAmount DECIMAL(10, 2)
-    );
-
-    -- Transformation job using Lookup Stage
-    ...
-    LOOKUP customer_lookup AS refTable
-      USING orders.CustomerID = refTable.CustomerID;
-    ...
-    ```
-
-    In the above example, the Lookup Stage is used to resolve the CustomerID in the Orders table by matching it with the corresponding CustomerID in the Customer_Lookup table.
-
-    **Conclusion**
-
-    The Lookup Stage in DataStage is a valuable tool for data integration tasks, offering improved performance, enhanced data quality, and simplified development. By understanding how to use this stage effectively, you can optimize your ETL processes and ensure accurate, efficient data flow within your system.
-
+                -- Transformation job using Lookup Stage
+                ...
+                LOOKUP customer_lookup AS refTable
+                  USING orders.CustomerID = refTable.CustomerID;
+                ...
+            </code></pre>
+</section>
+</section>
+<section id="conclusion">
+<h3>Conclusion</h3>
+<p>The Lookup Stage in DataStage is a valuable tool for data integration tasks, offering improved performance, enhanced data quality, and simplified development. By understanding how to use this stage effectively, you can optimize your ETL processes and ensure accurate, efficient data flow within your system.</p>
+</section>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

@@ -1,161 +1,99 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Netezza – Out of Range Error - learn
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Reading Time:  &lt; 1 minute
-<p>Error:</p>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<article>
+<h1>Learning about Netezza: Out of Range Error</h1>
+<p>Estimated Reading Time: &lt; 1 minute</p>
+<section id="error">
+<h2>Error Encountered:</h2>
 <p>760486(253) [2, INT2] out of range (-32768..+32767), “65535”[,]</p>
-<p>Issue:</p>
+</section>
+<section id="issue">
+<h2>Understanding the Issue:</h2>
+<p>Your query is attempting to insert/update a value (760486) that exceeds the maximum limit for the smallint or int2 data type in one of your table columns.</p>
+</section>
+<section id="resolution">
+<h2>Resolving the Issue:</h2>
+<p>To resolve this issue, consider altering the column to either an 'int' or 'bigint' data type and then attempt to insert/update the data again.</p>
+</section>
+</article>
 
-<p>Query is trying to insert/update value 760486 in the column of a table which has a datatype of smallint or int2 but the value being inserted is greater than the smallint max limit.</p>
-<p>Resolution:</p>
-<p>Alter the column to int or bigint and try to insert/update the data again.</p>
 
-<br><br>
+    **Understanding Netezza Out-of-Range Error**
+
+    Welcome to our tutorial on the Netezza Out-of-Range error! This article aims to explain what this error is, why it occurs, and how you can resolve it.
+
+    **What is the Netezza Out-of-Range Error?**
+
+    The Netezza Out-of-Range error occurs when you try to insert, update, or select data that falls outside of the defined data type range in a Netezza column. This could be due to entering a value that is too large or too small for the specified data type.
+
+    **Why does the Netezza Out-of-Range Error occur?**
+
+    The Netezza Out-of-Range error can occur for several reasons:
+
+    1. Inserting or updating data with a value outside the defined data type range.
+    2. Comparing values using operators (e.g., &gt;, &lt;, &lt;=, &gt;=) where one or both values are out of range.
+
+    **How to Resolve the Netezza Out-of-Range Error**
+
+    To resolve the Netezza Out-of-Range error, you should:
+
+    1. Check your data for any values that might fall outside the defined data type range.
+    2. Modify your SQL queries to avoid using operators on values that are out of range.
+    3. If necessary, modify the column data types to accommodate the range of values in your data.
+
+    **Example**
+
+    Let's consider a table named `employees` with an `age` column of type `SMALLINT`. If you try to insert an employee with an age of 128, you will encounter an Out-of-Range error since the range for SMALLINT is -32768 to 32767.
+
+    ```sql
+    -- Invalid SQL statement
+    INSERT INTO employees (name, age) VALUES ('John', 128);
+    ```
+
+    To resolve this error, you could either modify the data or modify the column data type:
+
+    1. Modify the data: Change the value of John's age to a valid one, such as 30.
+
+    ```sql
+    -- Valid SQL statement after modifying the data
+    INSERT INTO employees (name, age) VALUES ('John', 30);
+    ```
+
+    2. Modify the column data type: Change the `age` column data type from `SMALLINT` to `INTEGER`.
+
+    ```sql
+    ALTER TABLE employees ALTER COLUMN age TYPE INTEGER;
+    ```
+
+    **Conclusion**
+
+    The Netezza Out-of-Range error is a common issue when working with Netezza databases. By understanding what causes this error and knowing how to resolve it, you can ensure smooth data operations in your Netezza environment.
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

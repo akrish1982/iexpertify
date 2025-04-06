@@ -1,11 +1,11 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Understanding Datastage Jobs, Sequences, and Containers in Data Warehousing</h1>
-<p>Reading Time: &lt; 1 minute</p>
+<p><strong>Reading Time:</strong> &lt; 1 minute</p>
 <h2>Parallel jobs:</h2>
 <ul>
 <li>Executed under the control of DataStage Server runtime environment</li>
@@ -40,59 +40,51 @@
 <li>Executed on the Mainframe, outside of DataStage</li>
 </ul>
 
+      **Understanding DataStage Jobs, Sequences, and Containers**
 
-**Understanding DataStage Jobs, Sequences, and Containers**
+      DataStage, a powerful ETL (Extract, Transform, Load) tool from IBM, provides an efficient way to create and manage data integration processes. A key component of DataStage is the ability to organize tasks into **Jobs**, **Sequences**, and **Containers**. Let's explore these concepts.
 
-DataStage, a powerful ETL (Extract, Transform, Load) tool from IBM, provides an efficient way to create and manage data integration processes. A key component of DataStage is the ability to organize tasks into **Jobs**, **Sequences**, and **Containers**. Let's explore these concepts.
+      **Jobs**
 
-**Jobs**
+      A DataStage job consists of one or more tasks that are grouped together to perform a specific ETL function. Each job has an entry point, which triggers the execution of all tasks within it. Jobs can be executed in parallel, allowing for efficient processing when working with large datasets.
 
-A DataStage job consists of one or more tasks that are grouped together to perform a specific ETL function. Each job has an entry point, which triggers the execution of all tasks within it. Jobs can be executed in parallel, allowing for efficient processing when working with large datasets.
+      ```java
+      DEFINE JOB job_name AS BEGIN OF JOB
+         TASK task1;
+         TASK task2;
+         -- more tasks...
+      END OF JOB;
+      ```
 
-```java
-DEFINE JOB job_name AS BEGIN OF JOB
-   TASK task1;
-   TASK task2;
-   -- more tasks...
-END OF JOB;
-```
+      **Sequences**
 
-**Sequences**
+      A sequence in DataStage represents a logical unit of work within a job. Sequences can be used to group related tasks and control their order of execution. This helps in organizing complex ETL processes and improving maintainability.
 
-A sequence in DataStage represents a logical unit of work within a job. Sequences can be used to group related tasks and control their order of execution. This helps in organizing complex ETL processes and improving maintainability.
+      ```java
+      DEFINE SEQUENCE sequence_name AS BEGIN OF SEQUENCE
+         TASK task1;
+         TASK task2;
+         -- more tasks...
+      END OF SEQUENCE;
+      ```
 
-```java
-DEFINE SEQUENCE sequence_name AS BEGIN OF SEQUENCE
-   TASK task1;
-   TASK task2;
-   -- more tasks...
-END OF SEQUENCE;
-```
+      **Containers**
 
-**Containers**
+      A container in DataStage is a special type of sequence that can hold multiple sequences and/or jobs. Containers are useful when you want to reuse groups of tasks across different jobs, thereby improving code maintainability.
 
-A container in DataStage is a special type of sequence that can hold multiple sequences and/or jobs. Containers are useful when you want to reuse specific tasks or groups of tasks across multiple jobs or sequences, promoting code reusability and reducing development time.
+      **Container Usage in a Job**
 
-```java
-DEFINE CONTAINER container_name AS BEGIN OF CONTAINER
-   DEFINE SEQUENCE sequence1 AS ...;
-   DEFINE JOB job1 AS ...;
-   -- more sequences and jobs...
-END OF CONTAINER;
-```
+      You can include a container within a job by using the `USE` statement. This will make all sequences and jobs defined inside the container available for use within the job.
 
-**Container Usage in a Job**
+      ```java
+      DEFINE JOB job_name AS BEGIN OF JOB
+         USE container_name;
+         -- tasks using sequences and jobs from the container...
+      END OF JOB;
+      ```
 
-You can include a container within a job by using the `USE` statement. This will make all sequences and jobs defined inside the container available for use within the job.
-
-```java
-DEFINE JOB job_name AS BEGIN OF JOB
-   USE container_name;
-   -- tasks using sequences and jobs from the container...
-END OF JOB;
-```
-
-By understanding DataStage jobs, sequences, and containers, you can effectively design and manage complex ETL processes with improved efficiency and maintainability.<footer>
+      By understanding DataStage jobs, sequences, and containers, you can effectively design and manage complex ETL processes with improved efficiency and maintainability.
+   <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>

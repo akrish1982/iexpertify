@@ -1,59 +1,41 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-
-
-    **Title:** Data Partitioning and Collecting in Datastage
-
-    **Introduction**
-
-Data partitioning is an essential technique in big data processing for improving the performance of ETL (Extract, Transform, Load) jobs. This article provides a comprehensive guide on how to implement data partitioning and collecting in IBM InfoSphere DataStage.
-
- **Understanding Partitioning**
-
-Partitioning involves dividing large datasets into smaller, manageable pieces called partitions or chunks. These partitions can be processed independently, improving the overall efficiency of ETL processes.
-
- **Setting Up Partitioning in DataStage**
-
-To set up partitioning in DataStage, follow these steps:
-
-1. Create a Partition Definition file (PFX). This file describes how the data will be partitioned and can be based on various criteria such as date, region, or product.
-
-```sql
--- Sample PFX File
-DEFINE PARTITIONS BY DATE(transaction_date) OVER (YEAR);
-DEFINE PARTITION '2021' AS transaction_date = '2021-01-01' TO '2021-12-31';
-```
-
-2. Assign the PFX file to the job or task where you want partitioning to be applied.
-
-```java
--- Assign PFX File to a DataStage Job
-SET PARTITIONING SCHEME pfx_file USING 'path/to/your_pfx_file';
-```
-
-**Collecting Partitions in DataStage**
-
-DataStage allows you to collect partitions for parallel processing using the Collect operator. Here's a simple example of how to use it:
-
-1. Drag and drop the Collect operator from the Operators palette onto your job design canvas.
-
-2. Connect the Collect operator with the upstream and downstream operators. The Collect operator collects the partitions from multiple input streams for parallel processing.
-
-3. Configure the Collect operator settings:
-
-   - **Partitioning:** Select the partitioning method defined in your PFX file.
-   - **Max Degree of Parallelism:** Specify the maximum number of tasks that can run concurrently to process the partitions.
-   - **Output Partitioning:** Choose how you want the collected partitions to be outputted (e.g., by date, region, or product).
-
-
- **Conclusion**
-
-Implementing data partitioning and collecting in IBM InfoSphere DataStage can significantly improve the performance of your ETL jobs, making them more efficient and scalable. By following this guide, you can easily set up and configure partitioning and collecting in your DataStage projects.
-
+<h1>Data Partitioning and Collecting in Datastage</h1>
+<h2>Introduction</h2>
+<p>Data partitioning is an indispensable technique for enhancing the performance of ETL (Extract, Transform, Load) jobs in big data processing. This article aims to provide a comprehensive guide on implementing data partitioning and collection in IBM InfoSphere DataStage.</p>
+<h2 id="understanding-partitioning">Understanding Partitioning</h2>
+<p>Partitioning refers to the process of dividing large datasets into smaller, manageable pieces called partitions or chunks. These partitions can be processed independently, thereby improving the overall efficiency of ETL processes.</p>
+<h3 id="setting-up-partitioning-in-datastage">Setting Up Partitioning in DataStage</h3>
+<ol>
+<li><strong>Step 1:</strong> Create a Partition Definition file (PFX). This file describes the partitioning strategy and can be based on various criteria such as date, region, or product.</li>
+<pre><code>
+          &lt;!-- Sample PFX File
+          DEFINE PARTITIONS BY DATE(transaction_date) OVER (YEAR);
+          DEFINE PARTITION '2021' AS transaction_date = '2021-01-01' TO '2021-12-31';
+        &lt;/code&gt;</code></pre>
+<li><strong>Step 2:</strong> Assign the PFX file to the job or task where you want partitioning to be applied.</li>
+<pre><code>
+          &lt;!-- Assign PFX File to a DataStage Job
+          SET PARTITIONING SCHEME pfx_file USING 'path/to/your_pfx_file';
+        &lt;/code&gt;</code></pre>
+</ol>
+<h2 id="collecting-partitions-in-datastage">Collecting Partitions in DataStage</h2>
+<ol>
+<li><strong>Step 1:</strong> Drag and drop the Collect operator from the Operators palette onto your job design canvas.</li>
+<li><strong>Step 2:</strong> Connect the Collect operator with the upstream and downstream operators. The Collect operator collects partitions from multiple input streams for parallel processing.</li>
+<li><strong>Step 3:</strong> Configure the Collect operator settings:</li>
+<ul>
+<li><strong>Partitioning:</strong> Select the partitioning method defined in your PFX file.</li>
+<li><strong>Max Degree of Parallelism:</strong> Specify the maximum number of tasks that can run concurrently to process the partitions.</li>
+<li><strong>Output Partitioning:</strong> Choose how you want the collected partitions to be outputted (e.g., by date, region, or product).</li>
+</ul>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>By implementing data partitioning and collection in IBM InfoSphere DataStage, you can significantly improve the performance of your ETL jobs, making them more efficient and scalable. Follow this guide to easily set up and configure partitioning and collection in your DataStage projects.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

@@ -1,158 +1,122 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-SMP vs MPP Architecture - learn
-
-
-
-
-
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Databases_such_as_Oracle_DB2_Sybase">
-1)
-Databases such as Oracle, DB2, Sybase
-</a>
- <a href="index.html#MPP_Architecture_Share_Nothing_Divide_and_Conquer">
-2)
-MPP Architecture = Share Nothing = Divide and Conquer
-</a>
- <a href="index.html#Databases_such_as_Teradata">
-3)
-Databases such as Teradata
-</a>
- <a href="index.html#What_to_read_next">
-4)
-What to read next?
-</a>
-
-Databases such as Oracle, DB2, Sybase
-<p>Symmetrical Multi-Processing Architecture (SMP) was once the champion of the Data Warehouse. It was rivalled by MPP as SMP had the below disadvantages:</p>
-<ul><li>Failures of components did not result in graceful decline in performance. Rather, the whole system failed and data was unrecoverable until the failure was resolved</li><li>Upon recover, the failed components were unable to rejoin the system with ease</li><li>Failures should not result in data loss</li><li>The system should be scalable and hence support increased load capacity and performance agility</li></ul>
-
-MPP Architecture = Share Nothing = Divide and Conquer
-Databases such as Teradata 
-<p>MPP systems consist of very large numbers of processors each processor has its own memory, backplane and storage. The no shared-resources approach of pure MPP systems allows nearly linear scalability </p>
-<p>High availability is another advantage – when one node fails, another can take over. </p>
-<p>In Teradata’s MPP Architecture , processor-RAM-storage disk pairs (“nodes”) operating in parallel divide the workload to execute queries over large sets of data. Each processor communicates with its associated disk drive to get raw data and perform calculations. One SMP Host collects intermediate results and assemble the query response for delivery back to the requesting application. With no contention for resources between MPP nodes, this architecture does allow for scalability to petascale database sizes. A major weakness of this architecture, however, is that it requires significant movement of data from disks to processors for BI queries. MPP Architecture</p>
-
-
-
-<p class="has-vivid-cyan-blue-color has-text-color">To Continue to dive dep into Teradata</p>
-
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>SMP vs MPP Architecture - learn</h1>
+<h2 id="Databases_such_as_Oracle_DB2_Sybase">1) Databases such as Oracle, DB2, Sybase</h2>
+<p>The Symmetrical Multi-Processing (SMP) Architecture was once the champion of Data Warehousing. However, it faced several disadvantages:</p>
+<ul>
+<li>Component failures did not result in a graceful decline in performance but led to system failure and data loss</li>
+<li>Upon recovery, failed components were unable to rejoin the system easily</li>
+<li>Failures should not result in data loss</li>
+<li>The system must be scalable and support increased load capacity and performance agility</li>
+</ul>
+<h2 id="MPP_Architecture_Share_Nothing_Divide_and_Conquer">2) MPP Architecture = Share Nothing = Divide and Conquer</h2>
+<p>MPP systems consist of large numbers of processors, each with its own memory, backplane, and storage. The no-shared resources approach of pure MPP systems allows nearly linear scalability.</p>
+<p>High availability is another advantage – when one node fails, another can take over.</p>
+<p>In Teradata’s MPP Architecture, processor-RAM-storage disk pairs ("nodes") operate in parallel to divide the workload and execute queries over large sets of data. Each processor communicates with its associated disk drive to get raw data and perform calculations. One SMP Host collects intermediate results and assembles the query response for delivery back to the requesting application.</p>
+<p class="has-vivid-cyan-blue-color">To continue diving into Teradata...</p>
 <a class="wp-block-button__link has-text-color" href="https://teradata.iexpertify.com" style="border-radius:50px;color:#ba0c49">Go to Blog</a>
-
-
-
-<p class="has-vivid-cyan-blue-color has-text-color">Get full Teradata Course free</p>
-
+<p class="has-vivid-cyan-blue-color">Get the full Teradata Course for free</p>
 <a class="wp-block-button__link has-text-color" href="https://www.iexpertify.com/learn/full-course/teradata/" style="border-radius:50px;color:#ba0c49">Free Course</a>
-
-
-
-<p class="has-vivid-cyan-blue-color has-text-color">Learn About Netezza datbase</p>
-
+<p class="has-vivid-cyan-blue-color">Learn About Netezza database</p>
 <a class="wp-block-button__link has-text-color" href="https://www.iexpertify.com/learn/full-course/netezza/" style="border-radius:50px;color:#ba0c49">Free Course</a>
+<h1>SMP vs MPP Architecture: A Comparative Analysis</h1>
+<h2>Introduction</h2>
 
+    Paragraph: This article provides a comparative analysis of two popular database architecture models: SMP (Symmetric Multi-Processing) and MPP (Massively Parallel Processing). We will discuss their key features, advantages, and use cases to help you understand which one might be suitable for your specific needs.
 
+    <h2>SMP Architecture</h2>
+<h3>Definition and Key Features</h3>
 
+    Paragraph: SMP (Symmetric Multi-Processing) is a computer system architecture that allows multiple processors to share the same physical memory, executing different tasks concurrently. The main advantages of an SMP system are its scalability, simplicity, and cost-effectiveness.
 
-<p></p>
+    <h3>Advantages</h3>
 
-<br><br>
+    Paragraph: SMP systems offer several benefits, including:
+
+    - Efficient resource utilization, as the shared memory allows for easy communication between processors
+    - Improved performance due to concurrent execution of tasks
+    - Simplified software development, thanks to a uniform addressing space for all processors
+
+    <h3>Use Cases</h3>
+
+    Paragraph: SMP systems are commonly used in general-purpose computing, such as servers running web applications or databases. They excel in scenarios where high throughput is required and the workload can be evenly distributed among multiple processors.
+
+    <h2>MPP Architecture</h2>
+<h3>Definition and Key Features</h3>
+
+    Paragraph: MPP (Massively Parallel Processing) is a computer architecture that distributes data across many computers or nodes, each with its own memory. These nodes communicate and collaborate to process large datasets in parallel. The main advantage of an MPP system is its ability to handle massive amounts of data quickly.
+
+    <h3>Advantages</h3>
+
+    Paragraph: MPP systems offer several benefits, including:
+
+    - Scalability for handling extremely large datasets
+    - High performance for parallel processing tasks
+    - Fault tolerance due to the distributed nature of the system
+
+    <h3>Use Cases</h3>
+
+    Paragraph: MPP systems are commonly used in data warehousing, scientific computing, and big data analytics. They excel in scenarios where large datasets must be processed quickly or where complex computations require extensive parallelization.
+
+    <h2>Comparing SMP and MPP</h2>
+
+    Paragraph: While both architectures aim to improve performance, they target different types of workloads and are more suitable for specific use cases. Here's a comparison table to help you understand the differences between the two:
+
+    <table style="width:100%">
+<tr>
+<th>SMP</th>
+<th>MPP</th>
+</tr>
+<tr>
+<td>Shared Memory</td>
+<td>Yes</td>
+<td>No (Distributed Memory)</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Limited (Additional processors require more memory)</td>
+<td>High (More nodes can be added to handle larger datasets)</td>
+</tr>
+<tr>
+<td>Cost-effectiveness</td>
+<td>Generally cost-effective for small to medium workloads</td>
+<td>Expensive due to the need for specialized hardware and software</td>
+</tr>
+<tr>
+<td>Use Cases</td>
+<td>General-purpose computing, web applications, databases</td>
+<td>Data warehousing, big data analytics, scientific computing</td>
+</tr>
+</table>
+<h2>Conclusion</h2>
+
+    Paragraph: Understanding the differences between SMP and MPP architectures is crucial for making informed decisions when choosing a database system. While both offer significant benefits, they are optimized for different workloads and use cases. Make sure to consider your specific needs and requirements before making a decision.
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
+</body></html>

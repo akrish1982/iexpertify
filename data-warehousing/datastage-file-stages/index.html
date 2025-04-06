@@ -1,104 +1,61 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-<h1>DataStage File Stages - Data Warehousing</h1>
-<p>Reading Time: 5 minutes</p>
-<h2>File Stages</h2>
-<p>File stages are integral components used for reading and writing data from files. In this article, we will explore some common file stages utilized in DataStage.</p>
-<h3>Sequential File Stage</h3>
-<p>The Sequential File Stage is the most commonly used I/O stage in a DataStage Job. It is employed to read data from or write data to one or more flat files. Key features include:</p>
-<ul>
-<li>Only one input link or output link</li>
-<li>One reject link</li>
-<li>Slow reading and writing due to heavy data volumes</li>
-</ul>
-<p>Sequential files should be used in the following conditions:</p>
-<ul>
-<li>Reading a flat file (fixed width or delimited) from a UNIX environment, FTPed from external systems</li>
-<li>Performing UNIX operations on the file, but avoid using sequential files for intermediate storage between jobs as it causes performance overhead due to data conversion requirements.</li>
-</ul>
-<p>Increasing the number of readers per node can help improve reading speed from the Stage (default value is one).</p>
-<h3>Dataset Stage</h3>
-<p>The DataSet Stage, a file stage, allows reading data from or writing data to a dataset. Key features include:</p>
-<ul>
-<li>Single input link or single output link (no reject link)</li>
-<li>Configuration for sequential or parallel mode operation</li>
-<li>Faster compared to sequential files as data is spread across multiple nodes and referred by a control file.</li>
-</ul>
-<p>Datasets are not UNIX files, so no UNIX operations can be performed on them. The usage of Dataset results in good performance in a set of linked jobs, helping achieve end-to-end parallelism and maintain the sort order while writing data in partitioned form.</p>
-<h3>Complex Flat File Stage</h3>
-<p>The Complex Flat File (CFF) stage is a file stage used to read a file or write to a file. Key features include:</p>
-<ul>
-<li>Cannot use the same stage for both reading and writing</li>
-<li>As a source, multiple output links and one reject link</li>
-<li>Read data from complex flat files including MVS™ data sets with QSAM and VSAM files, as well as files containing multiple record types.</li>
-</ul>
-<p>CFF source stages run in parallel mode when reading multiple files, but can be configured to run sequentially if only one file with a single reader is being read. By using CFF, we can read ASCII or EBCDIC data, select required columns, omit remaining, collect rejects, and flatten arrays.</p>
+<h1>DataStage File Stages: A Comprehensive Guide</h1>
+<p>*DataStage*, an ETL (Extract, Transform, Load) tool developed by IBM, is a powerful platform for data integration tasks. One of the key components in DataStage are the **File Stages**. This article aims to provide a comprehensive understanding of File Stages in DataStage.</p>
+<h2>Understanding File Stages</h2>
+<p>File Stages in DataStage are used to read and write files during the ETL process. They can be either Input (source) or Output (target) stages, depending on their role in the job.</p>
 
+      **Example of a simple DataStage Job with an Input File Stage (source) and an Output File Stage (target)**
+      <pre>
+      @job
+      define SIMPLE_FILE_JOB;
 
-    **DataStage File Stages: A Comprehensive Guide**
+      @source
+      define INPUT_FILE_STAGE as file stage;
 
-    *DataStage*, an ETL (Extract, Transform, Load) tool developed by IBM, is a powerful platform for data integration tasks. One of the key components in DataStage are the **File Stages**. This article aims to provide a comprehensive understanding of File Stages in DataStage.
+      @sink
+      define OUTPUT_FILE_STAGE as file stage;
 
-    **Understanding File Stages**
+      // Job control statements
+      ...
+      </pre>
+<h2>Input File Stages</h2>
+<p>Input File Stages are used to read files during the ETL process. They support various file formats such as CSV, delimited text, fixed format, and more.</p>
 
-    File Stages in DataStage are used to read and write files during the ETL process. They can be either Input (source) or Output (target) stages, depending on their role in the job.
+      **Example of an Input File Stage configuration**
+      <pre>
+      @source
+      define INPUT_FILE_STAGE as file stage with (
+          filename         =&gt; 'input.csv',
+          directory        =&gt; '/path/to/input/directory/',
+          fileAccessMethod =&gt; 'readFileIntoMemory',
+          format           =&gt; 'CSV',
+          delimiter        =&gt; ',',
+          enclosedBy       =&gt; '"'
+      );
+      </pre>
+<h2>Output File Stages</h2>
+<p>Output File Stages are used to write the transformed data into files during the ETL process. They also support various file formats similar to Input File Stages.</p>
 
-    ```java
-    // Example of a simple DataStage Job with an Input File Stage (source) and an Output File Stage (target)
-    @job
-    define SIMPLE_FILE_JOB;
-
-    @source
-    define INPUT_FILE_STAGE as file stage;
-
-    @sink
-    define OUTPUT_FILE_STAGE as file stage;
-
-    // Job control statements
-    ...
-    ```
-
-    **Input File Stages**
-
-    Input File Stages are used to read files during the ETL process. They support various file formats such as CSV, delimited text, fixed format, and more.
-
-    ```java
-    // Example of an Input File Stage configuration
-    @source
-    define INPUT_FILE_STAGE as file stage with (
-        filename         =&gt; 'input.csv',
-        directory        =&gt; '/path/to/input/directory/',
-        fileAccessMethod =&gt; 'readFileIntoMemory',
-        format           =&gt; 'CSV',
-        delimiter        =&gt; ',',
-        enclosedBy       =&gt; '"'
-    );
-    ```
-
-    **Output File Stages**
-
-    Output File Stages are used to write the transformed data into files during the ETL process. They also support various file formats similar to Input File Stages.
-
-    ```java
-    // Example of an Output File Stage configuration
-    @sink
-    define OUTPUT_FILE_STAGE as file stage with (
-        filename         =&gt; 'output.csv',
-        directory        =&gt; '/path/to/output/directory/',
-        fileAccessMethod =&gt; 'writeFile',
-        format           =&gt; 'CSV',
-        delimiter        =&gt; ',',
-        enclosedBy       =&gt; '"'
-    );
-    ```
-
-    **Summary**
-
-    File Stages in DataStage are essential components for handling input and output files during the ETL process. They provide a convenient way to read and write various file formats, making it easier to integrate data from different sources into your DataStage jobs.<footer>
+      **Example of an Output File Stage configuration**
+      <pre>
+      @sink
+      define OUTPUT_FILE_STAGE as file stage with (
+          filename         =&gt; 'output.csv',
+          directory        =&gt; '/path/to/output/directory/',
+          fileAccessMethod =&gt; 'writeFile',
+          format           =&gt; 'CSV',
+          delimiter        =&gt; ',',
+          enclosedBy       =&gt; '"'
+      );
+      </pre>
+<h2>Summary</h2>
+<p>File Stages in DataStage are essential components for handling input and output files during the ETL process. They provide a convenient way to read and write various file formats, making it easier to integrate data from different sources into your DataStage jobs.</p>
+<footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>

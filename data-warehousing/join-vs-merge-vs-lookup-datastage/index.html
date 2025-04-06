@@ -1,105 +1,46 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-<h1>Join vs Merge vs Lookup - Datastage - Data Warehousing</h1>
-<p>In this article, we will discuss the differences between Join, Merge, and Lookup operations in Datastage for data warehousing.</p>
-<table>
-<tbody>
-<tr>
-<th>Join</th>
-<th>Merge</th>
-<th>Lookup</th>
-</tr>
-<tr>
-<td>Supports four types of joins: Inner Join, Left Outer Join, Right Outer Join, Full Outer Join. Inputs can vary from 1 (for Inner Join) to N for other join types.</td>
-<td>Supports only two types of joins: Inner Join and Left Outer Join. Inputs can be variable.</td>
-<td>Supports both normal stages and sparse lookups. For normal stages, inputs can vary from 1 to N. For sparse lookups, inputs are limited to 2.</td>
-</tr>
-<tr>
-<td>Outputs one link</td>
-<td>Outputs one link</td>
-<td>Outputs one link</td>
-</tr>
-<tr>
-<td>No reject links</td>
-<td>Has N-1 reject links (where N is the number of inputs minus 1)</td>
-<td>Has one reject link</td>
-</tr>
-<tr>
-<td>Requires key column names to be identical for primary and secondary records</td>
-<td>Requires key column names to be identical for primary and secondary records</td>
-<td>Key column names can be optional, but should be identical in case of sparse lookups</td>
-</tr>
-<tr>
-<td>Primary and secondary records should be sorted before this stage</td>
-<td>Primary and secondary records should be sorted before this stage</td>
-<td>Sorted order for primary and secondary records is optional in Lookup stage.</td>
-</tr>
-<tr>
-<td>Memory usage is light</td>
-<td>Memory usage is light</td>
-<td>Memory usage is heavy</td>
-</tr>
-</tbody>
-</table>
-
-
-
-    **DataStage: Join vs Merge vs Lookup**
-
-    In DataStage, data integration and transformation tasks can be performed using various operations such as Join, Merge, and Lookup. These three operations are commonly used for combining data from multiple sources, but they function differently and have specific use cases. Let's explore each operation in detail.
-
-    **Join**
-
-    A Join in DataStage is an operation that combines rows from two or more tables based on a related column between them (usually the primary key). There are various types of Joins, such as Inner Join, Left Outer Join, Right Outer Join, and Full Outer Join.
-
-    Here's an example of how to create an Inner Join in DataStage:
-
-    ```
-    Stream1(EmployeeID, FirstName, LastName)
-       |-- INNER JOIN --|
-    Stream2(EmployeeID, DepartmentID, DepartmentName)
-          |-- OutputStream --&gt; (EmployeeID, FirstName, LastName, DepartmentName)
-    ```
-
-    **Merge**
-
-    Merge in DataStage is used to combine data from two sorted streams into a single stream based on a common key. It can be either an Upstream Merge (when the merge key is present in both streams) or a Downstream Merge (when the merge key is only present in one of the streams).
-
-    Here's an example of how to create a simple Upstream Merge in DataStage:
-
-    ```
-    Stream1(EmployeeID, FirstName, LastName, Salary)
-       |-- UPSTREAM MERGE --|
-    Stream2(DepartmentID, DepartmentName)
-          |-- OutputStream --&gt; (EmployeeID, FirstName, LastName, Salary, DepartmentName)
-    ```
-
-    **Lookup**
-
-    Lookup in DataStage is an operation that retrieves data from a reference table (lookup table) based on the key provided in the input stream. It allows you to enrich or filter data as needed.
-
-    Here's an example of how to create a Lookup in DataStage:
-
-    ```
-    InputStream(EmployeeID, PositionID)
-       |-- LOOKUP --|
-    ReferenceTable(PositionID, PositionName)
-          |-- OutputStream --&gt; (EmployeeID, EmployeePosition)
-    ```
-
-    **When to Use Each Operation**
-
-    - Join: When you need to combine data from two tables based on a common key.
-    - Merge: When you want to combine sorted streams into a single stream based on a common key. Upstream Merge is useful when both input streams are sorted, while Downstream Merge can be used when only one input stream is sorted.
-    - Lookup: When you need to enrich or filter data by retrieving data from a reference table based on the key provided in the input stream.
-
-    **Conclusion**
-
-    In summary, Join, Merge, and Lookup are essential operations in DataStage for combining and transforming data. Knowing when to use each operation will help you design efficient data integration solutions that meet your business requirements effectively.
+<h1>DataStage: Join vs Merge vs Lookup</h1>
+<p>In DataStage, data integration and transformation tasks can be performed using various operations such as Join, Merge, and Lookup. These three operations are commonly used for combining data from multiple sources, but they function differently and have specific use cases. Let's explore each operation in detail.</p>
+<h2>Join</h2>
+<p>A Join in DataStage is an operation that combines rows from two or more tables based on a related column between them (usually the primary key). There are various types of Joins, such as Inner Join, Left Outer Join, Right Outer Join, and Full Outer Join.</p>
+<h3>Example:</h3>
+<pre>
+        Stream1(EmployeeID, FirstName, LastName)
+           |-- INNER JOIN --|
+        Stream2(EmployeeID, DepartmentID, DepartmentName)
+                |-- OutputStream --&gt; (EmployeeID, FirstName, LastName, DepartmentName)
+      </pre>
+<h2>Merge</h2>
+<p>Merge in DataStage is used to combine data from two sorted streams into a single stream based on a common key. It can be either an Upstream Merge (when the merge key is present in both streams) or a Downstream Merge (when the merge key is only present in one of the streams).</p>
+<h3>Example:</h3>
+<pre>
+        Stream1(EmployeeID, FirstName, LastName, Salary)
+           |-- UPSTREAM MERGE --|
+        Stream2(DepartmentID, DepartmentName)
+                |-- OutputStream --&gt; (EmployeeID, FirstName, LastName, Salary, DepartmentName)
+      </pre>
+<h2>Lookup</h2>
+<p>Lookup in DataStage is an operation that retrieves data from a reference table (lookup table) based on the key provided in the input stream. It allows you to enrich or filter data as needed.</p>
+<h3>Example:</h3>
+<pre>
+        InputStream(EmployeeID, PositionID)
+           |-- LOOKUP --|
+        ReferenceTable(PositionID, PositionName)
+                |-- OutputStream --&gt; (EmployeeID, EmployeePosition)
+      </pre>
+<h2>When to Use Each Operation</h2>
+<ul>
+<li><strong>Join:</strong> When you need to combine data from two tables based on a common key.</li>
+<li><strong>Merge:</strong> When you want to combine sorted streams into a single stream based on a common key. Upstream Merge is useful when both input streams are sorted, while Downstream Merge can be used when only one input stream is sorted.</li>
+<li><strong>Lookup:</strong> When you need to enrich or filter data by retrieving data from a reference table based on the key provided in the input stream.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>In summary, Join, Merge, and Lookup are essential operations in DataStage for combining and transforming data. Knowing when to use each operation will help you design efficient data integration solutions that meet your business requirements effectively.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

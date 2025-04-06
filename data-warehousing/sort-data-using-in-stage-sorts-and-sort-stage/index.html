@@ -1,111 +1,86 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Sorting Data in Data Warehousing: In-Stage Sorts and Sort Stage</h1>
+<p>During various processing stages, you can either select or set the sort criteria, often indicated by a small "Sort" icon within the metadata link. This is known as an in-stage sort.</p>
+<p>You might wonder then, why there's a separate Sort stage available and when it would be necessary to use it? The answer lies in the control over memory allocation and sorting methodology.</p>
+<p>For in-link sorts, you don't have control over the allocated memory, which is typically set at 20MB. However, in the Sort stage, you can specify the exact amount of memory to use.</p>
+<p>In-link sort utilizes scratch disk (a physical location on disk), while the Sort stage employs server RAM (Memory). This allows us to adjust the default memory size in the Sort stage as needed.</p>
+<p>The Sort stage informs OSH that the data stream was previously sorted by certain columns, and also instructs it not to sort those columns again but to sort on additional ones. For instance, if the data stream is already sorted by Columns A and B (but not C), you can specify that the key for further sorting should be A, B, and C. However, A and B were previously sorted, so only sort on column C.</p>
+<p>Essentially, if performance issues are being experienced in your job and you've identified sorting as the culprit, many of these problems can be resolved by implementing a separate Sort stage.</p>
+<p>When dealing with smaller volumes of data, it is advisable to use an in-link sort. For larger amounts of data, the Sort stage should be employed.</p>
+<p>DataStage has become intelligent over the years and can insert a sort into OSH when it hasn't been explicitly specified in the code. This is known as an implicit sort.</p>
+<p>For example, if you wish to aggregate data by Column A, but the job doesn't specify that the data should be sorted by Column A before reaching the Aggregator, DataStage will automatically include/insert a sort into your OSH.</p>
 
 
+    <h1>Sorting Data in Data Warehousing: In-Stage Sorts and Sort Stages</h1>
 
+    <p>In the realm of data warehousing, sorting data plays a crucial role in maintaining efficient query performance and ensuring optimal results. This article focuses on two significant concepts: in-stage sorts and sort stages.</p>
 
+    <h2>In-Stage Sorts</h2>
 
+    <p>An In-Stage Sort is a technique used by database systems to sort data while executing a query. This type of sort happens during the intermediate steps of a query execution plan, rather than at the end of the process as with a traditional sort.</p>
 
-Sort data using in-stage sorts and Sort stage - Data Warehousing Data Warehousing
+    <h3>When Does an In-Stage Sort Occur?</h3>
 
+    <p>An in-stage sort occurs when the database system needs to rearrange data based on an ORDER BY clause. For instance, if a query retrieves rows without any specific order but then requires them to be sorted using the ORDER BY clause, the database system performs an in-stage sort.</p>
 
-<p>In several processing stages, we can choose or set the sort criteria (i.e. an link or “in-stage” sort).  When you do that, one of those tiny “Sort” icons show up the metadata link.</p>
+    <h2>Sort Stages</h2>
 
-<p>So, you know that the data is being sorted between stages.  So you may be wondering, why there is a separate Sort stage even offered, and why would I ever need to use it?</p>
-<p>For link sort, you can’t control how much memory is allocated, I think the default is 20MB; in the Sort stage, you can specify how much memory to use.</p>
-<p>“Link Sort” uses scratch disk (physical location on disk), whereas “Sort Stage” uses server RAM (Memory). Hence we can change the default memory size in “Sort Stage”.</p>
+    <p>Sort stages refer to a specific step within query execution where data is sorted based on specified criteria. In this context, we will discuss two primary sort stages: Merge Sort and Exchange Sort.</p>
 
-<p>The Sort stage will tell OSH that the stream was previously sorted on a column(s), and also to not sort on that column(s) but to sort on an additional column(s) e.g. the stream is already sorted on Columns A and B (but not C), so you can specify that the key to sort on is A, B and C, but A and B were previously sorted, thus, only sort on column C.</p>
+    <h3>Merge Sort</h3>
 
-<p>In other words, if your job is having performance issues and you’ve narrowed the problem to sorting, many of the problems can be addressed by a separate Sort stage.</p>
-<p>If the volume of the data is low, then we go for link sort. If the volume of the data is high, then we go for sort stage.</p>
-<p>For an implicit sort: over the years, DataStage has gotten smart enough to insert a sort into OSH when it wasn’t specified in the code.  </p>
-<p>For instance, you want to aggregate on column A, but the job didn’t specify to sort the data on column A before the Aggregator, so, DataStage will implicitly include/insert a sort in your OSH.</p>
+    <p>Merge Sort is a divide-and-conquer algorithm that divides the data into smaller chunks, sorts them individually using recursion, and then merges the sorted chunks to produce the final sorted result.</p>
 
-<br><br>
+    <h4>Example of Merge Sort</h4>
+
+    <pre>
+Input: { 3, 8, 1, 5, 6, 2, 9, 7 }
+Step 1: Divide into smaller chunks: { 3, 8 }, { 1 }, { 5, 6 }, { 2 }, { 9, 7 }
+Step 2: Sort each chunk: { 3, 8 }, { 1 }, { 5, 6 }, { 2 }, { 9, 7 }
+Step 3: Merge sorted chunks: { 1, 2, 3, 5, 6, 8, 9, 7 }
+ </pre>
+
+    <h3>Exchange Sort</h3>
+
+    <p>Exchange Sort, also known as Bubble Sort, is a comparison sort algorithm that repeatedly swaps adjacent elements if they are in the wrong order. Exchange Sort is less efficient for large datasets but can still be useful in certain data warehousing scenarios.</p>
+
+    <h4>Example of Exchange Sort</h4>
+
+    <pre>
+Input: { 3, 8, 1, 5, 6, 2, 9, 7 }
+Step 1: Compare and swap adjacent elements (3, 8) &gt; (8, 3); repeat this step until the array is sorted.
+Result: { 1, 3, 5, 6, 8, 2, 9, 7 }
+ </pre>
+
+    <h2>Conclusion</h2>
+
+    <p>In-stage sorts and sort stages play essential roles in optimizing data warehouse queries by allowing the database system to sort data efficiently during query execution. Knowing these concepts can help you understand and troubleshoot performance issues in your data warehousing environment.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

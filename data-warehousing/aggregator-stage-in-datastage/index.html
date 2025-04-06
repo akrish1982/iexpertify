@@ -1,49 +1,9 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-
-
-<p>The Aggregator stage is a processing stage in Datastage that's used for grouping and summary operations. By default, it will execute in parallel mode in parallel jobs.</p>
-<p>In a Parallel environment, the way you partition data before grouping and summarizing will affect the results. For instance, if you partition data using the round-robin method and records with same key values are distributed across different partitions, this can lead to incorrect results.</p>
-<p>The Aggregator stage has several categories that allow for customization:</p>
-<p>Grouping keys category: Group – Specifies an input column used as a grouping key. You can select multiple columns by repeating the property. This property also has a dependent property called Case Sensitive, which determines whether each group key is case sensitive or not (set to True by default).</p>
-<p>Aggregations category:</p>
-<p>Aggregation type – Choose from Calculate (default), Recalculate, and Count Rows.</p>
-<p>Recalculate – This aggregate type allows you to apply aggregate functions to a column that has already been summarized. Column for calculation – The Calculate aggregate type enables you to summarize the contents of a particular column or columns in your input data set by applying one or more aggregate functions to it. Select the column to be aggregated, then specify the dependent properties and output column.</p>
-<p>Options category:</p>
-<p>The Aggregator stage has two modes of operation: hash and sort.</p>
-<p>Method – Your choice of mode depends on the number of groupings in your input data set and the amount of memory available. Typically, use hash mode for a relatively small number of groups (fewer than 1000 groups per megabyte of memory). When using hash mode, you should hash partition the input data set by one or more of the grouping key columns so that all records in the same group are in the same partition.</p>
-<p>Allow null outputs – Set this to True to indicate that null is a valid output value when calculating minimum value, maximum value, mean value, standard deviation, standard error, sum, sum of weights, and variance. If False, null values will have 0 substituted when all input values for the calculation column are null (set to False by default).</p>
-<p>For example, let's say you have data with columns e_id, e_name, and dept_no:</p>
-<ul>
-<li>e_id,e_name,dept_no</li>
-<li>1,john,10</li>
-<li>2,rocky,20</li>
-<li>3,micky,10</li>
-<li>4,bibhu,20</li>
-<li>5,russ,10</li>
-</ul>
-<p>Use the Aggregator stage to find the number of people in each department.</p>
-<p>Job design:</p>
-<ul>
-<li>sequential_file ——-&gt; Aggregator ——–&gt; sequential_file</li>
-</ul>
-<p>Read and load the data from a source file. Go to the Aggregator Stage and set the properties as follows:</p>
-<ul>
-<li>Group=Dept_No</li>
-<li>Aggregator type = Count Rows</li>
-<li>Count Output Column = Count (this is user-determined)</li>
-</ul>
-<p>Output:</p>
-<ul>
-<li>dept_no,count</li>
-<li>10,3</li>
-<li>20,2</li>
-</ul>
-<br>
 <h1>Understanding the Aggregator Stage in DataStage</h1>
 <p>In data warehousing, data aggregation is a crucial step in preparing data for analysis and reporting. In this article, we'll dive into the Aggregator stage in IBM InfoSphere DataStage, exploring its features, benefits, and use cases.</p>
 <h2>What is the Aggregator Stage?</h2>
@@ -84,32 +44,29 @@
 <h3>Example: Aggregating Sales Data</h3>
 <p>In this example, we'll demonstrate how to use the Aggregator stage to aggregate sales data by region and product category. The goal is to identify top-performing regions and products.</p>
 <figure>
-<img alt="Aggregator Stage Example" src="aggregator-stage-example.png"/>
 <figcaption>Example of aggregating sales data using the Aggregator stage in DataStage</figcaption>
 </figure>
 <h3>Conclusion</h3>
 <p>In conclusion, the Aggregator stage is a powerful tool in DataStage that enables you to simplify complex data analysis and reporting tasks. By understanding its features, benefits, and use cases, you can effectively apply this stage to your data integration projects.</p>
-
-Note: The `figure` element is used to wrap the image, which includes an alt text for accessibility purposes.
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>
-    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
 </ul>
 <h3>Connect with me:</h3>
 <ul>
-    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
 </ul>
 <h3>My Resources:</h3>
 <ul>
-    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
 </ul>
 <h3>Languages and Tools:</h3>
 <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
