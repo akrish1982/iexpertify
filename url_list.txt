@@ -1,5 +1,3 @@
-https://www.iexpertify.com/data-warehousing/datastage-triggers/
-https://www.iexpertify.com/data-warehousing/what-is-a-olap-cube/
 https://www.iexpertify.com/data-warehousing/excel-data-in-datastage-unstructured-datastage/
 https://www.iexpertify.com/linux/simple-linux-commands/
 https://www.iexpertify.com/data-warehousing/null-handling-functions-in-datastage/

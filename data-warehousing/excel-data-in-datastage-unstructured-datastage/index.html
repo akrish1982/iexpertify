@@ -1,152 +1,120 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
 
 
 
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
+<h1>What is Unstructured Data?</h1>
 
+Unstructured data refers to information that does not have a predefined data model or cannot be easily organized into relational tables. It can be broadly classified into two types: non-textual unstructured data, such as still images, videos, and MP3 audio files, and textual unstructured data, like email messages, instant messages, and Excel files.
 
-Excel Data in Datastage (unstructured datastage) - Data Warehousing Data Warehousing
+The objective of this presentation is to demonstrate how to design a Datastage job that extracts data from an Excel file with multiple sheets and writes it into a text file or comma-separated file.
 
-Reading Time:  5 minutes
-<h1>What is the Unstructured Data?</h1>
-<p id="4091">Unstructured data is an information that does not have a predefined data model or does not fit well into relational tables. It is broadly classified into two types</p>
-<ul><li>Non-Textual unstructured data is a multimedia data like still images, videos, and MP3 audio files</li><li>Textual unstructured data are like email messages, instant messages, excel etc…,</li></ul>
-<p>The objective of this presentation is to project, how to design a Datastage job that extracts data from Excel file with multiple sheets and write into a text file or comma-separated file.</p>
-<p>When to use Unstructured Data?</p>
-<p>Usually, many of you may raise a question; Why can’t we use sequential file stage to read an excel file?</p>
-<p>Of course, we can use the sequential file stage to read the data in excel file, but only if the sheet contains data in a single sheet. If data is spread across the sheets, we simply can’t use the sequential stage.</p>
-<p>The beauty of Unstructured Data stage is that it has additional transformations to pull out data from the entire work sheet. Transformations can be extended to have more options in our output file like comment, author etc…,</p>
-<p>The latest version of IBM Infosphere Datastage (11.5) has a limitation on handling Unstructured Data. It can support only Microsoft Excel files as data sources.</p>
-<p>Implementation in Datastage</p>
-<p>You can find the unstructured data stage under Files section palette in Palette in the designer. Data can be read from or written to any sources.</p>
-<p>Step by Step Process:</p>
-<p>Step 1:</p>
-<ul><li>From the File section of Palette, drag an Unstructured Data stage and a dataset stage to the canvas and link two stages with copy stage. Stage looks as below</li></ul>
+<h2>When to Use Unstructured Data?</h2>
 
-<p>Source File: Excel sheet with employee details in two different work sheets, “Employee.xlsx”</p>
-<p>Sheet 1:</p>
+You may wonder why we can't use the sequential file stage to read an Excel file. Of course, we can use this stage to read data in an Excel file, but only if the sheet contains data in a single sheet. If the data is spread across multiple sheets, we simply cannot use the sequential stage.
 
-<p>Sheet 2:</p>
+The beauty of Unstructured Data stage lies in its additional transformations that allow us to pull out data from the entire worksheet. These transformations can be extended to include options like comments and authors in our output file.
 
-<p>Job Design:</p>
-<p>Datastage Job has been designed with three stages:</p>
-<ul><li>Unstructured Data Stage (Source)</li><li>Copy Stage</li><li>Dataset Stage (Target)</li></ul>
+<h2>Implementation in Datastage</h2>
 
-<p>Next step is to define the properties to extract the data.</p>
-<p>Below is the snapshot of Unstructured Data stage properties:</p>
+To implement Unstructured Data in Datastage, you can find this stage under the Files section palette in the designer. Data can be read from or written to any sources.
 
-<ul><li>Click on the Configure button highlighted in the above image, you will get the properties window of Configuration</li></ul>
-<p>Here is the snapshot for the configure properties:</p>
+<h3>Step-by-Step Process:</h3>
 
-<p>Step 1a: Give the path of source file in the File name field, as in the snapshot below</p>
+1. Drag an Unstructured Data stage and a dataset stage to the canvas and link them with a copy stage.
+2. The source file is an Excel sheet with employee details in two different worksheets, "Employee.xlsx".
+3. Define the properties to extract data from the Unstructured Data stage.
 
-<p>Step 1b: In the Range expression field, give the range of the data in worksheet</p>
+<h4>Properties:</h4>
 
-<p>What is Data Range?</p>
-<p>When you use the Unstructured Data stage, you can extract data from a specified data range in a Microsoft Excel spreadsheet.</p>
-<p>Data range represents a cell, a row, a column, or a selection of cells that contain one or more continuous blocks of cells. A data range is specified by the range expression. In the Unstructured Data stage, you can use a range expression to specify the data range to extract</p>
-<p>The Range option property of Unstructured Data stage allows you to specify the data range either by selecting the Specify the start row option or the Specify the entire data range option. If you select the Specify the start row option, then identify the start row. Unstructured Data stage then identifies the end row of the data range. If you select the Specify the entire data range option, then you must specify the start and end rows of the data range to be extracted.</p>
-<p>Sheet names to skip: Using this option we can skip the sheets, if that are not required</p>
-<p>Then, click on the load button for importing the metadata</p>
+* Give the path of the source file in the File name field.
+* In the Range expression field, specify the range of data in the worksheet.
+* Use the Skip sheet names option to skip sheets that are not required.
+* Click on the Load button to import metadata and map it to the target file (DataSet).
 
-<p>Step 1c: Click on Import to load the metadata in Map tab, as below</p>
+<h3>Step 2: Copy Stage</h3>
 
-<ul><li>we have few more options to be added in our output file like Row is hidden, Sheet name, comment, author etc…, in the Property tab</li></ul>
+Use a copy stage connected to the Unstructured Data stage to drop columns if not needed and map them to the target file (DataSet).
 
-<p>Step 2: I have used Copy stage connected to the Unstructured_Data stage to drop the columns if not needed and mapped to the target file (DataSet)</p>
+<h3>Step 3: Load Data into Target DataSet</h3>
 
-<p>Step 3:Load data into the target DataSet</p>
+Load data into the target dataset.
 
-<p>Output :</p>
-<p>The employee information of two sheets are merged in one sheet in the output as below</p>
+<h1>Output:</h1>
 
-<p>With this, we got to know how to extract data from multiple sheets in an excel sheet using Unstructured Data in Datastage. This can be primarily used, when we process organizational/enterprise data that is used for calculating metrics and also to join data from multiple sheets for the reporting purpose.</p>
-
-<br><br>
+The employee information from two sheets is merged into one sheet in the output as below. This process can be primarily used when processing organizational/enterprise data that is used for calculating metrics and joining data from multiple sheets for reporting purposes.
+<h1>Data Warehousing: Excel Data in DataStage - Unstructured Data</h1>
+<p>Data warehousing is a process that involves collecting, integrating, and processing large amounts of data from various sources to support business intelligence and analytics. In this article, we will explore how to load unstructured Excel data into DataStage for further analysis.</p>
+<h2>What is Unstructured Data?</h2>
+<p>Unstructured data refers to data that does not fit into a predetermined format or structure, such as text files, images, audio files, and videos. In the context of data warehousing, unstructured data can include reports, spreadsheets, and other types of documents that contain valuable information for analysis.</p>
+<h2>Challenges in Loading Unstructured Data</h2>
+<p>Loading unstructured data into a data warehouse like DataStage can be challenging due to the lack of predefined structures or formats. However, with the right tools and techniques, you can successfully load and integrate this type of data into your analytics workflow.</p>
+<h3>Using Excel as a Source</h3>
+<p>Excel is a popular tool for storing and manipulating unstructured data. To load Excel data into DataStage, you can use the Excel OLEDB provider to connect to the file.</p>
+<code>
+    &lt;-- Define the Excel connection --&gt;
+    &lt;oledb:connection name="ExcelConn" 
+       driver="Microsoft.ACE.OLEDB.12.0"
+       data-source="C:\Path\To\Your\File.xlsx"
+       credentials-id="YourCredentialsId" /&gt;
+  
+    &lt;-- Define the Excel query --&gt;
+    &lt;oledb:query name="ExcelQuery" 
+       connection-name="ExcelConn"
+       command-text="SELECT * FROM [Sheet1$A1:B10]" /&gt;
+  </code>
+<h3>Using DataStage to Load Unstructured Data</h3>
+<p>DataStage provides a range of tools and techniques for loading unstructured data. One approach is to use the "File" node in DataStage to read the Excel file, and then transform the data using nodes like "Excel" or "Text File". Here's an example:</p>
+<code>
+    &lt;-- Define the File node --&gt;
+    &lt;file:node name="FileNode" 
+       filename="C:\Path\To\Your\File.xlsx"
+       format="Excel"
+       /&gt;
+  
+    &lt;-- Define the Excel transformation node --&gt;
+    &lt;excel:node name="ExcelTransform" 
+       connection-name="ExcelConn"
+       query-name="ExcelQuery"
+       /&gt;
+  </code>
+<h2>Benefits of Loading Unstructured Data</h2>
+<p>Loading unstructured data into a data warehouse like DataStage can provide several benefits, including:</p>
+<ul>
+<li><strong>Data integration**: By loading unstructured data into a centralized repository, you can integrate it with other data sources and create a single source of truth for analytics.</strong></li>
+<li><strong>Improved decision-making**: With structured and unstructured data integrated in a data warehouse, you can gain new insights and make more informed decisions.</strong></li>
+<li><strong>Increased scalability**: DataStage provides the scalability to handle large volumes of data from various sources, making it an ideal platform for big data analytics.</strong></li>
+</ul>
+<h2>Conclusion</h2>
+<p>Loading unstructured Excel data into DataStage can be a powerful way to integrate and analyze unstructured data in your analytics workflow. By using the Excel OLEDB provider and DataStage nodes, you can transform and load this type of data into a centralized repository for further analysis.</p>
+<h2>References</h2>
+<ul>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSZJP8_12.1/com.ibm.swg.im.iis.ds.doc/topics/c_datastage_excel.html">DataStage Excel Node</a></li>
+<li><a href="https://docs.aspose.com/display/aspose.cells/Formulas">Excel Formulas and Functions</a></li>
+</ul>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

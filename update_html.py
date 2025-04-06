@@ -1,7 +1,7 @@
 import os
 from urllib.parse import urlparse
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString, Tag
 
 head = '''<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
@@ -88,7 +88,7 @@ def read_urls(file_path):
     """Reads URLs from a file and filters those starting with 'https://www.'"""
     with open(file_path, 'r') as file:
         urls = [line.strip() for line in file if line.strip().startswith("https://www.")]
-    return urls[:2]
+    return urls
 
 def call_ollama_api(prompt):
     """Calls ollama API to generate HTML content."""
@@ -138,7 +138,105 @@ def old_save_content(url, rewritten, content):
         file.write(head + rewritten + content + footer)
     print(f"Content saved: {file_path}")
 
+def is_empty_tag(tag):
+    """
+    Returns True if a tag is considered empty (only whitespace or nothing inside).
+    """
+    if not isinstance(tag, Tag):
+        return False
+    # If all contents are whitespace or empty tags
+    return not tag.contents or all(
+        isinstance(child, NavigableString) and not child.strip()
+        or (isinstance(child, Tag) and is_empty_tag(child))
+        for child in tag.contents
+    )
+
+def remove_empty_tags(soup):
+    """
+    Recursively removes empty tags from the soup.
+    """
+    for tag in soup.find_all():
+        for child in list(tag.children):
+            if isinstance(child, Tag):
+                remove_empty_tags(child)
+        if is_empty_tag(tag):
+            tag.decompose()
+
+def run_basic_html_sanity_check(soup):
+    """
+    Print basic HTML structure sanity checks.
+    """
+    html_count = len(soup.find_all('html'))
+    head_count = len(soup.find_all('head'))
+    body_count = len(soup.find_all('body'))
+
+    if html_count != 1:
+        print(f"[Warning] Found {html_count} <html> tags.")
+    if head_count != 1:
+        print(f"[Warning] Found {head_count} <head> tags.")
+    if body_count != 1:
+        print(f"[Warning] Found {body_count} <body> tags.")
+
 def save_content(url, rewritten, content):
+    """
+    Saves the generated content to a corresponding HTML file with a predefined header and footer.
+    Cleans up the HTML by merging body tags, removing stray text nodes, stripping empty tags,
+    and checking basic structure.
+    """
+    parsed_url = urlparse(url)
+    local_path = parsed_url.path.strip('/')
+    file_path = os.path.join(local_path, "index.html")
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+    # Handle case when rewritten is None
+    if rewritten is None:
+        final_content = head + content + footer
+    else:
+        # Extract content from body tags using BeautifulSoup
+        rewritten_soup = BeautifulSoup(rewritten, 'html.parser')
+        content_soup = BeautifulSoup(content, 'html.parser')
+        
+        # Get inner content without the body tags
+        rewritten_inner = ''.join(str(item) for item in rewritten_soup.body.contents) if rewritten_soup.body else ''
+        content_inner = ''.join(str(item) for item in content_soup.body.contents) if content_soup.body else ''
+        
+        # Combine with header and footer
+        final_content = head + rewritten_inner + content_inner + footer
+
+    # Re-parse final_content to clean and validate HTML structure
+    soup = BeautifulSoup(final_content, 'html.parser')
+
+    # Merge multiple <body> tags if any
+    bodies = soup.find_all('body')
+    if len(bodies) > 1:
+        main_body = bodies[0]
+        for extra_body in bodies[1:]:
+            for child in extra_body.contents:
+                main_body.append(child)
+            extra_body.decompose()
+
+    # Remove top-level stray text nodes
+    for element in list(soup.contents):
+        if isinstance(element, NavigableString) and element.strip():
+            element.extract()
+
+    # Remove empty tags recursively
+    remove_empty_tags(soup)
+
+    # Run basic HTML sanity checks
+    run_basic_html_sanity_check(soup)
+
+    # Convert back to string
+    final_content = str(soup)
+
+    # Save to file
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(final_content)
+
+    print(f"Content saved: {file_path}")
+
+
+def new_save_content(url, rewritten, content):
     """
     Saves the generated content to a corresponding HTML file with a predefined header and footer.
     Properly handles HTML body tags to ensure valid HTML with only one body.
@@ -171,8 +269,7 @@ def save_content(url, rewritten, content):
 def main():
     url_file = "/Users/ananth/code/iexpertify/url_list.txt"
     urls = read_urls(url_file)
-    
-    for url in urls[:10]:
+    for url in urls[:2]:
         url_path = urlparse(url).path.strip('/')
         print(f"Generating content for: {url_path}")
         rewritten = rewrite_content(url_path)
