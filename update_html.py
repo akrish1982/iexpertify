@@ -274,7 +274,7 @@ def main():
         print(f"Generating content for: {url_path}")
         rewritten = rewrite_content(url_path)
         content = generate_content(url_path)
-        save_content(url, rewritten, content)
+        new_save_content(url, rewritten, content)
 
 if __name__ == "__main__":
     main()
