@@ -127,3 +127,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# python sitemap_generator.py --website_dir /Users/ananth/code/iexpertify/ --base_url https://www.iexpertify.com
