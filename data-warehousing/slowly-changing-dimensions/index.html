@@ -1,189 +1,85 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 
 
+    **Understanding Slowly Changing Dimensions (SCD) in Data Warehousing**
 
+    In the realm of data warehousing, one of the key concepts to grasp is the concept of Slowly Changing Dimensions (SCD). This article aims to shed light on this topic, explaining its types, use cases, and implementation.
 
+    **What are Slowly Changing Dimensions (SCD)?**
 
+    SCD refers to a methodology used in data warehousing for handling changes in the attributes of a dimension over time. As the name suggests, these changes occur gradually or slowly, unlike transactional systems where they happen instantaneously.
 
-Slowly Changing Dimensions - Data Warehousing Data Warehousing
+    **Types of Slowly Changing Dimensions**
 
+    There are four main types of SCD:
 
+    1. SCD Type 0 (No History)
+       - In this type, no history is recorded for changes in the dimension attributes. The latest value overwrites the previous one.
 
-Reading Time:  5 minutes
-<p>EX:- Suppose we have an customer Table, we have some fields which are frequently, ofliny,  slowly, Rarely, Rapidly changed</p>
+    ```sql
+    UPDATE DimensionTable
+    SET Attribute = 'New Value'
+    WHERE KeyColumn = 'Key Value';
+    ```
 
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
+    2. SCD Type 1 (Overwrite) - Similar to Type 0, but it creates a new row for each update in the dimension table, effectively overwriting the previous values.
 
+    ```sql
+    INSERT INTO DimensionTable (Attribute, KeyColumn)
+    VALUES ('New Value', 'Key Value');
+    DELETE FROM DimensionTable WHERE KeyColumn = 'Old Key Value';
+    ```
 
+    3. SCD Type 2 (Add Column for each change) - This type captures all changes to a dimension attribute, adding a new column for each distinct value and keeping the original value as well.
 
- <a href="index.html#Different_types_of_loadings">
-1)
-Different types of loadings
-</a>
- <a href="index.html#Type_1_implementation_will_always_happen_in_ODS">
-2)
-Type 1 implementation will always happen in ODS
-</a>
- <a href="index.html#Type_2_-_Maintain_History">
-3)
-Type 2 :- (Maintain History)
-</a>
- <a href="index.html#What_to_read_next">
-4)
-What to read next?
-</a>
+    ```sql
+    CREATE TABLE DimensionTable_History
+    (
+        EffectiveDate DATETIME,
+        KeyColumn VARCHAR(255),
+        Attribute1 VARCHAR(255),
+        Attribute2 VARCHAR(255),
+        -- ... Add as many columns as needed for attributes
+    );
+    ```
 
-<h3>Different types of loadings</h3>
-<ol><li>Initial</li><li> incremental</li></ol>
-<ul><li>Initial data (source) :-</li></ul>
-<p>C ID           CN      Add</p>
-<p>11               A           HYD                      stored in Achieve Data base or OLTP or Source</p>
-<p>22               B           SEC</p>
-<p>33               C          DEL</p>
-<p>The information is should from 2000 to 29th dec 2010</p>
-<p>This data is stored in Target   Ware House   Before Data</p>
-<ul><li>Source (After data) :-</li></ul>
-<p>CID          CN                    Add   value column</p>
-<p>11              A                      HYD  Copy</p>
-<p>22              B                   GNT   Edit</p>
-<p>33               E                   VZD   insert</p>
-<ul><li>Refresh the target data with source data based on type 1, type 2, type 3</li></ul>
-<ul><li>Differences :-</li></ul>
-<p>Compare Before Data with After Data</p>
-<p>Extract                                  Extract</p>
-<p>Target                                    Source</p>
-<p>Data                                        Data</p>
-<ul><li>If there are any changes in key columnInsert</li><li>If there are any changes in value columnedit</li></ul>
-<p>Output :-</p>
+    4. SCD Type 3 (Hybrid) - This type combines the characteristics of both Type 1 and Type 2. It adds a new row when an attribute is updated, but it also keeps a history of changes in separate columns like Type 2.
 
-<p>Table 1 :-</p>
-<p>EX:  Before Data(Target)</p>
-<p>CID           CN               Add</p>
-<p>11             A                  HYD</p>
-<p>22             B                 GNT</p>
-<p>33             C                 DEL</p>
-<p>32             D                 VZD</p>
-<p>After Data: (Source)</p>
-<p>CID       CN             Add</p>
-<p>11           A          ASM  Edit</p>
-<p>22          B            GNT  copy</p>
-<p>44          G            PUNE  insert</p>
-<p>32          E            Cal edit</p>
-<ul><li>Type 1 will not maintain historical data, maintains only current data .</li></ul>
-Output :-
-<p>CID           CN              Add</p>
-<p>11               A               ASM</p>
-<p>22              B              GNT</p>
-<p>33              C               DEL</p>
-<p>44             G              PUNE</p>
-<p>32              E               CAL</p>
-<ul><li>Before Data will not Maintain history</li></ul>
-<h3>Type 1 implementation will always  happen in ODS</h3>
+    **Use Cases for SCD**
 
-<p>Dimensional  Tables CUST id,   C NAME, C ADD , Gender</p>
-<p>Fact Tables  C id, BAL, AREA, Trane Type , Data  Maintained History</p>
-<h3>Type 2  :-  (Maintain History)</h3>
-<p>After Data :- (Source)                    Before  Data :- (Target)</p>
-<p>CID   CN    ADD                                    CID   CN      ADD</p>
-<p>11    A         HYD                                     11    A         HYD</p>
-<p>22   B            GNT                                   22     B         SEC</p>
-<p>44    E            PUN                                   33    C           DEL</p>
-<p>Output :-</p>
-<p>CID   CN    ADD</p>
-<p>11    A         HYD</p>
-<p>22     B        GNT</p>
-<p>33      C       DEL</p>
-<p>———————————–</p>
-<p>22           B               GNT</p>
-<p>44             E                PUN</p>
+    SCD is essential in data warehousing because it allows analysts to understand the evolution of data over time and make accurate comparisons across different periods. For instance, analyzing sales data by year but considering that a store might have changed locations or had multiple names throughout its lifetime requires an SCD approach.
 
-<br><br>
+    **Illustration**
+
+    [Here is a simple illustration demonstrating how SCD Type 2 works](URL-to-the-illustration).
+
+    In conclusion, understanding Slowly Changing Dimensions (SCD) is crucial for data warehousing projects as it enables analysts to create historical context and perform meaningful analysis based on evolving data. Depending on the specific use case, one may opt for Type 0, Type 1, Type 2, or Type 3 SCD approaches.
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

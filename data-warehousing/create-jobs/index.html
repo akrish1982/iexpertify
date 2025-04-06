@@ -1,104 +1,99 @@
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<html><head>
 
 
 
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Creating Jobs in Data Warehousing</h1>
+<p>Estimated Reading Time: 2 minutes</p>
+<p>DataStage offers the following types of jobs:</p>
+<ul id="BuildingDataStageJobs-e13bee__pm0028a87">
+<li><strong>Server Jobs:</strong> Executed on the DataStage Server.</li>
+<li><strong>Mainframe Jobs:</strong> Accessible only with the Enterprise MVS Edition, and they are uploaded to a mainframe for compilation and execution.</li>
+<li><strong>Parallel Jobs:</strong> Exclusive to the Enterprise Edition, running on DataStage servers that support SMP, MPP, or cluster systems.</li>
+</ul>
+<h2 id="BuildingDataStageJobs-e13bee__pm0028a94">Building a DataStage Job</h2>
+<ol id="BuildingDataStageJobs-e13bee__pm0028a95">
+<li><strong>Define optional project-level environment variables in DataStage Administrator.</strong></li>
+<li><strong>Define optional environment parameters.</strong></li>
+<li>Import or create table definitions, if they are not already available.</li>
+<li>Add stages and links to the job to represent data flow.</li>
+<li>Edit source and target stages to determine data sources, table definitions, file names, and so on.</li>
+<li>Modify transformer and processing stages to perform various tasks such as filters, lookups, and expressions.</li>
+<li><strong>Save, compile, troubleshoot, and run the job.</strong></li>
+</ol>
+<h1>Creating Jobs in Data Warehousing</h1>
+<p>Data warehousing is a crucial aspect of any data-driven organization. One of the essential tasks in data warehousing is creating jobs that define how data is processed and transformed. In this article, we'll discuss creating jobs using popular ETL (Extract, Transform, Load) tools.</p>
+<h2>Creating Jobs with Apache NiFi</h2>
+<p>Apache NiFi is an open-source tool for data integration and processing. Here's how to create a simple job:</p>
 
+```sql
+- Connect the following processors (in this order): File, ConvertRecord, ExecuteSQL, PutSQL
+- Configure each processor as follows:
+  - File: Set the input file path and any necessary parameters like delimiter or enclosure.
+  - ConvertRecord: Map attributes based on input record structure.
+  - ExecuteSQL: Write a SQL query to transform data.
+  - PutSQL: Specify the target database connection details and table name.
+```
 
+<h2>Creating Jobs with Talend</h2>
+<p>Talend is another widely-used ETL tool. Here's how to create a job:</p>
 
-Create jobs - Data Warehousing Data Warehousing
+```sql
+- Drag and drop the necessary components from the palette (tFileInputDelimited, tMap, tDBOutput, etc.) onto the job design canvas.
+- Connect each component using data lines or tConnect.
+- Configure each component with appropriate parameters like input file path, output table name, and transformation rules.
+```
 
-Reading Time:  &lt; 1 minute
-<p>DataStage provides these types of jobs:</p>
-<ul id="BuildingDataStageJobs-e13bee__pm0028a87"><li>Server Jobs: Run on the DataStage Server.</li><li>Mainframe Jobs: Available only if you have installed Enterprise MVS Edition and uploaded it to a mainframe, where they are compiled and run.</li><li>Parallel Jobs: Available only if you have installed the Enterprise Edition and run on DataStage servers that are SMP, MPP, or cluster systems.</li></ul>
+<h2>Creating Jobs with Apache Airflow</h2>
+<p>Apache Airflow is a platform for managing workflows and scheduling ETL jobs. Here's how to create a DAG:</p>
 
-<p id="BuildingDataStageJobs-e13bee__pm0028a94">Perform the following steps to build a job:</p>
-<ol id="BuildingDataStageJobs-e13bee__pm0028a95"><li>Define optional project-level environment variables in DataStage Administrator.</li><li>Define optional environment parameters.</li><li>Import or create table definitions, if they are not already available.</li><li>Add stages and links to the job to indicate data flow.</li><li>Edit source and target stages to designate data sources, table definitions, file names, and so on.</li><li>Edit transformer and processing stages to perform various functions, include filters, create lookups, and use expressions.</li><li>Save, compile, troubleshoot, and run the job.</li></ol>
+```python
+from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+from datetime import datetime, timedelta
 
-<br><br>
+def my_function():
+  # Your custom function for transforming data goes here.
+  pass
+
+default_args = {
+    'owner': 'airflow',
+    'start_date': datetime(2021, 1, 1),
+}
+
+dag = DAG('my_dag', default_args=default_args, schedule_interval=timedelta(days=1))
+
+t1 = BashOperator(task_id='task1', bash_command='echo "Hello World"', dag=dag)
+t2 = MyCustomOperator(task_id='my_custom_task', my_function, dag=dag)
+t3 = BashOperator(task_id='task3', bash_command='echo "End of the pipeline"', dag=dag)
+
+t1 &gt;&gt; t2 &gt;&gt; t3
+```
+
+<h2>Summary</h2>
+<p>In this article, we explored creating jobs in data warehousing using popular ETL tools like Apache NiFi, Talend, and Apache Airflow. By understanding the process of creating jobs, you can streamline your data processing tasks and ensure efficient data transformation within your organization's data warehousing environment.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>
