@@ -215,16 +215,16 @@ def save_content(url, rewritten, content):
                 main_body.append(child)
             extra_body.decompose()
 
-    # Remove top-level stray text nodes
-    for element in list(soup.contents):
-        if isinstance(element, NavigableString) and element.strip():
-            element.extract()
+    # # Remove top-level stray text nodes
+    # for element in list(soup.contents):
+    #     if isinstance(element, NavigableString) and element.strip():
+    #         element.extract()
 
-    # Remove empty tags recursively
-    remove_empty_tags(soup)
+    # # Remove empty tags recursively
+    # remove_empty_tags(soup)
 
-    # Run basic HTML sanity checks
-    run_basic_html_sanity_check(soup)
+    # # Run basic HTML sanity checks
+    # run_basic_html_sanity_check(soup)
 
     # Convert back to string
     final_content = str(soup)

@@ -1,108 +1,94 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Design a Data Model Example - Data Warehousing</h1>
+<p>Estimated Reading Time: &lt; 5 minutes</p>
+<h2>Problem Statement</h2>
+<p>Fictitious company A, a car rental business, wants to create a dimensional data warehouse to analyze branch performance. The business processes to be covered include signed contracts, returned cars, and picked up cars per branch, car, customer, and region.</p>
+<h2>Solution</h2>
+<ol type="1">
+<li><strong>Dimensions:</strong></li>
+<ul>
+<li><strong>Branch:</strong> BranchID (Primary Key), Name, Location, Region</li>
+<li><strong>Car:</strong> CarID (Primary Key), Make, Model, Year</li>
+<li><strong>Customer:</strong> CustomerID (Primary Key), FirstName, LastName, Email, Phone, Region</li>
+<li><strong>Region:</strong> RegionID (Primary Key), Name</li>
+</ul>
+<li><strong>Facts:</strong></li>
+<ul>
+<li><strong>Signed Contracts Fact:</strong> FactID, BranchID (Foreign Key), CarID (Foreign Key), CustomerID (Foreign Key), SignDate, TotalCost</li>
+<li><strong>Returned Cars Fact:</strong> ReturnID, BranchID (Foreign Key), CarID (Foreign Key), CustomerID (Foreign Key), ReturnDate</li>
+<li><strong>Picked Up Cars Fact:</strong> PickupID, BranchID (Foreign Key), CarID (Foreign Key), CustomerID (Foreign Key), PickupDate</li>
+</ul>
+</ol>
+<h2>Logical Data Model of the Resulting Data Marts</h2>
+ Include an image or diagram showing the logical data model 
+<h2>Technical Design Document</h2>
+ Provide a technical design document explaining how you will load dimensions and fact tables 
+<h2>Full and Incremental Load Process</h2>
+<p>The Full Load process involves populating the data warehouse with initial data from OLTP systems. This is done once at the start of the data warehouse's lifecycle or after a significant data model change.</p>
+<p>The Incremental Load process updates the data warehouse daily, only adding new records since the last load. This ensures that the data warehouse remains current and relevant to the business needs.</p>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
-
-
-Design a data model example - Data Warehousing
-
-Reading Time:  &lt; 1 minute
-<p>Provide your answers in the comments below</p>
-<p>Fictitious company A is running a car rental business. Logical data model (OLTP) for this business is presented below.</p>
-<p>In order to analyze branch performance, company A wants to create dimensional data warehouse that covers the following business processes:</p>
-<ol type="1"><li>Signed contracts per branch, car, customer, region</li><li>Returned cars per branch, car, customer, region</li><li>Picked up cars per branch, car, customer, region</li></ol>
-<p>According to business, data warehouse will be populated at the end of each business day. All dimensions will be of history preserving type.</p>
-<p>Please do the following:</p>
-<ol type="1"><li>Specify all relevant dimensions (along with each and every relevant columns)</li><li>Define all necessary facts (along with each and every relevant columns)</li><li>Draw logical data model of the resulting Data Marts (along with each and every relevant columns)</li><li>a. Create technical design document that explains how you will load dimensions and fact tables</li></ol>
-<p>b. Explain your design for a Full and Incremental Load process</p>
-
-
-<br><br>
+ Data Model Design Example for Data Warehousing 
+<h1>Design a Data Model Example for Data Warehousing</h1>
+<h2>Introduction</h2>
+<p>In this article, we will walk through an example of designing a data model for a data warehouse. The example is based on a hypothetical e-commerce company named "ShopMart." This data model will focus on the Sales and Inventory domains.</p>
+<h2 id="entities">Entities</h2>
+<h3>Sales Entity</h3>
+<ul>
+<li><strong>SaleID:</strong> A unique identifier for each sale transaction.</li>
+<li><strong>CustomerID:</strong> The customer who made the purchase, referencing the Customer table.</li>
+<li><strong>OrderDate:</strong> The date and time the order was placed.</li>
+<li><strong>TotalAmount:</strong> The total amount of the order (including taxes, shipping costs, etc.).</li>
+</ul>
+<h3>Inventory Entity</h3>
+<ul>
+<li><strong>ProductID:</strong> A unique identifier for each product.</li>
+<li><strong>SupplierID:</strong> The supplier who provides the product, referencing the Supplier table.</li>
+<li><strong>ProductName:</strong> The name of the product.</li>
+<li><strong>Quantity:</strong> The current quantity available in stock.</li>
+</ul>
+<h2 id="relationships">Relationships</h2>
+<h3>One-to-Many Relationships</h3>
+<ul>
+<li><strong>One:</strong> Sales Entity (SaleID)</li>
+<li><strong>Many:</strong> Customer Entity</li>
+<p>Each sale transaction is associated with one customer.</p>
+</ul>
+<h3>Many-to-One Relationships</h3>
+<ul>
+<li><strong>Many:</strong> Sales Entity (ProductID)</li>
+<li><strong>One:</strong> Inventory Entity (ProductID)</li>
+<p>Each sale transaction can involve multiple inventory items of the same product, and there is only one inventory item per product.</p>
+</ul>
+<h2 id="normalization">Normalization</h2>
+<p>Applying normalization principles to this data model ensures that each table only stores atomic values, minimizing redundancy and improving data consistency. For example, instead of storing the customer's name in the Sales table, we store the CustomerID and reference the corresponding customer details in a separate table.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This article provided an example data model for a data warehouse focusing on the Sales and Inventory domains of ShopMart. Designing a well-structured data model is essential for efficient query performance, data consistency, and ease of analysis. Adapting this example to your specific use case can help you create effective data warehousing solutions.</p>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

@@ -1,114 +1,131 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Traditional ETL vs AWS Glue - Data Warehousing</h1>
+<p>ETL stands for Extraction, Transformation, and Load, and we will discuss these topics:</p>
+<ol>
+<li id="Extraction">
+<a href="#Extraction">Extraction</a>: The process of retrieving data from one or more sources such as CRM, ERP, operational systems, legacy data, social media data, data from third parties, and so on.
+          </li>
+<li id="Transformation">
+<a href="#Transformation">Transformation</a>: The process of mapping, reformatting, conforming, adding meaning, and more to prepare the data for easier consumption, like currency conversion from USD to JPY before storage.
+          </li>
+<li id="Loading">
+<a href="#Loading">Loading</a>: Involves inserting data into a target database or data warehouse.
+          </li>
+<li id="Cloud_and_ETL">
+<a href="#Cloud_and_ETL">Cloud and ETL</a>: With the explosion of internet-connected devices collecting data, the amount and variety of data have increased exponentially. Data integration tools, including ETL (mainly referring to the batch portion of data integration), are essential for managing these tasks at scale and on time. Many sources and targets are now in the cloud, such as Snowflake or AWS Redshift in the data warehousing space.
+          </li>
+</ol>
+<h2 id="Cloud_and_ETL">Cloud and ETL</h2>
+<p>Data Integration tools that can complete these tasks on scale and are able to complete them on time are increasingly important as the number of sources and targets on the cloud grows. These tools allow users to create, store, and run ETL jobs online, such as AWS Glue (ETL as a service). Traditional ETL tools often require maintenance, like software updates, and live on-premise servers.</p>
+<table>
+<tbody>
+<tr>
+<td>Serverless ETL</td>
+<td>Traditional ETL</td>
+</tr>
+<tr>
+<td>ETL pipeline job runs as code on servers maintained off-premise or in the cloud</td>
+<td>ETL pipeline jobs typically run in on-premise servers that are maintained, sometimes by another team</td>
+</tr>
+<tr>
+<td>ETL tools such as AWS Glue allow users to customize the code for serverless ETL operations within the ETL data pipeline.</td>
+<td>Traditional ETL tools often have a canvas-based function represented by an icon with configurable UI for customizing ETL operations in a data pipeline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="What_to_read_next">What to read next?</h3>
+<a class="yarpp-thumbnail" href="https://www.iexpertify.com/learn/full-course/aws-glue-serverless-etl/">AWS Glue (Serverless ETL)</a>
+<h1>Data Warehousing: Traditional ETL vs AWS Glue</h1>
+<p>In the realm of data processing, two popular methods have emerged over time: Traditional Extract, Transform, Load (ETL) and Amazon Web Services' (AWS) Glue. This article aims to shed light on both approaches, comparing their functionalities, strengths, and potential use cases.</p>
+<h2>Traditional ETL</h2>
+<h3>Overview</h3>
+<p>ETL is a batch-oriented data integration technique designed to extract data from disparate sources (often known as operational systems), transform it to meet the requirements of a target system (usually a data warehouse), and load the transformed data into the data warehouse for analysis.</p>
+<h3>Components</h3>
+<ul>
+<li><strong>Extraction:</strong> The process of pulling data from various sources.</li>
+<li><strong>Transformation:</strong> The process of cleaning, filtering, and structuring the extracted data to fit the target system's requirements.</li>
+<li><strong>Loading:</strong> The process of writing the transformed data into the target system, which is typically a data warehouse or data mart.</li>
+</ul>
+<h3>Example ETL Workflow (Pseudocode)</h3>
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+    ```
+    foreach source_system in sources:
+        extract data from source_system
+        transform extracted data
+        load transformed data into target system
+    ```
 
+    <h2>AWS Glue</h2>
+<h3>Overview</h3>
+<p>AWS Glue is a fully managed Extract, Transform, Load (ETL) service that makes it easy for customers to move data between various data stores, such as Amazon S3 and databases, at any scale. It simplifies the ETL process by automating much of the heavy lifting involved in creating and executing ETL jobs.</p>
+<h3>Components</h3>
+<ul>
+<li><strong>Crawlers:</strong> Auto-generated metadata about your data sources, which are used to optimize job creation and execution.</li>
+<li><strong>ETL Jobs:</strong> Automated data integration workflows that include Extract, Transform, and Load steps.</li>
+</ul>
+<h3>Example Glue Workflow (Pseudocode)</h3>
 
+    ```
+    create a crawler to gather metadata about the source system
+    use the generated metadata to automatically create an ETL job
+    execute the ETL job, which includes extraction, transformation, and loading of data
+    ```
 
-
-
-
-Traditional ETL vs AWS Glue - Data Warehousing Data Warehousing
-
-
-
-
-
-<p>ETL consists of Extraction, Transformation and Load</p>
- 
-we will cover these topics: 
-<a class="lwptoc_toggle_label" data-label="show" href="index.html#">hide</a>
-
-
-
- <a href="index.html#Extraction">
-1)
-Extraction
-</a>
- <a href="index.html#Transformation">
-2)
-Transformation
-</a>
- <a href="index.html#Loading">
-3)
-Loading
-</a>
- <a href="index.html#Cloud_and_ETL">
-4)
-Cloud and ETL
-</a>
- <a href="index.html#What_to_read_next">
-4.1)
-What to read next?
-</a>
-
-Extraction
-<p>The process of retrieving data from one or more sources – CRM, ERP, operational systems, legacy data, social media data, data from third party, etc.</p>
-Transformation
-<p>The process of mapping, reformatting, conforming, adding meaning and more to prepare the data in a way that it is more easily consumed. Eg. Currency conversion from USD to JPY before storage.</p>
-Loading
-<p>Loading involves inserting of data into a target database or a data warehouse.</p>
-
-<h2>Cloud and ETL</h2>
-<p>After the internet, explosion in the devices that are connected to the internet and increase in the devices that collect data such as home automation devices, mobile phones, smart watches, etc, the amount of data and variety of data has increase exponentially. To understand the variety of data consider the formats such as social media posts on tiktok or photos on instagram or videos on youtube or temperature data from your home thermostat or history of people contacting your company of twitter. These are in addition to the traditional transactions, sales, customer data, operational data that your company already collects and stores on your data warehouse. The advent of cloud SaaS and big data has produced an ability to store and process all this data. </p>
-<p class="has-drop-cap">Data Integration tools(ETL is a part of them, mainly referring to the batch portion of Data integration) that can complete these tasks on scale and are able to complete these tasks on time. More and more, we see that the so many sources and target are on the cloud. Check out the growth of Snowflake or AWS Redshift in the data warehousing space.</p>
-<table><tbody><tr><td>Serverless ETL</td><td>Traditional ETL</td></tr><tr><td>ETL pipeline job runs as code on servers that are maintained off-premise or in the cloud</td><td>ETL pipeline jobs typically run in on-premise servers that are maintained, sometimes by another team</td></tr><tr><td>ETL tools such as AWS Glue is called ETL as a service as it allows users to create and store and run ETL jobs online</td><td>ETL tools are typically canvas based that live on-premise and require maintenance such as software updates</td></tr><tr><td>The code for serverless ETL operations can be customized to do what the developer wants in the ETL data pipeline.</td><td>There is a canvas based fucntion represented by an icon with configurable UI for customizing ETL operations in a data pipeline</td></tr></tbody></table>
-
-<p class="has-black-color has-text-color"></p>
-
-<h3>What to read next?</h3>
-
-<a class="yarpp-thumbnail" href="https://www.iexpertify.com/learn/full-course/aws-glue-serverless-etl/" rel="norewrite" title="AWS Glue (Serverless ETL)">
-AWS Glue (Serverless ETL)</a>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+    <h2>Comparing Traditional ETL and AWS Glue</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Dimension</strong></th>
+<th><strong>Traditional ETL</strong></th>
+<th><strong>AWS Glue</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Management</td>
+<td>Requires more manual management and configuration</td>
+<td>Fully managed by AWS with minimal user intervention required</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Scaling requires additional resources to be provisioned and configured</td>
+<td>Automatically scales based on data volume and complexity</td>
+</tr>
+<tr>
+<td>Optimization</td>
+<td>Optimizations must be implemented manually or with custom scripts</td>
+<td>Automatically optimizes data processing through intelligent job scheduling and resource allocation</td>
+</tr>
+</tbody>
+</table>
+<h2>Conclusion</h2>
+<p>In the ongoing quest to efficiently manage and analyze vast amounts of data, understanding the nuances between Traditional ETL and AWS Glue is crucial. While both methods serve similar purposes, AWS Glue shines in its ability to automate much of the heavy lifting associated with data integration. When considering your data warehousing needs, it's essential to weigh the specific requirements of your use case against the advantages that each approach offers.</p>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

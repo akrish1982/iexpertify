@@ -1,111 +1,95 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Understanding the Linux/Linux ls Command</h1>
+<p>The LS command is a fundamental tool in the Linux operating system. Its basic syntax is:</p>
+<pre><code>ls [option] [path_to_file/directory]</code></pre>
+<p>One of the most common uses is the ls -l command, which lists files and directories along with additional details such as permissions, owner, date of creation, etc. Here's an example:</p>
+<p>A variation is the ls -ltr command, which lists files or directories based on their modification date, with the latest files/directories appearing last.</p>
+<p>This listing includes permissions, file modified date, user name, size, etc.</p>
+<p>In contrast to the ls -l command alone, which displays file sizes in bytes only, the ls -lh command shows the exact size in bytes (b), kilobytes (kb), megabytes (MB), etc.:</p>
+<p>You can also sort your files by size using the ls -las command, with the largest file appearing first.</p>
 
 
 
+    <h1>Understanding the Linux ls Command</h1>
 
+    <h2>Introduction</h2>
 
+    The `ls` command in Linux is one of the most fundamental and commonly used commands. It stands for "list" and its primary function is to display the contents of a directory. This article aims to provide an overview of the `ls` command, its various options, and how it can be effectively utilized within the Linux environment.
 
-linux ls command - Linux Linux
+    <h2>Basic Usage</h2>
 
+    To list the files and directories in the current directory, simply type `ls` in your terminal:
 
-<p>The basic syntax of the LS command is as follows:</p>
-ls [option] [path_to_file/directory]
-<p>The LS -l command lists files and directories together with additional information like permissions, owner, date of creation, etc. Let’s look at the image below before getting to every column and data presented.</p>
-ls -l
-<p>A common variation is the ls -ltr. It is used with file name or pattern. to show the latest modified files or directories in order. The latest modified is listed as the last while the oldest outputted as the first. Take a look at the image below.</p>
+```bash
+$ ls
+```
 
-<p>This listing provides permissions, file modified date, user name, size, etc.</p>
-<p>Unlike the ls -l command alone, which lists the size of files in bytes only, the ls -lh command will show the exact size in bytes(b), kilobytes(kb), megabytes(MB), etc.</p>
+    Here's a simple example of what you might see when using the `ls` command on a typical Linux system:
 
-<p>You can also sort your files by size using the ls -las command. The most extensive file will be displayed first while the smallest last.</p>
-ls -laS
+```bash
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+```
 
+    <h2>Options</h2>
 
-<br><br>
+    There are numerous options available for the `ls` command, allowing you to tailor its output to your specific needs. Some of the commonly used options are:
+
+    <h3>-l (long listing)</h3>
+
+    The `-l` option generates a detailed, "long" listing of files and directories. It displays information such as file permissions, number of links, owner, group, size, time of last modification, and name:
+
+```bash
+$ ls -l
+total 16
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Desktop
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Documents
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Downloads
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Music
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Pictures
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Public
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Templates
+drwxr-xr-x  3 user1 user1  4096 Jul  5 12:00 Videos
+```
+
+    <h3>-a (all files)</h3>
+
+    The `-a` option displays all files, including hidden ones (files whose names begin with a dot), in the specified directory:
+
+```bash
+$ ls -a
+.bashrc  .cache  .config  Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+```
+
+    <h2>Conclusion</h2>
+
+    The `ls` command is an indispensable tool for navigating and managing files within a Linux system. Understanding its various options allows you to quickly and efficiently manipulate your file structure. With practice, mastering the `ls` command will significantly streamline your workflow and make you more productive in the Linux environment.
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>
