@@ -1,63 +1,96 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-
-
-**Accessing Netezza Query History Details Using nz_query_history Table**
-
-In this article, we will explore how to access Netezza query history details using the `nz_query_history` table. The `nz_query_history` table is a system catalog view that provides detailed information about SQL statements that have been executed against your Netezza system.
-
-**Prerequisites**
-
-Before we dive into the steps to access query history details, make sure you have the following:
-
-1. Access to a Netezza database and appropriate privileges to query system tables.
-2. A basic understanding of SQL.
-
-**Accessing Query History Details**
-
-Follow these steps to access query history details using the `nz_query_history` table:
-
-**Step 1:** Connect to your Netezza database using a tool that supports running SQL queries, such as pgAdmin, Navicat for Netezza, or sqlcli.
-
-**Step 2:** Execute the following query to retrieve query history details from the `nz_query_history` table:
-
-```sql
+<h1>Accessing Netezza Query History Details Using nz_query_history Table</h1>
+<section>
+<h2>Prerequisites</h2>
+<ul>
+<li>Access to a Netezza database and appropriate privileges to query system tables.</li>
+<li>A basic understanding of SQL.</li>
+</ul>
+</section>
+<section id="accessing-query-history">
+<h2>Accessing Query History Details</h2>
+<ol>
+<li>Connect to your Netezza database using a tool that supports running SQL queries, such as pgAdmin, Navicat for Netezza, or sqlcli.</li>
+<li>Execute the following query to retrieve query history details from the nz_query_history table:</li>
+</ol>
+<pre>
 SELECT * FROM nz_query_history WHERE job_id = 'your_job_id';
-```
-Replace 'your_job_id' with the actual job ID for the query you want to inspect. If you are interested in all queries executed within a specific timeframe, replace 'your_job_id' with the appropriate conditions (e.g., `WHERE start_time &gt;= 'start_date' AND start_time &lt;= 'end_date';`).
-
-**Example Query Output**
-
-Assuming you have run the query and fetched some results, the output will look similar to the following:
-
-| job_id          | start_time                | end_time              | user_name           | application_name | num_rows_affected| num_bytes_read   | num_bytes_written| num_bytes_spilled| num_bytes_cached | status        |
-|----------------|---------------------------|-----------------------|---------------------|--------------------|------------------|-------------------|------------------|------------------|-------------------|--------------|
-| 1234567890      | 2022-03-01 09:00:01.000     | 2022-03-01 09:00:03.000 | john_doe            | psql               | 0                | 1024             | 0                | 0                | 0                 | success       |
-| 876543210      | 2022-03-01 09:05:01.000     | 2022-03-01 09:05:05.000 | jane_doe            | psql               | 1000             | 8192             | 6400            | 0                | 1024           | success       |
-
-**Columns Description**
-
-Here's a brief explanation of each column in the `nz_query_history` table:
-
-- job_id: The unique ID for the SQL statement.
-- start_time and end_time: Timestamps indicating when the SQL statement started and finished execution, respectively.
-- user_name: The username that submitted the SQL statement.
-- application_name: The name of the application that submitted the SQL statement.
-- num_rows_affected: The number of rows affected by the SQL statement (e.g., inserted, updated or deleted).
-- num_bytes_read: The total bytes read from disk during the execution of the SQL statement.
-- num_bytes_written: The total bytes written to disk during the execution of the SQL statement.
-- num_bytes_spilled: The number of bytes spilled to disk (i.e., data that doesn't fit into memory).
-- num_bytes_cached: The number of bytes cached in memory for future use.
-- status: The execution status of the SQL statement, such as success or error.
-
-**Conclusion**
-
-Leveraging the `nz_query_history` table can help you monitor query performance, identify potential issues and optimize your Netezza database workloads more efficiently. By analyzing the data returned from this system catalog view, you can make informed decisions to improve overall system performance and optimize your queries for better results.
-
+</pre>
+<p>Replace 'your_job_id' with the actual job ID for the query you want to inspect. If you are interested in all queries executed within a specific timeframe, replace 'your_job_id' with the appropriate conditions (e.g., WHERE start_time &gt;= 'start_date' AND start_time &lt;= 'end_date';).</p>
+</section>
+<section id="example-query-output">
+<h2>Example Query Output</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>job_id</th>
+<th>start_time</th>
+<th>end_time</th>
+<th>user_name</th>
+<th>application_name</th>
+<th>num_rows_affected</th>
+<th>num_bytes_read</th>
+<th>num_bytes_written</th>
+<th>num_bytes_spilled</th>
+<th>num_bytes_cached</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1234567890</td>
+<td>2022-03-01 09:00:01.000</td>
+<td>2022-03-01 09:00:03.000</td>
+<td>john_doe</td>
+<td>psql</td>
+<td>0</td>
+<td>1024</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>success</td>
+</tr>
+<tr>
+<td>876543210</td>
+<td>2022-03-01 09:05:01.000</td>
+<td>2022-03-01 09:05:05.000</td>
+<td>jane_doe</td>
+<td>psql</td>
+<td>1000</td>
+<td>8192</td>
+<td>6400</td>
+<td>0</td>
+<td>1024</td>
+<td>success</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="columns-description">
+<h2>Columns Description</h2>
+<ul>
+<li><strong>job_id:</strong> Unique identifier for each query.</li>
+<li><strong>start_time:</strong> Time when the query was started.</li>
+<li><strong>end_time:</strong> Time when the query ended (or the current time if it is still running).</li>
+<li><strong>user_name:</strong> User who executed the query.</li>
+<li><strong>application_name:</strong> Application that was used to execute the query.</li>
+<li><strong>num_rows_affected:</strong> Number of rows affected by the query.</li>
+<li><strong>num_bytes_read:</strong> Number of bytes read from the database.</li>
+<li><strong>num_bytes_written:</strong> Number of bytes written to the database.</li>
+<li><strong>num_bytes_spilled:</strong> Number of bytes spilled to disk due to memory pressure.</li>
+<li><strong>num_bytes_cached:</strong> Number of bytes cached for future use.</li>
+<li><strong>status:</strong> Status of the query execution (e.g., success or error).</li>
+</ul>
+</section>
+<section id="conclusion">
+<h2>Conclusion</h2>
+<p>By leveraging the nz_query_history table, you can effectively monitor query performance, identify potential issues, and optimize your Netezza database workloads more efficiently. Analyzing the data returned from this system catalog view allows you to make informed decisions to improve overall system performance and optimize your queries for better results.</p>
+</section>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

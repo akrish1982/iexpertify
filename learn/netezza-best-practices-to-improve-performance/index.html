@@ -1,99 +1,63 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-<article>
-<h1>Improving Netezza Performance: Best Practices</h1>
-<section id="Considerations_for_better_performance">
-<h2>1) Considerations for better performance:</h2>
-<h3>Distribution</h3>
-<p class="info-text">Bad distribution can cause data skew (more data stored in certain data slices while less data is stored in other data slices). This affects query performance as the data slice with more work to do impacts the entire system. If you're unsure of the right distribution key, consider distributing on random.</p>
-<p class="info-text">Data types matter too. Choose a type that minimizes disk storage requirements and scan time. Using Char(x) instead of Varchar(x) for fixed length data can save space and reduce I/O.</p>
-</section>
-<section id="Statistics">
-<h3>Statistics</h3>
-<p class="info-text">The nzsql GENERATE STATISTICS command gathers statistics about each table column’s proportion of stats, including duplicate values, maximum value, minimum value, null values, dispersion values and updates the system catalog table. The optimizer relies on these statistics to determine the most efficient way to execute a query.</p>
-</section>
-<section id="Zone_maps">
-<h3>Zone maps</h3>
-<p class="info-text">Zone maps are used when you have numeric datatypes for join columns and where clause columns. They help optimize the processing of queries.</p>
-</section>
-<section id="Groom_table_command">
-<h3>Groom table command</h3>
-<p class="info-text">Groom tables that receive frequent updates or deletes, or if a load or insert is aborted. Grooming at a record level can remove all deleted records regardless of their location.</p>
-</section>
-<section id="Performance_Issues">
-<h2>2) Performance Issues:</h2>
-<h3>Common reasons for performance issues</h3>
-<ul class="issues-list">
-<li>Inappropriate distribution keys can cause data skew.</li>
-<li>Process skew can occur when not taking into account processing patterns, even with uniform data distribution.</li>
-<li>Large volume data re-distribution or broadcast during query execution impacts performance.</li>
-<li>Consider numeric datatypes for join columns and where clause columns to enable zone maps usage.</li>
-<li>Table data that isn't organized optimally for multi table joins in a data warehouse environment affects performance.</li>
+<div class="container">
+<h1 class="title">Best Practices for Improving Netezza Performance</h1>
+<section class="section-item" id="Optimizing_Query_Structure">
+<h2 class="subtitle">1. Optimizing Query Structure</h2>
+<ul class="tips-list">
+<li>
+<h3 class="tip-head">Use JOINs wisely:</h3>
+<p class="tip-desc">Minimize the use of nested join operations. Instead, consider performing joins in multiple passes or using UNION ALL to break down large queries into smaller, more manageable parts.</p>
+</li>
+<li>
+<h3 class="tip-head">Limit result set size:</h3>
+<p class="tip-desc">Use the TOP and FETCH FIRST statements to limit the number of rows returned by a query. This can help reduce the amount of data transferred between Netezza and your application.</p>
+</li>
+<li>
+<h3 class="tip-head">Avoid using OR in WHERE clauses:</h3>
+<p class="tip-desc">Replace OR with UNION ALL and separate conditions into individual queries. This can improve performance due to Netezza's ability to parallelize and optimize multiple independent queries more efficiently than complex WHERE clauses involving OR.</p>
+</li>
 </ul>
 </section>
-<section id="Query_performance_analysis">
-<h3>Steps to do query performance analysis</h3>
-<ol class="analysis-steps">
-<li>Identify long running queries or those queuing other queries.</li>
-<li>Generate query plans using the “EXPLAIN” command or analyze .pln files in the data.&lt;ver&gt;/plans directory under the /nz/data directory.</li>
-<li>Look for performance issues details from the previous sections and take necessary actions like generating statistics, changing distributions, grooming tables, etc.</li>
-<li>Verify whether the modifications helped with the query plan by regenerating the plan using the explain utility.</li>
-</ol>
+<section class="section-item" id="Leveraging_Netezza_Features">
+<h2 class="subtitle">2. Leveraging Netezza Features</h2>
+<ul class="tips-list">
+<li>
+<h3 class="tip-head">Partitioning:</h3>
+<p class="tip-desc">Divide large tables into smaller, more manageable partitions based on a specified attribute or range of values. This can help reduce the amount of data processed by each query and improve overall performance.</p>
+</li>
+<li>
+<h3 class="tip-head">Indexes:</h3>
+<p class="tip-desc">Use indexes judiciously to speed up data retrieval. Consider creating indexes on frequently queried columns and avoid over-indexing, which can negatively impact write operations and storage usage.</p>
+</li>
+<li>
+<h3 class="tip-head">Materialized Queries:</h3>
+<p class="tip-desc">Create materialized queries (MQs) for frequently used subqueries to reduce the number of times they need to be executed and improve query performance.</p>
+</li>
+</ul>
 </section>
-</article>
-
-
-    **Title: Best Practices for Improving Netezza Performance**
-
-    Welcome to our guide on best practices for improving Netezza performance! This article aims to provide you with actionable tips and strategies to maximize the efficiency of your Netezza SQL queries.
-
-    **1. Optimizing Query Structure**
-
-    - **Use JOINs wisely:** Minimize the use of nested join operations. Instead, consider performing joins in multiple passes or using UNION ALL to break down large queries into smaller, more manageable parts.
-
-    - **Limit result set size:** Use the TOP and FETCH FIRST statements to limit the number of rows returned by a query. This can help reduce the amount of data transferred between Netezza and your application.
-
-    - **Avoid using OR in WHERE clauses:** Replace OR with UNION ALL and separate conditions into individual queries. This can improve performance due to Netezza's ability to parallelize and optimize multiple independent queries more efficiently than complex WHERE clauses involving OR.
-
-    ```sql
-    -- Inefficient example using OR
-    SELECT * FROM table_a WHERE column = 'value1' OR column = 'value2';
-
-    -- Efficient example using UNION ALL
-    SELECT * FROM table_a WHERE column = 'value1';
-    SELECT * FROM table_a WHERE column = 'value2';
-    ```
-
-    **2. Leveraging Netezza Features**
-
-    - **Partitioning:** Divide large tables into smaller, more manageable partitions based on a specified attribute or range of values. This can help reduce the amount of data processed by each query and improve overall performance.
-
-    - **Indexes:** Use indexes judiciously to speed up data retrieval. Consider creating indexes on frequently queried columns and avoid over-indexing, which can negatively impact write operations and storage usage.
-
-    ```sql
-    CREATE INDEX idx_name ON table_name (column_name);
-    ```
-
-    - **Materialized Queries:** Create materialized queries (MQs) for frequently used subqueries to reduce the number of times they need to be executed and improve query performance.
-
-    ```sql
-    CREATE MATERIALIZED QUERY mq_name AS SELECT * FROM table_name WHERE condition;
-    ```
-
-    **3. Monitoring and Tuning**
-
-    - **Monitor system resources:** Keep an eye on CPU, memory, and I/O usage to identify potential bottlenecks and take corrective action as needed.
-
-    - **Tune buffer pool sizes:** Adjust buffer pool settings (e.g., the default pool, read-only pool, and write pool) to optimize for your specific workload requirements.
-
-    - **Regularly maintain and update Netezza software:** Keep your Netezza system up-to-date with the latest patches and service packs to ensure optimal performance and address any known issues.
-
-By following these best practices, you can significantly improve the performance of your Netezza queries and overall system efficiency. Happy optimizing!
-
+<section class="section-item" id="Monitoring_and_Tuning">
+<h2 class="subtitle">3. Monitoring and Tuning</h2>
+<ul class="tips-list">
+<li>
+<h3 class="tip-head">Monitor system resources:</h3>
+<p class="tip-desc">Keep an eye on CPU, memory, and I/O usage to identify potential bottlenecks and take corrective action as needed.</p>
+</li>
+<li>
+<h3 class="tip-head">Tune buffer pool sizes:</h3>
+<p class="tip-desc">Adjust buffer pool settings (e.g., the default pool, read-only pool, and write pool) to optimize for your specific workload requirements.</p>
+</li>
+<li>
+<h3 class="tip-head">Regularly maintain and update Netezza software:</h3>
+<p class="tip-desc">Keep your Netezza system up-to-date with the latest patches and service packs to ensure optimal performance and address any known issues.</p>
+</li>
+</ul>
+</section>
+</div>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

@@ -1,11 +1,11 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Undoing Deletes, Updates, or Inserts in Netezza</h1>
-<p>In Netezza, it is important to understand the concept of transaction ids (xids) when dealing with data manipulation operations such as delete, update, or insert.</p>
+<p>In Netezza, it is crucial to comprehend the concept of transaction ids (xids) when dealing with data manipulation operations such as delete, update, or insert.</p>
 <h3>Understanding Transaction Ids</h3>
 <ul>
 <li>Every transaction, whether an insert, update, or delete, is assigned a sequential transaction id (xid).</li>
@@ -19,83 +19,16 @@
 <h3>Restoring Netezza Records</h3>
 <p>Here is a simple select statement to view all data, including deleted rows:</p>
 <code>select createxid,deletexid, * from table</code>
-<h4>Viewing Deleted Rows Only</h4>
-<p>To see just the deleted rows, use a WHERE clause to filter on non-zero deletexid:</p>
-<code>select createxid,deletexid, * from table where deletexid !=0</code>
-<h4>Undoing Deletes</h4>
-<p>Once you can see your deleted data, and figure out which transaction you are trying to undo, you can simply re-insert the data:</p>
-<code>insert into table select * from table where deletexid=142233;</code> –transaction id from delete.
-
-      <h4>Undoing Updates</h4>
-<p>To undo an update, just re-insert the deleted rows and delete the inserted rows:</p>
-<code>insert into table select * from table where deletexid=146443;</code> –transaction id from update
-<code>delete from table where createxid=146443;</code> –transaction id from update
-
-      <h4>Undoing Inserts</h4>
-<p>To undo an insert, use the following SQL:</p>
-<code>delete from table where createxid=1434443;</code> –transaction id from insert
-   
-
-    **Undoing a DELETE, UPDATE or INSERT Operation in Netezza**
-
-    In Netezza, there's no direct way to undo a `DELETE`, `UPDATE` or `INSERT` operation. However, you can use various strategies to recover data or mimic an "undo" operation. This article outlines different methods for handling these scenarios.
-
-    ## Recovering Deleted Data
-
-    ### Using the RECOVER command
-
-    Netezza provides a `RECOVER` command to restore deleted rows from a table within a specified time frame. The syntax is as follows:
-
-```sql
-RECOVER TABLE <table_name> [TO TIMESTAMP <timestamp>];
-```
-
-Example:
-
-```sql
-RECOVER TABLE customers TO TIMESTAMP '2021-03-01 00:00:00';
-```
-
-**Important**: Remember that the recovery window for a table is controlled by the `RETAIN` option of the `CREATE TABLE` statement. For more information on this, refer to the [Netezza SQL Reference Guide](https://www.ibm.com/support/knowledgecenter/SSW2820_12.6.0/com.ibm.nz.doc/nz_ref/nzr1260.htm).
-
-    ### Using the Backup and Recovery Feature
-
-    In case you have a backup of your table, you can restore it using the `RESTORE` command:
-
-```sql
-RESTORE TABLE <table_name> FROM BACKUP;
-```
-
-Make sure to backup your tables regularly using the `BACKUP` command.
-
-    ## Reverting an UPDATE or INSERT Operation
-
-    Since Netezza doesn't support transactions in the traditional sense, there is no direct way to undo an `UPDATE` or `INSERT`. However, you can implement a workaround by using the following strategies:
-
-    ### Using a Temporary Table
-
-    One approach is to store the original data in a temporary table before performing an update or insert operation. Then, if needed, you can swap the tables to restore the previous state.
-
-```sql
--- Before the UPDATE or INSERT operation:
-CREATE TEMPORARY TABLE <temp_table> AS SELECT * FROM <original_table>;
-
--- Perform the UPDATE or INSERT operation on the original table:
-UPDATE <original_table> SET column1 = 'new value';
-
--- To undo the update, swap the tables:
-SELECT INTO <original_table> FROM <temp_table>;
-```
-
-    ### Using a Versioning Strategy
-
-    Another approach is to use a versioning strategy for tracking changes in your data. This involves storing multiple versions of the table, which allows you to roll back to any previous state when needed. There are various ways to implement a versioning strategy, such as using triggers or logging mechanisms.
-
-    **Note**: These strategies may come with their own overheads in terms of storage and performance. Use them judiciously based on your specific use case and requirements.
-
-    Hope this article helps you manage data changes effectively in Netezza! For more information on Netezza features, refer to the [IBM Netezza SQL Reference Guide](https://www.ibm.com/support/knowledgecenter/SSW2820_12.6.0/com.ibm.nz.doc/nz_ref/nzr1260.htm).
-
-</temp_table></original_table></original_table></original_table></temp_table></table_name></timestamp></table_name><footer>
+<h4>Viewing Only Deleted Rows</h4>
+<p>To view only the deleted rows, use the following query:</p>
+<code>SELECT * FROM table WHERE deletexid IS NOT NULL;</code>
+<h3>Reverting an UPDATE or INSERT Operation</h3>
+<p>Since Netezza doesn't support transactions in the traditional sense, there is no direct way to undo an UPDATE or INSERT. However, you can implement a workaround by using the following strategies:</p>
+<ul>
+<li><strong>Using a Temporary Table</strong>: Store the original data in a temporary table before performing an update or insert operation. Then, if needed, you can swap the tables to restore the previous state.</li>
+<li><strong>Using a Versioning Strategy</strong>: Use a versioning strategy for tracking changes in your data. This involves storing multiple versions of the table, which allows you to roll back to any previous state when needed.</li>
+</ul>
+<footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>

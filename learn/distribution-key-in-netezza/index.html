@@ -1,19 +1,17 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
-</head>
-<body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Learn: Distribution Key in Netezza</h1>
 <h2>Distribution, Not Just for Joins</h2>
-<p>There are several other scenarios where data needs to be distributed to process.</p>
-<p>First one that comes to mind are count distincts. Take for example a count of distinct users or customers like `count(distinct customer_id)` perhaps when doing analysis on purchase transactions. An example sql might be</p>
-<pre><code>select count(distinct customer_id) from purchase_transaction</code></pre>
+<p>There are several other scenarios where data needs to be distributed to process. One that comes to mind is count distincts. For example, a count of distinct users or customers like `count(distinct customer_id)` perhaps when doing analysis on purchase transactions. An example SQL might be:</p>
+<pre><code>select count(distinct customer_id) from purchase_transaction;</code></pre>
 <p>For argument we'll say that purchase_transaction has random distribution. So Netezza has to break up the job. It can't just count distinct on every spu because you can't just add up the numbers at the end because some customers might be on more than one spu. The way to make it where you can just add them up is to make sure a customer can't be on more than one spu, and that means you need the data distributed by customer. That's exactly what the query plan will do, redistribute on customer. But of course if they data is already distributed on customer, then you save having to do a redistribution.</p>
 <h2>Loading and Unloading Tables</h2>
 <a class="wp-block-button__link has-text-color has-background" href="https://www.iexpertify.com/learn/full-course/netezza/" style="border-radius:2px;background-color:#ba0c49;color:#fffffa">Full Course</a>
-<a class="wp-block-button__link has-text-color" style="border-radius:2px;color:#ba0c49">Next: Loading and Unloading Tables</a>
+<a class="wp-block-button__link has-text-color" href="#loading-and-unloading-tables" style="border-radius:2px;color:#ba0c49">Next: Loading and Unloading Tables</a>
 <section id="what-is-distribution-key">
 <h2>What is a Distribution Key?</h2>
 <p>In Netezza, a distribution key is a column or combination of columns that determines how data is distributed across the nodes of an appliance. It plays a crucial role in optimizing query performance by minimizing inter-node communication.</p>
@@ -29,27 +27,19 @@
 <h2>Choosing the Right Distribution Key</h2>
 <p>To choose the right distribution key for your Netezza appliance, consider the following factors:</p>
 <ol>
-<li><strong>Data usage patterns**: Identify the columns that are frequently used in your queries. These are likely to be good candidates for the distribution key.</strong></li>
-<li><strong>Data cardinality**: Choose a column or combination of columns with low cardinality (i.e., many unique values) to ensure efficient data distribution.</strong></li>
-<li><strong>Data correlation**: Consider columns that are highly correlated with each other, as they may benefit from being stored together on the same node.</strong></li>
+<li>Choose a column with low cardinality to improve query performance and even data distribution.</li>
+<li>Select a column that is correlated with data usage patterns for efficient data distribution and optimized queries.</li>
 </ol>
-</section>
-<section id="best-practices-for-distribution-key">
-<h2>Best Practices for Distribution Key</h2>
-<ul>
-<li><strong>Keep it simple**: Use a single column or a small combination of columns as the distribution key to minimize complexity.</strong></li>
-<li><strong>Use meaningful data**: Choose columns that have meaningful values, such as dates or IDs, rather than arbitrary columns like auto-generated keys.</strong></li>
-</ul>
 </section>
 <section id="example-distribution-key">
 <h2>Example Distribution Key</h2>
 <p>In this example, we'll create a distribution key for an e-commerce database that tracks customer orders. We'll use the `customer_id` column as our distribution key:</p>
 <pre><code>CREATE TABLE orders (
-  order_id int,
-  customer_id int,
-  order_date date,
-  ...
-) WITH (DISTRIBUTION_KEY = 'customer_id');</code></pre>
+          order_id int,
+          customer_id int,
+          order_date date,
+          ...
+        ) WITH (DISTRIBUTION_KEY = 'customer_id');</code></pre>
 </section>
 <section id="common-mistakes-to-avoid">
 <h2>Common Mistakes to Avoid</h2>
@@ -65,25 +55,26 @@
 </tr>
 </table>
 </section>
+<a href="#distribution-not-just-for-joins" id="loading-and-unloading-tables">Back to Top</a>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>
-    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
 </ul>
 <h3>Connect with me:</h3>
 <ul>
-    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
 </ul>
 <h3>My Resources:</h3>
 <ul>
-    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
 </ul>
 <h3>Languages and Tools:</h3>
 <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>

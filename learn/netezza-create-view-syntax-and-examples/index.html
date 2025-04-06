@@ -1,78 +1,54 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Learning Netezza: Create View Syntax and Examples</h1>
-<p>In this article, we will explore the syntax for creating views in Netezza and provide some examples. A view is a virtual table based on the result-set of a complex SQL statement that may involve multiple table joins or a simple SELECT statement with selected columns needed by the analyst group.</p>
-<h2>Netezza Create View Syntax</h2>
-<p>The syntax for creating a view in Netezza is:</p>
-<pre>CREATE [OR REPLACE] VIEW <view_name> AS SELECT <query>;</query></view_name></pre>
-<p>Note that, unlike other databases such as Teradata, Netezza does not support the creation of RECURSIVE views.</p>
+<p>In this article, we will delve into the process of creating views in Netezza, a high-performance data warehouse database system. Views serve as virtual tables based on the result-set of an SQL statement. They can simplify complex queries, enhance security, and promote better organization of your database schema.</p>
+<h2>Syntax</h2>
+<p>The fundamental syntax for creating a view in Netezza is as follows:</p>
+<pre>
+        CREATE VIEW view_name AS
+            SELECT column1, column2, ...
+            FROM table_name
+            WHERE condition;
+      </pre>
+<h3>Example 1 - Simple View</h3>
+<p>Consider a table named `sales` with columns `region`, `product`, and `amount`. To create a view that displays the total sales for each region, we can employ the following SQL statement:</p>
+<pre>
+        CREATE VIEW total_sales AS
+            SELECT region, SUM(amount) as total_sales
+            FROM sales
+            GROUP BY region;
+      </pre>
+<h3>Example 2 - View with Joins</h3>
+<p>Suppose we have another table named `customers` with columns `region`, `customer_name`, and let's see the top 5 customers in each region. We can create a view that joins both tables:</p>
+<pre>
+        CREATE VIEW top_5_customers AS
+            SELECT region, customer_name, amount
+            FROM sales
+            JOIN customers ON sales.region = customers.region
+            WHERE rownum &lt;= 5
+            GROUP BY region, customer_name;
+      </pre>
+<h3>Note</h3>
+<p>Netezza does not support the `AS` keyword when renaming columns in a view. Instead, you should use a subquery to achieve column renames:</p>
+<pre>
+        CREATE VIEW sales_view AS
+            SELECT region, product, SUM(amount) as total_sales_per_product
+            FROM sales
+            GROUP BY region, product;
+
+        -- To query the view and rename columns:
+        SELECT region, product as item, total_sales_per_product as sales
+        FROM sales_view;
+      </pre>
 <h2>Checking for Obsolete Views in Netezza</h2>
 <p>If you alter or change the underlying view table, the view becomes obsolete and unusable until you re-compile it. IBM has provided a script to check if a view is obsolete. The general location of this script is /nz/support/bin, but you should consult your Netezza admin team for the exact location. Below is the script and its usage:</p>
-<pre>nz_check_views [database] [-replace <flag>]</flag></pre>
-
-
-    **Learning Netezza: Create View Syntax and Examples**
-
-    In this article, we will explore how to create views in Netezza, a high-performance data warehouse database system. Views are virtual tables based on the result-set of an SQL statement. They can be used to simplify complex queries, enhance security, and promote better organization of your database schema.
-
-    **Syntax**
-
-    The basic syntax for creating a view in Netezza is as follows:
-
-    ```sql
-    CREATE VIEW view_name AS
-        SELECT column1, column2, ...
-        FROM table_name
-        WHERE condition;
-    ```
-
-    **Example 1 - Simple View**
-
-    Suppose we have a table named `sales` containing columns `region`, `product`, and `amount`. To create a view that displays the total sales for each region, we can use the following SQL statement:
-
-    ```sql
-    CREATE VIEW total_sales AS
-        SELECT region, SUM(amount) as total_sales
-        FROM sales
-        GROUP BY region;
-    ```
-
-    **Example 2 - View with Joins**
-
-    If we have another table named `customers` containing columns `region`, `customer_name`, and we want to see the top 5 customers in each region, we can create a view that joins both tables:
-
-    ```sql
-    CREATE VIEW top_5_customers AS
-        SELECT region, customer_name, amount
-        FROM sales
-        JOIN customers ON sales.region = customers.region
-        WHERE rownum &lt;= 5
-        GROUP BY region, customer_name;
-    ```
-
-    **Note**
-
-    Netezza does not support the `AS` keyword when renaming columns in a view. Instead, you should use a subquery to achieve column renames:
-
-    ```sql
-    CREATE VIEW sales_view AS
-        SELECT region, product, SUM(amount) as total_sales_per_product
-        FROM sales
-        GROUP BY region, product;
-
-    -- To query the view and rename columns:
-    SELECT region, product as item, total_sales_per_product as sales
-    FROM sales_view;
-    ```
-
-    **Conclusion**
-
-    Views are a powerful tool in Netezza for simplifying complex queries, improving organization, and enhancing database security. By following the syntax outlined in this article, you can create views that meet your specific requirements. Keep practicing with different examples to become more comfortable working with views in Netezza.
-
+<pre>
+        nz_check_views [database] [-replace <flag>]
+      </flag></pre>
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>

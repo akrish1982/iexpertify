@@ -1,80 +1,36 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: Commonly Used Netezza Basic Commands</h1>
+<h2 id="connecting-to-netezza-database">1. Connecting to Netezza Database</h2>
+<pre><code>zConnect -h &lt;hostname&gt; -p &lt;port&gt; -U &lt;username&gt; -d &lt;database_name&gt;</code></pre>
+<p>Replace &lt;hostname&gt;, &lt;port&gt;, &lt;username&gt;, and &lt;database_name&gt; with appropriate values.</p>
+<h2 id="query-execution">2. Query Execution</h2>
+<pre><code>SELECT * FROM &lt;table_name&gt;;</code></pre>
+<p>Replace &lt;table_name&gt; with the table you want to select data from.</p>
+<h2 id="explanation-of-sql-statements">3. Explanation of SQL Statements</h2>
+<h3>CREATE TABLE</h3>
+<pre><code>CREATE TABLE &lt;table_name&gt; (<column1_data_type> &lt;column1_name&gt;, <column2_data_type> &lt;column2_name&gt;, ...);</column2_data_type></column1_data_type></code></pre>
+<h3>ALTER TABLE</h3>
+<pre><code>ALTER TABLE &lt;table_name&gt; ADD COLUMN &lt;new_column_data_type&gt; &lt;new_column_name&gt;;</code></pre>
+<h3>INSERT INTO</h3>
+<pre><code>INSERT INTO &lt;table_name&gt; (<column1>, <column2>, ...) VALUES (<value1>, <value2>, ...);</value2></value1></column2></column1></code></pre>
+<h2 id="data-manipulation-language-dml">4. Data Manipulation Language (DML)</h2>
+<h3>DELETE</h3>
+<pre><code>DELETE FROM &lt;table_name&gt; WHERE &lt;condition&gt;;</code></pre>
+<h3>UPDATE</h3>
+<pre><code>UPDATE &lt;table_name&gt; SET &lt;column_name&gt;=&lt;new_value&gt; WHERE &lt;condition&gt;;</code></pre>
+<h2 id="data-definition-language-ddl">5. Data Definition Language (DDL)</h2>
+<h3>DROP TABLE</h3>
+<pre><code>DROP TABLE &lt;table_name&gt;;</code></pre>
 
+       For more complex operations, you can refer to the official [Netezza SQL Reference Guide](https://www.ibm.com/support/knowledgecenter/ssw_ibm_db_n/com.ibm.swg.im.nz.db.sqlref/doc/r0215796.html) for detailed documentation on Netezza SQL commands.
 
-  **Learn: Commonly Used Netezza Basic Commands**
-
-Welcome to our guide on Netezza basic commands! This tutorial will walk you through various essential commands for operating Netezza, an advanced data warehouse system from IBM. Let's dive in!
-
-**1. Connecting to Netezza Database**
-
-To connect to a Netezza database, use the following command:
-
-```sql
-zConnect -h <hostname> -p <port> -U <username> -d <database_name>
-```
-Replace `<hostname>`, `<port>`, `<username>`, and `<database_name>` with appropriate values.
-
-**2. Query Execution**
-
-To execute a SQL query, simply type your statement after connecting to the database:
-
-```sql
-SELECT * FROM <table_name>;
-```
-Replace `<table_name>` with the table you want to select data from.
-
-**3. Explanation of SQL Statements**
-
-- **CREATE TABLE**: Use this command to create a new table in Netezza:
-
-  ```sql
-  CREATE TABLE <table_name> (<column1_data_type> <column1_name>, <column2_data_type> <column2_name>, ...);
-  ```
-
-- **ALTER TABLE**: Modify the structure of an existing table using ALTER TABLE:
-
-  ```sql
-  ALTER TABLE <table_name> ADD COLUMN <new_column_data_type> <new_column_name>;
-  ```
-
-- **INSERT INTO**: Add new rows to a table with the following command:
-
-  ```sql
-  INSERT INTO <table_name> (<column1>, <column2>, ...) VALUES (<value1>, <value2>, ...);
-  ```
-
-**4. Data Manipulation Language (DML)**
-
-- **DELETE**: Remove rows from a table using DELETE:
-
-  ```sql
-  DELETE FROM <table_name> WHERE <condition>;
-  ```
-
-- **UPDATE**: Modify existing data in a table with UPDATE:
-
-  ```sql
-  UPDATE <table_name> SET <column_name>=<new_value> WHERE <condition>;
-  ```
-
-**5. Data Definition Language (DDL)**
-
-- **DROP TABLE**: Remove an existing table using DROP TABLE:
-
-  ```sql
-  DROP TABLE <table_name>;
-  ```
-
-For more complex operations, you can refer to the official [Netezza SQL Reference Guide](https://www.ibm.com/support/knowledgecenter/ssw_ibm_db_n/com.ibm.swg.im.nz.db.sqlref/doc/r0215796.html) for detailed documentation on Netezza SQL commands.
-
-Good luck with your data analysis using Netezza!
-
-</table_name></condition></new_value></column_name></table_name></condition></table_name></value2></value1></column2></column1></table_name></new_column_name></new_column_data_type></table_name></column2_name></column2_data_type></column1_name></column1_data_type></table_name></table_name></table_name></database_name></username></port></hostname></database_name></username></port></hostname><footer>
+       <h2>Good luck with your data analysis using Netezza!</h2>
+<footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>

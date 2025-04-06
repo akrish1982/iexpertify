@@ -1,69 +1,16 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
-</head>
-<body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
-
-
-<h2>Netezza Explain Plan</h2>
-<p>The Netezza query plan is the ideal execution path for each query, determined by the query optimizer. The query optimizer relies on statistics about database objects involved in the query, including column data dispersion, number of rows, and minimum/maximum values. This information enables the optimizer to calculate costs for different execution paths and choose the least costly option.</p>
-<h2>Optimizer</h2>
-<p>The optimizer depends on up-to-date statistics about database objects to provide the best results. It considers factors such as:</p>
-<ul>
-<li>Column data dispersion (distinct values, unique values, null values)</li>
-<li>Number of rows in tables</li>
-<li>Minimum and maximum values stored in columns involved in the WHERE or HAVING clause</li>
-<li>Number of extents in each table and total number of extends on the data slice with the largest skew</li>
-</ul>
-<p>The optimizer also considers Netezza's FPGA capabilities to determine the ideal plan. To ensure optimal performance, it is crucial to update database statistics using the “GENERATE STATISTICS” command.</p>
-<h2>Query Plan</h2>
-<p>Netezza breaks query execution into units of work called snippets, which can be executed on the host or SPUs in parallel. Queries may have one or multiple snippets that are executed sequentially on the host or SPUs, depending on snippet code. The generated snippet code helps with scanning and retrieving data from tables, sorting, aggregating, joining, grouping, and distributing data to improve performance.</p>
-<h2>Plan Generation</h2>
-<p>The recent execution plans are stored in the /nz/data/plan directory under the /nz/data directory. The snippet C code is stored under the /nz/data/cache directory, which eliminates recompilation for new plans if the code is already available. Users can also generate execution plans (without C snippet code) using the “EXPLAIN” command to identify potential performance issues and optimize queries.</p>
-<h2>Joins</h2>
-<p>• Use same data type and length for columns used in joining tables to improve query efficiency.
-• Join the largest table last in the query.
-• Prefer joins over correlated subqueries.</p>
-<h2>Constraints</h2>
-<p all="" although="" an="" and="" are="" as="" between="" constraints="" defaults,="" define="" doesn't="" efficient="" enforce="" execution="" for="" generate="" information="" netezza="" netezza's="" not="" null="" objects,="" optimizer="" optimizing="" other="" p="" plan.="" queries.<="" query="" relationships="" still="" than="" they="" this="" to="" use="" useful="" will="">
-<br/><br/>
-</p>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Learning Netezza Query Plan Analysis</h1>
-<p>Netezza query plan analysis is a crucial step in optimizing your queries for better performance. In this article, we'll dive into the world of Netezza query plans and explore how to analyze them to improve query execution.</p>
+<p>Analyzing the Netezza query plan is a crucial step in optimizing your queries for better performance. In this article, we'll delve into the world of Netezza query plans and explore how to analyze them to improve query execution.</p>
 <h2>What is a Query Plan?</h2>
 <p>A query plan is a visual representation of the steps that Netezza takes to execute a SQL query. It's like a blueprint for your query, showing you what operations are performed and in what order. By analyzing the query plan, you can identify bottlenecks, optimize performance, and troubleshoot issues.</p>
-<h3>How to View Query Plans in Netezzo</h3>
-<pre><code>EXPLAIN (FORMAT JSON) SELECT * FROM customers WHERE country = 'USA';</code></pre>
-<p>To view the query plan, use the EXPLAIN command with the FORMAT JSON option. This will provide you with a detailed JSON representation of the query plan.</p>
-<h4>Query Plan Components</h4>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Scan</td>
-<td>A scan operation reads data from a table or index.</td>
-</tr>
-<tr>
-<td>Join</td>
-<td>A join operation combines rows from two or more tables based on a common column.</td>
-</tr>
-<tr>
-<td>Sort</td>
-<td>A sort operation rearranges data in ascending or descending order.</td>
-</tr>
-<tr>
-<td>Filter</td>
-<td>A filter operation applies a condition to the data, such as selecting only rows that meet a certain criteria.</td>
-</tr>
-</tbody>
-</table>
+<h3>How to View Query Plans in Netezza</h3>
+<pre><code>EXPLAIN SELECT * FROM customers WHERE country = 'USA';</code></pre>
+<p>The EXPLAIN command provides a high-level overview of the query plan, including the operations involved and their estimated costs.</p>
 <h4>Query Plan Analysis Tips</h4>
 <ul>
 <li><strong>Look for bottlenecks**: Identify slow-performing operations and optimize them accordingly.</strong></li>
@@ -71,20 +18,17 @@
 <li><strong>Monitor filter conditions**: Ensure that filters are not overly restrictive, causing unnecessary data to be read.</strong></li>
 </ul>
 <h2>Common Query Plan Issues</h2>
-<p>Netezza query plans can sometimes exhibit issues like poor performance or incorrect results. Here are some common problems you might encounter:</p>
 <h3>Slow-Performing Operations</h3>
-<img alt="Slow-Performing Operation Illustration" src="slow-performing-operation.png"/>
 <p>If you notice slow-performing operations in your query plan, it may indicate that the operation is not optimized for performance. You can try rewriting the query or reorganizing data to improve execution speed.</p>
 <h3>Incorrect Results</h3>
-<img alt="Incorrect Results Illustration" src="incorrect-results.png"/>
 <p>If your query plan produces incorrect results, it may be due to a misconfigured filter condition or an issue with the join operation. Verify the data and adjust the query as needed.</p>
 <h2>Best Practices for Query Plan Analysis</h2>
 <p>To get the most out of Netezza query plan analysis, follow these best practices:</p>
 <h3>1. Monitor Query Plans Regularly</h3>
 <p>Regularly monitoring your query plans helps you identify performance issues and optimize queries proactively.</p>
-<h3>2. Use EXPLAIN Command with FORMAT JSON</h3>
-<pre><code>EXPLAIN (FORMAT JSON) SELECT * FROM customers WHERE country = 'USA';</code></pre>
-<p>The EXPLAIN command with the FORMAT JSON option provides a detailed and easy-to-analyze query plan.</p>
+<h3>2. Use EXPLAIN Command</h3>
+<pre><code>EXPLAIN SELECT * FROM customers WHERE country = 'USA';</code></pre>
+<p>The EXPLAIN command provides a high-level overview of the query plan.</p>
 <h3>3. Analyze Query Plans for Bottlenecks</h3>
 <ul>
 <li><strong>Identify slow-performing operations**: Look for operations that take longer than expected to execute.</strong></li>
@@ -95,21 +39,21 @@
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>
-    <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
 </ul>
 <h3>Connect with me:</h3>
 <ul>
-    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
 </ul>
 <h3>My Resources:</h3>
 <ul>
-    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
 </ul>
 <h3>Languages and Tools:</h3>
 <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>

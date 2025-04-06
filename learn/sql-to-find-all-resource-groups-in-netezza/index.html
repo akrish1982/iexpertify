@@ -1,64 +1,56 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <h1>Learn: SQL to Find All Resource Groups in Netezza</h1>
-<p>In this quick guide, you will learn how to use SQL to find all the Resource Groups in a Netezza system. This query not only provides you with the list of resource groups but also gives you the maximum and minimum resource allocation values in percentage.</p>
-<p>To obtain these details, we will be querying the system view <code>_v_group</code> located in the system database.</p>
+<p>In this guide, you will learn how to use SQL queries to find all the Resource Groups in a Netezza system. This is particularly useful when you want to manage your resources efficiently and optimize database performance.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Access to a Netezza database with sufficient privileges to run SQL queries.</li>
+<li>Basic understanding of SQL syntax.</li>
+</ul>
+<h2>Step 1: Connect to the Database</h2>
+<p>Before we dive into finding resource groups, let's ensure you have connected to your Netezza database using a tool such as SQLCMD or pgAdmin. Here's an example connection string for SQLCMD:</p>
 <pre>
-        select GROUPNAME as "Resource Group",GRORSGPERCENT as "Min Resource",RSGMAXPERCENT as "Max Resource"
-        from _v_group where grorsgpercent&lt;&gt;0
+sqlcmd -S &lt;server_name&gt; -U &lt;username&gt; -P &lt;password&gt; -d &lt;database_name&gt;
       </pre>
-<p>This simple SQL query does the job for you.</p>
-
-
-**Learn: SQL to Find All Resource Groups in Netezza**
-
-In this guide, we will walk you through the steps to find all resource groups in Netezza using SQL queries. This is particularly useful when you want to manage your resources efficiently and optimize database performance.
-
-**Prerequisites**
-
-- Access to a Netezza database with sufficient privileges to run SQL queries.
-- Basic understanding of SQL syntax.
-
-**Step 1: Connect to the Database**
-
-Before we dive into finding resource groups, let's ensure you have connected to your Netezza database using a tool such as SQLCMD or pgAdmin. Here's an example connection string for SQLCMD:
-
-```sql
-sqlcmd -S <server_name> -U <username> -P <password> -d <database_name>
-```
-
-**Step 2: Find Resource Groups**
-
-Now that you are connected to the database, we can proceed with finding resource groups. In Netezza, you can utilize a catalog view called `nz_resource_group` to achieve this. Here's an example SQL query:
-
-```sql
+<h2>Step 2: Find Resource Groups</h2>
+<p>Now that you are connected to the database, we can proceed with finding resource groups. In Netezza, you can utilize a catalog view called `nz_resource_group` to achieve this. Here's an example SQL query:</p>
+<pre>
 SELECT * FROM nz_resource_group;
-```
-
-This query will return all the resource groups in your Netezza database along with their relevant attributes, such as group name, description, and resource group ID.
-
-**Example Output:**
-
-| ResourceGroupID | GroupName      | Description                |
-|----------------|---------------|---------------------------|
-| 1              | Group1        | A test resource group     |
-| 2              | Group2        | Another test resource group|
-
-You can further filter the results based on specific criteria by adding `WHERE` clause to your query. For instance, to find a resource group with a specific name:
-
-```sql
+      </pre>
+<p>This query will return all the resource groups in your Netezza database along with their relevant attributes, such as group name, description, and resource group ID.</p>
+<h3>Example Output:</h3>
+<table>
+<thead>
+<tr>
+<th>ResourceGroupID</th>
+<th>GroupName</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Group1</td>
+<td>A test resource group</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Group2</td>
+<td>Another test resource group</td>
+</tr>
+</tbody>
+</table>
+<p>You can further filter the results based on specific criteria by adding `WHERE` clause to your query. For instance, to find a resource group with a specific name:</p>
+<pre>
 SELECT * FROM nz_resource_group WHERE GroupName = 'Group1';
-```
-
-**Conclusion**
-
-In this guide, we learned how to find all resource groups in Netezza using SQL queries. By utilizing the `nz_resource_group` catalog view, you can manage your resources efficiently and optimize database performance in no time!
-
-</database_name></password></username></server_name><footer>
+      </pre>
+<h2>Conclusion</h2>
+<p>In this guide, we learned how to find all resource groups in Netezza using SQL queries. By utilizing the `nz_resource_group` catalog view, you can manage your resources efficiently and optimize database performance in no time!</p>
+<footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
 <ul>

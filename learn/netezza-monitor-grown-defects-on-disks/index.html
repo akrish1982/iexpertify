@@ -1,111 +1,109 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
-     <script
-    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
-    user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"
-    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
-    embed-version="v1"
-    button-text="Let's Connect"
-    position-right="30px"
-    position-bottom="30px"
-    custom-padding="0px"
-    custom-font-size="16px"
-    custom-font-weight="500"
-    custom-width="200px"
-    async=""
-    defer=""
-  ></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Learn: Monitor Grown Defects on Disks in Netezza</h1>
+<p><strong>Estimated Reading Time:</strong> Less than 1 minute</p>
+<h2>SQL to Monitor Disk Defects for TwinFin Architecture</h2>
+<p>The following SQL script will help you monitor the number of grown defects on disks in your Netezza server. The output of this script will list all the disks where the number of grown defects is greater than 0.</p>
+<h3>Understanding Disk Defects and Potential Failure</h3>
+<p>An increase in disk defects can indicate a higher possibility of disk failure. Below is a list showing the maximum disk defects at which disks may fail:</p>
+<table border="1">
+<tr>
+<th>Disk Type</th>
+<th>FRU Number</th>
+<th>Disk Failure @ Max Defects</th>
+</tr>
+<tr>
+<td>ST31000640SS</td>
+<td>42D0549</td>
+<td>2000+</td>
+</tr>
+<tr>
+<td>ST31000424SS</td>
+<td>42D0778</td>
+<td>4000+</td>
+</tr>
+<tr>
+<td>ST31000424SS</td>
+<td>49Y1939</td>
+<td>4000+</td>
+</tr>
+<tr>
+<td>ST1000NM0001</td>
+<td>42D0778</td>
+<td>4000+</td>
+</tr>
+</table>
 
 
-Netezza – Monitor grown defects on disks - learn
-Reading Time:  &lt; 1 minute
-<p>SQL to monitor the number of grown defects on disks for TwinFin Architecture:
-</p>
-<p>The output of this script will list all the disks on Netezza server where number of grown defects is greater than 0.</p>
-<p>Possibility of disk failure increases with increase in disk defects. Below you can find the list that shows the max disk defects at which disk will fail</p>
-Disk Type                             FRU number           Disk Failure @ Max defects
+**Monitoring Grown Defects on Disks in Netezza**
 
+In this article, we will discuss how to monitor grown defects on disks in the Netezza data warehouse system. Understanding and monitoring disk defects is crucial for maintaining optimal performance and ensuring data integrity.
 
-ST31000640SS                   42D0549                  2000+
-ST31000424SS                   42D0778                  4000+
-ST31000424SS                   49Y1939                  4000+
-ST1000NM0001                    42D0778                  4000+ 
+**Understanding Grown Defects**
 
+Grown defects are physical flaws that develop on disk surfaces over time due to wear and tear, environmental factors, or manufacturing errors. These defects can cause data corruption, slow down read/write operations, or even lead to system failures if left unchecked.
 
+**Monitoring Grown Defects in Netezza**
 
-<br><br>
+Netezza provides several methods for monitoring grown defects:
+
+1. **Disk Scan**: The disk scan command is used to identify and report on all the disks in a Netezza system, including their status, capacity, and error rates. Here's an example of how to execute a disk scan:
+
+```sql
+SELECT * FROM db2adm.diskscan();
+```
+
+2. **Disk Status**: The `DISKSTATS` table in the `db2adm` schema contains detailed information about each disk in the system. You can query this table to get more insights into the health of your disks:
+
+```sql
+SELECT * FROM db2adm.diskstats;
+```
+
+**Identifying Grown Defects**
+
+In the `DISKSTATS` table, you should look for the following columns to identify grown defects:
+
+- `GONDEF_PCT`: Percentage of the disk surface area affected by grown defects. A value greater than 0 indicates grown defects.
+- `GOOD_SECTORS`: Number of sectors on the disk that are in good condition.
+- `BAD_SECTORS`: Number of sectors on the disk that have been marked as bad due to various reasons, including grown defects.
+
+**Proactive Maintenance**
+
+Regularly monitoring grown defects and addressing potential issues proactively can help prevent system failures and ensure optimal performance. Here are some best practices for managing grown defects:
+
+- Replace disks with a high percentage of grown defects to maintain performance and avoid data corruption.
+- Schedule regular disk scans and health checks to identify potential issues early.
+- Implement RAID configurations to provide redundancy and ensure data integrity in the event of a disk failure.
+
+**Conclusion**
+
+Monitoring grown defects on disks is an essential part of maintaining a Netezza system. By regularly checking disk status, identifying grown defects, and proactively addressing potential issues, you can help ensure the long-term health and performance of your data warehouse system.
+
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
-
-    <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
-
-    <ul>
-        <li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
-    </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
-
-
-    <h3>Connect with me:</h3>
-    <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
-    </ul>
-
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
 <h3>My Resources:</h3>
-    <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-    </ul>
-
-    <h3>Languages and Tools:</h3>
-    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
 </footer>
-</body>
-</html>
-
-
-
-
-
- 
-
-
-
-
-
- 
- 
-
-
-
-
-
-
+</body></html>

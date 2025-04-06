@@ -1,100 +1,55 @@
 <html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
-<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
 </head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 <article class="article">
-<h1 class="title">Netezza Transaction Management: BEGIN, COMMIT, ROLLBACK</h1>
+<h1 class="title">Understanding Transaction Management in Netezza</h1>
 <section class="content">
-<p>In Netezza transactions, the following commands are used:</p>
-<ul>
-<li>Transactions begin with <code>BEGIN WORK</code>.</li>
-<li>Transactions are validated with <code>COMMIT WORK</code>.</li>
-<li>Transactions are canceled with <code>ROLLBACK WORK</code>.</li>
-<li>Statements executed outside of a transaction are automatically committed.</li>
-<li>If an SQL error occurs in one of the statements executed inside the transaction, Netezza cancels the entire transaction.</li>
-<li>DDL statements can be executed (and canceled) in transactions.</li>
-<li>A transaction must only contain INSERTs if you want concurrent processes to insert rows at the same time (UPDATEs/DELETEs lock the whole table).</li>
-<li>Only the SERIALIZABLE isolation level is implemented by Netezza.</li>
-</ul>
+<p>In database systems like Netezza, transaction management plays a crucial role in maintaining data consistency. This article will guide you through the basics of transaction management, including BEGIN, COMMIT, and ROLLBACK statements.</p>
 </section>
-<h2 class="title sectiontitle">Example</h2>
-<pre><code>BEGIN WORK
-INSERT INTO existingtable ( 1, 'abc' )   -- successful sql
-SELECT FROM unexisting WHERE key = 123   -- unexisting table = sql error
-COMMIT WORK
-</code></pre>
+<h2 class="title sectiontitle">What are Transactions?</h2>
 <section class="content">
-<p>The table will remain empty after executing this piece of code, because the server will rollback the whole transaction.</p>
+<p>A transaction is a logical unit of work that consists of one or more SQL statements. Each transaction follows an ACID (Atomicity, Consistency, Isolation, Durability) property to ensure data integrity.</p>
 </section>
-<h2 class="title sectiontitle">Solution</h2>
+<h2 class="title sectiontitle">BEGIN Statement</h2>
 <section class="content">
-<p>Since Netezza is not designed for OLTP applications, review any code doing complex data modifications to ensure it doesn’t error out. To get the same behavior in case of error when connected to a different database than Netezza, you must issue a ROLLBACK to cancel all the SQL statements that succeeded in the transaction, for example with a <code>TRY/CATCH</code> block.</p>
-<pre><code>TRY
-  BEGIN WORK
-  ...
-  COMMIT WORK
-CATCH
-  ROLLBACK WORK
-END TRY
-</code></pre>
+<p>The BEGIN statement marks the beginning of a new transaction in Netezza. All subsequent DML statements within this transaction are executed as part of that specific transaction until either a COMMIT or ROLLBACK command is issued.</p>
+<pre><code>BEGIN TRANSACTION;</code></pre>
+</section>
+<h2 class="title sectiontitle">COMMIT Statement</h2>
+<section class="content">
+<p>The COMMIT statement saves all changes made within the current transaction to the database and releases the lock on the data, making it accessible to other transactions.</p>
+<pre><code>COMMIT TRANSACTION;</code></pre>
+</section>
+<h2 class="title sectiontitle">ROLLBACK Statement</h2>
+<section class="content">
+<p>The ROLLBACK statement discards all changes made within the current transaction, restoring the database to its state before the transaction began.</p>
+<pre><code>ROLLBACK TRANSACTION;</code></pre>
+</section>
+<h2 class="title sectiontitle">Example Scenario</h2>
+<section class="content">
+<p>Consider a table named <code>emp</code> with two columns: <code>id</code> and <code>salary</code>. Suppose we want to transfer half of the salary from employee A to employee B, but we want this operation to be atomic - either both changes should occur together or none at all. Here's how you can do it using transactions in Netezza:</p>
+<pre><code>
+                  BEGIN TRANSACTION;
+
+                  -- Transfer half of the salary from employee A to employee B
+                  UPDATE emp SET salary = salary - 500 WHERE id = 'A';
+                  UPDATE emp SET salary = salary + 500 WHERE id = 'B';
+
+                  IF ROWCOUNT() &lt;&gt; 2 THEN
+                      ROLLBACK TRANSACTION;
+                  ELSE
+                      COMMIT TRANSACTION;
+                  END IF;
+              </code></pre>
 </section>
 <h2 class="title sectiontitle">Transaction Parameters</h2>
+<section class="content">
 <p>The <code>BEGIN/COMMIT/ROLLBACK</code> commands take the optional input parameters, <code>WORK or TRANSACTION</code> – and have no effect on the transactions.</p>
+</section>
 </article>
-
-
-    **Understanding Transaction Management in Netezza**
-
-    In database systems like Netezza, transaction management plays a crucial role in maintaining data consistency. This article will guide you through the basics of transaction management, including BEGIN, COMMIT, and ROLLBACK statements.
-
-    **What are Transactions?**
-
-    A transaction is a logical unit of work that consists of one or more SQL statements. Each transaction follows an ACID (Atomicity, Consistency, Isolation, Durability) property to ensure data integrity.
-
-    **BEGIN Statement**
-
-    The BEGIN statement marks the beginning of a new transaction in Netezza. All subsequent DML statements within this transaction are executed as part of that specific transaction until either a COMMIT or ROLLBACK command is issued.
-
-    ```sql
-    BEGIN TRANSACTION;
-    ```
-
-    **COMMIT Statement**
-
-    The COMMIT statement saves all changes made within the current transaction to the database and releases the lock on the data, making it accessible to other transactions. It ensures that the changes are durable and persist even in case of system failures.
-
-    ```sql
-    COMMIT TRANSACTION;
-    ```
-
-    **ROLLBACK Statement**
-
-    The ROLLBACK statement discards all changes made within the current transaction, restoring the database to its state before the transaction began. It is useful in case of errors or data inconsistencies during a transaction.
-
-    ```sql
-    ROLLBACK TRANSACTION;
-    ```
-
-    **Example Scenario**
-
-    Consider a table named `emp` with two columns: `id` and `salary`. Suppose we want to transfer half of the salary from employee A to employee B, but we want this operation to be atomic - either both changes should occur together or none at all. Here's how you can do it using transactions in Netezza:
-
-    ```sql
-    BEGIN TRANSACTION;
-
-    -- Transfer half of the salary from employee A to employee B
-    UPDATE emp SET salary = salary - 500 WHERE id = 'A';
-    UPDATE emp SET salary = salary + 500 WHERE id = 'B';
-
-    IF ROWCOUNT() &lt;&gt; 2 THEN
-        ROLLBACK TRANSACTION;
-    ELSE
-        COMMIT TRANSACTION;
-    END IF;
-    ```
-
 <footer>
 <h3>Meet Ananth Tirumanur. Hi there 👋</h3>
 <h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
