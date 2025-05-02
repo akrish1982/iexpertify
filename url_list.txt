@@ -1,2 +1,15 @@
-https://www.iexpertify.com/data-warehousing/etl-tools-in-markets/
-https://www.iexpertify.com/learn/netezza-monitor-grown-defects-on-disks/
+https://www.iexpertify.com/databricks/troubleshooting-spark-ui-for-performance/
+https://www.iexpertify.com/databricks/resolving-common-databricks-cluster-issues/
+https://www.iexpertify.com/databricks/understanding-and-fixing-delta-lake-problems/
+https://www.iexpertify.com/databricks/handling-databricks-notebook-conflicts/
+https://www.iexpertify.com/databricks/managing-databricks-permissions-and-access-control/
+https://www.iexpertify.com/databricks/optimizing-databricks-job-performance/
+https://www.iexpertify.com/databricks/troubleshooting-databricks-connect-issues/
+https://www.iexpertify.com/databricks/faq-databricks-security-best-practices/
+https://www.iexpertify.com/databricks/debugging-databricks-pipelines-and-workflows/
+https://www.iexpertify.com/databricks/common-errors-in-databricks-sql-and-how-to-solve-them/
+https://www.iexpertify.com/databricks/working-with-databricks-git-integration-troubleshooting/
+https://www.iexpertify.com/databricks/understanding-databricks-cost-management/
+https://www.iexpertify.com/databricks/troubleshooting-mlflow-integration-in-databricks/
+https://www.iexpertify.com/databricks/faq-databricks-delta-live-tables/
+https://www.iexpertify.com/databricks/handling-large-datasets-and-memory-issues-in-databricks/

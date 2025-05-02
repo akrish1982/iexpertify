@@ -6,9 +6,19 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 head = '''<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
 <script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VS67BGEQZW"></script>
-<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
-</head><body><header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+<!-- End Google Tag Manager -->
+</head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
 '''
 
 footer = '''<footer>
@@ -115,7 +125,7 @@ def call_ollama_api(prompt, model="llama"):
 def generate_content(url_path):
     """Calls local Ollama API to generate HTML content only."""
     # Prompt construction
-    prompt = f"Generate an article for the topic: {url_path} in HTML format, without <header> or <footer>. Return just the portion of the article. Include structured content with headings, code samples, tables, and illustrations where applicable. Ensure the content is human-like and informative. Return only <body> element of valid HTML content, starting with <body> tag and ending with </body> tags."
+    prompt = f"Generate an article for the topic: {url_path} in HTML format, without <header>, <body> or <footer>. Return just the portion of the article. Include structured HTML content with headings, code samples, tables, and illustrations where applicable. Ensure the content is human-like and informative. Return only <body> element of valid HTML content, starting with <body> tag and ending with </body> tags."
     result = call_ollama_api(prompt, model="mistral")
     return result
 
@@ -270,6 +280,7 @@ def main():
         url_path = urlparse(url).path.strip('/')
         print(f"Generating content for: {url_path}")
         rewritten = rewrite_content(url_path)
+        # rewritten = None
         content = generate_content(url_path)
         save_content(url, rewritten, content)
 
