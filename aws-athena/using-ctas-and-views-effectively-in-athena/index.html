@@ -1,0 +1,97 @@
+<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+<!-- End Google Tag Manager -->
+</head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Effectively Using CTA's and Views in Amazon Athena</h1>
+<p>Amazon Athena, a serverless, interactive query service provided by AWS, allows you to analyze data directly using SQL. One of the powerful features that make Athena versatile is its ability to utilize Common Table Expressions (CTEs) and Views for better organization and management of your data. This article will guide you through the effective use of CTE's and Views in Amazon Athena.</p>
+<h2>Common Table Expressions (CTEs)</h2>
+<p>A Common Table Expression is a temporary named result set that can be used as a subquery for a single execution of a SELECT, INSERT, UPDATE, or DELETE statement.</p>
+<h3>Creating and Using CTEs in Amazon Athena</h3>
+<p>To create and use a CTE in Athena, follow these steps:</p>
+<ol>
+<li>First, write the SQL statement that defines the CTE. This includes the WITH keyword followed by a name for your CTE and the SELECT statement defining the temporary result set.</li>
+<li>Next, execute the SQL statement. The Athena query engine will evaluate the defined CTE and store the temporary result set.</li>
+<li>Finally, reference the CTE in a subsequent SELECT, INSERT, UPDATE, or DELETE statement to utilize its data.</li>
+</ol>
+<h2>Views</h2>
+<p>A View in Athena is a virtual table based on the result-set of an SQL SELECT statement from the base tables. By creating and using views, you can simplify complex queries, improve performance, and maintain data security.</p>
+<h3>Creating and Using Views in Amazon Athena</h3>
+<p>To create and use a view in Athena, follow these steps:</p>
+<ol>
+<li>First, write the SQL statement that defines the view. This includes the CREATE VIEW keyword followed by a name for your view, the AS keyword, and the SELECT statement defining the virtual table.</li>
+<li>Next, execute the SQL statement. The Athena query engine will create the view based on the defined SELECT statement and its result set.</li>
+<li>Finally, reference the view in a subsequent SELECT, INSERT, UPDATE, or DELETE statement to utilize its data.</li>
+</ol>
+<p>By utilizing CTEs and Views effectively in Amazon Athena, you can streamline your data analysis process and optimize your queries for improved performance.</p>
+
+  <h1>Effective Use of CTAS (Create Table as Select) and Views in AWS Athena</h1>
+
+  <h2>Introduction</h2>
+  <p>Amazon Web Services (AWS) Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. One of the powerful features in Athena is its support for Common Table Expressions (CTAS) and views, which can significantly enhance your data querying and analysis experience. This article will discuss how to use CTAS and views effectively in AWS Athena.</p>
+
+  <h2>Create Table as Select (CTAS)</h2>
+  <p>The CTAS statement allows you to create a table by executing a SELECT statement that defines the table's schema and data. This can be particularly useful when dealing with large datasets, as it eliminates the need for manually defining tables and loading data into them.</p>
+
+  <h3>Example:</h3>
+  <pre><code>CREATE EXTERNAL TABLE new_table (
+ column1 datatype1,
+ column2 datatype2
+) AS SELECT column1, column2 FROM existing_table;
+</code></pre>
+
+  <p>In the above example, we are creating a new table called 'new_table' with columns 'column1' and 'column2.' We are populating this table using data from an existing table called 'existing_table.'</p>
+
+  <h2>Views</h2>
+  <p>A view in Athena is a virtual table based on the result-set of an SQL statement. You can use views to encapsulate complex queries, making them easier to reuse and maintain.</p>
+
+  <h3>Example:</h3>
+  <pre><code>CREATE VIEW customer_orders AS SELECT c.customer_id, o.order_id, o.order_date FROM customers c JOIN orders o ON c.customer_id = o.customer_id;
+</code></pre>
+
+  <p>In this example, we are creating a view called 'customer_orders' that combines data from the 'customers' and 'orders' tables based on a join condition.</p>
+
+  <h2>Performance Considerations</h2>
+  <p>While CTAS and views can greatly improve your Athena workflow, it is essential to consider their impact on performance:</p>
+
+  <ul>
+<li><strong>CTAS:</strong> Creating a table using CTAS may take longer than creating it manually, as Athena needs to process the entire SELECT statement before creating the table.</li>
+<li><strong>Views:</strong> While views can simplify complex queries, they can also lead to performance issues if not used judiciously. For instance, views that involve multiple JOINs or large datasets may result in slower query execution times.</li>
+</ul>
+
+  <h2>Conclusion</h2>
+  <p>Leveraging CTAS and views in AWS Athena can greatly simplify your data analysis workflow, making it more efficient and manageable. However, it is crucial to understand their performance implications and use them judiciously to get the most out of Athena.</p>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

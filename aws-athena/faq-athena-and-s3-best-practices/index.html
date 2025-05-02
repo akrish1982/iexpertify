@@ -1,0 +1,109 @@
+<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+<!-- End Google Tag Manager -->
+</head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>AWS Athena &amp; S3: Best Practices</h1>
+<p>Welcome to our guide on best practices for using Amazon Web Services (AWS) Athena and Amazon Simple Storage Service (S3). This article aims to provide you with valuable insights into optimizing your data querying experience.</p>
+<h2>What is AWS Athena?</h2>
+<p>Athena is an interactive, serverless, and powerful analytics service offered by AWS that makes it easy to analyze data in S3 using SQL. It eliminates the need for you to manage any infrastructure.</p>
+<h2>What is Amazon S3?</h2>
+<p>S3 (Simple Storage Service) is a scalable, high-speed, web-based cloud storage service designed for storing and retrieving any amount of data at any time from anywhere on the internet.</p>
+<h2>Best Practices for Using AWS Athena with S3</h2>
+<ul>
+<li><strong>Optimize Your Data:</strong> Organize your data in a manner that supports efficient querying. This includes using partitions and sort keys, as well as compressing large files before uploading to S3.</li>
+<li><strong>Use IAM Roles:</strong> Grant the necessary permissions to Athena using IAM roles rather than hard-coding them into your queries. This ensures better security and easier management of access.</li>
+<li><strong>Limit Concurrent Queries:</strong> Limit the number of concurrent queries to avoid throttling. You can do this by setting a query limit in the Athena console or by using the MAX_CONCURRENT_RUNS configuration parameter in your query.</li>
+<li><strong>Monitor Costs:</strong> Keep an eye on your costs by monitoring the number of bytes scanned, the number of queries executed, and the duration of your queries. This helps you optimize your data storage and usage to minimize costs.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>By following these best practices, you can ensure an optimal experience when using AWS Athena with S3 for your analytics needs. Happy querying!</p>
+
+
+    <h2>Amazon Athena Best Practices with S3</h2>
+
+    <h3>1. Choosing the Right S3 Storage Class for Query Data</h3>
+
+    Amazon Athena can directly query data stored in Amazon S3. For optimal performance, it is recommended to use the following S3 storage classes:
+
+    ```
+S3 Standard - For frequently accessed and updated data.
+S3 Intelligent-Tiering - For data with infrequent access patterns.
+S3 One Zone IA - For data that requires low cost with a single Availability Zone (AZ) durability.
+```
+
+    <h3>2. Organizing Data in S3</h3>
+
+    Organize your data in a logical and consistent manner to improve query performance:
+
+    - Group related tables together in the same prefix (folder).
+    - Use partitions to optimize queries by column value.
+    - Avoid using subdirectories as they can affect query performance.
+
+    <h3>3. Optimizing Table and Partition Columns</h3>
+
+    Choose the columns for your tables and partitions carefully to maximize query efficiency:
+
+    - Limit the number of columns in a table.
+    - Use columns with simple data types, such as string or numeric.
+    - Partition by columns that are frequently used in WHERE clauses.
+
+    <h3>4. Creating Efficient Athena Queries</h3>
+
+    Follow these best practices to write efficient queries:
+
+    - Use the LEAST_COMPLETE(n) function to optimize LIMIT n queries.
+    - Use the EXPLAIN statement to check query execution plan and optimize if needed.
+    - Minimize the use of subqueries, JOINs, and other complex operations.
+
+    <h3>5. Managing Data in S3 using Lifecycle Policies</h3>
+
+    Use Amazon S3 lifecycle policies to automate data management and minimize costs:
+
+    - Set expiration dates for old or archived data.
+    - Move infrequently accessed data to lower cost storage classes.
+    - Enable versioning to preserve, retrieve, and restore every version of an object over time.
+
+    <h3>6. Monitoring Athena Usage and Cost</h3>
+
+    Monitor the usage and costs of your Athena queries to optimize their performance:
+
+    - Use AWS CloudWatch to track query performance metrics, such as duration, bytes scanned, and rows returned.
+    - Monitor cost through the AWS Billing and Cost Management console or by using the getCostData API operation.
+
+    
+
+ <footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

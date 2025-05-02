@@ -1,0 +1,101 @@
+<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+<script src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' embed-version="v1" button-text="Let's Connect" position-right="30px" position-bottom="30px" custom-padding="0px" custom-font-size="16px" custom-font-weight="500" custom-width="200px" async defer></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+<!-- End Google Tag Manager -->
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+</head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header>
+    <nav>
+        <ul>
+            <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
+            <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
+        </ul>
+    </nav>
+</header>
+<h1>AWS CloudFormation JSON Template Validator</h1>
+
+<div>
+  <textarea id="templateInput" rows="20" cols="100" placeholder="Paste CloudFormation JSON or YAML here..."></textarea>
+</div>
+<button onclick="validateTemplate()">Validate Template</button>
+
+<h3>Results:</h3>
+<pre id="result"></pre>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script>
+function validateTemplate() {
+  const input = document.getElementById('templateInput').value;
+  const resultElem = document.getElementById('result');
+  let template;
+
+  try {
+    template = input.trim().startsWith('{') 
+      ? JSON.parse(input) 
+      : jsyaml.load(input);
+  } catch (err) {
+    resultElem.textContent = "❌ Error parsing template: " + err.message;
+    return;
+  }
+
+  const issues = [];
+
+  if (!template.Resources) {
+    issues.push("❌ Missing top-level 'Resources' section.");
+  }
+
+  const keys = Object.keys(template);
+  let output = `✅ Template parsed successfully. Top-level keys: ${keys.join(', ')}\n\n`;
+
+  if (template.Resources) {
+    output += "📦 Resources:\n";
+    for (const [name, resource] of Object.entries(template.Resources)) {
+      output += `  - ${name} (${resource.Type || "⚠️ Missing Type"})\n`;
+      if (!resource.Type) issues.push(`❌ Resource '${name}' is missing a 'Type'.`);
+    }
+  }
+
+  if (issues.length) {
+    output += "\n⚠️ Issues Found:\n" + issues.join('\n');
+  } else {
+    output += "\n✅ No structural issues detected.";
+  }
+
+  resultElem.textContent = output;
+}
+</script>
+
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>

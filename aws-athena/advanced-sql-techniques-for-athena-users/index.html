@@ -1,0 +1,128 @@
+<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"></script>
+<script async="" btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}' button-text="Let's Connect" custom-font-size="16px" custom-font-weight="500" custom-padding="0px" custom-width="200px" defer="" embed-version="v1" position-bottom="30px" position-right="30px" src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js" user-profile="https://topmate.io/embed/profile/ananth_tirumanur?theme=D5534D"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+<!-- End Google Tag Manager -->
+</head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header><nav><ul><li><a href="https://www.iexpertify.com/">iExpertify</a></li><li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li></ul></nav></header>
+<h1>Advanced SQL Techniques for AWS Athena Users</h1>
+<p>Welcome, Athena users! As you progress in your data analysis journey with Amazon Web Services (AWS) Athena, it's time to explore some advanced SQL techniques that will help streamline your workflow and unlock the full potential of this powerful tool. This article aims to provide you with an insightful guide on using advanced SQL functions, performance optimization tips, and best practices for working effectively with AWS Athena.</p>
+<h2>Mastering Advanced SQL Functions</h2>
+<p>Extend your SQL skills by learning about the advanced functions available in Athena such as array functions (array_contains, array_length), window functions (row_number, lag), JSON functions (get_json_object, json_extract), and more. These functions enable you to perform complex data transformations, handle JSON objects, and even rank your data with ease.</p>
+<h2>Performance Optimization Tips</h2>
+<ul>
+<li>Use EXPLAIN statement: Analyze the execution plan of your queries using the EXPLAIN statement to optimize their performance.</li>
+<li>Optimize data distribution: Ensure that your data is evenly distributed across partitions for efficient querying and better performance.</li>
+<li>Limit result set size: Use LIMIT clause to limit the number of rows returned by a query, reducing the overall execution time.</li>
+</ul>
+<h2>Best Practices for Working Effectively with AWS Athena</h2>
+<p>Follow these best practices to work effectively with AWS Athena:</p>
+<ul>
+<li>Use caching: Leverage query caching to reduce the number of times a frequently run query needs to be executed.</li>
+<li>Use dynamic SQL: Use dynamic SQL for more complex queries, which can help improve performance and maintain code readability.</li>
+<li>Monitor costs: Keep an eye on your costs by monitoring the number of bytes scanned in Glue Data Catalog and S3 storage.</li>
+</ul>
+<p>By mastering these advanced SQL techniques, you will become a more proficient Athena user and enhance your data analysis capabilities with AWS. Happy querying!</p>
+
+
+     <h2>Advanced SQL Techniques for AWS Athena Users</h2>
+
+     <p>Welcome to our guide on advanced SQL techniques for Amazon Web Services (AWS) Athena users! This article is designed to help you maximize the potential of Athena by exploring some advanced SQL concepts and best practices.</p>
+
+     <h3>1. Complex Subqueries</h3>
+
+     <p>Complex subqueries allow you to nest one query inside another, providing a powerful way to perform more complex data manipulation tasks.</p>
+
+     <pre><code>
+     SELECT employee_name
+     FROM employees e1
+     WHERE e1.department_id = (
+        SELECT department_id
+        FROM departments d
+        WHERE d.location = 'New York'
+        AND d.budget &gt; ALL (
+          SELECT budget
+          FROM departments
+        )
+     );
+     </code></pre>
+
+     <h3>2. Using Common Table Expressions (CTEs)</h3>
+
+     <p>Common Table Expressions (CTEs) allow you to create temporary result sets, making your SQL queries more manageable and efficient.</p>
+
+     <pre><code>
+     WITH high_budget_departments AS (
+        SELECT department_id, budget
+        FROM departments
+        WHERE budget &gt; ALL (
+           SELECT budget
+           FROM departments
+        )
+     ), new_york_departments AS (
+        SELECT * FROM high_budget_departments WHERE location = 'New York'
+     )
+     SELECT employee_name
+     FROM employees e1
+     WHERE e1.department_id IN (SELECT department_id FROM new_york_departments);
+     </code></pre>
+
+     <h3>3. Using Window Functions</h3>
+
+     <p>Window functions allow you to perform calculations on a set of rows related to the current row, without having to use subqueries or multiple passes through the data.</p>
+
+     <pre><code>
+     SELECT employee_name, RANK() OVER (ORDER BY salary DESC) as rank
+     FROM employees;
+     </code></pre>
+
+     <h3>4. Using JSON Functions</h3>
+
+     <p>Amazon Athena supports JSON functions, allowing you to easily manipulate and analyze data stored in JSON format.</p>
+
+     <pre><code>
+     SELECT json_extract(json_column, '$.employee.age') AS employee_age
+     FROM your_table;
+     </code></pre>
+
+     <h3>5. Performance Optimization Techniques</h3>
+
+     <p>Optimizing SQL queries is essential for ensuring performance in large data sets.</p>
+
+     <ul>
+       <li><strong>Indexing:</strong> Create indexes on columns used in WHERE, JOIN, or ORDER BY clauses to improve query performance.</li>
+       <li><strong>Partitioning:</strong> Partition your data into smaller, more manageable pieces based on a column to reduce the amount of data scanned for each query.</li>
+       <li><strong>Caching:</strong> Athena automatically caches frequently accessed data to improve performance.</li>
+     </ul>
+<footer>
+<h3>Meet Ananth Tirumanur. Hi there 👋</h3>
+<h4>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h4>
+<ul>
+<li>👨‍💻 All of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+<li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+<li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+<li>⚡ Fun fact: Marathoner &amp; Casual Birding enthusiast</li>
+</ul>
+<h3>Connect with me:</h3>
+<ul>
+<li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+<li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+</ul>
+<h3>My Resources:</h3>
+<ul>
+<li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+<li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+<li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+</ul>
+<h3>Languages and Tools:</h3>
+<p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body></html>
