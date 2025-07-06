@@ -14,7 +14,7 @@ def find_index_html_files(directory, output_file):
         print(f"Error occurred: {e}")
 
 # Specify the directory to search and the output file
-directory_to_search = "/Users/ananth/code/iexpertify/"
-output_file_path = "/Users/ananth/code/iexpertify/list_of_html_files.txt"
+directory_to_search = "/Users/ananth/code/personal/iexpertify/"
+output_file_path = "/Users/ananth/code/personal/iexpertify/list_of_html_files.txt"
 
 find_index_html_files(directory_to_search, output_file_path)
