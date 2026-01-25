@@ -6,7 +6,7 @@ This script crawls a website directory containing HTML files and generates a sit
 that can be submitted to search engines like Google and Bing.
 
 Usage:
-    python sitemap_generator.py --website_dir /path/to/website --base_url https://yourdomain.com
+    python sitemap_generator.py --website_dir /Users/ananth/code/personal/iexpertify/ --base_url https://www.iexpertify.com
 """
 
 import os
