@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link href="/simplecss/styles.css" rel="stylesheet">
+  <link href="/free-utilities/utilities-theme.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,201 +19,13 @@
     gtag('config', 'G-VS67BGEQZW');
   </script>
   <title>Free Utilities - iExpertify</title>
-  <style>
-    :root {
-      --surface: #ffffff;
-      --surface-soft: #f8fafc;
-      --text-main: #0f172a;
-      --text-subtle: #475569;
-      --brand: #0f766e;
-      --brand-soft: #ccfbf1;
-      --border: #dce3eb;
-      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-    }
-
-    body {
-      font-family: "Roboto", sans-serif;
-      background: linear-gradient(180deg, #f0fdfa 0%, #f8fafc 34%, #ffffff 100%);
-      color: var(--text-main);
-    }
-
-    header,
-    main,
-    footer {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    header nav ul {
-      display: flex;
-      gap: 0.9rem;
-      list-style: none;
-      padding: 0.8rem 0;
-      margin: 0;
-      flex-wrap: wrap;
-    }
-
-    header nav a {
-      display: inline-block;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.45rem 0.9rem;
-      text-decoration: none;
-      font-weight: 500;
-      color: var(--text-main);
-    }
-
-    .page-content {
-      padding: 1rem 0 2.5rem;
-    }
-
-    .hero {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 1.2rem 1.3rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero h1 {
-      margin: 0 0 0.35rem;
-      font-size: 1.65rem;
-    }
-
-    .hero p {
-      margin: 0;
-      color: var(--text-subtle);
-    }
-
-    .tools-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 0.9rem;
-      padding: 0;
-      margin: 0 0 1.5rem;
-    }
-
-    .tools-list li a {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      min-height: 76px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      color: var(--text-main);
-      text-decoration: none;
-      padding: 0.85rem 0.95rem;
-      transition: transform 0.15s ease, border-color 0.15s ease;
-    }
-
-    .tools-list li a:hover {
-      transform: translateY(-2px);
-      border-color: #99f6e4;
-    }
-
-    .tools-list .icon {
-      background: var(--brand-soft);
-      border-radius: 10px;
-      width: 42px;
-      height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .tools-list .text {
-      color: var(--text-subtle);
-      line-height: 1.35;
-    }
-
-    .articles-section {
-      margin: 1.4rem 0 1.7rem;
-    }
-
-    .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.85rem;
-    }
-
-    .article-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: var(--shadow);
-      transition: transform 0.15s ease;
-    }
-
-    .article-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .article-card img {
-      display: block;
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-    }
-
-    .article-card h4 {
-      margin: 0;
-      padding: 0.75rem;
-      font-size: 0.96rem;
-      line-height: 1.35;
-    }
-
-    footer {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 1rem 1.2rem 1.4rem;
-      margin-bottom: 2rem;
-    }
-
-    footer h1 {
-      font-size: 1.35rem;
-      margin: 0 0 0.45rem;
-    }
-
-    footer h2 {
-      font-size: 1.05rem;
-      color: var(--text-subtle);
-      margin: 0 0 0.8rem;
-      line-height: 1.4;
-    }
-
-    footer ul {
-      padding-left: 1.1rem;
-    }
-
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 1.35rem;
-      }
-
-      .tools-list {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <header>
+  <header class="site-header">
     <nav>
       <ul>
         <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
@@ -221,7 +34,7 @@
     </nav>
   </header>
 
-  <main class="page-content">
+  <main class="utility-main page-content">
     <section class="hero">
       <h1>Free Utilities</h1>
       <p>Quick tools for day-to-day developer workflows.</p>
@@ -364,7 +177,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <h1>Hi there 👋. I am Ananth Tirumanur</h1>
     <h2>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h2>
 
