@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="/simplecss/styles.css" rel="stylesheet"/>
+  <link href="/free-utilities/utilities-theme.css" rel="stylesheet"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+  <title>CSV JSON Converter - Free Utility</title>
+  <style>
+    .actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 0.8rem 0; }
+    .settings { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    #status { font-weight: 500; }
+  </style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
+        <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="utility-main">
+    <section class="utility-hero">
+      <h1>CSV ↔ JSON Converter</h1>
+      <p class="notice"><strong>Privacy:</strong> Conversion happens only in your browser.</p>
+
+      <div class="settings">
+        <label for="delimiter">CSV Delimiter</label>
+        <input id="delimiter" type="text" value="," maxlength="1" style="max-width: 80px;">
+      </div>
+
+      <div class="container">
+        <div>
+          <label for="csvInput">CSV Input</label>
+          <textarea id="csvInput" placeholder="name,age\nAlice,30\nBob,25"></textarea>
+        </div>
+        <div>
+          <label for="jsonInput">JSON Input</label>
+          <textarea id="jsonInput" placeholder='[{"name":"Alice","age":30}]'></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button onclick="csvToJson()">CSV to JSON</button>
+        <button onclick="jsonToCsv()">JSON to CSV</button>
+        <button onclick="copyOutput()">Copy Output</button>
+      </div>
+
+      <label for="output">Output</label>
+      <textarea id="output" readonly></textarea>
+      <p id="status"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <h1>Hi there 👋. I am Ananth Tirumanur</h1>
+    <h2>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h2>
+    <ul>
+      <li>👨‍💻 Some of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+      <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+      <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+      <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+    </ul>
+    <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8"></iframe>
+    <h3>Connect with me:</h3>
+    <ul>
+      <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+    </ul>
+    <h3>My Resources:</h3>
+    <ul>
+      <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+      <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+      <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+      <li>Free Netezza Course: <a href="https://www.iexpertify.com/learn/full-course/netezza/">Free Netezza Course</a></li>
+    </ul>
+    <h3>Languages and Tools:</h3>
+    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+  </footer>
+
+  <script>
+    const statusEl = document.getElementById('status');
+    const outputEl = document.getElementById('output');
+
+    function getDelimiter() {
+      return document.getElementById('delimiter').value || ',';
+    }
+
+    function parseCsvLine(line, delimiter) {
+      const out = [];
+      let current = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        const next = line[i + 1];
+
+        if (ch === '"' && inQuotes && next === '"') {
+          current += '"';
+          i++;
+        } else if (ch === '"') {
+          inQuotes = !inQuotes;
+        } else if (ch === delimiter && !inQuotes) {
+          out.push(current);
+          current = '';
+        } else {
+          current += ch;
+        }
+      }
+      out.push(current);
+      return out;
+    }
+
+    function csvToJson() {
+      try {
+        const delimiter = getDelimiter();
+        const text = document.getElementById('csvInput').value.trim();
+        if (!text) throw new Error('Please enter CSV input.');
+
+        const lines = text.split(/\r?\n/).filter(Boolean);
+        const headers = parseCsvLine(lines[0], delimiter);
+        const rows = lines.slice(1).map((line) => {
+          const cols = parseCsvLine(line, delimiter);
+          const obj = {};
+          headers.forEach((h, idx) => {
+            obj[h] = cols[idx] ?? '';
+          });
+          return obj;
+        });
+
+        outputEl.value = JSON.stringify(rows, null, 2);
+        statusEl.textContent = `Converted ${rows.length} row(s) from CSV to JSON.`;
+      } catch (err) {
+        statusEl.textContent = `CSV to JSON failed: ${err.message}`;
+      }
+    }
+
+    function jsonToCsv() {
+      try {
+        const delimiter = getDelimiter();
+        const text = document.getElementById('jsonInput').value.trim();
+        if (!text) throw new Error('Please enter JSON input.');
+
+        const arr = JSON.parse(text);
+        if (!Array.isArray(arr)) throw new Error('JSON must be an array of objects.');
+        if (arr.length === 0) {
+          outputEl.value = '';
+          statusEl.textContent = 'JSON array is empty.';
+          return;
+        }
+
+        const headers = Object.keys(arr[0]);
+        const escapeVal = (val) => {
+          const str = String(val ?? '');
+          if (str.includes('"') || str.includes(delimiter) || str.includes('\n')) {
+            return `"${str.replace(/"/g, '""')}"`;
+          }
+          return str;
+        };
+
+        const lines = [
+          headers.map(escapeVal).join(delimiter),
+          ...arr.map((row) => headers.map((h) => escapeVal(row[h])).join(delimiter))
+        ];
+
+        outputEl.value = lines.join('\n');
+        statusEl.textContent = `Converted ${arr.length} row(s) from JSON to CSV.`;
+      } catch (err) {
+        statusEl.textContent = `JSON to CSV failed: ${err.message}`;
+      }
+    }
+
+    async function copyOutput() {
+      const text = outputEl.value;
+      if (!text) {
+        statusEl.textContent = 'Nothing to copy. Generate output first.';
+        return;
+      }
+      await navigator.clipboard.writeText(text);
+      statusEl.textContent = 'Output copied to clipboard.';
+    }
+  </script>
+</body>
+</html>
