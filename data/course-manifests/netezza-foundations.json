@@ -1,0 +1,40 @@
+{
+  "course_id": "netezza-foundations",
+  "title": "Netezza Foundations",
+  "description": "Build a practical understanding of Netezza architecture, performance, and operations.",
+  "difficulty": "Beginner",
+  "estimated_hours": 10,
+  "topic": "Netezza",
+  "landing_url": "/courses/netezza-foundations/",
+  "prerequisites": [
+    "Basic SQL"
+  ],
+  "outcomes": [
+    "Explain Netezza architecture and storage flow",
+    "Design and optimize core Netezza SQL workloads",
+    "Operate and troubleshoot common platform issues"
+  ],
+  "associated_labs": [
+    "/free-utilities/generate-test-data/"
+  ],
+  "modules": [
+    {
+      "module_id": "netezza-mod-1",
+      "title": "Core Architecture",
+      "lessons": [
+        { "lesson_id": "netezza-lesson-1", "title": "Netezza Overview", "url": "/learn/netezza-overview/", "objective": "Understand product scope and capabilities.", "prerequisites": [] },
+        { "lesson_id": "netezza-lesson-2", "title": "Netezza Architecture", "url": "/learn/netezza-architecture/", "objective": "Learn host, blade, and processing architecture.", "prerequisites": ["netezza-lesson-1"] },
+        { "lesson_id": "netezza-lesson-3", "title": "Netezza TwinFin Architecture", "url": "/learn/netezza-twinfin-architecture/", "objective": "Map TwinFin components to runtime behavior.", "prerequisites": ["netezza-lesson-2"] }
+      ]
+    },
+    {
+      "module_id": "netezza-mod-2",
+      "title": "Performance Tuning",
+      "lessons": [
+        { "lesson_id": "netezza-lesson-4", "title": "Best Practices to Improve Performance", "url": "/learn/netezza-best-practices-to-improve-performance/", "objective": "Apply practical performance optimizations.", "prerequisites": ["netezza-lesson-2"] },
+        { "lesson_id": "netezza-lesson-5", "title": "Netezza Query Plan Analysis", "url": "/learn/netezza-query-plan-analysis/", "objective": "Analyze explain plans and reduce expensive steps.", "prerequisites": ["netezza-lesson-4"] },
+        { "lesson_id": "netezza-lesson-6", "title": "Zone Maps Best Practices", "url": "/learn/netezza-zone-maps-best-practices/", "objective": "Improve scan pruning with better data layout.", "prerequisites": ["netezza-lesson-4"] }
+      ]
+    }
+  ]
+}

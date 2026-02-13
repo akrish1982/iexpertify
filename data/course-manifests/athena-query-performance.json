@@ -1,0 +1,41 @@
+{
+  "course_id": "athena-query-performance",
+  "title": "AWS Athena Query Performance",
+  "description": "Use SQL, partitioning, and data layout strategies to improve Athena reliability and speed.",
+  "difficulty": "Intermediate",
+  "estimated_hours": 7,
+  "topic": "AWS Athena",
+  "landing_url": "/courses/athena-query-performance/",
+  "prerequisites": [
+    "S3 basics",
+    "SQL fundamentals"
+  ],
+  "outcomes": [
+    "Tune Athena queries for latency and cost",
+    "Handle schema and partition changes safely",
+    "Diagnose large dataset and connectivity failures"
+  ],
+  "associated_labs": [
+    "/free-utilities/generate-test-data/"
+  ],
+  "modules": [
+    {
+      "module_id": "athena-mod-1",
+      "title": "Performance Fundamentals",
+      "lessons": [
+        { "lesson_id": "athena-lesson-1", "title": "Optimizing Athena Query Performance", "url": "/aws-athena/optimizing-athena-query-performance/", "objective": "Apply first-line query tuning techniques.", "prerequisites": [] },
+        { "lesson_id": "athena-lesson-2", "title": "Working with Partitioned Data", "url": "/aws-athena/working-with-partitioned-data-best-practices/", "objective": "Design efficient partition strategies for large tables.", "prerequisites": ["athena-lesson-1"] },
+        { "lesson_id": "athena-lesson-3", "title": "Troubleshooting Performance with Large Datasets", "url": "/aws-athena/troubleshooting-performance-issues-with-large-datasets/", "objective": "Find and resolve scan-heavy workload bottlenecks.", "prerequisites": ["athena-lesson-2"] }
+      ]
+    },
+    {
+      "module_id": "athena-mod-2",
+      "title": "Query Reliability",
+      "lessons": [
+        { "lesson_id": "athena-lesson-4", "title": "Troubleshooting Common Query Errors", "url": "/aws-athena/troubleshooting-common-query-errors/", "objective": "Fix syntax, permission, and data-type query errors.", "prerequisites": ["athena-lesson-1"] },
+        { "lesson_id": "athena-lesson-5", "title": "Handling Schema Changes in Athena Tables", "url": "/aws-athena/handling-schema-changes-in-athena-tables/", "objective": "Manage evolving source schemas without breakage.", "prerequisites": ["athena-lesson-4"] },
+        { "lesson_id": "athena-lesson-6", "title": "Resolving Connectivity Issues with Data Sources", "url": "/aws-athena/resolving-connectivity-issues-with-data-sources/", "objective": "Recover from connection and catalog integration failures.", "prerequisites": ["athena-lesson-4"] }
+      ]
+    }
+  ]
+}

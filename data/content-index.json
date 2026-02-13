@@ -1,0 +1,2192 @@
+[
+  {
+    "file_path": "author/dharmeshm/index.html",
+    "url_slug": "/author/dharmeshm/",
+    "topic": "General",
+    "content_type": "other",
+    "last_modified": "2025-06-29T17:00:29.755934+00:00",
+    "word_count": 1795,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/advanced-sql-techniques-for-athena-users/index.html",
+    "url_slug": "/aws-athena/advanced-sql-techniques-for-athena-users/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589241+00:00",
+    "word_count": 715,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/faq-athena-and-s3-best-practices/index.html",
+    "url_slug": "/aws-athena/faq-athena-and-s3-best-practices/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589580+00:00",
+    "word_count": 733,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/faq-common-athena-use-cases-and-limitations/index.html",
+    "url_slug": "/aws-athena/faq-common-athena-use-cases-and-limitations/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586596+00:00",
+    "word_count": 378,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/handling-schema-changes-in-athena-tables/index.html",
+    "url_slug": "/aws-athena/handling-schema-changes-in-athena-tables/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586581+00:00",
+    "word_count": 438,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/integrating-aws-athena-with-other-aws-services/index.html",
+    "url_slug": "/aws-athena/integrating-aws-athena-with-other-aws-services/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586542+00:00",
+    "word_count": 762,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/optimizing-athena-query-performance/index.html",
+    "url_slug": "/aws-athena/optimizing-athena-query-performance/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.551564+00:00",
+    "word_count": 422,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/querying-unstructured-data-json-and-logs/index.html",
+    "url_slug": "/aws-athena/querying-unstructured-data-json-and-logs/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589217+00:00",
+    "word_count": 456,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/resolving-connectivity-issues-with-data-sources/index.html",
+    "url_slug": "/aws-athena/resolving-connectivity-issues-with-data-sources/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586520+00:00",
+    "word_count": 789,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "aws-athena/securing-your-aws-athena-environment/index.html",
+    "url_slug": "/aws-athena/securing-your-aws-athena-environment/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586557+00:00",
+    "word_count": 464,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/troubleshooting- Glue-data-catalog-integration/index.html",
+    "url_slug": "/aws-athena/troubleshooting- Glue-data-catalog-integration/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589294+00:00",
+    "word_count": 655,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/troubleshooting-common-query-errors/index.html",
+    "url_slug": "/aws-athena/troubleshooting-common-query-errors/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586654+00:00",
+    "word_count": 423,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/troubleshooting-performance-issues-with-large-datasets/index.html",
+    "url_slug": "/aws-athena/troubleshooting-performance-issues-with-large-datasets/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.591187+00:00",
+    "word_count": 406,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/understanding-athena-cost-management-techniques/index.html",
+    "url_slug": "/aws-athena/understanding-athena-cost-management-techniques/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586640+00:00",
+    "word_count": 417,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws-athena/using-ctas-and-views-effectively-in-athena/index.html",
+    "url_slug": "/aws-athena/using-ctas-and-views-effectively-in-athena/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586627+00:00",
+    "word_count": 847,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "aws-athena/working-with-partitioned-data-best-practices/index.html",
+    "url_slug": "/aws-athena/working-with-partitioned-data-best-practices/",
+    "topic": "AWS Athena",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586611+00:00",
+    "word_count": 454,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws/design-efficient-datalakes/index.html",
+    "url_slug": "/aws/design-efficient-datalakes/",
+    "topic": "General",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755524+00:00",
+    "word_count": 1676,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "aws/some-use-cases-for-using-aws-glue/index.html",
+    "url_slug": "/aws/some-use-cases-for-using-aws-glue/",
+    "topic": "General",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.071626+00:00",
+    "word_count": 734,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/aws/index.html",
+    "url_slug": "/category/aws/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:00:29.755923+00:00",
+    "word_count": 0,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/cloud/index.html",
+    "url_slug": "/category/cloud/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:00:29.755944+00:00",
+    "word_count": 0,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/data-warehousing/index.html",
+    "url_slug": "/category/data-warehousing/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:01:13.132662+00:00",
+    "word_count": 457,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/interview/index.html",
+    "url_slug": "/category/interview/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:00:29.755958+00:00",
+    "word_count": 0,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/learn/feed/index.html",
+    "url_slug": "/category/learn/feed/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:00:29.785839+00:00",
+    "word_count": 4874,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/learn/full-course/index.html",
+    "url_slug": "/category/learn/full-course/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:01:13.132740+00:00",
+    "word_count": 573,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/learn/index.html",
+    "url_slug": "/category/learn/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:00:29.756003+00:00",
+    "word_count": 0,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/learn/page/28/index.html",
+    "url_slug": "/category/learn/page/28/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:00:29.755985+00:00",
+    "word_count": 448,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "category/linux/page/2/index.html",
+    "url_slug": "/category/linux/page/2/",
+    "topic": "General",
+    "content_type": "category",
+    "last_modified": "2025-06-29T17:00:29.781739+00:00",
+    "word_count": 984,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "courses/athena-query-performance/index.html",
+    "url_slug": "/courses/athena-query-performance/",
+    "topic": "Courses",
+    "content_type": "course-lesson",
+    "last_modified": "2026-02-13T11:42:01.849131+00:00",
+    "word_count": 163,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "courses/databricks-troubleshooting/index.html",
+    "url_slug": "/courses/databricks-troubleshooting/",
+    "topic": "Courses",
+    "content_type": "course-lesson",
+    "last_modified": "2026-02-13T11:35:15.897221+00:00",
+    "word_count": 214,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "courses/index.html",
+    "url_slug": "/courses/",
+    "topic": "Courses",
+    "content_type": "course-lesson",
+    "last_modified": "2026-02-13T11:42:07.347750+00:00",
+    "word_count": 90,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "courses/netezza-foundations/index.html",
+    "url_slug": "/courses/netezza-foundations/",
+    "topic": "Courses",
+    "content_type": "course-lesson",
+    "last_modified": "2026-02-13T11:42:01.844902+00:00",
+    "word_count": 143,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/active-vs-passive-stages/index.html",
+    "url_slug": "/data-warehousing/active-vs-passive-stages/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.108234+00:00",
+    "word_count": 813,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/aggregator-stage-in-datastage/index.html",
+    "url_slug": "/data-warehousing/aggregator-stage-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589988+00:00",
+    "word_count": 530,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/change-capture-stage-in-datastage/index.html",
+    "url_slug": "/data-warehousing/change-capture-stage-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132577+00:00",
+    "word_count": 747,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/combine-data-using-the-funnel-stage/index.html",
+    "url_slug": "/data-warehousing/combine-data-using-the-funnel-stage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755994+00:00",
+    "word_count": 894,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/create-jobs/index.html",
+    "url_slug": "/data-warehousing/create-jobs/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.127407+00:00",
+    "word_count": 612,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/data-partitioning-and-collecting-in-datastage/index.html",
+    "url_slug": "/data-warehousing/data-partitioning-and-collecting-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589415+00:00",
+    "word_count": 437,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/data-transformations/index.html",
+    "url_slug": "/data-warehousing/data-transformations/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755970+00:00",
+    "word_count": 328,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-active-vs-passive-stage/index.html",
+    "url_slug": "/data-warehousing/datastage-active-vs-passive-stage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132593+00:00",
+    "word_count": 421,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-cff-stage/index.html",
+    "url_slug": "/data-warehousing/datastage-cff-stage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132468+00:00",
+    "word_count": 502,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-configuration-file/index.html",
+    "url_slug": "/data-warehousing/datastage-configuration-file/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136930+00:00",
+    "word_count": 827,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-file-stages/index.html",
+    "url_slug": "/data-warehousing/datastage-file-stages/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589394+00:00",
+    "word_count": 419,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-important-terms/index.html",
+    "url_slug": "/data-warehousing/datastage-important-terms/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755901+00:00",
+    "word_count": 540,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-jobs-sequences-and-containers/index.html",
+    "url_slug": "/data-warehousing/datastage-jobs-sequences-and-containers/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589313+00:00",
+    "word_count": 595,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-osh-script/index.html",
+    "url_slug": "/data-warehousing/datastage-osh-script/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589261+00:00",
+    "word_count": 357,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-overview/index.html",
+    "url_slug": "/data-warehousing/datastage-overview/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132565+00:00",
+    "word_count": 886,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-parallel-processing-2/index.html",
+    "url_slug": "/data-warehousing/datastage-parallel-processing-2/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132646+00:00",
+    "word_count": 895,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-parallel-processing/index.html",
+    "url_slug": "/data-warehousing/datastage-parallel-processing/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132454+00:00",
+    "word_count": 899,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/datastage-triggers/index.html",
+    "url_slug": "/data-warehousing/datastage-triggers/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132033+00:00",
+    "word_count": 465,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/date-functions-in-datastage/index.html",
+    "url_slug": "/data-warehousing/date-functions-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132530+00:00",
+    "word_count": 400,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/design-a-data-model-example/index.html",
+    "url_slug": "/data-warehousing/design-a-data-model-example/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132049+00:00",
+    "word_count": 647,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/different-stages/index.html",
+    "url_slug": "/data-warehousing/different-stages/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132368+00:00",
+    "word_count": 651,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/etl-tools-in-markets/index.html",
+    "url_slug": "/data-warehousing/etl-tools-in-markets/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589528+00:00",
+    "word_count": 905,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/etl-vs-elt-must-know-differences/images/1/022218_0954_ETLvsELTMus1.html",
+    "url_slug": "/data-warehousing/etl-vs-elt-must-know-differences/images/1/022218_0954_ETLvsELTMus1.html",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755854+00:00",
+    "word_count": 24,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/etl-vs-elt-must-know-differences/images/1/022218_0954_ETLvsELTMus2.html",
+    "url_slug": "/data-warehousing/etl-vs-elt-must-know-differences/images/1/022218_0954_ETLvsELTMus2.html",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755845+00:00",
+    "word_count": 24,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/etl-vs-elt-must-know-differences/index.html",
+    "url_slug": "/data-warehousing/etl-vs-elt-must-know-differences/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.123172+00:00",
+    "word_count": 487,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/excel-data-in-datastage-unstructured-datastage/index.html",
+    "url_slug": "/data-warehousing/excel-data-in-datastage-unstructured-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.137115+00:00",
+    "word_count": 1164,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/how-to-check-netezza-versions-history/index.html",
+    "url_slug": "/data-warehousing/how-to-check-netezza-versions-history/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.127335+00:00",
+    "word_count": 554,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/how-to-find-netezza-model-type/index.html",
+    "url_slug": "/data-warehousing/how-to-find-netezza-model-type/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.114749+00:00",
+    "word_count": 752,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/interview-questions/index.html",
+    "url_slug": "/data-warehousing/interview-questions/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132555+00:00",
+    "word_count": 130,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/introduction-to-datastage-director/index.html",
+    "url_slug": "/data-warehousing/introduction-to-datastage-director/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132293+00:00",
+    "word_count": 743,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/join-stage-in-datastage/index.html",
+    "url_slug": "/data-warehousing/join-stage-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132509+00:00",
+    "word_count": 835,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/join-vs-merge-vs-lookup-datastage/index.html",
+    "url_slug": "/data-warehousing/join-vs-merge-vs-lookup-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.590025+00:00",
+    "word_count": 496,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/lookup-stage-in-datastage/index.html",
+    "url_slug": "/data-warehousing/lookup-stage-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589501+00:00",
+    "word_count": 432,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/merge-stage-in-datastage/index.html",
+    "url_slug": "/data-warehousing/merge-stage-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132482+00:00",
+    "word_count": 771,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/null-handling-functions-in-datastage/index.html",
+    "url_slug": "/data-warehousing/null-handling-functions-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755753+00:00",
+    "word_count": 671,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/number-functions-in-datastage/index.html",
+    "url_slug": "/data-warehousing/number-functions-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589334+00:00",
+    "word_count": 403,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/olap-terms-and-definitions/index.html",
+    "url_slug": "/data-warehousing/olap-terms-and-definitions/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755911+00:00",
+    "word_count": 187,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/oltp-vs-olap-whats-the-difference/index.html",
+    "url_slug": "/data-warehousing/oltp-vs-olap-whats-the-difference/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132496+00:00",
+    "word_count": 476,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/overview-of-aws-glue/index.html",
+    "url_slug": "/data-warehousing/overview-of-aws-glue/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589548+00:00",
+    "word_count": 130,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/remove-duplicates-stage-in-datastage/index.html",
+    "url_slug": "/data-warehousing/remove-duplicates-stage-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589450+00:00",
+    "word_count": 441,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/runtime-column-propagation-in-datastage/index.html",
+    "url_slug": "/data-warehousing/runtime-column-propagation-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132603+00:00",
+    "word_count": 852,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/slowly-changing-dimensions/index.html",
+    "url_slug": "/data-warehousing/slowly-changing-dimensions/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132020+00:00",
+    "word_count": 534,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/snowflake-interview-questions/index.html",
+    "url_slug": "/data-warehousing/snowflake-interview-questions/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589375+00:00",
+    "word_count": 494,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/sort-data-using-in-stage-sorts-and-sort-stage/index.html",
+    "url_slug": "/data-warehousing/sort-data-using-in-stage-sorts-and-sort-stage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132003+00:00",
+    "word_count": 859,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/surrogate-key-generator-stage-in-datastage/index.html",
+    "url_slug": "/data-warehousing/surrogate-key-generator-stage-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589482+00:00",
+    "word_count": 491,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/table-definition-and-schemas/index.html",
+    "url_slug": "/data-warehousing/table-definition-and-schemas/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.082978+00:00",
+    "word_count": 648,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/traditional-etl-vs-aws-glue/index.html",
+    "url_slug": "/data-warehousing/traditional-etl-vs-aws-glue/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132431+00:00",
+    "word_count": 859,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/type-conversion-function-in-datastage/index.html",
+    "url_slug": "/data-warehousing/type-conversion-function-in-datastage/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132613+00:00",
+    "word_count": 680,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/what-is-a-olap-cube/index.html",
+    "url_slug": "/data-warehousing/what-is-a-olap-cube/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589432+00:00",
+    "word_count": 492,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/what-is-dimensional-model-in-data-warehouse/index.html",
+    "url_slug": "/data-warehousing/what-is-dimensional-model-in-data-warehouse/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.137285+00:00",
+    "word_count": 405,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "data-warehousing/what-is-molap-architecture-advantages-example-tools/index.html",
+    "url_slug": "/data-warehousing/what-is-molap-architecture-advantages-example-tools/",
+    "topic": "Data Warehousing",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589358+00:00",
+    "word_count": 460,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/common-errors-in-databricks-sql-and-how-to-solve-them/index.html",
+    "url_slug": "/databricks/common-errors-in-databricks-sql-and-how-to-solve-them/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.588045+00:00",
+    "word_count": 439,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/debugging-databricks-pipelines-and-workflows/index.html",
+    "url_slug": "/databricks/debugging-databricks-pipelines-and-workflows/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.588847+00:00",
+    "word_count": 442,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/faq-databricks-delta-live-tables/index.html",
+    "url_slug": "/databricks/faq-databricks-delta-live-tables/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586712+00:00",
+    "word_count": 567,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/faq-databricks-security-best-practices/index.html",
+    "url_slug": "/databricks/faq-databricks-security-best-practices/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589117+00:00",
+    "word_count": 621,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/handling-databricks-notebook-conflicts/index.html",
+    "url_slug": "/databricks/handling-databricks-notebook-conflicts/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586701+00:00",
+    "word_count": 411,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/handling-large-datasets-and-memory-issues-in-databricks/index.html",
+    "url_slug": "/databricks/handling-large-datasets-and-memory-issues-in-databricks/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589091+00:00",
+    "word_count": 407,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/managing-databricks-permissions-and-access-control/index.html",
+    "url_slug": "/databricks/managing-databricks-permissions-and-access-control/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586811+00:00",
+    "word_count": 409,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/optimizing-databricks-job-performance/index.html",
+    "url_slug": "/databricks/optimizing-databricks-job-performance/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589147+00:00",
+    "word_count": 938,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/resolving-common-databricks-cluster-issues/index.html",
+    "url_slug": "/databricks/resolving-common-databricks-cluster-issues/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.587967+00:00",
+    "word_count": 384,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/troubleshooting-databricks-connect-issues/index.html",
+    "url_slug": "/databricks/troubleshooting-databricks-connect-issues/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589167+00:00",
+    "word_count": 362,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/troubleshooting-mlflow-integration-in-databricks/index.html",
+    "url_slug": "/databricks/troubleshooting-mlflow-integration-in-databricks/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589191+00:00",
+    "word_count": 426,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/troubleshooting-spark-ui-for-performance/index.html",
+    "url_slug": "/databricks/troubleshooting-spark-ui-for-performance/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586846+00:00",
+    "word_count": 437,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/understanding-and-fixing-delta-lake-problems/index.html",
+    "url_slug": "/databricks/understanding-and-fixing-delta-lake-problems/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589840+00:00",
+    "word_count": 796,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/understanding-databricks-cost-management/index.html",
+    "url_slug": "/databricks/understanding-databricks-cost-management/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589069+00:00",
+    "word_count": 752,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "databricks/working-with-databricks-git-integration-troubleshooting/index.html",
+    "url_slug": "/databricks/working-with-databricks-git-integration-troubleshooting/",
+    "topic": "Databricks",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.586727+00:00",
+    "word_count": 333,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "free-courses/index.html",
+    "url_slug": "/free-courses/",
+    "topic": "General",
+    "content_type": "other",
+    "last_modified": "2025-06-29T17:00:29.755681+00:00",
+    "word_count": 18,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "free-utilities/aws-cloudformation-validator/index.html",
+    "url_slug": "/free-utilities/aws-cloudformation-validator/",
+    "topic": "Utilities",
+    "content_type": "utility",
+    "last_modified": "2025-06-29T17:01:13.078188+00:00",
+    "word_count": 138,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "free-utilities/convert-html-to-md/index.html",
+    "url_slug": "/free-utilities/convert-html-to-md/",
+    "topic": "Utilities",
+    "content_type": "utility",
+    "last_modified": "2025-06-29T17:01:45.586688+00:00",
+    "word_count": 200,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "free-utilities/credit-card-validator/index.html",
+    "url_slug": "/free-utilities/credit-card-validator/",
+    "topic": "Utilities",
+    "content_type": "utility",
+    "last_modified": "2025-06-29T17:01:13.107744+00:00",
+    "word_count": 467,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "free-utilities/generate-test-data/index.html",
+    "url_slug": "/free-utilities/generate-test-data/",
+    "topic": "Utilities",
+    "content_type": "utility",
+    "last_modified": "2025-06-29T17:01:13.077820+00:00",
+    "word_count": 184,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "free-utilities/html-beautifier/index.html",
+    "url_slug": "/free-utilities/html-beautifier/",
+    "topic": "Utilities",
+    "content_type": "utility",
+    "last_modified": "2025-06-29T17:01:13.078096+00:00",
+    "word_count": 203,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "free-utilities/index.html",
+    "url_slug": "/free-utilities/",
+    "topic": "Utilities",
+    "content_type": "utility",
+    "last_modified": "2025-06-29T17:00:29.755764+00:00",
+    "word_count": 272,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "index.html",
+    "url_slug": "/",
+    "topic": "General",
+    "content_type": "landing",
+    "last_modified": "2025-06-29T17:00:39.410515+00:00",
+    "word_count": 272,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "interview/linux-interview-questions-answers/index.html",
+    "url_slug": "/interview/linux-interview-questions-answers/",
+    "topic": "General",
+    "content_type": "other",
+    "last_modified": "2025-06-29T17:00:29.755623+00:00",
+    "word_count": 1286,
+    "has_code_blocks": false,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "learn/commonly-used-netezza-basic-commands/index.html",
+    "url_slug": "/learn/commonly-used-netezza-basic-commands/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589753+00:00",
+    "word_count": 278,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/computing-architecture-terms/index.html",
+    "url_slug": "/learn/computing-architecture-terms/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.803332+00:00",
+    "word_count": 388,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/distribution-key-in-netezza/index.html",
+    "url_slug": "/learn/distribution-key-in-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589716+00:00",
+    "word_count": 554,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "learn/error-recursion-detected-in-view-expansion/index.html",
+    "url_slug": "/learn/error-recursion-detected-in-view-expansion/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589878+00:00",
+    "word_count": 296,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/2d-animation/index.html",
+    "url_slug": "/learn/full-course/2d-animation/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.785731+00:00",
+    "word_count": 432,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/3d-animation/index.html",
+    "url_slug": "/learn/full-course/3d-animation/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803606+00:00",
+    "word_count": 296,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/android/index.html",
+    "url_slug": "/learn/full-course/android/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.789408+00:00",
+    "word_count": 0,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/ansible/index.html",
+    "url_slug": "/learn/full-course/ansible/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803022+00:00",
+    "word_count": 456,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/apache-cassandra/index.html",
+    "url_slug": "/learn/full-course/apache-cassandra/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:45.589959+00:00",
+    "word_count": 564,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/aws-glue-serverless-etl/index.html",
+    "url_slug": "/learn/full-course/aws-glue-serverless-etl/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:45.589911+00:00",
+    "word_count": 130,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/bootstrap/index.html",
+    "url_slug": "/learn/full-course/bootstrap/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.156024+00:00",
+    "word_count": 682,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/cplusplus/index.html",
+    "url_slug": "/learn/full-course/cplusplus/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803280+00:00",
+    "word_count": 472,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/data-science-master-program/index.html",
+    "url_slug": "/learn/full-course/data-science-master-program/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803221+00:00",
+    "word_count": 1053,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/emc-storage/index.html",
+    "url_slug": "/learn/full-course/emc-storage/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.142113+00:00",
+    "word_count": 494,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/etl-testing/index.html",
+    "url_slug": "/learn/full-course/etl-testing/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.785910+00:00",
+    "word_count": 591,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/ibm-cognos-tm1/index.html",
+    "url_slug": "/learn/full-course/ibm-cognos-tm1/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.146673+00:00",
+    "word_count": 712,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "learn/full-course/ibm-mainframe-developer/index.html",
+    "url_slug": "/learn/full-course/ibm-mainframe-developer/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.156207+00:00",
+    "word_count": 496,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/javascript/index.html",
+    "url_slug": "/learn/full-course/javascript/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.785748+00:00",
+    "word_count": 448,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/microsoft-advanced-excel/index.html",
+    "url_slug": "/learn/full-course/microsoft-advanced-excel/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.137078+00:00",
+    "word_count": 720,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/microsoft-office/index.html",
+    "url_slug": "/learn/full-course/microsoft-office/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.789433+00:00",
+    "word_count": 295,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/mobile-application-testing/index.html",
+    "url_slug": "/learn/full-course/mobile-application-testing/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.137066+00:00",
+    "word_count": 536,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/netapp-storage/index.html",
+    "url_slug": "/learn/full-course/netapp-storage/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.151008+00:00",
+    "word_count": 627,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/netezza/index.html",
+    "url_slug": "/learn/full-course/netezza/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.159630+00:00",
+    "word_count": 319,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/obiee/index.html",
+    "url_slug": "/learn/full-course/obiee/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.156152+00:00",
+    "word_count": 242,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/oracle-admin/index.html",
+    "url_slug": "/learn/full-course/oracle-admin/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.789533+00:00",
+    "word_count": 689,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/oracle-apex/index.html",
+    "url_slug": "/learn/full-course/oracle-apex/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.785791+00:00",
+    "word_count": 941,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/oracle-apps-finance/index.html",
+    "url_slug": "/learn/full-course/oracle-apps-finance/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.137233+00:00",
+    "word_count": 485,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "learn/full-course/oracle-apps-scm/index.html",
+    "url_slug": "/learn/full-course/oracle-apps-scm/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.785686+00:00",
+    "word_count": 314,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/oracle-dba/index.html",
+    "url_slug": "/learn/full-course/oracle-dba/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.155981+00:00",
+    "word_count": 725,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/oracle-forms-and-reports/index.html",
+    "url_slug": "/learn/full-course/oracle-forms-and-reports/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.156124+00:00",
+    "word_count": 1032,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/oracle-fusion-hcm/index.html",
+    "url_slug": "/learn/full-course/oracle-fusion-hcm/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.156193+00:00",
+    "word_count": 368,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/oracle-sql-and-plsql/index.html",
+    "url_slug": "/learn/full-course/oracle-sql-and-plsql/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.794276+00:00",
+    "word_count": 1905,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/pega/index.html",
+    "url_slug": "/learn/full-course/pega/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.146865+00:00",
+    "word_count": 130,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/php-mysql/index.html",
+    "url_slug": "/learn/full-course/php-mysql/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.137690+00:00",
+    "word_count": 316,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/python-with-machine-learning/index.html",
+    "url_slug": "/learn/full-course/python-with-machine-learning/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803945+00:00",
+    "word_count": 323,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/qtp/index.html",
+    "url_slug": "/learn/full-course/qtp/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.785654+00:00",
+    "word_count": 354,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/react-js/index.html",
+    "url_slug": "/learn/full-course/react-js/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.832409+00:00",
+    "word_count": 645,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/salesforce-admin/index.html",
+    "url_slug": "/learn/full-course/salesforce-admin/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.802975+00:00",
+    "word_count": 406,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/salesforce/index.html",
+    "url_slug": "/learn/full-course/salesforce/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.789551+00:00",
+    "word_count": 1198,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-bi-bw/index.html",
+    "url_slug": "/learn/full-course/sap-bi-bw/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.785701+00:00",
+    "word_count": 534,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-crm/index.html",
+    "url_slug": "/learn/full-course/sap-crm/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.141962+00:00",
+    "word_count": 432,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-pm/index.html",
+    "url_slug": "/learn/full-course/sap-pm/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.832811+00:00",
+    "word_count": 334,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-qm/index.html",
+    "url_slug": "/learn/full-course/sap-qm/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.146842+00:00",
+    "word_count": 561,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-s4-hana/index.html",
+    "url_slug": "/learn/full-course/sap-s4-hana/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803267+00:00",
+    "word_count": 562,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-security-grc/index.html",
+    "url_slug": "/learn/full-course/sap-security-grc/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.159847+00:00",
+    "word_count": 671,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-ui5-fiori/index.html",
+    "url_slug": "/learn/full-course/sap-ui5-fiori/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.160342+00:00",
+    "word_count": 447,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sap-wm-ewm/index.html",
+    "url_slug": "/learn/full-course/sap-wm-ewm/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.146825+00:00",
+    "word_count": 552,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/sharepoint-developer/index.html",
+    "url_slug": "/learn/full-course/sharepoint-developer/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.137130+00:00",
+    "word_count": 429,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/soa-testing/index.html",
+    "url_slug": "/learn/full-course/soa-testing/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803237+00:00",
+    "word_count": 446,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/spoken-english/index.html",
+    "url_slug": "/learn/full-course/spoken-english/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.156180+00:00",
+    "word_count": 471,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/spring/index.html",
+    "url_slug": "/learn/full-course/spring/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803477+00:00",
+    "word_count": 1808,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/tableau-software/index.html",
+    "url_slug": "/learn/full-course/tableau-software/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803292+00:00",
+    "word_count": 404,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/tally/index.html",
+    "url_slug": "/learn/full-course/tally/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.832683+00:00",
+    "word_count": 410,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/teradata-dba/index.html",
+    "url_slug": "/learn/full-course/teradata-dba/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.142143+00:00",
+    "word_count": 474,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/teradata/index.html",
+    "url_slug": "/learn/full-course/teradata/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.137028+00:00",
+    "word_count": 492,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/tibco-spotfire/index.html",
+    "url_slug": "/learn/full-course/tibco-spotfire/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.137091+00:00",
+    "word_count": 636,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/ui-path/index.html",
+    "url_slug": "/learn/full-course/ui-path/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.803052+00:00",
+    "word_count": 342,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/vmware-cloud/index.html",
+    "url_slug": "/learn/full-course/vmware-cloud/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:00:29.789485+00:00",
+    "word_count": 1149,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/full-course/workday/index.html",
+    "url_slug": "/learn/full-course/workday/",
+    "topic": "Netezza",
+    "content_type": "course-lesson",
+    "last_modified": "2025-06-29T17:01:13.156219+00:00",
+    "word_count": 494,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/how-to-connect-netezza-using-jdbc-driver-and-working-examples/index.html",
+    "url_slug": "/learn/how-to-connect-netezza-using-jdbc-driver-and-working-examples/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.137037+00:00",
+    "word_count": 737,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "learn/how-to-undo-a-delete-update-or-insert-in-netezza/index.html",
+    "url_slug": "/learn/how-to-undo-a-delete-update-or-insert-in-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589602+00:00",
+    "word_count": 430,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/is-netezza-near-end-of-life/index.html",
+    "url_slug": "/learn/is-netezza-near-end-of-life/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136714+00:00",
+    "word_count": 430,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/list-of-netezza-data-types-and-best-practices/index.html",
+    "url_slug": "/learn/list-of-netezza-data-types-and-best-practices/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136742+00:00",
+    "word_count": 713,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/local-external-tables-netezza/index.html",
+    "url_slug": "/learn/local-external-tables-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.159971+00:00",
+    "word_count": 539,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/manually-failover-a-disk-in-netezza/index.html",
+    "url_slug": "/learn/manually-failover-a-disk-in-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136920+00:00",
+    "word_count": 798,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/materialized-views-in-netezza/index.html",
+    "url_slug": "/learn/materialized-views-in-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136962+00:00",
+    "word_count": 406,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-ampp-architecture/index.html",
+    "url_slug": "/learn/netezza-ampp-architecture/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.137005+00:00",
+    "word_count": 732,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-architecture/index.html",
+    "url_slug": "/learn/netezza-architecture/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589815+00:00",
+    "word_count": 530,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-backups-status-showing-active-2/index.html",
+    "url_slug": "/learn/netezza-backups-status-showing-active-2/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136644+00:00",
+    "word_count": 782,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "learn/netezza-best-practices-to-improve-performance/index.html",
+    "url_slug": "/learn/netezza-best-practices-to-improve-performance/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589771+00:00",
+    "word_count": 416,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-create-view-syntax-and-examples/index.html",
+    "url_slug": "/learn/netezza-create-view-syntax-and-examples/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589649+00:00",
+    "word_count": 447,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-cross-database-access-and-its-restrictions/index.html",
+    "url_slug": "/learn/netezza-cross-database-access-and-its-restrictions/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136763+00:00",
+    "word_count": 858,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-databases-tables-and-database-objects/index.html",
+    "url_slug": "/learn/netezza-databases-tables-and-database-objects/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136940+00:00",
+    "word_count": 665,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-default-port-numbers/index.html",
+    "url_slug": "/learn/netezza-default-port-numbers/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.803355+00:00",
+    "word_count": 252,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-distribute-on/index.html",
+    "url_slug": "/learn/netezza-distribute-on/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.137145+00:00",
+    "word_count": 748,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-failover-high-availability-architecture/index.html",
+    "url_slug": "/learn/netezza-failover-high-availability-architecture/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136971+00:00",
+    "word_count": 665,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-generate-statistics-a-guide-and-best-practices/index.html",
+    "url_slug": "/learn/netezza-generate-statistics-a-guide-and-best-practices/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589861+00:00",
+    "word_count": 449,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-mako-appliance-latest-netezza-powered-dwh-appliance/index.html",
+    "url_slug": "/learn/netezza-mako-appliance-latest-netezza-powered-dwh-appliance/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136679+00:00",
+    "word_count": 758,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-monitor-grown-defects-on-disks/index.html",
+    "url_slug": "/learn/netezza-monitor-grown-defects-on-disks/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.633512+00:00",
+    "word_count": 617,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-nzstats-command-and-usage/index.html",
+    "url_slug": "/learn/netezza-nzstats-command-and-usage/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136731+00:00",
+    "word_count": 580,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-out-of-range-error/index.html",
+    "url_slug": "/learn/netezza-out-of-range-error/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.159657+00:00",
+    "word_count": 572,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-overview/index.html",
+    "url_slug": "/learn/netezza-overview/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136909+00:00",
+    "word_count": 810,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "learn/netezza-query-history-details-using-nz_query_history-table/index.html",
+    "url_slug": "/learn/netezza-query-history-details-using-nz_query_history-table/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589628+00:00",
+    "word_count": 441,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-query-plan-analysis/index.html",
+    "url_slug": "/learn/netezza-query-plan-analysis/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589667+00:00",
+    "word_count": 505,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-security/index.html",
+    "url_slug": "/learn/netezza-security/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.803309+00:00",
+    "word_count": 539,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-sequence-and-create-use-it/index.html",
+    "url_slug": "/learn/netezza-sequence-and-create-use-it/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.137017+00:00",
+    "word_count": 396,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-storage/index.html",
+    "url_slug": "/learn/netezza-storage/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589793+00:00",
+    "word_count": 696,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-system-tables-and-views/index.html",
+    "url_slug": "/learn/netezza-system-tables-and-views/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136995+00:00",
+    "word_count": 472,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-temporary-table-space/index.html",
+    "url_slug": "/learn/netezza-temporary-table-space/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136983+00:00",
+    "word_count": 785,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-transaction-management-begin-commit-rollback/index.html",
+    "url_slug": "/learn/netezza-transaction-management-begin-commit-rollback/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589692+00:00",
+    "word_count": 419,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-twinfin-architecture/index.html",
+    "url_slug": "/learn/netezza-twinfin-architecture/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136893+00:00",
+    "word_count": 737,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/netezza-zone-maps-best-practices/index.html",
+    "url_slug": "/learn/netezza-zone-maps-best-practices/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.132678+00:00",
+    "word_count": 721,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/nzstop-vs-nzsystem-stop/index.html",
+    "url_slug": "/learn/nzstop-vs-nzsystem-stop/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.803319+00:00",
+    "word_count": 246,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/script-to-find-netezza-database-size/index.html",
+    "url_slug": "/learn/script-to-find-netezza-database-size/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136666+00:00",
+    "word_count": 583,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/smp-vs-mpp-architecture/index.html",
+    "url_slug": "/learn/smp-vs-mpp-architecture/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.137054+00:00",
+    "word_count": 783,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/sql-to-find-all-resource-groups-in-netezza/index.html",
+    "url_slug": "/learn/sql-to-find-all-resource-groups-in-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.589737+00:00",
+    "word_count": 394,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/steps-to-restore-table-in-netezza/index.html",
+    "url_slug": "/learn/steps-to-restore-table-in-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.136952+00:00",
+    "word_count": 724,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "learn/to-remove-the-bogus-sas-switch-entries-netezza/index.html",
+    "url_slug": "/learn/to-remove-the-bogus-sas-switch-entries-netezza/",
+    "topic": "Netezza",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:45.590008+00:00",
+    "word_count": 396,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "linux/grep_regex_example_linux/index.html",
+    "url_slug": "/linux/grep_regex_example_linux/",
+    "topic": "Linux",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:00:29.755595+00:00",
+    "word_count": 428,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "linux/input-output-redirection-in-linux-unix-examples/index.html",
+    "url_slug": "/linux/input-output-redirection-in-linux-unix-examples/",
+    "topic": "Linux",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.077751+00:00",
+    "word_count": 969,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "linux/linux-ls-command/index.html",
+    "url_slug": "/linux/linux-ls-command/",
+    "topic": "Linux",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.073582+00:00",
+    "word_count": 616,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "linux/linux-man-command-manual/index.html",
+    "url_slug": "/linux/linux-man-command-manual/",
+    "topic": "Linux",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.077996+00:00",
+    "word_count": 712,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "linux/simple-linux-commands/index.html",
+    "url_slug": "/linux/simple-linux-commands/",
+    "topic": "Linux",
+    "content_type": "article",
+    "last_modified": "2025-06-29T17:01:13.073683+00:00",
+    "word_count": 767,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "lp-profile/index.html",
+    "url_slug": "/lp-profile/",
+    "topic": "General",
+    "content_type": "other",
+    "last_modified": "2025-06-29T17:01:13.077933+00:00",
+    "word_count": 433,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "tag/linux/feed/index.html",
+    "url_slug": "/tag/linux/feed/",
+    "topic": "General",
+    "content_type": "tag",
+    "last_modified": "2025-06-29T17:00:29.755645+00:00",
+    "word_count": 9141,
+    "has_code_blocks": true,
+    "has_next_lesson_links": true
+  },
+  {
+    "file_path": "tag/linux/index.html",
+    "url_slug": "/tag/linux/",
+    "topic": "General",
+    "content_type": "tag",
+    "last_modified": "2025-06-29T17:00:29.767703+00:00",
+    "word_count": 1888,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "tag/linux/page/2/index.html",
+    "url_slug": "/tag/linux/page/2/",
+    "topic": "General",
+    "content_type": "tag",
+    "last_modified": "2025-06-29T17:00:29.752848+00:00",
+    "word_count": 301,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "tag/netezza/feed/index.html",
+    "url_slug": "/tag/netezza/feed/",
+    "topic": "General",
+    "content_type": "tag",
+    "last_modified": "2025-06-29T17:00:29.702271+00:00",
+    "word_count": 301,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "tag/netezza/index.html",
+    "url_slug": "/tag/netezza/",
+    "topic": "General",
+    "content_type": "tag",
+    "last_modified": "2025-06-29T17:01:45.586671+00:00",
+    "word_count": 424,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "tag/netezza/page/2/index.html",
+    "url_slug": "/tag/netezza/page/2/",
+    "topic": "General",
+    "content_type": "tag",
+    "last_modified": "2025-06-29T17:00:29.752818+00:00",
+    "word_count": 5,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "tag/netezza/page/6/index.html",
+    "url_slug": "/tag/netezza/page/6/",
+    "topic": "General",
+    "content_type": "tag",
+    "last_modified": "2025-06-29T17:00:29.707145+00:00",
+    "word_count": 301,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "temp/temp-testing/what-is-requirements-traceability-matrix-rtm-example-template/index.html",
+    "url_slug": "/temp/temp-testing/what-is-requirements-traceability-matrix-rtm-example-template/",
+    "topic": "General",
+    "content_type": "other",
+    "last_modified": "2025-06-29T17:01:45.589941+00:00",
+    "word_count": 380,
+    "has_code_blocks": false,
+    "has_next_lesson_links": false
+  },
+  {
+    "file_path": "upskill/netezza-sequence-and-create-use-it/index.html",
+    "url_slug": "/upskill/netezza-sequence-and-create-use-it/",
+    "topic": "General",
+    "content_type": "other",
+    "last_modified": "2025-06-29T17:01:13.132635+00:00",
+    "word_count": 344,
+    "has_code_blocks": true,
+    "has_next_lesson_links": false
+  }
+]

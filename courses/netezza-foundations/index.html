@@ -1,0 +1,96 @@
+<html>
+<head>
+  <link href="/simplecss/styles.css" rel="stylesheet"/>
+  <link href="/assets/css/course-experience.css" rel="stylesheet"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+  <script defer src="/assets/js/course-progress.js"></script>
+  <script defer src="/assets/js/interactive-widgets.js"></script>
+</head>
+<body class="course-shell" data-course-manifest="/data/course-manifests/netezza-foundations.json">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">iExpertify</a></li>
+        <li><a href="/courses/">Courses</a></li>
+        <li><a href="/learn/netezza-overview/">Netezza Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="course-hero">
+    <h1>Netezza Foundations</h1>
+    <p>Build practical fluency in Netezza architecture, query tuning, and performance diagnostics.</p>
+    <div id="js-course-progress">0% completed</div>
+    <div class="course-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+      <div id="js-course-progress-bar" class="course-progress-bar" aria-valuenow="0"></div>
+    </div>
+    <div id="js-course-counter">0 / 6 lessons complete</div>
+    <div class="course-actions">
+      <a id="js-resume-link" href="/learn/netezza-overview/">Resume: Lesson 1</a>
+      <button id="js-reset-progress" type="button">Reset Progress</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Module 1: Core Architecture</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="netezza-lesson-1">
+        <div class="lesson-item-header">
+          <a href="/learn/netezza-overview/">1. Netezza Overview</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="netezza-lesson-1">Toggle Complete</button>
+        </div>
+        <p class="lesson-meta">Objective: Understand product scope and capabilities.</p>
+      </li>
+      <li class="lesson-item" data-lesson-id="netezza-lesson-2">
+        <div class="lesson-item-header">
+          <a href="/learn/netezza-architecture/">2. Netezza Architecture</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="netezza-lesson-2">Toggle Complete</button>
+        </div>
+      </li>
+      <li class="lesson-item" data-lesson-id="netezza-lesson-3">
+        <div class="lesson-item-header">
+          <a href="/learn/netezza-twinfin-architecture/">3. Netezza TwinFin Architecture</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="netezza-lesson-3">Toggle Complete</button>
+        </div>
+      </li>
+    </ul>
+
+    <h2>Module 2: Performance Tuning</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="netezza-lesson-4"><div class="lesson-item-header"><a href="/learn/netezza-best-practices-to-improve-performance/">4. Best Practices to Improve Performance</a><button class="js-toggle-lesson" type="button" data-lesson-id="netezza-lesson-4">Toggle Complete</button></div></li>
+      <li class="lesson-item" data-lesson-id="netezza-lesson-5"><div class="lesson-item-header"><a href="/learn/netezza-query-plan-analysis/">5. Netezza Query Plan Analysis</a><button class="js-toggle-lesson" type="button" data-lesson-id="netezza-lesson-5">Toggle Complete</button></div></li>
+      <li class="lesson-item" data-lesson-id="netezza-lesson-6"><div class="lesson-item-header"><a href="/learn/netezza-zone-maps-best-practices/">6. Zone Maps Best Practices</a><button class="js-toggle-lesson" type="button" data-lesson-id="netezza-lesson-6">Toggle Complete</button></div></li>
+    </ul>
+  </section>
+
+  <section class="reveal-box">
+    <h2>Self-Check</h2>
+    <p>What helps Netezza reduce unnecessary disk scanning in large tables?</p>
+    <div class="mcq-box" data-mcq data-answer="zone-maps">
+      <div class="mcq-choices">
+        <button type="button" data-choice="zone-maps">Zone maps</button>
+        <button type="button" data-choice="materialized-css">Materialized CSS files</button>
+        <button type="button" data-choice="dns-cache">DNS cache warming</button>
+      </div>
+      <div class="mcq-feedback" aria-live="polite"></div>
+    </div>
+    <button type="button" data-reveal-target="answer-netezza-1">Reveal answer</button>
+    <div id="answer-netezza-1" hidden>
+      Zone maps improve scan pruning by skipping data blocks that cannot match filter predicates.
+    </div>
+  </section>
+
+  <section>
+    <h2>Try It Snippet</h2>
+    <pre><code>-- Basic explain plan pattern for query tuning
+EXPLAIN
+SELECT customer_id, SUM(amount) AS total_amount
+FROM sales_fact
+WHERE order_date &gt;= CURRENT_DATE - 30
+GROUP BY customer_id;</code></pre>
+  </section>
+</body>
+</html>

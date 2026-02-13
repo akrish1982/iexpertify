@@ -1,0 +1,96 @@
+<html>
+<head>
+  <link href="/simplecss/styles.css" rel="stylesheet"/>
+  <link href="/assets/css/course-experience.css" rel="stylesheet"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+  <script defer src="/assets/js/course-progress.js"></script>
+  <script defer src="/assets/js/interactive-widgets.js"></script>
+</head>
+<body class="course-shell" data-course-manifest="/data/course-manifests/athena-query-performance.json">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">iExpertify</a></li>
+        <li><a href="/courses/">Courses</a></li>
+        <li><a href="/aws-athena/optimizing-athena-query-performance/">Athena Articles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="course-hero">
+    <h1>AWS Athena Query Performance</h1>
+    <p>Optimize Athena workloads with practical partitioning, SQL tuning, and reliability checks.</p>
+    <div id="js-course-progress">0% completed</div>
+    <div class="course-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+      <div id="js-course-progress-bar" class="course-progress-bar" aria-valuenow="0"></div>
+    </div>
+    <div id="js-course-counter">0 / 6 lessons complete</div>
+    <div class="course-actions">
+      <a id="js-resume-link" href="/aws-athena/optimizing-athena-query-performance/">Resume: Lesson 1</a>
+      <button id="js-reset-progress" type="button">Reset Progress</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Module 1: Performance Fundamentals</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="athena-lesson-1">
+        <div class="lesson-item-header">
+          <a href="/aws-athena/optimizing-athena-query-performance/">1. Optimizing Athena Query Performance</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="athena-lesson-1">Toggle Complete</button>
+        </div>
+        <p class="lesson-meta">Objective: Apply first-line query tuning techniques.</p>
+      </li>
+      <li class="lesson-item" data-lesson-id="athena-lesson-2">
+        <div class="lesson-item-header">
+          <a href="/aws-athena/working-with-partitioned-data-best-practices/">2. Working with Partitioned Data</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="athena-lesson-2">Toggle Complete</button>
+        </div>
+      </li>
+      <li class="lesson-item" data-lesson-id="athena-lesson-3">
+        <div class="lesson-item-header">
+          <a href="/aws-athena/troubleshooting-performance-issues-with-large-datasets/">3. Troubleshooting Performance with Large Datasets</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="athena-lesson-3">Toggle Complete</button>
+        </div>
+      </li>
+    </ul>
+
+    <h2>Module 2: Query Reliability</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="athena-lesson-4"><div class="lesson-item-header"><a href="/aws-athena/troubleshooting-common-query-errors/">4. Troubleshooting Common Query Errors</a><button class="js-toggle-lesson" type="button" data-lesson-id="athena-lesson-4">Toggle Complete</button></div></li>
+      <li class="lesson-item" data-lesson-id="athena-lesson-5"><div class="lesson-item-header"><a href="/aws-athena/handling-schema-changes-in-athena-tables/">5. Handling Schema Changes in Athena Tables</a><button class="js-toggle-lesson" type="button" data-lesson-id="athena-lesson-5">Toggle Complete</button></div></li>
+      <li class="lesson-item" data-lesson-id="athena-lesson-6"><div class="lesson-item-header"><a href="/aws-athena/resolving-connectivity-issues-with-data-sources/">6. Resolving Connectivity Issues with Data Sources</a><button class="js-toggle-lesson" type="button" data-lesson-id="athena-lesson-6">Toggle Complete</button></div></li>
+    </ul>
+  </section>
+
+  <section class="reveal-box">
+    <h2>Self-Check</h2>
+    <p>Which Athena optimization usually cuts scanned bytes the fastest?</p>
+    <div class="mcq-box" data-mcq data-answer="partitioning">
+      <div class="mcq-choices">
+        <button type="button" data-choice="partitioning">Partition pruning</button>
+        <button type="button" data-choice="larger-limits">Increasing LIMIT values</button>
+        <button type="button" data-choice="csv-only">Converting all files to CSV</button>
+      </div>
+      <div class="mcq-feedback" aria-live="polite"></div>
+    </div>
+    <button type="button" data-reveal-target="answer-athena-1">Reveal answer</button>
+    <div id="answer-athena-1" hidden>
+      Partition pruning is a high-impact lever because Athena reads fewer S3 objects and less data.
+    </div>
+  </section>
+
+  <section>
+    <h2>Try It Snippet</h2>
+    <pre><code>-- Validate partition filters to reduce bytes scanned
+SELECT region, COUNT(*) AS events
+FROM analytics.events
+WHERE event_date BETWEEN DATE '2025-01-01' AND DATE '2025-01-07'
+  AND region IN ('us-east-1', 'us-west-2')
+GROUP BY region;</code></pre>
+  </section>
+</body>
+</html>

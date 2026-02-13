@@ -1,0 +1,127 @@
+{
+  "course_id": "databricks-troubleshooting",
+  "title": "Databricks Troubleshooting",
+  "description": "Fix common Databricks failures across clusters, pipelines, notebooks, SQL, and governance workflows.",
+  "difficulty": "Intermediate",
+  "estimated_hours": 8,
+  "topic": "Databricks",
+  "landing_url": "/courses/databricks-troubleshooting/",
+  "prerequisites": [
+    "Basic Apache Spark concepts",
+    "Databricks workspace navigation",
+    "SQL fundamentals"
+  ],
+  "outcomes": [
+    "Debug failed workflows and jobs faster",
+    "Resolve Delta Lake and SQL runtime errors",
+    "Tune cost and performance in production workloads"
+  ],
+  "associated_labs": [
+    "/free-utilities/convert-html-to-md/",
+    "/free-utilities/generate-test-data/"
+  ],
+  "modules": [
+    {
+      "module_id": "dbx-mod-1",
+      "title": "Foundations and Core Failures",
+      "lessons": [
+        {
+          "lesson_id": "dbx-lesson-1",
+          "title": "Debugging Databricks Pipelines and Workflows",
+          "url": "/databricks/debugging-databricks-pipelines-and-workflows/",
+          "objective": "Identify workflow failure points using logs and execution traces.",
+          "prerequisites": []
+        },
+        {
+          "lesson_id": "dbx-lesson-2",
+          "title": "Resolving Common Databricks Cluster Issues",
+          "url": "/databricks/resolving-common-databricks-cluster-issues/",
+          "objective": "Diagnose cluster startup and stability problems.",
+          "prerequisites": ["dbx-lesson-1"]
+        },
+        {
+          "lesson_id": "dbx-lesson-3",
+          "title": "Troubleshooting Databricks Connect Issues",
+          "url": "/databricks/troubleshooting-databricks-connect-issues/",
+          "objective": "Fix local IDE and remote cluster connectivity breakdowns.",
+          "prerequisites": ["dbx-lesson-2"]
+        },
+        {
+          "lesson_id": "dbx-lesson-4",
+          "title": "Handling Databricks Notebook Conflicts",
+          "url": "/databricks/handling-databricks-notebook-conflicts/",
+          "objective": "Resolve notebook edit conflicts and workflow merge issues.",
+          "prerequisites": ["dbx-lesson-1"]
+        }
+      ]
+    },
+    {
+      "module_id": "dbx-mod-2",
+      "title": "Performance and Data Reliability",
+      "lessons": [
+        {
+          "lesson_id": "dbx-lesson-5",
+          "title": "Troubleshooting Spark UI for Performance",
+          "url": "/databricks/troubleshooting-spark-ui-for-performance/",
+          "objective": "Use Spark UI signals to isolate performance bottlenecks.",
+          "prerequisites": ["dbx-lesson-2"]
+        },
+        {
+          "lesson_id": "dbx-lesson-6",
+          "title": "Optimizing Databricks Job Performance",
+          "url": "/databricks/optimizing-databricks-job-performance/",
+          "objective": "Tune jobs for faster runtime and better resource usage.",
+          "prerequisites": ["dbx-lesson-5"]
+        },
+        {
+          "lesson_id": "dbx-lesson-7",
+          "title": "Handling Large Datasets and Memory Issues",
+          "url": "/databricks/handling-large-datasets-and-memory-issues-in-databricks/",
+          "objective": "Prevent OOM failures with partitioning and caching strategies.",
+          "prerequisites": ["dbx-lesson-5"]
+        },
+        {
+          "lesson_id": "dbx-lesson-8",
+          "title": "Understanding and Fixing Delta Lake Problems",
+          "url": "/databricks/understanding-and-fixing-delta-lake-problems/",
+          "objective": "Address schema evolution and transaction consistency errors.",
+          "prerequisites": ["dbx-lesson-6", "dbx-lesson-7"]
+        }
+      ]
+    },
+    {
+      "module_id": "dbx-mod-3",
+      "title": "SQL, Security, and Operational Excellence",
+      "lessons": [
+        {
+          "lesson_id": "dbx-lesson-9",
+          "title": "Common Errors in Databricks SQL",
+          "url": "/databricks/common-errors-in-databricks-sql-and-how-to-solve-them/",
+          "objective": "Troubleshoot parser, runtime, and optimization SQL errors.",
+          "prerequisites": ["dbx-lesson-8"]
+        },
+        {
+          "lesson_id": "dbx-lesson-10",
+          "title": "Troubleshooting MLflow Integration",
+          "url": "/databricks/troubleshooting-mlflow-integration-in-databricks/",
+          "objective": "Fix model tracking and experiment integration issues.",
+          "prerequisites": ["dbx-lesson-6"]
+        },
+        {
+          "lesson_id": "dbx-lesson-11",
+          "title": "Managing Databricks Permissions and Access Control",
+          "url": "/databricks/managing-databricks-permissions-and-access-control/",
+          "objective": "Enforce workspace and data access boundaries safely.",
+          "prerequisites": ["dbx-lesson-1"]
+        },
+        {
+          "lesson_id": "dbx-lesson-12",
+          "title": "Understanding Databricks Cost Management",
+          "url": "/databricks/understanding-databricks-cost-management/",
+          "objective": "Balance reliability and spend with practical cost controls.",
+          "prerequisites": ["dbx-lesson-6", "dbx-lesson-11"]
+        }
+      ]
+    }
+  ]
+}
