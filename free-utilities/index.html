@@ -1,167 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-<html><head><link href="/simplecss/styles.css" rel="stylesheet"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797"
-     crossorigin="anonymous"></script>
+<head>
+  <link href="/simplecss/styles.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
 
-  <!-- Google tag (gtag.js) -->
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
-<!-- End Google Tag Manager -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+  <!-- End Google Tag Manager -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VS67BGEQZW');
+  </script>
+  <title>Free Utilities - iExpertify</title>
+  <style>
+    :root {
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text-main: #0f172a;
+      --text-subtle: #475569;
+      --brand: #0f766e;
+      --brand-soft: #ccfbf1;
+      --border: #dce3eb;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
 
-  gtag('config', 'G-VS67BGEQZW');
-</script>  
-     <title> iExpertify - Ananth Tirumanur</title>
-</head></html>
+    body {
+      font-family: "Roboto", sans-serif;
+      background: linear-gradient(180deg, #f0fdfa 0%, #f8fafc 34%, #ffffff 100%);
+      color: var(--text-main);
+    }
 
+    header,
+    main,
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
+    header nav ul {
+      display: flex;
+      gap: 0.9rem;
+      list-style: none;
+      padding: 0.8rem 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
 
+    header nav a {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .page-content {
+      padding: 1rem 0 2.5rem;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.65rem;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--text-subtle);
+    }
+
+    .tools-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.9rem;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+
+    .tools-list li a {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-height: 76px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 0.85rem 0.95rem;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .tools-list li a:hover {
+      transform: translateY(-2px);
+      border-color: #99f6e4;
+    }
+
+    .tools-list .icon {
+      background: var(--brand-soft);
+      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .tools-list .text {
+      color: var(--text-subtle);
+      line-height: 1.35;
+    }
+
+    .articles-section {
+      margin: 1.4rem 0 1.7rem;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease;
+    }
+
+    .article-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .article-card img {
+      display: block;
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .article-card h4 {
+      margin: 0;
+      padding: 0.75rem;
+      font-size: 0.96rem;
+      line-height: 1.35;
+    }
+
+    footer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 1rem 1.2rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    footer h1 {
+      font-size: 1.35rem;
+      margin: 0 0 0.45rem;
+    }
+
+    footer h2 {
+      font-size: 1.05rem;
+      color: var(--text-subtle);
+      margin: 0 0 0.8rem;
+      line-height: 1.4;
+    }
+
+    footer ul {
+      padding-left: 1.1rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.35rem;
+      }
+
+      .tools-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
-                <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h3>Free Tools:</h3>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
+        <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <section class="hero">
+      <h1>Free Utilities</h1>
+      <p>Quick tools for day-to-day developer workflows.</p>
+    </section>
+
+    <h3>Free Tools</h3>
     <ul class="tools-list">
-        <li>
-            <a href="https://www.iexpertify.com/free-utilities/generate-test-data/">
-                <span class="icon">📝</span>
-                <span class="text">Generate Test Data - Generate test data for your testing needs</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.iexpertify.com/free-utilities/credit-card-validator/">
-                <span class="icon">💳</span>
-                <span class="text">Credit Card Validator - Validate or generate test credit card numbers</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.iexpertify.com/free-utilities/html-beautifier/">
-                <span class="icon">🔧</span>
-                <span class="text">HTML Beautifier - Format and beautify HTML code with customizable indentation</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.iexpertify.com/free-utilities/convert-html-to-md/">
-                <span class="icon">📝</span>
-                <span class="text">HTML to Markdown Converter - Convert HTML code to Markdown format</span>
-            </a>
-        </li>
+      <li>
+        <a href="https://www.iexpertify.com/free-utilities/generate-test-data/">
+          <span class="icon">📝</span>
+          <span class="text">Generate Test Data - Generate test data for your testing needs</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.iexpertify.com/free-utilities/credit-card-validator/">
+          <span class="icon">💳</span>
+          <span class="text">Credit Card Validator - Validate or generate test credit card numbers</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.iexpertify.com/free-utilities/html-beautifier/">
+          <span class="icon">🔧</span>
+          <span class="text">HTML Beautifier - Format and beautify HTML code with customizable indentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.iexpertify.com/free-utilities/convert-html-to-md/">
+          <span class="icon">📄</span>
+          <span class="text">HTML to Markdown Converter - Convert HTML code to Markdown format</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.iexpertify.com/free-utilities/combine-pdf/">
+          <span class="icon">📎</span>
+          <span class="text">Combine PDF - Merge multiple PDF files into a single document</span>
+        </a>
+      </li>
     </ul>
-    <section class="articles-section">
-        <h3>Databricks Troubleshooting Articles</h3>
-        <div class="articles-grid">
-          <a href="https://www.iexpertify.com/databricks/troubleshooting-spark-ui-for-performance/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Troubleshooting Spark UI">
-            <h4>Troubleshooting Spark UI for Performance</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/resolving-common-databricks-cluster-issues/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Cluster Issues">
-            <h4>Resolving Common Databricks Cluster Issues</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/understanding-and-fixing-delta-lake-problems/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Delta Lake Problems">
-            <h4>Understanding and Fixing Delta Lake Problems</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/handling-databricks-notebook-conflicts/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Notebook Conflicts">
-            <h4>Handling Databricks Notebook Conflicts</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/managing-databricks-permissions-and-access-control/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Permissions and Access Control">
-            <h4>Managing Databricks Permissions and Access Control</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/optimizing-databricks-job-performance/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Job Performance">
-            <h4>Optimizing Databricks Job Performance</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/troubleshooting-databricks-connect-issues/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Connect Issues">
-            <h4>Troubleshooting Databricks Connect Issues</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/faq-databricks-security-best-practices/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Security Best Practices">
-            <h4>FAQ: Databricks Security Best Practices</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/debugging-databricks-pipelines-and-workflows/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Debugging Pipelines">
-            <h4>Debugging Databricks Pipelines and Workflows</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/common-errors-in-databricks-sql-and-how-to-solve-them/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="SQL Errors">
-            <h4>Common Errors in Databricks SQL and How to Solve Them</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/working-with-databricks-git-integration-troubleshooting/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Git Integration">
-            <h4>Working with Databricks Git Integration Troubleshooting</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/understanding-databricks-cost-management/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Cost Management">
-            <h4>Understanding Databricks Cost Management</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/troubleshooting-mlflow-integration-in-databricks/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="MLflow Integration">
-            <h4>Troubleshooting MLflow Integration in Databricks</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/faq-databricks-delta-live-tables/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Delta Live Tables FAQ">
-            <h4>FAQ: Databricks Delta Live Tables</h4>
-          </a>
-          <a href="https://www.iexpertify.com/databricks/handling-large-datasets-and-memory-issues-in-databricks/" class="article-card">
-            <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Large Dataset Handling">
-            <h4>Handling Large Datasets and Memory Issues in Databricks</h4>
-          </a>
-        </div>
-      </section>      
-<footer>
-    <h1>Hi there 👋. I am Ananth Tirumanur</h1>
 
+    <section class="articles-section">
+      <h3>Databricks Troubleshooting Articles</h3>
+      <div class="articles-grid">
+        <a href="https://www.iexpertify.com/databricks/troubleshooting-spark-ui-for-performance/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Troubleshooting Spark UI">
+          <h4>Troubleshooting Spark UI for Performance</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/resolving-common-databricks-cluster-issues/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Cluster Issues">
+          <h4>Resolving Common Databricks Cluster Issues</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/understanding-and-fixing-delta-lake-problems/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Delta Lake Problems">
+          <h4>Understanding and Fixing Delta Lake Problems</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/handling-databricks-notebook-conflicts/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Notebook Conflicts">
+          <h4>Handling Databricks Notebook Conflicts</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/managing-databricks-permissions-and-access-control/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Permissions and Access Control">
+          <h4>Managing Databricks Permissions and Access Control</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/optimizing-databricks-job-performance/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Job Performance">
+          <h4>Optimizing Databricks Job Performance</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/troubleshooting-databricks-connect-issues/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Connect Issues">
+          <h4>Troubleshooting Databricks Connect Issues</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/faq-databricks-security-best-practices/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Security Best Practices">
+          <h4>FAQ: Databricks Security Best Practices</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/debugging-databricks-pipelines-and-workflows/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Debugging Pipelines">
+          <h4>Debugging Databricks Pipelines and Workflows</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/common-errors-in-databricks-sql-and-how-to-solve-them/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="SQL Errors">
+          <h4>Common Errors in Databricks SQL and How to Solve Them</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/working-with-databricks-git-integration-troubleshooting/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Git Integration">
+          <h4>Working with Databricks Git Integration Troubleshooting</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/understanding-databricks-cost-management/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Cost Management">
+          <h4>Understanding Databricks Cost Management</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/troubleshooting-mlflow-integration-in-databricks/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="MLflow Integration">
+          <h4>Troubleshooting MLflow Integration in Databricks</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/faq-databricks-delta-live-tables/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Delta Live Tables FAQ">
+          <h4>FAQ: Databricks Delta Live Tables</h4>
+        </a>
+        <a href="https://www.iexpertify.com/databricks/handling-large-datasets-and-memory-issues-in-databricks/" class="article-card">
+          <img src="https://www.iexpertify.com/databricks/databricks.jpg" alt="Large Dataset Handling">
+          <h4>Handling Large Datasets and Memory Issues in Databricks</h4>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h1>Hi there 👋. I am Ananth Tirumanur</h1>
     <h2>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h2>
 
     <ul>
-        <li>👨‍💻 Some of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
-        <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
-        <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
-        <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+      <li>👨‍💻 Some of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+      <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+      <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+      <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
     </ul>
-    <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8'></iframe>
+
+    <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8"></iframe>
+
     <h3>Connect with me:</h3>
     <ul>
-        <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+      <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
     </ul>
 
     <h3>My Resources:</h3>
     <ul>
-        <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
-        <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
-        <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
-        <li>Free Netezza  Course: <a href="https://www.iexpertify.com/learn/full-course/netezza/">Free Netezza Course</a>
+      <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+      <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+      <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+      <li>Free Netezza Course: <a href="https://www.iexpertify.com/learn/full-course/netezza/">Free Netezza Course</a></li>
     </ul>
 
     <h3>Languages and Tools:</h3>
     <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
-</footer>
+  </footer>
 </body>
 </html>

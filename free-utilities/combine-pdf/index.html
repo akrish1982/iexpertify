@@ -1,42 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PDF Merger - Krish Ananthakrishnan</title>
-    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="/simplecss/styles.css" rel="stylesheet"/>
+  <link href="/free-utilities/utilities-theme.css" rel="stylesheet"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+  <title>Combine PDF - Free Utility</title>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <style>
+    #files-list {
+      margin: 0.8rem 0;
+      padding-left: 1.2rem;
+    }
+    .row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+    #status {
+      margin-top: 0.7rem;
+      color: #0f172a;
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
-    <h2>Combine Report Card & Transcript</h2>
-    <input type="file" id="file1" accept=".pdf">
-    <input type="file" id="file2" accept=".pdf">
-    <button onclick="mergePdfs()">Merge and Download</button>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <script>
-        async function mergePdfs() {
-            const { PDFDocument } = PDFLib;
-            const mergedPdf = await PDFDocument.create();
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
+        <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
+      </ul>
+    </nav>
+  </header>
 
-            const file1 = document.getElementById('file1').files[0];
-            const file2 = document.getElementById('file2').files[0];
+  <main class="utility-main">
+    <section class="utility-hero">
+      <h1>Combine PDF Files</h1>
+      <p class="notice"><strong>Privacy:</strong> This tool runs fully in your browser. Files are merged locally and are not uploaded to any server.</p>
 
-            if (!file1 || !file2) {
-                alert("Please select both files.");
-                return;
-            }
+      <label for="pdfFiles">Choose two or more PDF files</label>
+      <input type="file" id="pdfFiles" accept="application/pdf,.pdf" multiple>
 
-            for (let file of [file1, file2]) {
-                const bytes = await file.arrayBuffer();
-                const pdf = await PDFDocument.load(bytes);
-                const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-                copiedPages.forEach((page) => mergedPdf.addPage(page));
-            }
+      <ol id="files-list"></ol>
 
-            const mergedPdfBytes = await mergedPdf.save();
-            const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'Combined_Records_Krish.pdf';
-            link.click();
+      <div class="row">
+        <label for="outputName">Output file name</label>
+        <input type="text" id="outputName" value="merged.pdf" aria-label="Output file name">
+      </div>
+
+      <div class="row">
+        <button id="mergeBtn" onclick="mergePdfs()" disabled>Merge and Download</button>
+      </div>
+
+      <p id="status"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <h1>Hi there 👋. I am Ananth Tirumanur</h1>
+    <h2>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h2>
+
+    <ul>
+      <li>👨‍💻 Some of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+      <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+      <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+      <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+    </ul>
+
+    <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8"></iframe>
+
+    <h3>Connect with me:</h3>
+    <ul>
+      <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+    </ul>
+
+    <h3>My Resources:</h3>
+    <ul>
+      <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+      <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+      <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+      <li>Free Netezza Course: <a href="https://www.iexpertify.com/learn/full-course/netezza/">Free Netezza Course</a></li>
+    </ul>
+
+    <h3>Languages and Tools:</h3>
+    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('pdfFiles');
+    const filesList = document.getElementById('files-list');
+    const mergeBtn = document.getElementById('mergeBtn');
+    const statusEl = document.getElementById('status');
+
+    fileInput.addEventListener('change', () => {
+      const files = Array.from(fileInput.files || []);
+      filesList.innerHTML = files.map((file, idx) => `<li>${idx + 1}. ${file.name}</li>`).join('');
+      mergeBtn.disabled = files.length < 2;
+      statusEl.textContent = files.length < 2 ? 'Select at least two PDFs to merge.' : '';
+    });
+
+    async function mergePdfs() {
+      const files = Array.from(fileInput.files || []);
+      if (files.length < 2) {
+        statusEl.textContent = 'Select at least two PDF files.';
+        return;
+      }
+
+      statusEl.textContent = 'Merging files...';
+      mergeBtn.disabled = true;
+
+      try {
+        const { PDFDocument } = PDFLib;
+        const mergedPdf = await PDFDocument.create();
+
+        for (const file of files) {
+          const bytes = await file.arrayBuffer();
+          const pdf = await PDFDocument.load(bytes);
+          const pages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+          pages.forEach((page) => mergedPdf.addPage(page));
         }
-    </script>
+
+        const mergedPdfBytes = await mergedPdf.save();
+        const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        const rawName = (document.getElementById('outputName').value || 'merged.pdf').trim();
+        link.href = url;
+        link.download = rawName.toLowerCase().endsWith('.pdf') ? rawName : `${rawName}.pdf`;
+        link.click();
+        URL.revokeObjectURL(url);
+        statusEl.textContent = 'Done. Your merged PDF was downloaded.';
+      } catch (err) {
+        statusEl.textContent = `Unable to merge PDFs: ${err.message}`;
+      } finally {
+        mergeBtn.disabled = false;
+      }
+    }
+  </script>
 </body>
 </html>

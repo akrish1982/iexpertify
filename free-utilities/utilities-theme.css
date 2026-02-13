@@ -1,0 +1,153 @@
+:root {
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --text-main: #0f172a;
+  --text-subtle: #475569;
+  --brand: #0f766e;
+  --brand-soft: #ccfbf1;
+  --border: #dce3eb;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(180deg, #f0fdfa 0%, #f8fafc 34%, #ffffff 100%);
+  color: var(--text-main);
+}
+
+header,
+main,
+footer {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header nav ul {
+  display: flex;
+  gap: 0.9rem;
+  list-style: none;
+  padding: 0.8rem 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+header nav a {
+  display: inline-block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.utility-main {
+  padding: 1rem 0 2rem;
+}
+
+.utility-hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.25rem;
+}
+
+.utility-hero h1 {
+  margin-top: 0;
+}
+
+.instructions,
+.explanation,
+.preview,
+.settings,
+.panel,
+.notice {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin: 0.8rem 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.9rem;
+}
+
+textarea,
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  background: #fff;
+}
+
+textarea {
+  min-height: 220px;
+}
+
+button {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(0.95);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.7rem 0;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.site-footer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1rem 1.2rem 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.site-footer h1 {
+  font-size: 1.35rem;
+  margin: 0 0 0.45rem;
+}
+
+.site-footer h2 {
+  font-size: 1.05rem;
+  color: var(--text-subtle);
+  margin: 0 0 0.8rem;
+  line-height: 1.4;
+}
+
+.site-footer ul {
+  padding-left: 1.1rem;
+}
+
+@media (max-width: 640px) {
+  .utility-hero {
+    padding: 0.9rem;
+  }
+}
