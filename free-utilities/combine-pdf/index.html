@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Merger - Krish Ananthakrishnan</title>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+    <h2>Combine Report Card & Transcript</h2>
+    <input type="file" id="file1" accept=".pdf">
+    <input type="file" id="file2" accept=".pdf">
+    <button onclick="mergePdfs()">Merge and Download</button>
+
+    <script>
+        async function mergePdfs() {
+            const { PDFDocument } = PDFLib;
+            const mergedPdf = await PDFDocument.create();
+
+            const file1 = document.getElementById('file1').files[0];
+            const file2 = document.getElementById('file2').files[0];
+
+            if (!file1 || !file2) {
+                alert("Please select both files.");
+                return;
+            }
+
+            for (let file of [file1, file2]) {
+                const bytes = await file.arrayBuffer();
+                const pdf = await PDFDocument.load(bytes);
+                const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                copiedPages.forEach((page) => mergedPdf.addPage(page));
+            }
+
+            const mergedPdfBytes = await mergedPdf.save();
+            const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Combined_Records_Krish.pdf';
+            link.click();
+        }
+    </script>
+</body>
+</html>
