@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="/simplecss/styles.css" rel="stylesheet"/>
+    <link href="/free-utilities/utilities-theme.css" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+    <title>College Fit Finder 2.0</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --bg: #ecf0f1; }
+        body { background: var(--bg); color: #333; }
+        .quiz-shell { padding: 1rem 0; }
+        #app-container { background: white; width: 100%; max-width: 600px; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        
+        h1 { text-align: center; color: var(--primary); margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 0.9em; }
+        
+        /* Progress Bar */
+        .progress-container { width: 100%; background-color: #e0e0e0; border-radius: 10px; margin-bottom: 25px; height: 10px; overflow: hidden; }
+        .progress-bar { height: 100%; background-color: var(--accent); width: 0%; transition: width 0.3s ease; }
+
+        /* Questions */
+        .question-card { animation: fadeIn 0.5s; }
+        .question-text { font-size: 1.2em; font-weight: 600; margin-bottom: 20px; line-height: 1.4; }
+        
+        .btn-option { display: block; width: 100%; padding: 15px 20px; margin-bottom: 12px; border: 2px solid #e0e0e0; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.2s; font-size: 1em; color: #555; }
+        .btn-option:hover { border-color: var(--accent); background: #f7fbff; color: var(--accent); transform: translateX(5px); }
+
+        /* Results */
+        #result-area { display: none; text-align: center; }
+        .tag-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
+        .tag { background: var(--accent); color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em; font-weight: bold; }
+        
+        .recommendation-box { background: #f8f9fa; border-left: 5px solid var(--accent); padding: 20px; margin-top: 20px; text-align: left; }
+        .restart-btn { margin-top: 30px; background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-size: 1em; }
+        .restart-btn:hover { background: #1a252f; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<header>
+    <nav>
+        <ul>
+            <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
+            <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="utility-main">
+<section class="utility-hero quiz-shell">
+
+<div id="app-container">
+    <h1>College Fit Finder</h1>
+    <p class="subtitle">Answer 8 questions to discover your ideal campus vibe.</p>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+
+    <div id="quiz-area">
+        </div>
+
+    <div id="result-area">
+        <h2>Your Ideal College Profile</h2>
+        <p>Based on your answers, you should look for schools that prioritize:</p>
+        <div class="tag-container" id="tags"></div>
+        
+        <div class="recommendation-box">
+            <h3>Our Recommendation:</h3>
+            <p id="summary-text"></p>
+        </div>
+        <button class="restart-btn" onclick="location.reload()">Start Over</button>
+    </div>
+</div>
+
+<script>
+    // The Data: Questions mapped to "Attribute Points"
+    const questions = [
+        {
+            text: "It's Friday night. What is the ideal campus atmosphere?",
+            options: [
+                { label: "The whole school is at the stadium cheering.", points: { "High School Spirit": 2, "Large School": 1 } },
+                { label: "Small groups hanging out, open mic nights, or movies.", points: { "Niche/Indie Culture": 2, "Small School": 1 } }
+            ]
+        },
+        {
+            text: "How do you feel about being called on in class?",
+            options: [
+                { label: "I love it. I want the professor to know my name.", points: { "Small School": 2, "Mentorship": 1 } },
+                { label: "No thanks. I prefer listening to lectures anonymously.", points: { "Large School": 2, "Research Focus": 1 } }
+            ]
+        },
+        {
+            text: "Let's talk location. Where is the campus?",
+            options: [
+                { label: "In the middle of a bustling city (subways, noise, energy).", points: { "Urban": 2 } },
+                { label: "A classic college town with a green quad and distinct campus borders.", points: { "College Town": 2 } }
+            ]
+        },
+        {
+            text: "How far away from home do you want to be?",
+            options: [
+                { label: "Driveable (Under 3-4 hours). I want to visit often.", points: { "Close to Home": 2 } },
+                { label: "A flight away. I'm ready for a totally new region.", points: { "Far Away": 2 } }
+            ]
+        },
+        {
+            text: "Winter is coming. What's your reaction?",
+            options: [
+                { label: "I need sunshine and warm weather year-round.", points: { "Warm Climate": 2 } },
+                { label: "I love the seasons (and maybe some snow days).", points: { "Four Seasons": 2 } }
+            ]
+        },
+        {
+            text: "How do you prefer to handle your coursework?",
+            options: [
+                { label: "I like structure. Tell me what Core classes I need to take.", points: { "Structured Curriculum": 1 } },
+                { label: "I want total freedom to choose my own path.", points: { "Open Curriculum": 2 } }
+            ]
+        },
+        {
+            text: "When you walk around campus, who do you see?",
+            options: [
+                { label: "New faces every day. It feels like a city.", points: { "Large School": 1 } },
+                { label: "Familiar faces. It feels like a family.", points: { "Small School": 1, "Community": 1 } }
+            ]
+        },
+        {
+            text: "What matters more to you academically?",
+            options: [
+                { label: "Access to top-tier research labs and facilities.", points: { "Research Focus": 2 } },
+                { label: "Close relationships with teachers and discussion.", points: { "Liberal Arts": 2 } }
+            ]
+        }
+    ];
+
+    let currentQIndex = 0;
+    // We will accumulate points in this object
+    let scores = {};
+
+    function renderQuestion() {
+        const quizArea = document.getElementById('quiz-area');
+        const qData = questions[currentQIndex];
+        
+        // Update Progress Bar
+        const percent = ((currentQIndex) / questions.length) * 100;
+        document.getElementById('progress').style.width = percent + "%";
+
+        quizArea.innerHTML = `
+            <div class="question-card">
+                <div class="question-text">${qData.text}</div>
+                <div id="options-container"></div>
+            </div>
+        `;
+
+        const optContainer = document.getElementById('options-container');
+        qData.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = "btn-option";
+            btn.innerText = opt.label;
+            btn.onclick = () => handleAnswer(opt.points);
+            optContainer.appendChild(btn);
+        });
+    }
+
+    function handleAnswer(pointsObj) {
+        // Add points to our scores object
+        for (const [key, value] of Object.entries(pointsObj)) {
+            scores[key] = (scores[key] || 0) + value;
+        }
+
+        currentQIndex++;
+        if (currentQIndex < questions.length) {
+            renderQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    function showResults() {
+        document.getElementById('quiz-area').style.display = "none";
+        document.getElementById('result-area').style.display = "block";
+        document.getElementById('progress').style.width = "100%";
+
+        // Sort scores to find the top 3 traits
+        const sortedTraits = Object.entries(scores)
+            .sort(([,a], [,b]) => b - a) // Sort by score descending
+            .slice(0, 3); // Take top 3
+
+        const tagsContainer = document.getElementById('tags');
+        const summaryText = document.getElementById('summary-text');
+
+        // Create Tags
+        sortedTraits.forEach(([trait, score]) => {
+            const span = document.createElement('span');
+            span.className = "tag";
+            span.innerText = trait;
+            tagsContainer.appendChild(span);
+        });
+
+        // Generate dynamic summary
+        const topTrait = sortedTraits[0][0];
+        let advice = "";
+
+        if (topTrait.includes("Large") || topTrait.includes("Spirit")) {
+            advice = "It sounds like you want the classic 'Big College' experience with energy, sports, and anonymity.";
+        } else if (topTrait.includes("Small") || topTrait.includes("Arts")) {
+            advice = "You seem to value community and mentorship over size. Look for Liberal Arts colleges or smaller private universities.";
+        } else if (topTrait.includes("Urban")) {
+            advice = "The city is your classroom! Look for schools where the campus integrates into the metro area.";
+        } else if (topTrait.includes("Research")) {
+            advice = "Prioritize R1 Universities (major research institutions) where you can get into labs early.";
+        } else {
+            advice = "You have a balanced set of interests. Focus on the 'vibe' during campus tours!";
+        }
+
+        summaryText.innerText = `${advice} Your answers suggest that ${sortedTraits.map(t => t[0]).join(", ")} are your biggest priorities.`;
+    }
+
+    // Initialize
+    renderQuestion();
+</script>
+</section>
+</main>
+<footer class="site-footer">
+  <h1>Hi there 👋. I am Ananth Tirumanur</h1>
+  <h2>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h2>
+
+  <ul>
+    <li>👨‍💻 Some of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+    <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+    <li>📄 My work history: <a href="https://www.linkedin.com/in/ananthtirumanur/">https://www.linkedin.com/in/ananthtirumanur/</a></li>
+    <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+  </ul>
+
+  <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8"></iframe>
+
+  <h3>Connect with me:</h3>
+  <ul>
+    <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+    <li>LinkedIn: <a href="https://linkedin.com/in/ananthtirumanur/">https://linkedin.com/in/ananthtirumanur/</a></li>
+  </ul>
+
+  <h3>My Resources:</h3>
+  <ul>
+    <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+    <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+    <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+    <li>Free Netezza Course: <a href="https://www.iexpertify.com/learn/full-course/netezza/">Free Netezza Course</a></li>
+  </ul>
+
+  <h3>Languages and Tools:</h3>
+  <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+</footer>
+</body>
+</html>
