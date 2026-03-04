@@ -258,22 +258,27 @@
       try {
         const originalBytes = await file.arrayBuffer();
         const originalSize  = originalBytes.byteLength;
+        // Keep a Uint8Array copy — PDF.js detaches ArrayBuffers it receives,
+        // making them unusable for subsequent calls (causes "detached ArrayBuffer" error).
+        const uint8Copy = new Uint8Array(originalBytes.slice(0));
         let compressedBytes;
 
         if (!mode.raster) {
           // ── Lossless: re-save with object stream compression ──────────────
           statusEl.textContent = 'Compressing (lossless)…';
-          const pdf = await PDFLib.PDFDocument.load(originalBytes);
+          const pdf = await PDFLib.PDFDocument.load(uint8Copy);
           compressedBytes = await pdf.save({ useObjectStreams: true, addDefaultPage: false });
         } else {
           // ── Raster: render each page via PDF.js then re-assemble ──────────
-          const totalPages = await getTotalPages(originalBytes);
+          // Load once and get numPages from the same document — avoids a
+          // second load on the (now-detached) buffer.
+          const pdfDoc = await pdfjsLib.getDocument({ data: uint8Copy }).promise;
+          const totalPages = pdfDoc.numPages;
           progressBar.max   = totalPages;
           progressBar.value = 0;
           progressBar.style.display = 'block';
 
           const newPdf = await PDFLib.PDFDocument.create();
-          const pdfDoc = await pdfjsLib.getDocument({ data: originalBytes }).promise;
 
           for (let i = 1; i <= pdfDoc.numPages; i++) {
             statusEl.textContent = `Rendering page ${i} of ${pdfDoc.numPages}…`;
@@ -343,10 +348,6 @@
       }
     }
 
-    async function getTotalPages(arrayBuffer) {
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      return pdf.numPages;
-    }
   </script>
 </body>
 </html>
