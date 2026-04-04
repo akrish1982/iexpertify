@@ -1,0 +1,97 @@
+{
+  "course_id": "claude-certified-architect",
+  "title": "Claude Architect Certification",
+  "description": "Exam-focused study path for orchestration, tool design, Claude Code configuration, prompt engineering, and reliability patterns.",
+  "difficulty": "Advanced",
+  "estimated_hours": 8,
+  "topic": "Claude / Agentic Systems",
+  "landing_url": "/courses/claude-certified-architect/",
+  "prerequisites": [
+    "Basic familiarity with Claude or LLM application design",
+    "Working knowledge of APIs, JSON, and tool calling",
+    "Comfort reading engineering workflows and configuration files"
+  ],
+  "outcomes": [
+    "Choose the right orchestration pattern for a given task shape",
+    "Design better tools, schemas, and MCP integrations",
+    "Apply Claude Code configuration precedence and deterministic hooks correctly",
+    "Guarantee structured output with the right tool choice and schema design",
+    "Manage long-running context, attribution, and recovery more reliably"
+  ],
+  "associated_labs": [],
+  "modules": [
+    {
+      "module_id": "claude-mod-1",
+      "title": "Agentic Architecture & Orchestration",
+      "lessons": [
+        {
+          "lesson_id": "claude-lesson-1",
+          "title": "Agentic Architecture & Orchestration",
+          "url": "/courses/claude-certified-architect/#domain-1",
+          "objective": "Run the agent loop safely, choose the right orchestration pattern, and apply deterministic guardrails.",
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "module_id": "claude-mod-2",
+      "title": "Tool Design & MCP Integration",
+      "lessons": [
+        {
+          "lesson_id": "claude-lesson-2",
+          "title": "Tool Design & MCP Integration",
+          "url": "/courses/claude-certified-architect/#domain-2",
+          "objective": "Improve tool descriptions, schema design, and failure handling for reliable tool use.",
+          "prerequisites": [
+            "claude-lesson-1"
+          ]
+        }
+      ]
+    },
+    {
+      "module_id": "claude-mod-3",
+      "title": "Claude Code Configuration & Workflows",
+      "lessons": [
+        {
+          "lesson_id": "claude-lesson-3",
+          "title": "Claude Code Configuration & Workflows",
+          "url": "/courses/claude-certified-architect/#domain-3",
+          "objective": "Apply configuration precedence, hooks, skills, commands, and the right working mode.",
+          "prerequisites": [
+            "claude-lesson-2"
+          ]
+        }
+      ]
+    },
+    {
+      "module_id": "claude-mod-4",
+      "title": "Prompt Engineering & Structured Output",
+      "lessons": [
+        {
+          "lesson_id": "claude-lesson-4",
+          "title": "Prompt Engineering & Structured Output",
+          "url": "/courses/claude-certified-architect/#domain-4",
+          "objective": "Use forced tool output, better schemas, few-shot examples, and retries to improve reliability.",
+          "prerequisites": [
+            "claude-lesson-3"
+          ]
+        }
+      ]
+    },
+    {
+      "module_id": "claude-mod-5",
+      "title": "Context Management & Reliability",
+      "lessons": [
+        {
+          "lesson_id": "claude-lesson-5",
+          "title": "Context Management & Reliability",
+          "url": "/courses/claude-certified-architect/#domain-5",
+          "objective": "Preserve critical facts, handle conflicting sources, and monitor reliability at the category level.",
+          "prerequisites": [
+            "claude-lesson-4"
+          ]
+        }
+      ]
+    }
+  ]
+}

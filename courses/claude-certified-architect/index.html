@@ -1,0 +1,790 @@
+<html>
+<head>
+  <link href="/simplecss/styles.css" rel="stylesheet"/>
+  <link href="/assets/css/course-experience.css" rel="stylesheet"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+  <script defer src="/assets/js/course-progress.js"></script>
+  <script defer src="/assets/js/interactive-widgets.js"></script>
+</head>
+<body class="course-shell" data-course-manifest="/data/course-manifests/claude-certified-architect.json">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">iExpertify</a></li>
+        <li><a href="/courses/">Courses</a></li>
+        <li><a href="/free-courses/">Free Courses</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="course-hero">
+    <h1>Claude Architect Certification</h1>
+    <p>Exam-focused study path for agentic architecture, tool design, Claude Code workflows, structured output, and reliability.</p>
+    <div id="js-course-progress">0% completed</div>
+    <div class="course-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+      <div id="js-course-progress-bar" class="course-progress-bar" aria-valuenow="0"></div>
+    </div>
+    <div id="js-course-counter">0 / 5 lessons complete</div>
+    <div class="course-actions">
+      <a id="js-resume-link" href="/courses/claude-certified-architect/#domain-1">Resume: Domain 1</a>
+      <button id="js-reset-progress" type="button">Reset Progress</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Course At a Glance</h2>
+    <p>This course turns the certification quick reference into a structured cram guide. Each domain section emphasizes the tested decision rules, deterministic vs probabilistic controls, and the traps that tend to appear in scenario-based questions.</p>
+    <ul>
+      <li>Best for: Engineers preparing for Claude architecture and agentic systems exam scenarios.</li>
+      <li>Study focus: Memorize the decision rules, not just the definitions.</li>
+      <li>Primary exam pattern: When the wording says "guaranteed", "must always", or "enforce", favor code-level controls over prompt-level instructions.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Domain 1: Agentic Architecture &amp; Orchestration</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="claude-lesson-1">
+        <div class="lesson-item-header">
+          <a href="#domain-1">1. Agentic Architecture &amp; Orchestration</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="claude-lesson-1">Toggle Complete</button>
+        </div>
+        <p class="lesson-meta">Objective: Control the agent loop correctly, choose the right orchestration pattern, and know when hooks or human handoffs are mandatory.</p>
+      </li>
+    </ul>
+
+    <h2>Domain 2: Tool Design &amp; MCP Integration</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="claude-lesson-2">
+        <div class="lesson-item-header">
+          <a href="#domain-2">2. Tool Design &amp; MCP Integration</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="claude-lesson-2">Toggle Complete</button>
+        </div>
+        <p class="lesson-meta">Objective: Improve tool selection, pick the right tool_choice mode, and distinguish valid empty results from real failures.</p>
+      </li>
+    </ul>
+
+    <h2>Domain 3: Claude Code Configuration &amp; Workflows</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="claude-lesson-3">
+        <div class="lesson-item-header">
+          <a href="#domain-3">3. Claude Code Configuration &amp; Workflows</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="claude-lesson-3">Toggle Complete</button>
+        </div>
+        <p class="lesson-meta">Objective: Apply config precedence, path-scoped rules, skills, commands, hooks, and the right execution mode.</p>
+      </li>
+    </ul>
+
+    <h2>Domain 4: Prompt Engineering &amp; Structured Output</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="claude-lesson-4">
+        <div class="lesson-item-header">
+          <a href="#domain-4">4. Prompt Engineering &amp; Structured Output</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="claude-lesson-4">Toggle Complete</button>
+        </div>
+        <p class="lesson-meta">Objective: Guarantee structure with forced tools, reduce fabrication, and use retries, chaining, and examples correctly.</p>
+      </li>
+    </ul>
+
+    <h2>Domain 5: Context Management &amp; Reliability</h2>
+    <ul class="lesson-list">
+      <li class="lesson-item" data-lesson-id="claude-lesson-5">
+        <div class="lesson-item-header">
+          <a href="#domain-5">5. Context Management &amp; Reliability</a>
+          <button class="js-toggle-lesson" type="button" data-lesson-id="claude-lesson-5">Toggle Complete</button>
+        </div>
+        <p class="lesson-meta">Objective: Preserve facts across long tasks, handle conflicting sources, and monitor per-type failures instead of aggregate-only metrics.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="domain-1">
+    <h2>Domain 1 Notes: Agentic Architecture &amp; Orchestration</h2>
+    <h3>The Agentic Loop</h3>
+    <ul>
+      <li>Core cycle: Send request -&gt; inspect <code>stop_reason</code> -&gt; execute tools or terminate.</li>
+      <li><code>stop_reason: "tool_use"</code> means Claude wants tools. Continue the loop.</li>
+      <li><code>stop_reason: "end_turn"</code> means Claude is finished. Terminate the loop.</li>
+      <li>Tool results must be appended to conversation history before the next iteration or Claude cannot reason over the tool output.</li>
+      <li><code>stop_reason</code> is the reliable termination signal. It is deterministic and unambiguous.</li>
+    </ul>
+
+    <h3>Three Anti-Patterns</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Anti-pattern</th>
+          <th>Why it fails</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Parsing natural language like "I'm done"</td>
+          <td>Ambiguous. Claude may be done with one step while still intending to continue the task.</td>
+        </tr>
+        <tr>
+          <td>Iteration caps as the primary loop control</td>
+          <td>Either cuts off useful work too early or wastes cycles on unnecessary turns.</td>
+        </tr>
+        <tr>
+          <td>Checking only <code>content[0].type == "text"</code></td>
+          <td>Claude can return text and <code>tool_use</code> blocks in the same response.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Use iteration caps only as a safety net to prevent runaway agents, never as the primary stopping mechanism.</p>
+
+    <h3>Orchestration Patterns</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Pattern</th>
+          <th>When to use</th>
+          <th>Key characteristic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sequential</td>
+          <td>Each step depends on the previous result</td>
+          <td>A -&gt; B -&gt; C, with state flowing from one step to the next</td>
+        </tr>
+        <tr>
+          <td>Parallel</td>
+          <td>Subtasks are independent and latency matters</td>
+          <td>Fan-out, fan-in, with no shared state between branches</td>
+        </tr>
+        <tr>
+          <td>Pipeline</td>
+          <td>Stages have different specializations</td>
+          <td>Assembly line where one stage feeds the next</td>
+        </tr>
+        <tr>
+          <td>Dynamic adaptive</td>
+          <td>Task structure is unknown upfront</td>
+          <td>The model decides decomposition at runtime</td>
+        </tr>
+        <tr>
+          <td>Hub-and-spoke</td>
+          <td>A coordinator delegates to specialists</td>
+          <td>Central orchestration with focused subagents</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Decision rule: Use parallel when subtasks are independent. Use sequential when each step needs the previous output. Use dynamic adaptive when you cannot predict the decomposition at design time.</p>
+
+    <h3>Guardrails Hierarchy</h3>
+    <p>Prompt instructions are probabilistic. Hooks are deterministic. That distinction is one of the most exam-tested ideas in this domain.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Mechanism</th>
+          <th>Type</th>
+          <th>Enforcement</th>
+          <th>Use for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>System prompt rules</td>
+          <td>Probabilistic</td>
+          <td>Model may not comply</td>
+          <td>Style guidance and soft preferences</td>
+        </tr>
+        <tr>
+          <td>PreToolUse hooks</td>
+          <td>Deterministic</td>
+          <td>Code-level, before execution</td>
+          <td>Blocking dangerous calls and validating parameters</td>
+        </tr>
+        <tr>
+          <td>PostToolUse hooks</td>
+          <td>Deterministic</td>
+          <td>Code-level, after execution</td>
+          <td>Validating outputs, sanitizing results, and audit logging</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Hook order matters: PreToolUse fires before the tool runs. PostToolUse fires after. When the question says "must always" or "guaranteed", the answer is hooks, not prompts.</p>
+
+    <h3>Claude Agent SDK and Multi-Agent Systems</h3>
+    <ul>
+      <li><code>AgentDefinition</code> declares identity, system prompt, and available tools.</li>
+      <li><code>allowedTools</code> should scope each agent to about 4-5 tools.</li>
+      <li>The task tool lets a coordinator delegate work to a subagent that runs in its own context.</li>
+      <li>Handoffs transfer control between agents, and the receiving agent does not inherit conversation history.</li>
+      <li>Subagents do not share memory. All context must be passed explicitly in task definitions or handoff payloads.</li>
+      <li>Specialists improve accuracy because they have smaller toolsets, smaller context windows, and clearer responsibilities.</li>
+    </ul>
+
+    <h3>Human-in-the-Loop and Recovery</h3>
+    <p>Never silently fail. If the agent cannot complete the task, emit a structured handoff instead of a generic error.</p>
+    <pre><code>Customer ID: 12847
+Summary: Tool calls completed, but the policy exception requires human approval.
+Root cause: Confidence fell below threshold after conflicting eligibility checks.
+Recommended action: Review the exception and approve or deny the operation.</code></pre>
+    <p>Escalate when confidence is below threshold, policy exceptions apply, destructive operations are requested, or intent stays ambiguous after available context is exhausted.</p>
+
+    <h3>Error Recovery &amp; Resilience</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Strategy</th>
+          <th>When to use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>fork_session</code></td>
+          <td>Divergent exploration where you want to try alternatives without polluting the main context</td>
+        </tr>
+        <tr>
+          <td>Fresh start + summary injection</td>
+          <td>Context is stale, contradictory, or polluted</td>
+        </tr>
+        <tr>
+          <td>Retry with error feedback</td>
+          <td>Transient failure where the model can recover if you show the error explicitly</td>
+        </tr>
+        <tr>
+          <td>Graceful degradation</td>
+          <td>Partial results are still useful and better than a hard failure</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Stale context signals include repetition, contradiction, or ignoring recent tool results. The fix is a fresh start with a curated summary, not more context piled into the thread.</p>
+  </section>
+
+  <section id="domain-2">
+    <h2>Domain 2 Notes: Tool Design &amp; MCP Integration</h2>
+    <h3>Tool Description Design</h3>
+    <p>Tool descriptions matter more than tool names because they are the primary selection signal Claude uses when deciding what to call.</p>
+    <ul>
+      <li>State what the tool does in one sentence.</li>
+      <li>Document expected input formats and constraints.</li>
+      <li>Describe the response shape Claude will get back.</li>
+      <li>State the boundary conditions, including what the tool does not do.</li>
+      <li>Include example queries that should trigger the tool.</li>
+    </ul>
+    <p>Optimization sequence: Improve descriptions first, then add a few-shot example, then consolidate tools if needed. Do not start by reducing tool count.</p>
+
+    <h3>Schema Design Rules</h3>
+    <ul>
+      <li>Keep agents to about 4-5 tools. More tools increase selection errors.</li>
+      <li>Use descriptive parameter names like <code>customer_email</code> instead of <code>email</code>.</li>
+      <li>Mark parameters as required only when truly mandatory.</li>
+      <li>Use enums for constrained choices because they guide the model better than freeform strings.</li>
+      <li>If Claude misselects a tool, improve the description before consolidating tools.</li>
+    </ul>
+
+    <h3>tool_choice Modes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Mode</th>
+          <th>Behavior</th>
+          <th>Use when</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>auto</code></td>
+          <td>Model decides whether to call a tool</td>
+          <td>Default for most agentic loops</td>
+        </tr>
+        <tr>
+          <td><code>any</code></td>
+          <td>Model must call at least one tool, but chooses which</td>
+          <td>You know a tool is required but do not care which one</td>
+        </tr>
+        <tr>
+          <td><code>tool</code> (forced)</td>
+          <td>Model must call a specific named tool</td>
+          <td>You need guaranteed structured output or strict schema compliance</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Exam shortcut: <code>tool_choice: { type: "tool", name: "extract_data" }</code> is the right answer when the prompt says "guaranteed structured output."</p>
+
+    <h3>MCP Architecture</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Role</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Client</td>
+          <td>Connects to servers and routes tool calls</td>
+          <td>Claude Desktop or an IDE extension</td>
+        </tr>
+        <tr>
+          <td>Host</td>
+          <td>Manages client lifecycle</td>
+          <td>The desktop app process</td>
+        </tr>
+        <tr>
+          <td>Server</td>
+          <td>Exposes tools, resources, and prompts</td>
+          <td>Database, filesystem, or API connector</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Protocol: JSON-RPC 2.0 over stdio or HTTP/SSE. Project configuration belongs in <code>.mcp.json</code>. Personal global configuration belongs in <code>~/.claude.json</code>. Use community MCP servers first and build custom ones only when necessary.</p>
+
+    <h3>Structured Tool Errors</h3>
+    <pre><code>{
+  "errorCategory": "authentication",
+  "isRetryable": false,
+  "retryAfterMs": 5000,
+  "partialResult": null,
+  "suggestion": "Check API key permissions"
+}</code></pre>
+    <ul>
+      <li>Access failure like 401 or timeout means retry or escalate.</li>
+      <li>Valid empty result like 0 search matches is a successful outcome, not an error.</li>
+      <li>Never return a generic error string when structured metadata can support recovery.</li>
+    </ul>
+
+    <h3>Tool Selection in Claude Code</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Purpose</th>
+          <th>Use when</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Grep</td>
+          <td>Search file contents by pattern</td>
+          <td>You are looking for code patterns or string occurrences</td>
+        </tr>
+        <tr>
+          <td>Glob</td>
+          <td>Find files by name or path pattern</td>
+          <td>You need discovery by extension or naming convention</td>
+        </tr>
+        <tr>
+          <td>Read</td>
+          <td>Read a specific file</td>
+          <td>You already know the exact path</td>
+        </tr>
+        <tr>
+          <td>Edit</td>
+          <td>Modify file contents</td>
+          <td>You are making targeted changes to existing files</td>
+        </tr>
+        <tr>
+          <td>Bash</td>
+          <td>Run shell commands</td>
+          <td>The task is build, test, git, or otherwise outside specialized tools</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Selection principle: Use the most specific tool available. Grep for content search, Glob for discovery, and Read for known files. Avoid Bash when a more precise tool exists.</p>
+  </section>
+
+  <section id="domain-3">
+    <h2>Domain 3 Notes: Claude Code Configuration &amp; Workflows</h2>
+    <h3>Configuration Hierarchy</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Priority</th>
+          <th>Location</th>
+          <th>Scope</th>
+          <th>Committed to Git?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><code>~/.claude/CLAUDE.md</code></td>
+          <td>User-global</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><code>.claude/CLAUDE.md</code></td>
+          <td>Project-wide</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><code>CLAUDE.md</code> in any directory</td>
+          <td>That directory and below</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>.claude/rules/*.md</code></td>
+          <td>Conditional, path-matched</td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>More specific scope wins. A directory-level <code>CLAUDE.md</code> overrides the project-level file for paths in that subtree.</p>
+
+    <h3>Path-Scoped Rules</h3>
+    <pre><code>---
+paths:
+  - "src/api/**"
+  - "src/middleware/**"
+---
+Always validate authentication tokens before processing API requests.
+Use structured error responses with proper HTTP status codes.</code></pre>
+    <p>Rules in <code>.claude/rules/</code> load only when the active files match the declared path globs, which avoids wasting context on irrelevant instructions.</p>
+
+    <h3>Skills and Commands</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Location</th>
+          <th>What it is for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Project skills</td>
+          <td><code>.claude/skills/</code></td>
+          <td>Shared reusable workflows with restricted tool access</td>
+        </tr>
+        <tr>
+          <td>Personal skills</td>
+          <td><code>~/.claude/skills/</code></td>
+          <td>Personal reusable workflows</td>
+        </tr>
+        <tr>
+          <td>Project commands</td>
+          <td><code>.claude/commands/</code></td>
+          <td>Shared prompt templates invoked with <code>/</code></td>
+        </tr>
+        <tr>
+          <td>Personal commands</td>
+          <td><code>~/.claude/commands/</code></td>
+          <td>Personal prompt templates</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Skills are capability modules and can restrict tools with <code>allowed-tools</code>.</li>
+      <li><code>context: fork</code> lets a skill run in a forked context so it does not pollute the main conversation.</li>
+      <li>Commands are prompt templates that may include <code>$ARGUMENTS</code>.</li>
+      <li>Skills and commands are not the same thing.</li>
+    </ul>
+
+    <h3>Hooks and Working Modes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Concept</th>
+          <th>Correct use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PreToolUse</td>
+          <td>Block dangerous calls, validate parameters, and require confirmation before execution</td>
+        </tr>
+        <tr>
+          <td>PostToolUse</td>
+          <td>Validate outputs, sanitize results, and write audit logs after execution</td>
+        </tr>
+        <tr>
+          <td>Plan mode</td>
+          <td>Use for complex work with multiple reasonable approaches</td>
+        </tr>
+        <tr>
+          <td>Direct execution</td>
+          <td>Use for clear, well-defined tasks with obvious execution steps</td>
+        </tr>
+        <tr>
+          <td><code>-p</code> flag</td>
+          <td>Use for CI/CD and non-interactive automation, not for plan mode</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>When the question says "cannot be bypassed", the answer is a hook. When it says "preferred style" or "guidance", the answer is prompt instructions in <code>CLAUDE.md</code>.</p>
+
+    <h3>Feedback, Review, and Permissions</h3>
+    <ul>
+      <li>Concrete examples are better than prose-only guidance. Show the code you want.</li>
+      <li>Batch independent fixes in one message. Sequence dependent changes across messages.</li>
+      <li>Never review code in the same session that wrote it. Use an independent session to remove reasoning bias.</li>
+      <li>Permissions are granted at the tool level. Keep every agent or skill on least privilege.</li>
+      <li>Project settings in <code>.claude/</code> are shared. Personal settings in <code>~/.claude/</code> are not.</li>
+    </ul>
+  </section>
+
+  <section id="domain-4">
+    <h2>Domain 4 Notes: Prompt Engineering &amp; Structured Output</h2>
+    <h3>System Prompts</h3>
+    <ul>
+      <li>Structure prompts with role and context, rules and constraints, output format, and calibration examples.</li>
+      <li>Concrete code examples beat prose descriptions because they show the expected behavior directly.</li>
+      <li>Severity calibration matters. Without examples, the model tends to flatten critical issues and small nits into the same priority.</li>
+      <li>System prompts are cost-effective because prompt caching reuses them across requests.</li>
+    </ul>
+
+    <h3>Structured Output: Forced Tool Use vs Text</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Guarantee</th>
+          <th>Use when</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Forced <code>tool_choice</code></td>
+          <td>Schema enforced by the API</td>
+          <td>You need guaranteed structure every time</td>
+        </tr>
+        <tr>
+          <td><code>tool_choice: auto</code></td>
+          <td>No guarantee that a tool will be used</td>
+          <td>Agentic loops where text responses are also valid</td>
+        </tr>
+        <tr>
+          <td>Prompt-based JSON</td>
+          <td>No schema enforcement</td>
+          <td>Simple prototypes only</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The preferred production pattern is to define a dedicated output tool such as <code>extract_entities</code> and force it. That gives API-level schema validation and avoids malformed JSON.</p>
+
+    <h3>Schema Design for Structured Output</h3>
+    <ul>
+      <li>Make fields optional or nullable if the value may truly be missing.</li>
+      <li>Required fields can force the model to fabricate data when the source does not contain a value.</li>
+      <li>Use enums for constrained fields.</li>
+      <li>Keep schemas flat where possible. Deep nesting increases extraction errors.</li>
+      <li>Add descriptions on each property so the model knows exactly what belongs there.</li>
+    </ul>
+
+    <h3>Few-Shot Examples and Prompt Chaining</h3>
+    <ul>
+      <li>Use few-shot examples when instructions alone produce inconsistent output.</li>
+      <li>2-4 examples is the sweet spot. More rarely helps enough to justify the extra context.</li>
+      <li>Include reasoning and edge cases, not just input-output pairs.</li>
+      <li>Use prompt chaining when the task has distinct phases such as extract, validate, format, and synthesize.</li>
+      <li>Chaining improves accuracy because each step has a smaller focused prompt and can be retried independently.</li>
+    </ul>
+
+    <h3>Retry With Error Feedback</h3>
+    <pre><code>Original prompt: "Extract all dates from this contract"
+Failed output: { "dates": ["2024-01-15", "next Tuesday"] }
+Validation error: "dates[1] is relative. All dates must be ISO 8601."</code></pre>
+    <p>Never say only "try again." Feed back the original request, the failed output, and the exact validation error so the model can correct itself precisely.</p>
+
+    <h3>Batch API and Review Limits</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Concept</th>
+          <th>Correct interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Batch API</td>
+          <td>Use for bulk, latency-tolerant workloads because it is cheaper, not faster</td>
+        </tr>
+        <tr>
+          <td>Real-time user-facing work</td>
+          <td>Use synchronous APIs, not Batch</td>
+        </tr>
+        <tr>
+          <td>Self-review</td>
+          <td>Use a separate model instance or fresh conversation, not the same session</td>
+        </tr>
+        <tr>
+          <td>Large input review</td>
+          <td>Use per-file passes and then a cross-file integration pass</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="domain-5">
+    <h2>Domain 5 Notes: Context Management &amp; Reliability</h2>
+    <h3>Persistent Facts vs Progressive Summaries</h3>
+    <p>Do not rely on repeated summarization to preserve important details. Each summary pass drops names, numbers, timestamps, and exact wording. Instead, keep a structured fact block and carry it forward verbatim.</p>
+    <pre><code>## Persistent Facts
+- Customer: Jane Smith (ID: 12847)
+- Order: #ORD-2024-8821, placed 2024-01-15
+- Issue: Delivery address incorrect
+- Status: Refund approved, reshipment pending</code></pre>
+
+    <h3>Scratchpad Files and Context Resets</h3>
+    <ul>
+      <li>Use scratchpad files to preserve findings across long-running explorations.</li>
+      <li>Conversation history is internal persistence and can be lost when context becomes stale.</li>
+      <li>Scratchpad files are external persistence and survive fresh starts.</li>
+      <li>Use fresh start + summary injection when the model repeats itself, contradicts itself, or ignores recent information.</li>
+    </ul>
+
+    <h3>Structured Error Propagation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Purpose</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Failure type</td>
+          <td>Describe the category of failure</td>
+          <td><code>network_timeout</code></td>
+        </tr>
+        <tr>
+          <td>Partial results</td>
+          <td>Show what succeeded</td>
+          <td><code>{ "orders": [...], "payments": null }</code></td>
+        </tr>
+        <tr>
+          <td>Alternatives tried</td>
+          <td>Record recovery attempts</td>
+          <td><code>Retried 2x, tried fallback endpoint</code></td>
+        </tr>
+        <tr>
+          <td>Suggested action</td>
+          <td>Guide the next agent or human</td>
+          <td><code>Escalate to support with order IDs</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Generic errors like "something went wrong" are not useful. They block recovery because the next step has no actionable context.</p>
+
+    <h3>Valid Empty Results vs Access Failures</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Situation</th>
+          <th>Type</th>
+          <th>Correct action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Search returns 0 results</td>
+          <td>Valid empty</td>
+          <td>Accept it. The absence of data is the answer.</td>
+        </tr>
+        <tr>
+          <td>Database query returns an empty set</td>
+          <td>Valid empty</td>
+          <td>Accept it. The record does not exist.</td>
+        </tr>
+        <tr>
+          <td>API returns 401</td>
+          <td>Access failure</td>
+          <td>Retry with correct credentials or escalate.</td>
+        </tr>
+        <tr>
+          <td>Network timeout</td>
+          <td>Access failure</td>
+          <td>Retry or use a fallback path.</td>
+        </tr>
+        <tr>
+          <td>Rate limit 429</td>
+          <td>Access failure</td>
+          <td>Respect retry timing and try again.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Validation, Attribution, and Monitoring</h3>
+    <ul>
+      <li>High overall accuracy can hide weak categories. Use stratified validation and per-type accuracy checks.</li>
+      <li>When users report errors but aggregate metrics look good, break results down by type, source, or category.</li>
+      <li>Use structured claim-source mappings instead of inline citations if the content will pass through multi-step synthesis.</li>
+      <li>If sources conflict, annotate both claims with provenance and dates. Do not silently average or overwrite one with the other.</li>
+      <li>Track per-type error rates, confidence calibration, retry success rates, and context window utilization.</li>
+    </ul>
+
+    <h3>Context Window Strategies</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Strategy</th>
+          <th>When to use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Persistent fact blocks</td>
+          <td>Critical details must survive long conversations</td>
+        </tr>
+        <tr>
+          <td>Scratchpad files</td>
+          <td>Multi-step exploration crosses context boundaries</td>
+        </tr>
+        <tr>
+          <td>Per-file passes + integration</td>
+          <td>Large codebases risk attention dilution</td>
+        </tr>
+        <tr>
+          <td>Fresh start + summary injection</td>
+          <td>Context has gone stale or contradictory</td>
+        </tr>
+        <tr>
+          <td>Prompt caching</td>
+          <td>Repeated system prompts need lower cost and latency</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="reveal-box">
+    <h2>Self-Check</h2>
+    <p>Which mechanism guarantees a dangerous tool call is blocked every time?</p>
+    <div class="mcq-box" data-mcq data-answer="pretooluse">
+      <div class="mcq-choices">
+        <button type="button" data-choice="pretooluse">PreToolUse hook</button>
+        <button type="button" data-choice="system-prompt">System prompt reminder</button>
+        <button type="button" data-choice="iteration-cap">Iteration cap</button>
+      </div>
+      <div class="mcq-feedback" aria-live="polite"></div>
+    </div>
+    <button type="button" data-reveal-target="answer-claude-1">Reveal answer</button>
+    <div id="answer-claude-1" hidden>
+      PreToolUse hooks are deterministic code-level enforcement. Prompts are probabilistic and iteration caps solve runaway loops, not policy enforcement.
+    </div>
+  </section>
+
+  <section>
+    <h2>Try It Snippet</h2>
+    <pre><code>while (true) {
+  const response = await client.messages.create(request);
+
+  if (response.stop_reason === "tool_use") {
+    const toolResults = await runRequestedTools(response);
+    history.push(response);
+    history.push(toolResults);
+    continue;
+  }
+
+  if (response.stop_reason === "end_turn") {
+    history.push(response);
+    break;
+  }
+
+  throw new Error("Unexpected stop_reason: " + response.stop_reason);
+}</code></pre>
+  </section>
+</body>
+</html>
