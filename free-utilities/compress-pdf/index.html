@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="/simplecss/styles.css" rel="stylesheet"/>
+  <link href="/free-utilities/utilities-theme.css" rel="stylesheet"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3040480045347797" crossorigin="anonymous"></script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WNB7CZV5');</script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-VS67BGEQZW');</script>
+  <title>Compress PDF - Free Utility</title>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+  <style>
+    .row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+    #status {
+      margin-top: 0.7rem;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .size-info {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+    .size-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      min-width: 140px;
+      text-align: center;
+    }
+    .size-box .label {
+      font-size: 0.8rem;
+      color: #475569;
+      margin-bottom: 0.2rem;
+    }
+    .size-box .value {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .size-box.savings .value {
+      color: #0f766e;
+    }
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.6rem;
+      margin: 0.8rem 0;
+    }
+    .mode-card {
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+      cursor: pointer;
+      background: var(--surface);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .mode-card:hover {
+      border-color: var(--brand);
+    }
+    .mode-card.selected {
+      border-color: var(--brand);
+      background: var(--brand-soft);
+    }
+    .mode-card input[type="radio"] {
+      display: none;
+    }
+    .mode-card .mode-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .mode-card .mode-desc {
+      font-size: 0.78rem;
+      color: #475569;
+      margin-top: 0.2rem;
+    }
+    .warn-raster {
+      display: none;
+      color: #92400e;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    progress {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      accent-color: var(--brand);
+    }
+  </style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNB7CZV5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header class="site-header">
+    <nav>
+      <ul>
+        <li><a href="https://www.iexpertify.com/">iExpertify</a></li>
+        <li><a href="https://www.iexpertify.com/courses/">Courses</a></li>
+        <li><a href="https://www.iexpertify.com/free-utilities/">Free Utilities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="utility-main">
+    <section class="utility-hero">
+      <h1>Compress PDF</h1>
+      <p class="notice"><strong>Privacy:</strong> This tool runs fully in your browser. Your file is compressed locally and is never uploaded to any server.</p>
+
+      <label for="pdfFile">Choose a PDF file</label>
+      <input type="file" id="pdfFile" accept="application/pdf,.pdf">
+
+      <div style="margin-top:1rem">
+        <strong>Compression mode</strong>
+        <div class="mode-grid" id="modeGrid">
+          <label class="mode-card selected">
+            <input type="radio" name="mode" value="lossless" checked>
+            <div class="mode-name">Lossless</div>
+            <div class="mode-desc">Re-encodes streams with deflate. No quality loss. Best for text-only PDFs.</div>
+          </label>
+          <label class="mode-card">
+            <input type="radio" name="mode" value="screen">
+            <div class="mode-name">Screen (smallest)</div>
+            <div class="mode-desc">Re-renders pages as JPEG at 72 DPI / 50% quality. Smallest file size.</div>
+          </label>
+          <label class="mode-card">
+            <input type="radio" name="mode" value="ebook">
+            <div class="mode-name">eBook (medium)</div>
+            <div class="mode-desc">Re-renders at 108 DPI / 70% quality. Good balance of size and clarity.</div>
+          </label>
+          <label class="mode-card">
+            <input type="radio" name="mode" value="print">
+            <div class="mode-name">Print (high)</div>
+            <div class="mode-desc">Re-renders at 150 DPI / 85% quality. Best clarity among re-render modes.</div>
+          </label>
+        </div>
+        <div class="warn-raster" id="warnRaster">
+          Re-render modes convert all pages to JPEG images. Text may look slightly soft when zoomed in. Vector graphics and selectable text will be rasterized.
+        </div>
+      </div>
+
+      <div id="size-info" class="size-info" style="display:none !important"></div>
+
+      <div class="row">
+        <label for="outputName">Output file name</label>
+        <input type="text" id="outputName" value="compressed.pdf" aria-label="Output file name">
+      </div>
+
+      <div class="row">
+        <button id="compressBtn" onclick="compressPdf()" disabled>Compress and Download</button>
+      </div>
+
+      <progress id="progressBar" value="0" max="100" style="display:none"></progress>
+      <p id="status"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <h1>Hi there 👋. I am Ananth Tirumanur</h1>
+    <h2>I work on projects in data science, big data, data engineering, data modeling, software engineering, and system design.</h2>
+
+    <ul>
+      <li>👨‍💻 Some of my projects are available at <a href="https://github.com/akrish1982">https://github.com/akrish1982</a></li>
+      <li>💬 Ask me about <strong>Data engineering, SQL, Databases, Data pipelines, Data infrastructure</strong></li>
+      <li>📄 My work history: <a href="https://www.linkedin.com/in/ananth-tirumanur-391848345/">https://www.linkedin.com/in/ananth-tirumanur-391848345/</a></li>
+      <li>⚡ Fun fact: Marathoner & Casual Birding enthusiast</li>
+    </ul>
+
+    <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/42567926/activity-summary/6bbf7aabb6546e61f1317a54d973b259158da8a8"></iframe>
+
+    <h3>Connect with me:</h3>
+    <ul>
+      <li>Twitter: <a href="https://twitter.com/akrish82">@akrish82</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/ananth-tirumanur-391848345/">https://www.linkedin.com/in/ananth-tirumanur-391848345/</a></li>
+    </ul>
+
+    <h3>My Resources:</h3>
+    <ul>
+      <li>LinkedIn Newsletter: <a href="https://www.linkedin.com/newsletters/data-engineering-with-aws-7096111313352880128/">Data Engineering with AWS</a></li>
+      <li>Udemy Course: <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-practice-test/learn/quiz/6218524#overview">AWS Certified Data Engineer Associate Practice Test</a></li>
+      <li>Python Crash Course: <a href="https://akrish82.gumroad.com/l/python-crash-course">Python Crash Course on Gumroad</a></li>
+      <li>Free Netezza Course: <a href="https://www.iexpertify.com/learn/full-course/netezza/">Free Netezza Course</a></li>
+    </ul>
+
+    <h3>Languages and Tools:</h3>
+    <p>AWS, Bash, Docker, Elasticsearch, Git, Grafana, Hadoop, Hive, EMR, Glue, Athena, Lambda, Step Functions, Airflow/MWAA, DynamoDB, Kafka, Kubernetes, Linux, MariaDB, MySQL, Pandas, PostgreSQL, Python, Redis, Scala, SQLite</p>
+  </footer>
+
+  <script>
+    // Point PDF.js worker at the matching CDN version
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+
+    const MODES = {
+      lossless: { raster: false },
+      screen:   { raster: true,  scale: 1.0, quality: 0.50 },
+      ebook:    { raster: true,  scale: 1.5, quality: 0.70 },
+      print:    { raster: true,  scale: 2.0, quality: 0.85 },
+    };
+
+    const fileInput   = document.getElementById('pdfFile');
+    const compressBtn = document.getElementById('compressBtn');
+    const statusEl    = document.getElementById('status');
+    const sizeInfo    = document.getElementById('size-info');
+    const progressBar = document.getElementById('progressBar');
+    const warnRaster  = document.getElementById('warnRaster');
+
+    // Mode card selection highlight
+    document.getElementById('modeGrid').addEventListener('change', (e) => {
+      document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+      e.target.closest('.mode-card').classList.add('selected');
+      const isRaster = MODES[e.target.value].raster;
+      warnRaster.style.display = isRaster ? 'block' : 'none';
+    });
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      sizeInfo.style.display = 'none';
+      if (!file) { compressBtn.disabled = true; statusEl.textContent = ''; return; }
+      compressBtn.disabled = false;
+      statusEl.textContent = `Selected: ${file.name} (${formatBytes(file.size)})`;
+    });
+
+    function getSelectedMode() {
+      return document.querySelector('input[name="mode"]:checked').value;
+    }
+
+    async function compressPdf() {
+      const file = fileInput.files[0];
+      if (!file) { statusEl.textContent = 'Please select a PDF file.'; return; }
+
+      const mode = MODES[getSelectedMode()];
+      compressBtn.disabled = true;
+      sizeInfo.style.display = 'none';
+      progressBar.style.display = 'none';
+
+      try {
+        const originalBytes = await file.arrayBuffer();
+        const originalSize  = originalBytes.byteLength;
+        // Keep a Uint8Array copy — PDF.js detaches ArrayBuffers it receives,
+        // making them unusable for subsequent calls (causes "detached ArrayBuffer" error).
+        const uint8Copy = new Uint8Array(originalBytes.slice(0));
+        let compressedBytes;
+
+        if (!mode.raster) {
+          // ── Lossless: re-save with object stream compression ──────────────
+          statusEl.textContent = 'Compressing (lossless)…';
+          const pdf = await PDFLib.PDFDocument.load(uint8Copy);
+          compressedBytes = await pdf.save({ useObjectStreams: true, addDefaultPage: false });
+        } else {
+          // ── Raster: render each page via PDF.js then re-assemble ──────────
+          // Load once and get numPages from the same document — avoids a
+          // second load on the (now-detached) buffer.
+          const pdfDoc = await pdfjsLib.getDocument({ data: uint8Copy }).promise;
+          const totalPages = pdfDoc.numPages;
+          progressBar.max   = totalPages;
+          progressBar.value = 0;
+          progressBar.style.display = 'block';
+
+          const newPdf = await PDFLib.PDFDocument.create();
+
+          for (let i = 1; i <= pdfDoc.numPages; i++) {
+            statusEl.textContent = `Rendering page ${i} of ${pdfDoc.numPages}…`;
+            const page     = await pdfDoc.getPage(i);
+            const viewport = page.getViewport({ scale: mode.scale });
+
+            const canvas = document.createElement('canvas');
+            canvas.width  = Math.round(viewport.width);
+            canvas.height = Math.round(viewport.height);
+            const ctx = canvas.getContext('2d');
+
+            await page.render({ canvasContext: ctx, viewport }).promise;
+
+            // Convert to JPEG bytes
+            const dataUrl   = canvas.toDataURL('image/jpeg', mode.quality);
+            const b64       = dataUrl.split(',')[1];
+            const jpegBytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+
+            const jpegImage = await newPdf.embedJpg(jpegBytes);
+            const newPage   = newPdf.addPage([canvas.width, canvas.height]);
+            newPage.drawImage(jpegImage, { x: 0, y: 0, width: canvas.width, height: canvas.height });
+
+            progressBar.value = i;
+          }
+
+          compressedBytes = await newPdf.save({ useObjectStreams: true });
+          progressBar.style.display = 'none';
+        }
+
+        const compressedSize = compressedBytes.byteLength;
+        const saved    = originalSize - compressedSize;
+        const savedPct = ((saved / originalSize) * 100).toFixed(1);
+
+        sizeInfo.innerHTML = `
+          <div class="size-box">
+            <div class="label">Original size</div>
+            <div class="value">${formatBytes(originalSize)}</div>
+          </div>
+          <div class="size-box">
+            <div class="label">Compressed size</div>
+            <div class="value">${formatBytes(compressedSize)}</div>
+          </div>
+          <div class="size-box savings">
+            <div class="label">Size reduction</div>
+            <div class="value">${saved > 0 ? '-' + formatBytes(saved) + ' (' + savedPct + '%)' : 'No change'}</div>
+          </div>`;
+        sizeInfo.style.removeProperty('display');
+
+        // Trigger download
+        const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+        const url  = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        const rawName = (document.getElementById('outputName').value || 'compressed.pdf').trim();
+        link.href     = url;
+        link.download = rawName.toLowerCase().endsWith('.pdf') ? rawName : `${rawName}.pdf`;
+        link.click();
+        URL.revokeObjectURL(url);
+
+        statusEl.textContent = saved > 0
+          ? `Done. Saved ${formatBytes(saved)} (${savedPct}% reduction).`
+          : 'Done. This PDF was already well-compressed; minimal size change.';
+      } catch (err) {
+        progressBar.style.display = 'none';
+        statusEl.textContent = `Error: ${err.message}`;
+      } finally {
+        compressBtn.disabled = false;
+      }
+    }
+
+  </script>
+</body>
+</html>
