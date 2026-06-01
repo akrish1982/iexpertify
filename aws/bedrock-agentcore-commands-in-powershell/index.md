@@ -17,9 +17,20 @@ $SessionId    = "ps-test-session-$(Get-Random)"  # Generates a random session ID
 $OutputFile   = "agent_response.json"
 
 # Define the user prompt/payload as a JSON string
-$Payload = @{
-    inputText = "Hello! Can you confirm you are online and working?"
-} | ConvertTo-Json -Compress
+# 1. Re-define your prompt cleanly as structured JSON text
+$JsonPrompt = '{"inputText": "Hello! Can you confirm you are online and working?"}'
+
+# 2. Convert that JSON string safely into a Base64 string
+$PayloadBase64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($JsonPrompt))
+
+# 3. Execute the CLI call passing the base64 string
+aws bedrock-agentcore invoke-agent-runtime `
+    --agent-runtime-arn $AgentCoreArn `
+    --runtime-session-id $SessionId `
+    --content-type "application/json" `
+    --accept "application/json" `
+    --payload $PayloadBase64 `
+    $OutputFile
 
 ```
 
